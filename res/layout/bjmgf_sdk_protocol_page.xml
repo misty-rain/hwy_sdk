@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/bjmgf_sdk_margin20" >
+     
+    <LinearLayout
+         android:layout_width="match_parent"
+		 android:layout_height="match_parent"
+		 android:padding="@dimen/bjmgf_sdk_margin20">
+
+		<ScrollView
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:paddingTop="@dimen/bjmgf_sdk_margin15"
+		    android:paddingBottom="@dimen/bjmgf_sdk_margin15"
+		    android:fillViewport="true"
+		    android:layout_centerInParent="true"
+		    android:background="@color/bjmgf_sdk_white" >
+		
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical" >
+		        
+		        <TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		           	android:paddingLeft="@dimen/bjmgf_sdk_margin15"
+		           	android:paddingRight="@dimen/bjmgf_sdk_margin15"
+		            android:text="@string/bjmgf_sdk_gameFriendUserProtocolStr"
+		            android:textSize="@dimen/bjmgf_sdk_font_size18"
+		            android:textColor="@color/bjmgf_sdk_gray" />
+		        
+		    </LinearLayout>
+		
+		</ScrollView>
+	
+	</LinearLayout>>
+	
+	<ImageView
+	    android:id="@+id/bjmgf_sdk_protocolCloseImageViewId"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_alignParentRight="true"
+	    android:src="@drawable/bjmgf_sdk_close_button" />
+
+</RelativeLayout>

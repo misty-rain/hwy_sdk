@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bjmgf_sdk_dock_publish_wish_to_who_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="@color/bjmgf_sdk_white"
+    android:padding="@dimen/bjmgf_sdk_margin10">
+	
+    <ImageView android:id="@+id/bjmgf_sdk_dock_publish_wish_to_who_list_item_selectId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:src="@drawable/bjmgf_sdk_dock_pubish_wish_select_no"/>
+ 	
+    <ImageView android:id="@+id/bjmgf_sdk_dock_publish_wish_to_who_list_item_headId"
+        android:layout_width="@dimen/bjmgf_sdk_user_head_icon_small_size"
+        android:layout_height="@dimen/bjmgf_sdk_user_head_icon_small_size"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/bjmgf_sdk_dock_publish_wish_to_who_list_item_selectId"
+        android:src="@drawable/bjmgf_sdk_dock_pubish_wish_selected_head"/>
+
+	<TextView android:id="@+id/bjmgf_sdk_dock_publish_wish_to_who_list_item_nicknameId"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="睡个好觉"
+		android:layout_centerVertical="true"
+		android:textColor="@color/bjmgf_sdk_black"
+		android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+     	android:layout_toRightOf="@id/bjmgf_sdk_dock_publish_wish_to_who_list_item_headId"
+        android:textSize="@dimen/bjmgf_sdk_font_size14"/>
+	
+
+</LinearLayout>

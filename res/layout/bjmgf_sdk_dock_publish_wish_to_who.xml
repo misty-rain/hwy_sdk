@@ -1,0 +1,111 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" 
+	android:orientation="vertical"
+	android:layout_height="match_parent">
+    	
+    <!-- 标题栏 -->
+	<RelativeLayout  android:id="@+id/bjmgf_sdk_dock_public_wish_to_navigationLlId"
+		android:layout_width="match_parent" android:layout_height="48dp"
+		android:paddingRight="@dimen/bjmgf_sdk_margin5"
+		android:background="@color/bjmgf_sdk_navigation_background" >
+		
+		<RelativeLayout
+            android:id="@+id/bjmgf_sdk_dock_public_wish_to_backLlId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+			android:padding="@dimen/bjmgf_sdk_padding10"
+			android:layout_alignParentLeft="true">
+            <ImageView
+                android:id="@+id/bjmgf_sdk_dock_public_wish_to_backImageViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bjmgf_sdk_back"/>
+        </RelativeLayout>
+			
+        <TextView
+            android:id="@+id/bjmgf_sdk_dock_public_wish_to_titleTextViewId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_dock_public_wish_to_Str"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size17"
+            android:textStyle="bold" />
+        
+       <LinearLayout android:id="@+id/bjmgf_sdk_dock_public_wish_to_toprightId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/bjmgf_sdk_margin5"
+            android:orientation="horizontal">
+           <TextView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/bjmgf_sdk_dock_public_wish_to_select_confirmStrLeftStr"
+               android:textColor="@color/bjmgf_sdk_white"
+               android:textSize="@dimen/bjmgf_sdk_font_size14"/>
+           <TextView android:id="@+id/bjmgf_sdk_dock_public_wish_to_select_countId"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="@color/bjmgf_sdk_white"
+               android:textSize="@dimen/bjmgf_sdk_font_size16"/>
+        </LinearLayout>
+	</RelativeLayout>
+	
+	<HorizontalScrollView android:id="@+id/bjmgf_sdk_dock_public_wish_to_has_select_listId"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:fadingEdge="none"
+	    android:scrollbars="none"
+	    android:background="@color/bjmgf_sdk_white">
+		<LinearLayout android:id="@+id/bjmgf_sdk_dock_public_wish_to_has_select_layoutId"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:background="@color/bjmgf_sdk_white"
+		    android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+		    android:orientation="horizontal" >
+		  
+		</LinearLayout>
+	</HorizontalScrollView>
+	
+	<View android:id="@+id/bjmgf_sdk_dock_public_wish_to_gap_firstId"
+	    android:layout_width="wrap_content"
+	    android:layout_height="@dimen/bjmgf_sdk_margin10"
+	    android:background="@color/bjmgf_sdk_gap_gray"/>
+	
+<!-- 	<include android:id="@+id/bjmgf_sdk_dock_public_wish_to_squareLayoutId"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:visibility="gone"
+	    layout="@layout/bjmgf_sdk_dock_publish_wish_to_who_list_header"/> -->
+	
+	<org.bojoy.gamefriendsdk.app.widget.pulltorefresh.PullToRefreshListView
+        android:id="@+id/bjmgf_sdk_dock_public_wish_to_pullListViewId"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:cacheColorHint="#00000000"
+        android:listSelector="#00000000"  
+        android:divider="#E0E0E0"
+        android:dividerHeight="1dp"
+        android:fadingEdge="none"
+        android:overScrollMode="never"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true"
+        ptr:ptrListViewExtrasEnabled="false"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="both"
+        ptr:ptrShowIndicator="false"
+        ptr:ptrScrollingWhileRefreshingEnabled="true" 
+		/>
+   
+</LinearLayout>
+
+

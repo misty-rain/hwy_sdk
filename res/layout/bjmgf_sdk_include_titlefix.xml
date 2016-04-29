@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/bjmgf_sdk_white" >
+
+    <RelativeLayout 
+   	    android:layout_width="match_parent"
+   	    android:layout_height="wrap_content"
+   	    android:layout_marginTop="@dimen/bjmgf_sdk_margin10">
+   	    
+   	    <LinearLayout 
+   	        android:layout_width="@dimen/bjmgf_sdk_margin40"
+   	        android:layout_height="@dimen/bjmgf_sdk_margin40"
+   	        android:gravity="center_vertical"
+   	        android:id="@+id/bjmgf_sdk_back"
+   	        android:layout_marginLeft="@dimen/bjmgf_sdk_margin10">
+   	        
+   	        <ImageView
+   	            android:layout_width="wrap_content"
+   	            android:layout_height="wrap_content"
+   	            android:src="@drawable/bjmgf_sdk_dock_back_btn"
+   	            android:textColor="@color/bjmgf_sdk_black" />
+   	        
+   	    </LinearLayout>
+   	    
+   	    <ImageView
+   	        android:id="@+id/bjmgf_sdk_logoId"
+   	        android:layout_width="wrap_content"
+   	        android:layout_height="wrap_content"
+   	        android:layout_centerHorizontal="true"
+   	        android:layout_gravity="center_horizontal"
+   	        android:background="@drawable/bjmgf_sdk_logo_small" />
+   	    
+   	</RelativeLayout>
+    
+</LinearLayout>

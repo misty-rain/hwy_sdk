@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bjmgf_sdk_bg" >
+
+    <include layout="@layout/bjmgf_sdk_include_titlefix"/>
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin15"
+        android:text="@string/bjmgf_sdk_find_password_splash_title"
+        android:textColor="@color/bjmgf_sdk_dark_gray"
+        android:textSize="@dimen/bjmgf_sdk_font_size16"
+        android:textStyle="bold"/>
+    
+    <Button
+        android:id="@+id/bjmgf_sdk_find_password_splash_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin15"
+        android:background="@drawable/bjmgf_sdk_blue_button_big_selector"
+        android:text="@string/bjmgf_sdk_find_password_splash_phone"
+        android:textColor="@color/bjmgf_sdk_white"
+        android:textSize="@dimen/bjmgf_sdk_font_size20" />
+    
+    <Button
+        android:id="@+id/bjmgf_sdk_find_password_splash_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin25"
+        android:background="@drawable/bjmgf_sdk_blue_button_big_selector"
+        android:text="@string/bjmgf_sdk_find_password_splash_email"
+        android:textColor="@color/bjmgf_sdk_white"
+        android:textSize="@dimen/bjmgf_sdk_font_size20" />
+    
+    <TextView 
+        android:id="@+id/bjmgf_sdk_find_password_bottom_personal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin5"
+        android:text="@string/bjmgf_sdk_find_password_splash_content"
+        android:textColor="@color/bjmgf_sdk_dark_gray"
+        android:textSize="@dimen/bjmgf_sdk_font_size14"
+        android:gravity="center_horizontal"
+        android:visibility="gone"/>
+
+</LinearLayout>

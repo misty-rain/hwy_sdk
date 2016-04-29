@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin30"
+		android:layout_marginRight="@dimen/bjmgf_sdk_margin30"
+        android:paddingLeft="@dimen/bjmgf_sdk_margin15"
+        android:paddingRight="@dimen/bjmgf_sdk_margin10"
+        android:paddingTop="@dimen/bjmgf_sdk_margin10"
+        android:paddingBottom="@dimen/bjmgf_sdk_margin15"
+        android:orientation="vertical"
+        android:background="@drawable/bjmgf_sdk_bg" >
+	        
+    	<ImageView
+    	    android:id="@+id/bjmgf_sdk_logoId"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:background="@drawable/bjmgf_sdk_logo_small" />
+        
+       	<TextView
+            android:id="@+id/bjmgf_sdk_loginOut_describeTextViewId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:text="@string/bjmgf_sdk_login_out_describeTextViewStr"
+            android:textColor="@color/bjmgf_sdk_gray"
+        	android:textSize="@dimen/bjmgf_sdk_font_size16" />
+        
+		<Button
+	        android:id="@+id/bjmgf_sdk_loginOut_quitButtonId"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+	        android:background="@drawable/bjmgf_sdk_blue_button_big_selector"
+	        android:text="@string/bjmgf_sdk_login_out_quitBtnStr"
+	        android:textColor="@color/bjmgf_sdk_white"
+	        android:textSize="@dimen/bjmgf_sdk_font_size20" 
+	        />
+        
+		<Button
+	        android:id="@+id/bjmgf_sdk_loginOut_quitGameButtonId"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+	        android:layout_marginBottom="@dimen/bjmgf_sdk_margin9"
+	        android:background="@drawable/bjmgf_sdk_red_button_big_selector"
+	        android:text="@string/bjmgf_sdk_login_out_quitGameBtnStr"
+	        android:textColor="@color/bjmgf_sdk_white"
+	        android:textSize="@dimen/bjmgf_sdk_font_size20" />
+        
+    </LinearLayout>
+	    
+	<ImageView
+		android:id="@+id/bjmgf_sdk_loginOut_quitCurrentPageImageViewId"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:background="@drawable/bjmgf_sdk_close_button" />
+
+</RelativeLayout>

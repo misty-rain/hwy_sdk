@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bjmgf_sdk_page_background" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_dock_recharge_sms_notice_layoutId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bjmgf_sdk_text_bg_sms_pay_pink"
+            android:drawableLeft="@drawable/bjmgf_sdk_sms_pay_notice_icon"
+            android:drawablePadding="@dimen/bjmgf_sdk_margin5"
+            android:paddingBottom="@dimen/bjmgf_sdk_margin5"
+            android:paddingLeft="@dimen/bjmgf_sdk_margin5"
+            android:paddingRight="@dimen/bjmgf_sdk_margin5"
+            android:paddingTop="@dimen/bjmgf_sdk_margin5"
+            android:textColor="@color/bjmgf_sdk_textgray"
+            android:textSize="@dimen/bjmgf_sdk_font_size14"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_dock_recharge_sms_ratio_layoutId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:text="@string/bjmgf_sdk_dock_pay_ratio_sms_str"
+            android:textColor="@color/bjmgf_sdk_black"
+            android:textSize="@dimen/bjmgf_sdk_font_size14" />
+
+        <LinearLayout
+            android:id="@+id/bjmgf_sdk_dock_recharge_sms_chooseMoneyLayoutId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bjmgf_sdk_margin5"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+            android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_dock_recharge_sms_price_6_Id"
+                    android:layout_width="@dimen/bjmgf_sdk_margin0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_dock_pay_margin5"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_dock_pay_margin5"
+                    android:layout_weight="1"
+                    android:background="@drawable/bjmgf_sdk_text_with_roundcorner_selector"
+                    android:gravity="center"
+                    android:padding="@dimen/bjmgf_sdk_margin8"
+                    android:text="@string/bjmgf_sdk_dock_recharge_price_6"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:tag="3-6" />
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_dock_recharge_sms_price_8_Id"
+                    android:layout_width="@dimen/bjmgf_sdk_margin0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_dock_pay_margin5"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_dock_pay_margin5"
+                    android:layout_weight="1"
+                    android:background="@drawable/bjmgf_sdk_text_with_roundcorner_selector"
+                    android:gravity="center"
+                    android:padding="@dimen/bjmgf_sdk_margin8"
+                    android:text="@string/bjmgf_sdk_dock_recharge_price_8"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:tag="4-8" />
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_dock_recharge_sms_price_10_Id"
+                    android:layout_width="@dimen/bjmgf_sdk_margin0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_dock_pay_margin5"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_dock_pay_margin5"
+                    android:layout_weight="1"
+                    android:background="@drawable/bjmgf_sdk_text_with_roundcorner_selector"
+                    android:gravity="center"
+                    android:padding="@dimen/bjmgf_sdk_margin8"
+                    android:text="@string/bjmgf_sdk_dock_recharge_price_10"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:tag="5-10" />
+            </LinearLayout>
+            
+           
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_dock_recharge_sms_recharge_promptId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bjmgf_sdk_margin10"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+            android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:lineSpacingMultiplier="@dimen/bjmgf_sdk_spb_float_ratio"
+            android:text="@string/bjmgf_sdk_dock_recharge_prompt_paylessStr"
+            android:textColor="@color/bjmgf_sdk_text_gray"
+            android:textSize="@dimen/bjmgf_sdk_font_size12" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_dock_recharge_sms_goodStrLayoutId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bjmgf_sdk_dock_recharge_sms_buybtnId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin5"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_dock_recharge_sms_recharge_goodsStrId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bjmgf_sdk_text_price_color"
+            android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_dock_recharge_sms_recharge_goods_unitStrId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bjmgf_sdk_dock_pay_center_unitStr"
+            android:textColor="@color/bjmgf_sdk_textgray"
+            android:textSize="@dimen/bjmgf_sdk_font_size12" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bjmgf_sdk_dock_recharge_sms_buybtnId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bjmgf_sdk_dock_recharge_sms_promptStrId_one"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:background="@drawable/bjmgf_sdk_blue_button_big_selector_roundcorner"
+        android:text="@string/bjmgf_sdk_dock_recharge_rechargeAndbuy"
+        android:textColor="@color/bjmgf_sdk_white"
+        android:textSize="@dimen/bjmgf_sdk_font_size14"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/bjmgf_sdk_dock_recharge_sms_promptStrId_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bjmgf_sdk_dock_recharge_sms_promptStrId_two"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:text="@string/bjmgf_sdk_dock_recharge_sms_pay_prompt_warn_one"
+        android:textColor="@color/bjmgf_sdk_recharge_light_red"
+        android:textSize="@dimen/bjmgf_sdk_font_size12" />
+
+    <TextView
+        android:id="@+id/bjmgf_sdk_dock_recharge_sms_promptStrId_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bjmgf_sdk_dock_recharge_sms_promptStrId_three"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:text="@string/bjmgf_sdk_dock_recharge_sms_pay_prompt_warn_two"
+        android:textColor="@color/bjmgf_sdk_recharge_light_red"
+        android:textSize="@dimen/bjmgf_sdk_font_size12" />
+
+    <TextView
+        android:id="@+id/bjmgf_sdk_dock_recharge_sms_promptStrId_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:text="@string/bjmgf_sdk_dock_recharge_sms_pay_prompt_warn_three"
+        android:textColor="@color/bjmgf_sdk_recharge_light_red"
+        android:textSize="@dimen/bjmgf_sdk_font_size12" />
+
+</RelativeLayout>

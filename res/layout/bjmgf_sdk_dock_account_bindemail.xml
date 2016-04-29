@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <!-- 标题栏 -->
+	<include layout="@layout/bjmgf_sdk_dock_header" 
+	    android:id="@+id/bjmgf_sdk_float_account_manager_bindemail_navigationLlId"/>
+
+    <View
+        android:id="@+id/bjmgf_sdk_float_account_manager_bindemail_keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/bjmgf_sdk_float_account_manager_bindemail_navigationLlId"
+        android:background="@android:color/transparent" />
+
+    <!-- 分隔线 -->
+
+    <View
+        android:id="@+id/bjmgf_sdk_gap_passport"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/bjmgf_sdk_float_account_manager_bindemail_keyboard"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+        android:background="@color/bjmgf_sdk_gap_gray" />
+
+    <com.bojoy.bjsdk_mainland_new.widget.ClearEditText
+        android:id="@+id/bjmgf_sdk_float_account_manager_bindemail_editTextId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bjmgf_sdk_gap_passport"
+        android:background="@color/bjmgf_sdk_white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/bjmgf_sdk_floatWindow_accountManager_bindEmail_new"
+        android:imeOptions="flagNoExtractUi"
+        android:padding="@dimen/bjmgf_sdk_margin8"
+        android:textColor="@color/bjmgf_sdk_textPhone"
+        android:textColorHint="@color/bjmgf_sdk_text_gray"
+        android:textSize="@dimen/bjmgf_sdk_font_size16"
+        clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close" />
+
+
+    <!-- 分隔线 -->
+
+    <View
+        android:id="@+id/bjmgf_sdk_gap_passporta"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/bjmgf_sdk_float_account_manager_bindemail_editTextId"
+        android:background="@color/bjmgf_sdk_gap_gray" />
+
+    <TextView
+        android:id="@+id/bjmgf_sdk_float_account_manager_bindemail_tipsStr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bjmgf_sdk_gap_passporta"
+        android:layout_margin="@dimen/bjmgf_sdk_margin10"
+        android:text="@string/bjmgf_sdk_floatWindow_accountManager_bindEmail_new_warn"
+        android:textColor="@color/bjmgf_sdk_textgray"
+        android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+</RelativeLayout>

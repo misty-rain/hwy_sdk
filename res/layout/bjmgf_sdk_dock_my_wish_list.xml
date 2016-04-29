@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" 
+	android:layout_height="match_parent">
+    	
+    <!-- 标题栏 -->
+	<RelativeLayout  android:id="@+id/bjmgf_sdk_dock_my_wish_list_navigationLlId"
+		android:layout_width="match_parent" 
+		android:layout_height="48dp"
+		android:background="@color/bjmgf_sdk_navigation_background" >
+		
+		<RelativeLayout
+            android:id="@+id/bjmgf_sdk_dock_my_wish_list_backLlId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+			android:padding="@dimen/bjmgf_sdk_padding10"
+			android:layout_alignParentLeft="true">
+            <ImageView
+                android:id="@+id/bjmgf_sdk_dock_my_wish_list_backImageViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bjmgf_sdk_back"/>
+        </RelativeLayout>
+			
+        <TextView
+            android:id="@+id/bjmgf_sdk_dock_my_wish_list_titleTextViewId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_dock_my_wishlistStr"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size17"
+            android:textStyle="bold" />
+        
+	</RelativeLayout>
+	
+    <org.bojoy.gamefriendsdk.app.widget.pulltorefresh.PullToRefreshListView
+        android:id="@+id/bjmgf_sdk_dock_my_wish_pullListViewId"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_below="@id/bjmgf_sdk_dock_my_wish_list_navigationLlId"
+		xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:cacheColorHint="#00000000"
+        android:listSelector="#00000000"  
+        android:divider="@color/bjmgf_sdk_account_line"
+        android:dividerHeight="1px"
+        android:fadingEdge="none"
+        android:overScrollMode="never"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true"
+        ptr:ptrListViewExtrasEnabled="false"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="both"
+        ptr:ptrScrollingWhileRefreshingEnabled="true" 
+        ptr:ptrShowIndicator="false"
+		/>
+
+    <ImageView android:id="@+id/bjmgf_sdk_no_wish_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:src="@drawable/bjmgf_sdk_no_mwish_bg"/>
+   
+</RelativeLayout>
+
+

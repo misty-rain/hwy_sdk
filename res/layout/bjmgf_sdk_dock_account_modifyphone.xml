@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:background="@drawable/bjmgf_sdk_top_bg">
+   <!-- 标题栏 -->
+	<RelativeLayout 
+	    android:id="@+id/bjmgf_sdk_float_account_manager_modifyphone_navigationLlId"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:background="@color/bjmgf_sdk_navigation_background" >
+		
+		<RelativeLayout
+            android:id="@+id/bjmgf_sdk_float_account_manager_modifyphone_backLlId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+			android:padding="@dimen/bjmgf_sdk_padding10"
+			android:layout_alignParentLeft="true">
+            <ImageView
+                android:id="@+id/bjmgf_sdk_float_account_manager_modifyphone_backImageViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bjmgf_sdk_back"/>
+        </RelativeLayout>
+ 		
+		<View 
+        	android:id="@+id/bjmgf_sdk_float_account_manager_modifyphone_keyboard" 
+       		android:layout_width="match_parent"
+        	android:layout_height="0dp"
+        	android:layout_alignParentBottom="true"
+        	android:background="@android:color/transparent" />
+		
+        <TextView
+            android:id="@+id/bjmgf_sdk_messageTextViewId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_floatWindow_accountManager_titleModifyPhoneStr"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size20"
+            android:textStyle="bold" />
+  
+        <TextView
+            android:id="@+id/bjmgf_sdk_account_manager_modifyphone_verifyCode_nextId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+            android:layout_alignParentRight="true"
+            android:text="@string/bjmgf_sdk_floatWindow_accountManager_NextStr"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size14"/>
+    </RelativeLayout>
+    
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/bjmgf_sdk_top_bg"
+	        android:layout_marginTop="@dimen/bjmgf_sdk_margin15"
+	        android:layout_below="@id/bjmgf_sdk_float_account_manager_modifyphone_navigationLlId"
+	        android:layout_gravity="center_horizontal"
+	        android:orientation="vertical" >
+	        
+	        <RelativeLayout
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:gravity="center_horizontal">
+
+	            <TextView
+	                android:id="@+id/bjmgf_sdk_account_manager_Bind_Mobile_bindPhone_oldNumber_Id"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/bjmgf_sdk_floatWindow_accountManager_bindPhone_oldNumberStr"
+	                android:textSize="@dimen/bjmgf_sdk_font_size18"
+	                android:textStyle="bold" />
+
+	            <TextView
+	                android:id="@+id/bjmgf_sdk_account_manager_Bind_Mobile_Old_Number_Id"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_toRightOf="@id/bjmgf_sdk_account_manager_Bind_Mobile_bindPhone_oldNumber_Id"
+	                android:textSize="@dimen/bjmgf_sdk_font_size18"
+	                android:textStyle="bold" />
+	        </RelativeLayout>
+
+	        <TextView
+	            android:id="@+id/bjmgf_sdk_account_manager_Tips_To_Old_Number_Id"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:layout_marginTop="@dimen/bjmgf_sdk_margin20"
+	            android:textSize="@dimen/bjmgf_sdk_font_size14"
+	            android:textColor="@color/bjmgf_sdk_textgray"
+	            android:text="@string/bjmgf_sdk_floatWindow_accountManager_unBindPhone_messageToastStr" />
+
+	        <com.bojoy.bjsdk_mainland_new.widget.ClearEditText
+	            android:id="@+id/bjmgf_sdk_float_account_manager_modifyphone_VerifyEditTextId"
+	            android:layout_width="160dp"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+	            android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+	            android:layout_marginTop="@dimen/bjmgf_sdk_margin20"
+	            android:layout_gravity="center_horizontal"
+	            android:gravity="center"
+	            android:imeOptions="flagNoExtractUi"
+	            android:inputType="number"
+	            android:paddingBottom="@dimen/bjmgf_sdk_margin5"
+	            android:paddingTop="@dimen/bjmgf_sdk_margin5"
+	            android:singleLine="true"
+	            android:maxLength="6"
+	            android:hint="@string/bjmgf_sdk_find_password_inputCheckCodeContentEditTextStr"
+	            android:textColor="@color/bjmgf_sdk_textPhone"
+	            android:textColorHint="@color/bjmgf_sdk_editTextFontGray"
+	            android:textSize="@dimen/bjmgf_sdk_font_size14"
+	            clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close" />
+	        	        
+	        <Button
+	            android:id="@+id/bjmgf_sdk_send_verifyCodeBtnId"
+	            android:layout_width="160dp"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+	            android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+	            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+	            android:background="@drawable/bjmgf_sdk_blue_button_small_selector"
+	            android:text="@string/bjmgf_sdk_floatWindow_accountManager_modifyPhone_checkBtnStr"
+	            android:textColor="@color/bjmgf_sdk_white"
+	            android:textSize="@dimen/bjmgf_sdk_font_size18" />
+	    </LinearLayout>
+</RelativeLayout>

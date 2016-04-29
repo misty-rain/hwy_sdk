@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bjmgf_sdk_white"
+    android:orientation="vertical" >
+    
+   <!-- 标题栏 -->
+	<RelativeLayout 
+	    android:id="@+id/bjmgf_sdk_dock_account_nick_layout"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:background="@color/bjmgf_sdk_navigation_background" >
+		
+		<RelativeLayout
+            android:id="@+id/bjmgf_sdk_dock_account_nick_closeLlId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+			android:padding="@dimen/bjmgf_sdk_padding10"
+			android:layout_alignParentLeft="true">
+            <ImageView
+                android:id="@+id/bjmgf_sdk_dock_account_nick_closeBtnId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bjmgf_sdk_back"/>
+        </RelativeLayout>
+ 
+        <TextView
+            android:id="@+id/bjmgf_sdk_messageTextViewId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_dock_account_nick_title"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size20"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/bjmgf_sdk_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@color/bjmgf_sdk_navigation_background"
+            android:text="@string/bjmgf_sdk_finish"
+            android:textColor="@color/bjmgf_sdk_white" />
+
+    </RelativeLayout>
+
+
+        <com.bojoy.bjsdk_mainland_new.widget.ClearEditText
+            android:id="@+id/bjmgf_sdk_input_nick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:hint="@string/bjmgf_sdk_input_nick_title"
+            android:imeOptions="flagNoExtractUi"
+            android:maxLength="8"
+            android:paddingRight="22dp"
+            android:singleLine="true"
+            android:textColor="@color/bjmgf_sdk_gray"
+            android:textColorHint="@color/bjmgf_sdk_editTextFontGray"
+            android:textSize="@dimen/bjmgf_sdk_font_size14"
+            clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close" />
+  
+
+</LinearLayout>

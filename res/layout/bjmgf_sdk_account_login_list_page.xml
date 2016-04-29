@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bjmgf_sdk_bg"
+    android:paddingBottom="@dimen/bjmgf_sdk_margin20" >
+
+    <ImageView
+        android:id="@+id/bjmgf_sdk_logoId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+        android:background="@drawable/bjmgf_sdk_logo_small" />
+
+    <View
+        android:id="@+id/bjmgf_sdk_first_account_linea"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/bjmgf_sdk_logoId"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin20"
+        android:background="@color/bjmgf_sdk_gap_gray" />
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_first_account_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bjmgf_sdk_first_account_linea"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/bjmgf_sdk_gap_gray" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bjmgf_sdk_margin10"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:layout_width="@dimen/bjmgf_sdk_margin25"
+                android:layout_height="@dimen/bjmgf_sdk_margin25"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+                android:src="@drawable/bjmgf_sdk_account_list_face" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bjmgf_sdk_margin10"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:layout_weight="6" >
+
+            <TextView
+                android:id="@+id/bjmgf_sdk_login_list_first_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                android:layout_marginRight="@dimen/bjmgf_sdk_margin30"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/bjmgf_sdk_black"
+                android:textSize="@dimen/bjmgf_sdk_font_size14" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bjmgf_sdk_login_list_first_close_rl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bjmgf_sdk_margin10"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:layout_weight="3" >
+
+            <ImageButton
+                android:id="@+id/bjmgf_sdk_login_list_item_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+                android:background="@color/bjmgf_sdk_white"
+                android:src="@drawable/bjmgf_sdk_btn_down" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/bjmgf_sdk_gap_gray" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bjmgf_sdk_first_account_lineb"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/bjmgf_sdk_first_account_ll"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:background="@color/bjmgf_sdk_gap_gray" />
+
+    <Button
+        android:id="@+id/bjmgf_sdk_account_login_buttonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bjmgf_sdk_first_account_lineb"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin30"
+        android:background="@drawable/bjmgf_sdk_blue_button_big_selector"
+        android:text="@string/bjmgf_sdk_login_dialog_loginBtnStr"
+        android:textColor="@color/bjmgf_sdk_white"
+        android:textSize="@dimen/bjmgf_sdk_font_size20" />
+
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_account_other_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin15"
+        android:layout_below="@id/bjmgf_sdk_account_login_buttonId">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_centerVertical="true"
+            android:background="@color/bjmgf_sdk_text_gray" />
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_splash_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:background="@color/bjmgf_sdk_white"
+            android:gravity="center"
+            android:padding="@dimen/bjmgf_sdk_margin5"
+            android:text="@string/bjmgf_sdk_login_list_other"
+            android:textColor="@color/bjmgf_sdk_text_gray"
+            android:textSize="@dimen/bjmgf_sdk_font_size14" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bjmgf_sdk_account_other_line"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin15" >
+
+        <RelativeLayout
+            android:id="@+id/bjmgf_sdk_account_login_tryTextViewId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bjmgf_sdk_login_try" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bjmgf_sdk_account_login_other_userId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bjmgf_sdk_login_other_user" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bjmgf_sdk_account_login_byPhoneId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/bjmgf_sdk_login_list_lv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bjmgf_sdk_margin140"
+        android:layout_below="@id/bjmgf_sdk_first_account_lineb"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+        android:alpha="1"
+        android:background="@drawable/bjmgf_sdk_account_border"
+        android:divider="@null"
+        android:dividerHeight="0px"
+        android:scrollbars="none"
+        android:visibility="gone" />
+
+</RelativeLayout>

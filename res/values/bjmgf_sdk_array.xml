@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bjmgf_sdk_question_type">
+        <item >帐号资料修改</item>
+        <item >密码问题</item>
+        <item >充值问题</item>
+        <item >运行问题</item>
+        <item >活动问题</item>
+        <item >物品异常</item>
+        <item >数据问题</item>
+        <item >举报非法</item>
+        <item >BUG和建议</item>
+    </string-array>
+    
+    <string-array name="bjmgf_sdk_evaluate_type">
+        <item >非常满意</item>
+        <item >满意</item>
+        <item >一般</item>
+        <item >不满意</item>
+        <item >非常不满意</item>
+    </string-array>
+    <string-array name="bjmgf_sdk_question_1_subType">
+        <item >无</item>
+    </string-array>
+    
+    <string-array name="bjmgf_sdk_question_2_subType">
+        <item >修改密码</item>
+        <item >邮件找回密码</item>
+        <item >手机找回密码</item>
+    </string-array>
+    
+    <string-array name="bjmgf_sdk_question_3_subType">
+        <item >充错区</item>
+        <item >充值不到账</item>
+        <item >其他</item>
+    </string-array>
+    
+    <string-array name="bjmgf_sdk_question_4_subType">
+        <item >无法登录</item>
+        <item >游戏掉线/闪退</item>
+        <item >其他</item>
+    </string-array>
+
+    <string-array name="bjmgf_sdk_question_5_subType">
+        <item >活动咨询</item>
+        <item >活动异常</item>
+        <item >奖励领取</item>
+    </string-array>
+    
+    <string-array name="bjmgf_sdk_question_6_subType">
+        <item >物品装备异常</item>
+        <item >其他</item>
+    </string-array>
+    
+    <string-array name="bjmgf_sdk_question_7_subType">
+        <item >数据出错</item>
+        <item >其他</item>
+    </string-array>
+    
+    <string-array name="bjmgf_sdk_question_8_subType">
+        <item >举报外挂</item>
+        <item >其他</item>
+    </string-array>
+
+    <string-array name="bjmgf_sdk_question_9_subType">
+        <item >BUG</item>
+        <item >建议</item>
+    </string-array>
+    
+   	<string-array name="bjmgf_sdk_dock_public_wish_confirm_message_array" > 
+        <item>新人出没，求罩求红包~</item> 
+        <item>壕，快来跟我做朋友！</item> 
+        <item>我就戳下试试:p</item> 
+        <item>拜托~有点诚意好不好！？</item> 
+        <item>哎呀~人家就要这个嘛！</item>
+        <item>我负责做梦，你负责帮我实现~</item>
+        <item>求包养,会暖床,卖萌爆乳娘！</item>
+        <item>你若了我心愿，我必生死相依~</item>
+        <item>心愿还是要有的，万一实现了呢？</item>
+        <item>撒娇打滚，壕你快出现~</item>
+        <item>我想我需要一个人来帮助我…</item>
+        <item>身娇腰柔易推倒，就差壕来到！</item>
+        <item>我只想静静的看壕为我装B！</item>
+        <item>实现心愿哪家强？壕快来帮忙！</item>
+        <item>我想要，你给吗？</item>
+        <item>我需要大雷神麦克佐德的威力！</item>
+        <item>土豪！求抱大腿！</item>
+        <item>请用金钱来羞辱我吧~</item>
+        <item>酷爱来帮我实现心愿吧~</item>
+    </string-array> 
+
+   	<string-array name="bjmgf_sdk_dock_message_notify_hi_array" > 
+        <item>[鲜花]</item> 
+        <item>[普通消息]</item> 
+        <item>[礼物]</item> 
+        <item>[新关注]</item> 
+        <item>[新好友]</item>
+        <item>[求包养]</item>
+    </string-array>
+    
+   	<string-array name="bjmgf_sdk_dock_message_notify_Normal_array" > 
+        <item>""</item> 
+        <item>文本消息</item> 
+        <item>[图片]</item> 
+        <item>[语音]</item> 
+        <item>[鲜花]</item>
+        <item>[名字大作战]</item>
+        <item>[名片]</item>
+        <item>[游戏]</item>
+        <item>[许愿]</item>
+        <item>[许愿]</item>
+        <item>[位置信息]</item>
+        <item>[求包养]</item>
+        <item>[动态表情]</item>
+    </string-array>
+
+    <string-array name="bjmgf_sdk_user_vip_display_text_array" >
+        <item>普通会员</item>
+        <item>一星会员</item>
+        <item>二星会员</item>
+        <item>三星会员</item>
+        <item>黄金会员</item>
+        <item>钻石会员</item>
+        <item>至尊会员</item>
+    </string-array>
+</resources>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bjmgf_sdk_account_page_bg"
+    android:orientation="vertical" >
+
+    <!-- 标题栏 -->
+	<include layout="@layout/bjmgf_sdk_dock_header" 
+	    android:id="@+id/bjmgf_sdk_float_account_manager_modifypwd_navigationLlId"/>
+
+    <View
+        android:id="@+id/bjmgf_sdk_float_account_manager_modifypwd_keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/bjmgf_sdk_float_account_manager_modifypwd_navigationLlId"
+        android:layout_gravity="center_horizontal"
+        android:fillViewport="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bjmgf_sdk_white"
+                android:orientation="horizontal"
+                android:padding="@dimen/bjmgf_sdk_margin10" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/bjmgf_sdk_margin10"
+                    android:layout_weight="2"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_currentpwd"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <com.bojoy.bjsdk_mainland_new.widget.ClearEditTextForPassword
+                    android:id="@+id/bjmgf_sdk_float_account_manager_modifypwd_oldPwdEditTextId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:background="@color/bjmgf_sdk_white"
+                    android:hint="@string/bjmgf_sdk_floatWindow_accountManager_pwdhinta"
+                    android:imeOptions="flagNoExtractUi"
+                    android:inputType="text"
+                    android:paddingBottom="@dimen/bjmgf_sdk_margin5"
+                    android:paddingRight="@dimen/bjmgf_sdk_margin5"
+                    android:paddingTop="@dimen/bjmgf_sdk_margin5"
+                    android:singleLine="true"
+                    android:textColor="@color/bjmgf_sdk_gray"
+                    android:textColorHint="@color/bjmgf_sdk_text_gray"
+                    android:textSize="@dimen/bjmgf_sdk_font_size14"
+                    clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close" />
+            </LinearLayout>
+
+            <!-- 分隔线 -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin20"
+                android:background="@color/bjmgf_sdk_gap_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bjmgf_sdk_white"
+                android:orientation="horizontal"
+                android:padding="@dimen/bjmgf_sdk_margin10" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/bjmgf_sdk_margin10"
+                    android:layout_weight="2"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_modifyPwd_newPwdStr"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <com.bojoy.bjsdk_mainland_new.widget.ClearEditTextForPassword
+                    android:id="@+id/bjmgf_sdk_float_account_manager_modifypwd_newPwdEditTextId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:background="@color/bjmgf_sdk_white"
+                    android:hint="@string/bjmgf_sdk_floatWindow_accountManager_pwdhintb"
+                    android:imeOptions="flagNoExtractUi"
+                    android:inputType="text"
+                    android:paddingBottom="@dimen/bjmgf_sdk_margin5"
+                    android:paddingRight="@dimen/bjmgf_sdk_margin5"
+                    android:paddingTop="@dimen/bjmgf_sdk_margin5"
+                    android:singleLine="true"
+                    android:textColor="@color/bjmgf_sdk_gray"
+                    android:textColorHint="@color/bjmgf_sdk_text_gray"
+                    android:textSize="@dimen/bjmgf_sdk_font_size14"
+                    clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close" />
+            </LinearLayout>
+
+            <!-- 分隔线 -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin20"
+                android:background="@color/bjmgf_sdk_gap_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bjmgf_sdk_white"
+                android:orientation="horizontal"
+                android:padding="@dimen/bjmgf_sdk_margin10" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/bjmgf_sdk_margin10"
+                    android:layout_weight="2"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_confirmpwd"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <com.bojoy.bjsdk_mainland_new.widget.ClearEditTextForPassword
+                    android:id="@+id/bjmgf_sdk_float_account_manager_modifypwd_newConfirmPwdEditTextId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:background="@color/bjmgf_sdk_white"
+                    android:hint="@string/bjmgf_sdk_floatWindow_accountManager_pwdhintc"
+                    android:imeOptions="flagNoExtractUi"
+                    android:inputType="text"
+                    android:paddingBottom="@dimen/bjmgf_sdk_margin5"
+                    android:paddingRight="@dimen/bjmgf_sdk_margin5"
+                    android:paddingTop="@dimen/bjmgf_sdk_margin5"
+                    android:singleLine="true"
+                    android:textColor="@color/bjmgf_sdk_gray"
+                    android:textColorHint="@color/bjmgf_sdk_text_gray"
+                    android:textSize="@dimen/bjmgf_sdk_font_size14"
+                    clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close" />
+            </LinearLayout>
+
+            <!-- 分隔线 -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/bjmgf_sdk_gap_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin20"
+                android:layout_marginRight="@dimen/bjmgf_sdk_margin18"
+                android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+                android:text="@string/bjmgf_sdk_floatWindow_accountManager_modifyPwd_pwdDescribeStr"
+                android:textSize="@dimen/bjmgf_sdk_font_size14" 
+                android:textColor="@color/bjmgf_sdk_light_gray"/>
+            
+            <Button
+                android:id="@+id/bjmgf_sdk_float_account_manager_modifypwd_buttonId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bjmgf_sdk_blue_button_big_selector"
+                android:padding="@dimen/bjmgf_sdk_margin10"
+                android:text="@string/bjmgf_sdk_floatWindow_accountManager_modifyPwd_sureBtnStra"
+                android:textColor="@color/bjmgf_sdk_white"
+                android:textSize="@dimen/bjmgf_sdk_font_size20" 
+                android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+                android:layout_gravity="center"/>
+            
+            <TextView
+                android:id="@+id/bjmgf_sdk_forget_pwd_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin20"
+                android:layout_marginRight="@dimen/bjmgf_sdk_margin18"
+                android:layout_marginTop="@dimen/bjmgf_sdk_margin15"
+                android:text="@string/bjmgf_sdk_floatWindow_accountManager_modifyPwd_pwdDescribeStrForget"
+                android:textSize="@dimen/bjmgf_sdk_font_size14" 
+                android:textColor="@color/bjmgf_sdk_light_gray"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

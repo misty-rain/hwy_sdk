@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:orientation="horizontal" 
+    android:clickable="true"
+    android:background="@drawable/bjmgf_sdk_item_selector">
+
+    <RelativeLayout 
+        android:id="@+id/bjmgf_sdk_message_headRl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin5">
+        <ImageView 
+	    	android:id="@+id/bjmgf_sdk_message_headImg"
+	    	android:layout_width="@dimen/bjmgf_sdk_user_head_icon_size"
+	    	android:layout_height="@dimen/bjmgf_sdk_user_head_icon_size"/>
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_message_itemRl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin5">
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_message_titleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:singleLine="true"
+            android:textSize="@dimen/bjmgf_sdk_font_size16"
+            android:textColor="@color/bjmgf_sdk_black"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_message_contentTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bjmgf_sdk_message_titleTv"
+            android:ellipsize="end"
+            android:ems="12"
+            android:paddingTop="@dimen/bjmgf_sdk_margin10"
+            android:singleLine="true"
+            android:textColor="@color/bjmgf_sdk_textgray"
+            android:textSize="@dimen/bjmgf_sdk_font_size14" />
+
+        <RelativeLayout
+            android:id="@+id/bjmgf_sdk_message_timeRl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" 
+            android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin2">
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_message_timeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_alignBaseline="@+id/bjmgf_sdk_message_titleTv"
+            android:layout_alignBottom="@+id/bjmgf_sdk_message_titleTv"
+            android:layout_alignRight="@+id/bjmgf_sdk_message_timeRl"
+            android:singleLine="true"
+            android:textColor="@color/bjmgf_sdk_text_gray"
+            android:textSize="@dimen/bjmgf_sdk_font_size12" />
+       
+    </RelativeLayout>
+    
+	
+</LinearLayout>

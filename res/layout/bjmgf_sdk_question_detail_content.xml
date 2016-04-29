@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bjmgf_sdk_question_detail_context_rela"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_customerCenterLlId"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bjmgf_sdk_navigation_background" >
+
+        <RelativeLayout
+            android:id="@+id/bjmgf_sdk_customerCenter_closeLlId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/bjmgf_sdk_padding10" >
+
+            <ImageView
+                android:id="@+id/bjmgf_sdk_closeCustomerCenterBtnId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bjmgf_sdk_back" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_customerCenterTextViewId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="left"
+            android:text="@string/bjmgf_sdk_question_detail"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size20"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_edit_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible" >
+
+        <View
+            android:id="@+id/id_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/bjmgf_sdk_divider_color" />
+
+        <ImageView
+            android:id="@+id/bjmgf_sdk_dialog_addfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/id_divider"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/bjmgf_sdk_aboutStr"
+            android:padding="5dp"
+            android:src="@drawable/bjmgf_sdk_send_img02" />
+
+        <EditText
+            android:id="@+id/bjmgf_sdk_dialog_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="4dp"
+            android:layout_toLeftOf="@+id/bjmgf_sdk_dialog_send"
+            android:layout_toRightOf="@id/bjmgf_sdk_dialog_addfile"
+            android:background="@drawable/bjmgf_sdk_bg_dialog_send"
+            android:hint=""
+            android:imeOptions="flagNoExtractUi"
+            android:maxLength="100"
+            android:maxLines="10"
+            android:minLines="1"
+            android:singleLine="false"
+            android:textSize="@dimen/bjmgf_sdk_font_size14" />
+
+        <Button
+            android:id="@+id/bjmgf_sdk_dialog_send"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bjmgf_sdk_btn_send"
+            android:text="@string/bjmgf_sdk_question_edit_send"
+            android:textColor="@color/bjmgf_sdk_white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_question_dialog_linner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bjmgf_sdk_edit_dialog"
+        android:layout_below="@id/bjmgf_sdk_customerCenterLlId"
+        android:visibility="gone" >
+
+        <ListView
+            android:id="@+id/bjmgf_sdk_question_dialog_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="#00000000"
+            android:dividerHeight="5dp"
+            android:listSelector="#00000000" >
+        </ListView>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_attachment_hint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bjmgf_sdk_edit_dialog"
+        android:background="@color/bjmgf_sdk_white"
+        android:paddingBottom="@dimen/bjmgf_sdk_margin5"
+        android:paddingLeft="@dimen/bjmgf_sdk_margin10"
+        android:paddingRight="@dimen/bjmgf_sdk_margin10"
+        android:paddingTop="@dimen/bjmgf_sdk_margin5"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/bjmgf_sdk_attachment_image"
+            android:layout_width="@dimen/bjmgf_sdk_attach_iamge_size"
+            android:layout_height="@dimen/bjmgf_sdk_attach_iamge_size"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_attachment_hint_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+            android:layout_toLeftOf="@+id/bjmgf_sdk_attachment_clear"
+            android:layout_toRightOf="@id/bjmgf_sdk_attachment_image"
+            android:text="@string/bjmgf_sdk_question_append_hint"
+            android:textColor="@color/bjmgf_sdk_gray"
+            android:textSize="@dimen/bjmgf_sdk_font_size14" />
+
+        <ImageView
+            android:id="@+id/bjmgf_sdk_attachment_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+            android:background="@drawable/bjmgf_sdk_button_gray_close" />
+    </RelativeLayout>
+
+</RelativeLayout>

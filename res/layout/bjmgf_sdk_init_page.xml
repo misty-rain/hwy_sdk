@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bjmgf_sdk_initDialogLlId"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/bjmgf_sdk_margin20"
+    android:paddingBottom="@dimen/bjmgf_sdk_margin20"
+    android:paddingLeft="@dimen/bjmgf_sdk_margin10"
+    android:paddingRight="@dimen/bjmgf_sdk_margin10"
+    android:background="@drawable/bjmgf_sdk_bg" >
+    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bjmgf_sdk_logo_small" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/bjmgf_sdk_margin5"
+	    android:paddingRight="@dimen/bjmgf_sdk_margin5"
+	    android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+	    android:gravity="center" >
+        
+        <TextView
+	        android:id="@+id/bjmgf_sdk_init_dialog_textView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:gravity="center_horizontal"
+	        android:text="@string/bjmgf_sdk_init_dialog_initStr"
+	        android:textColor="@color/bjmgf_sdk_gray"
+	        android:textSize="@dimen/bjmgf_sdk_font_size16" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin9"
+        android:orientation="horizontal" >
+        
+        <ProgressBar
+	        android:id="@+id/bjmgf_sdk_init_dialog_progressBar"
+	        style="@style/ProgressBar.Horizontal"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="@dimen/bjmgf_sdk_margin5"
+	        android:paddingRight="@dimen/bjmgf_sdk_margin5"
+	        android:layout_gravity="center_horizontal|center_vertical"
+	        android:indeterminate="true"
+	        android:indeterminateOnly="false" />
+	    
+	    <Button
+	        android:id="@+id/bjmgf_sdk_init_dialog_BtnByone"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+			android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+	        android:layout_gravity="center_horizontal"
+	        android:visibility="gone"
+	        android:background="@drawable/bjmgf_sdk_blue_button_big_selector"
+	        android:text="@string/bjmgf_sdk_init_dialog_restart_btnStr"
+	        android:textColor="@color/bjmgf_sdk_white"
+	        android:textSize="@dimen/bjmgf_sdk_font_size20" />
+	    
+	    <LinearLayout
+	        android:id="@+id/bjmgf_sdk_init_dialog_updateLinearLayout"
+	        android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+	        android:paddingLeft="@dimen/bjmgf_sdk_margin5"
+		    android:paddingRight="@dimen/bjmgf_sdk_margin5"
+		    android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+		    android:orientation="horizontal"
+		    android:gravity="center"
+		    android:visibility="gone" >
+	        <Button
+		        android:id="@+id/bjmgf_sdk_init_dialog_updateBtn"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="left"
+		        android:layout_weight="1"
+		        android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+		        android:background="@drawable/bjmgf_sdk_blue_button_small_selector"
+		        android:text="@string/bjmgf_sdk_init_dialog_updateVersion_btnStr"
+		        android:textColor="@color/bjmgf_sdk_white"
+		        android:textSize="@dimen/bjmgf_sdk_font_size20" />
+	        <Button
+		        android:id="@+id/bjmgf_sdk_init_dialog_update2Btn"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:layout_gravity="left"
+		        android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+		        android:background="@drawable/bjmgf_sdk_blue_button_small_selector"
+		        android:text="@string/bjmgf_sdk_init_dialog_updateVersion_btnStr"
+		        android:textColor="@color/bjmgf_sdk_white"
+		        android:textSize="@dimen/bjmgf_sdk_font_size20"
+		        android:visibility="gone" />
+	        
+	        <Button
+		        android:id="@+id/bjmgf_sdk_init_dialog_notUpdateBtn"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:layout_gravity="right"
+		        android:background="@drawable/bjmgf_sdk_red_button_small_selector"
+		        android:text="@string/bjmgf_sdk_init_dialog_notUpdateVersion_btnStr"
+		        android:textColor="@color/bjmgf_sdk_white"
+		        android:textSize="@dimen/bjmgf_sdk_font_size20" />
+	        <Button
+		        android:id="@+id/bjmgf_sdk_init_dialog_notUpdate2Btn"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:layout_gravity="right"
+		        android:background="@drawable/bjmgf_sdk_red_button_small_selector"
+		        android:text="@string/bjmgf_sdk_init_dialog_notUpdateVersion_btnStr"
+		        android:textColor="@color/bjmgf_sdk_white"
+		        android:textSize="@dimen/bjmgf_sdk_font_size20"
+		        android:visibility="gone" />
+	    </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>

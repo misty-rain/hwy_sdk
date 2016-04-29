@@ -1,0 +1,264 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bjmgf_sdk_white" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_dock_wish_detail_navigationLlId"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bjmgf_sdk_navigation_background" >
+
+        <RelativeLayout
+            android:id="@+id/bjmgf_sdk_dock_wish_detail_backLlId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/bjmgf_sdk_padding10" >
+
+            <ImageView
+                android:id="@+id/bjmgf_sdk_dock_wish_detail_backImageViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/bjmgf_sdk_dock_help_wishlistStr"
+                android:src="@drawable/bjmgf_sdk_back" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_dock_wish_detail_titleTextViewId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_dock_wishDetailStr"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size20"
+            android:textStyle="bold" />
+        
+		<LinearLayout android:id="@+id/bjmgf_sdk_dock_my_wish_detail_share_btnllId"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_alignParentRight="true"
+			android:visibility="gone"
+		    android:padding="@dimen/bjmgf_sdk_margin10">
+			
+			<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:src="@drawable/bjmgf_sdk_share_icon"/>
+		</LinearLayout>
+        
+    </RelativeLayout>
+
+    <ScrollView         
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="none"
+        android:overScrollMode="never"
+        android:layout_below="@id/bjmgf_sdk_dock_wish_detail_navigationLlId">
+    
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content">
+		
+			<RelativeLayout
+	            android:id="@+id/bjmgf_sdk_dock_personal_detail_item_topId"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/bjmgf_sdk_purple_person_background" >
+	
+	            <ImageView
+	                android:id="@+id/bjmgf_sdk_dock_personal_detail_item_iconId"
+	                android:layout_width="@dimen/bjmgf_sdk_user_head_icon_size"
+	                android:layout_height="@dimen/bjmgf_sdk_user_head_icon_size"
+	                android:layout_centerVertical="true"
+	                android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+	                android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+	                android:layout_marginTop="@dimen/bjmgf_sdk_margin20" />
+	
+	            <TextView
+	                android:id="@+id/bjmgf_sdk_dock_personal_item_nameId"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+                	android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+	                android:layout_toRightOf="@+id/bjmgf_sdk_dock_personal_detail_item_iconId"
+	                android:textSize="@dimen/bjmgf_sdk_font_size16" />
+	            
+	            <TextView
+                    android:id="@+id/bjmgf_sdk_dock_personal_item_sign"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bjmgf_sdk_dock_personal_age_item_topId"
+                    android:layout_marginTop="@dimen/bjmgf_sdk_margin2"
+                    android:layout_toRightOf="@+id/bjmgf_sdk_dock_personal_detail_item_iconId"
+                    android:layout_toLeftOf="@+id/bjmgf_sdk_dock_wish_state_sign"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin2"
+                    android:maxLength="20"
+                    android:maxLines="2"
+                    android:textColor="@color/bjmgf_sdk_white"
+                    android:textSize="@dimen/bjmgf_sdk_font_size12" />
+	            
+	            <ImageView
+	                android:id="@+id/bjmgf_sdk_dock_wish_state_sign"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentRight="true"
+	                android:layout_centerVertical="true"
+	                android:layout_marginRight="30dp" />
+	
+	            <ImageView
+	                android:id="@+id/bjmgf_sdk_dock_personal_age_item_topId"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignLeft="@+id/bjmgf_sdk_dock_personal_item_sign"
+	                android:layout_below="@+id/bjmgf_sdk_dock_personal_item_nameId"
+	                android:layout_marginTop="@dimen/bjmgf_sdk_margin2" />
+	
+	        </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_dock_wish_detail_item_topId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+	            android:layout_below="@id/bjmgf_sdk_dock_personal_detail_item_topId" 
+                 >
+
+  				<TextView
+                    android:id="@+id/bjmgf_sdk_dock_wish_item_nameId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+					android:layout_toRightOf="@+id/bjmgf_sdk_dock_wish_item_icon_bgId"
+					android:layout_marginTop="@+dimen/bjmgf_sdk_margin6"
+					android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+  				
+				<TextView
+                    android:id="@+id/bjmgf_sdk_dock_wish_item_idStrId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:layout_marginTop="@+dimen/bjmgf_sdk_margin6"
+					android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+					android:textColor="@color/bjmgf_sdk_gray_c9"
+                    android:textSize="@dimen/bjmgf_sdk_font_size12" />
+                
+				<TextView
+				    android:id="@+id/bjmgf_sdk_dock_wish_detail_item_price_textId"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_toRightOf="@+id/bjmgf_sdk_dock_wish_item_icon_bgId"
+				    android:layout_below="@id/bjmgf_sdk_dock_wish_item_nameId"
+				    android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+				    android:layout_marginTop="@dimen/bjmgf_sdk_margin0"
+				    android:drawableLeft="@drawable/bjmgf_sdk_dock_wish_item_price_icon"
+				    android:textSize="@dimen/bjmgf_sdk_font_size14" 
+				    android:textColor="@color/bjmgf_sdk_text_price_color"
+				    android:text="50" />
+
+				<TextView
+				    android:id="@+id/bjmgf_sdk_dock_good_detail_item_textId"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+					android:layout_below="@+id/bjmgf_sdk_dock_wish_detail_item_price_textId"
+				    android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+				    android:layout_marginTop="@dimen/bjmgf_sdk_margin0"
+				    android:layout_toRightOf="@+id/bjmgf_sdk_dock_wish_item_icon_bgId"
+				    android:text=""
+				    android:textColor="@color/bjmgf_sdk_text_wish_gamename_color"
+				    android:textSize="@dimen/bjmgf_sdk_font_size14" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_dock_mywish_detail_item_iconId"
+					android:layout_width="@dimen/bjmgf_sdk_goods_icon_size"
+					android:layout_height="@dimen/bjmgf_sdk_goods_icon_size"
+					android:layout_alignLeft="@+id/bjmgf_sdk_dock_wish_item_icon_bgId"
+					android:layout_alignTop="@+id/bjmgf_sdk_dock_wish_item_icon_bgId" />
+                        
+				<ImageView android:id="@+id/bjmgf_sdk_dock_wish_item_icon_bgId"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+                	android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+                	android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+			        android:src="@drawable/bjmgf_sdk_dock_wishlist_item_bg"/>
+				
+		       	<View
+		            android:id="@+id/bjmgf_sdk_dock_mywish_detail_gap"
+		            android:layout_width="match_parent"
+		            android:layout_height="10dp"
+		            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+		            android:layout_below="@+id/bjmgf_sdk_dock_wish_item_icon_bgId"
+		            android:background="@color/bjmgf_sdk_gap_gray" />
+				
+                <TextView
+                    android:id="@+id/bjmgf_sdk_dock_wish_detail_item_descriptionId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+                    android:layout_below="@id/bjmgf_sdk_dock_mywish_detail_gap"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="@dimen/bjmgf_sdk_margin15"
+                	android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size14" />
+
+            </RelativeLayout>
+            
+			<RelativeLayout
+	            android:id="@+id/bjmgf_sdk_dock_wish_detail_attentionId"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_dock_wish_detail_item_topId"
+	            android:layout_marginBottom="@dimen/bjmgf_sdk_margin10"
+	            android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+	            android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+	            android:layout_marginTop="@dimen/bjmgf_sdk_margin10" >
+	
+	            <TextView
+	                android:id="@+id/bjmgf_sdk_dock_wish_detail_date_tipsId"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentLeft="true"
+	                android:layout_alignParentTop="true"
+	                android:layout_marginBottom="@dimen/bjmgf_sdk_margin5"
+	                android:text="@string/bjmgf_sdk_dock_date_wishlistStr"
+	                android:textColor="@color/bjmgf_sdk_text_gray"
+	                android:textSize="@dimen/bjmgf_sdk_font_size12" />
+	
+	            <TextView
+	                android:id="@+id/bjmgf_sdk_dock_wish_detail_attention_tipsId"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentLeft="true"
+	                android:layout_below="@id/bjmgf_sdk_dock_wish_detail_date_tipsId"
+	                android:text="@string/bjmgf_sdk_dock_mywishDetailTipsStr"
+	                android:textColor="@color/bjmgf_sdk_text_gray"
+	                android:textSize="@dimen/bjmgf_sdk_font_size12" />
+	        </RelativeLayout>
+	        
+	        <Button
+	            android:id="@+id/bjmgf_sdk_dock_wish_detail_publish_btnId"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_centerHorizontal="true"
+	            android:layout_below="@id/bjmgf_sdk_dock_wish_detail_attentionId"
+	            android:layout_marginBottom="@dimen/bjmgf_sdk_margin20"
+	            android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+	            android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+	            android:textColor="@color/bjmgf_sdk_white"
+	            android:visibility="invisible" />
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="0dip"
+	            android:layout_below="@id/bjmgf_sdk_dock_wish_detail_publish_btnId"/>
+
+	    </RelativeLayout>
+        
+    </ScrollView>
+    
+</RelativeLayout>

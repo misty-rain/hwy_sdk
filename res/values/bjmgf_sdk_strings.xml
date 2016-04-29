@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="bjmgf_sdk_app_name">GameFriendSDK</string>
+    <string name="bjmgf_sdk_dataSubmitingStr">请稍候&#8230; &#8230;</string>
+    <string name="bjmgf_sdk_netWorkErrorStr">网络状态异常</string>
+
+    <!-- 初始化 -->
+    <string name="bjmgf_sdk_init_dialog_initStr">正在初始化&#8230; &#8230;</string>
+    <string name="bjmgf_sdk_init_dialog_updateVersionStr">版本检测中&#8230; &#8230;</string>
+    <string name="bjmgf_sdk_init_dialog_restart_btnStr">重新启动</string>
+    <string name="bjmgf_sdk_init_dialog_checknet_btnStr">检查网络</string>
+    <string name="bjmgf_sdk_init_dialog_updateVersion_btnStr">更新版本</string>
+    <string name="bjmgf_sdk_init_dialog_continue_updateVersion_btnStr">继续更新</string>
+    <string name="bjmgf_sdk_init_dialog_notUpdateVersion_btnStr">暂不更新</string>
+    <string name="bjmgf_sdk_init_dialog_isNotWifiNet_TxtViewStr">当前未连接WIFI,是否继续更新</string>
+    <string name="bjmgf_sdk_init_dialog_closeAppStr">关闭应用</string>
+    <string name="bjmgf_sdk_init_dialog_connect_customer_serverStr">初始化失败,请联系客服</string>
+    <string name="bjmgf_sdk_init_dialog_connect_customer_serverStra">QQ:800057851</string>
+    <string name="bjmgf_sdk_init_dialog_restart_TxtViewStr">初始化失败,请重新启动</string>
+    <string name="bjmgf_sdk_init_dialog_updateVersion_TxtViewStr">发现新版本 v%s</string>
+    <string name="bjmgf_sdk_init_dialog_autologin">正在登录&#8230; &#8230;</string>
+
+    <!-- 注册 -->
+    <string name="bjmgf_sdk_register_dialog_usePhoneRegisterStr">手机号码一键注册</string>
+    <string name="bjmgf_sdk_register_dialog_useAccountRegisterStr">帐号密码注册</string>
+    <string name="bjmgf_sdk_register_dialog_accountNameContentTextViewStr">4&#8211;20位，至少含1个字母</string>
+    <string name="bjmgf_sdk_register_dialog_accountPasswordContentTextViewStr">6&#8211;20位，允许下划线</string>
+    <string name="bjmgf_sdk_register_dialog_registerBtnStr">注 册</string>
+    <string name="bjmgf_sdk_register_dialog_oneKeyRegisterBtnStr">一键注册</string>
+    <string name="bjmgf_sdk_register_dialog_agreeStr">勾选表示同意</string>
+    <string name="bjmgf_sdk_register_dialog_protocolStr">注册即表示您同意<u>好玩友用户协议</u></string>
+    <string name="bjmgf_sdk_register_dialog_haveAcountLoginStr">已有帐号登录>></string>
+    <string name="bjmgf_sdk_register_dialog_oneKeyTextViewStr">一键注册将使用您的手机发送一条短信进行注册,短信费用由运营商收取.</string>
+    <string name="bjmgf_sdk_register_dialog_getCheckCodeTextViewStr">抱歉,我们无法获得您的手机号码,请您手动输入</string>
+    <string name="bjmgf_sdk_register_dialog_getCheckCodeEditTextStr">输入手机号码</string>
+    <string name="bjmgf_sdk_register_dialog_getCheckCodeBtnStr">获取验证码</string>
+    <string name="bjmgf_sdk_register_dialog_checkCodeContentEditTextStr">请输入6位验证码</string>
+    <string name="bjmgf_sdk_register_dialog_checkCodeReSendBtnStr">60秒</string>
+    <string name="bjmgf_sdk_register_dialog_checkCodeReSetBtnStr">%d秒</string>
+    <string name="bjmgf_sdk_register_dialog_checkPhoneBtnStr">验证手机</string>
+    <string name="bjmgf_sdk_register_dialog_checkVerifyCodeErrorStr">请输入正确的验证码</string>
+    <string name="bjmgf_sdk_register_dialog_please_agreeStr">请勾选好玩友用户协议</string>
+    <string name="bjmgf_sdk_register_dialog_change_phone_number">&#60;&#60;更换其他号码注册</string>
+    <string name="bjmgf_sdk_register_dialog_input_password">手机验证成功，请输入密码</string>
+    <string name="bjmgf_sdk_ClickRetryStr">重试</string>
+    <string name="bjmgf_sdk_cannot_get_phone">获取手机号码失败，请使用其他方式登录</string>
+
+
+    <!-- 发送、接收短信 -->
+    <string name="bjmgf_sdk_sendMessageSuccessedStr">短信发送成功！</string>
+    <string name="bjmgf_sdk_sendMessageFailStr">短信发送失败！</string>
+    <string name="bjmgf_sdk_receiveMessageSuccessedStr">短信接收成功！</string>
+    <string name="bjmgf_sdk_receiveMessageFailStr">短信接收失败！</string>
+
+    <!-- 重发验证码 -->
+    <string name="bjmgf_sdk_resendVerifyCodeStr">验证码已重发！</string>
+
+    <!-- 登录 -->
+    <string name="bjmgf_sdk_login_dialog_usePhoneLoginStr">手机号码一键登录</string>
+    <string name="bjmgf_sdk_login_dialog_accountNameContentTextViewStr">帐号</string>
+    <string name="bjmgf_sdk_login_dialog_accountNameContentTextViewStrHint">请输入用户名/手机号</string>
+    <string name="bjmgf_sdk_login_dialog_accountInputHintStr">请输入帐号</string>
+    <string name="bjmgf_sdk_login_dialog_accountPasswordContentTextViewStr">密码</string>
+    <string name="bjmgf_sdk_login_dialog_passwordInputHintStr">请输入密码</string>
+    <string name="bjmgf_sdk_login_dialog_loginBtnStr">登 录</string>
+    <string name="bjmgf_sdk_login_dialog_newAccountRegisterTextViewStr">新用户注册>></string>
+    <string name="bjmgf_sdk_login_dialog_forgetPasswordTextViewStr">忘记密码？</string>
+    <string name="bjmgf_sdk_login_dialog_useAccountLoginTextViewStr">帐号密码登录</string>
+    <string name="bjmgf_sdk_login_dialog_oneKeyLoginTextViewStr">点击登录将使用您的手机发送一条短信进行登录,短信费用由运营商收取.</string>
+    <string name="bjmgf_sdk_login_dialog_welcomeAgainTextViewStr">%s,欢迎归来</string>
+    <string name="bjmgf_sdk_login_dialog_welcomeRegisterTextViewStr">%s,欢迎进入游戏</string>
+    <string name="bjmgf_sdk_login_dialog_invalid_account">帐号不能为空</string>
+    <string name="bjmgf_sdk_login_dialog_invalid_password">密码不能为空</string>
+    <string name="bjmgf_sdk_login_dialog_invalid_old_password">原密码不能为空</string>
+    <string name="bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt">帐号/手机号不正确，请重新输入</string>
+
+    <string name="bjmgf_sdk_login_dialog_invalid_account_length">帐号长度不正确，仅支持4&#8211;20位！</string>
+    <string name="bjmgf_sdk_login_dialog_invalid_account_no_letter">帐号至少含1个字母！</string>
+    <string name="bjmgf_sdk_login_dialog_invalid_account_simple">帐号中字母不能为连续升降序！</string>
+    <string name="bjmgf_sdk_login_dialog_invalid_account_same_letter">帐号中字母不能相同！</string>
+    <string name="bjmgf_sdk_login_dialog_invalid_account_special_symbol">帐号仅允许数字、字母、下划线，不支持其他符号！</string>
+
+    <string name="bjmgf_sdk_login_dialog_invalid_password_length">密码长度不正确，仅支持6&#8211;20位！</string>
+    <string name="bjmgf_sdk_login_dialog_invalid_password_simple">密码过于简单！</string>
+    <string name="bjmgf_sdk_login_dialog_invalid_password_special_symbol">密码仅允许数字、字母、下划线，不支持其他符号！</string>
+
+    <string name="bjmgf_sdk_login_dialog_account_unequal_password">密码不能与注册帐号一致！</string>
+    <string name="bjmgf_sdk_login_dialog_new_password_unequal">原密码与新密码不能保持一致！</string>
+
+    <string name="bjmgf_sdk_edittext_digits">_0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="bjmgf_sdk_try_login_promptStr">请完善您的帐号及密码，以防角色丢失！</string>
+    <string name="bjmgf_sdk_try_login_btnStr">完   成</string>
+    <string name="bjmgf_sdk_try_change_Success_MsgStr">转正成功，欢迎加入好玩友！</string>
+    <string name="bjmgf_sdk_login_list_other">其他帐号登录</string>
+
+    <string name="bjmgf_sdk_try_dialog_account">请修改您的帐号</string>
+    <string name="bjmgf_sdk_try_dialog_pwd">请设置新密码</string>
+
+    <!-- 密码找回 -->
+    <string name="bjmgf_sdk_find_password_backLoginStr">&#60;&#60;返回登录</string>
+    <string name="bjmgf_sdk_find_password_inputContentEditTextStr">请输入用户名/手机号</string>
+    <string name="bjmgf_sdk_find_password_nextStepBtnStr">下一步</string>
+    <string name="bjmgf_sdk_find_password_connectClientServerTextViewStr">点击下一步，将向绑定的手机号发送一条短信进行验证，未绑定手机的用户，请联系客服 <b>QQ:800057851</b></string>
+    <string name="bjmgf_sdk_find_password_sendMessageToPhoneTextViewStr">已经发送验证短信至绑定手机 </string>
+    <string name="bjmgf_sdk_find_password_inputCheckCodeContentEditTextStr">请输入6位验证码</string>
+    <string name="bjmgf_sdk_find_password_checkCodeReSendBtnStr">60秒以后未收到,点击重试</string>
+    <string name="bjmgf_sdk_find_password_inputPasswordcontentEditTextStr">密码：6&#8211;20位，允许下划线</string>
+    <string name="bjmgf_sdk_find_password_resetPasswordBtnStr">重设密码</string>
+    <string name="bjmgf_sdk_find_password_resetSuccessedTextViewStr">重设密码成功</string>
+    <string name="bjmgf_sdk_find_password_backLoginBtnStr">返回登录</string>
+    <string name="bjmgf_sdk_find_password_reset_hint">验证通过,请为%s设置新密码</string>
+    <string name="bjmgf_sdk_find_password_splash_title">请选择找回帐号密码的方式:</string>
+    <string name="bjmgf_sdk_find_password_splash_content">以上方式都无法解决，请点击人工申诉找回</string>
+    <string name="bjmgf_sdk_find_password_splash_phone">手机号+短信验证码</string>
+    <string name="bjmgf_sdk_find_password_splash_email">发送邮件至绑定邮箱</string>
+    <string name="bjmgf_sdk_find_password_email_input_passport">请输入用户名</string>
+    <string name="bjmgf_sdk_find_password_email_input_email">请输入邮箱地址</string>
+    <string name="bjmgf_sdk_find_bind_email_input_email_faile">请输入正确的邮箱地址</string>
+    <string name="bjmgf_sdk_find_password_email_input_content">点击下一步，将向已绑定的邮箱发送一封邮件进行验证，未绑定邮箱的用户，请联系客服 QQ：800057851</string>
+
+    <!-- 帐号登出 -->
+    <string name="bjmgf_sdk_login_out_describeTextViewStr">退出登录后您将同时退出好玩友平台帐号,下一次需要重新登录帐号.</string>
+    <string name="bjmgf_sdk_login_out_quitBtnStr">仅退出登录</string>
+    <string name="bjmgf_sdk_login_out_quitGameBtnStr">退出游戏</string>
+    <string name="bjmgf_sdk_login_out_quitGameBtnStrMsg">是否要退出游戏？</string>
+
+    <!-- 充值 -->
+    <string name="bjmgf_sdk_recharge_consumeStr">好玩友充值中心</string>
+
+    <!-- 密码修改成功 -->
+    <string name="bjmgf_sdk_PswModifySuccessedStr">密码修改成功!</string>
+    <!-- 手机号输入格式不合法 -->
+    <string name="bjmgf_sdk_InputPhoneNumberErrorStr">请输入正确的11位手机号码</string>
+    <string name="bjmgf_sdk_InputPhoneNumberNullStr">手机号码不能为空</string>
+    <!-- 提交输入的手机号Toast -->
+    <string name="bjmgf_sdk_submitPhoneNumberStr">提交数据 &#8230;</string>
+    <!-- 绑定成功 -->
+    <string name="bjmgf_sdk_BindPhoneSuccessedStr">绑定成功！</string>
+    <!-- 解绑 -->
+    <string name="bjmgf_sdk_UnBindPhoneSuccessedStr">下一步绑定新的手机号</string>
+    <string name="bjmgf_sdk_UnBindPhoneSendVerifyCodeStr">发送</string>
+
+    <string name="bjmgf_sdk_sex_male">男</string>
+    <string name="bjmgf_sdk_sex_female">女</string>
+    <string name="bjmgf_sdk_dock_account_nick_title">昵称</string>
+    <string name="bjmgf_sdk_input_nick_title">请您输入昵称</string>
+    <string name="bjmgf_sdk_input_nick_len_hint">昵称长度2&#8211;8个字符</string>
+    <string name="bjmgf_sdk_input_sex_title">请您选择性别</string>
+    <string name="bjmgf_sdk_input_sex_only_modify">性别注册后不能更改！</string>
+    <string name="bjmgf_sdk_input_birthday">请您选择生日</string>
+    <string name="bjmgf_sdk_input_faceUrl">请上传头像</string>
+
+    <!-- 我的问题 -->
+    <string name="bjmgf_sdk_myQuestionDealingStr">处理中</string>
+    <string name="bjmgf_sdk_myQuestionDealedStr">已结单</string>
+    <string name="bjmgf_sdk_myQuestionEvaluateStr">评价</string>
+    <string name="bjmgf_sdk_myQuestionEvaluatedStr">已评价</string>
+
+    <!-- 关于界面 -->
+    <string name="bjmgf_sdk_aboutStr">关于</string>
+    <string name="bjmgf_sdk_aboutCompanyShowStr">"苏州好玩友网络科技有限公司		版权所有"</string>
+    <string name="bjmgf_sdk_aboutCompanyPopularizeStr">"微信搜索\"hwydyh\"关注\n\"好玩友订阅号\"，福利惊喜随时享！"</string>
+    <string name="bjmgf_sdk_aboutCopyRightStr">Copyright ©2015&#8211;2016 GameFriend</string>
+    <string name="bjmgf_sdk_aboutAllRightStr">All rights Reserved</string>
+
+    <!-- 客户服务中心界面 -->
+    <string name="bjmgf_sdk_customerCenterStr">客户服务中心</string>
+    <string name="bjmgf_sdk_customerCenterFAQStr">常见问题</string>
+    <string name="bjmgf_sdk_customerCenterSendQuestionStr">提交问题</string>
+    <string name="bjmgf_sdk_customerCenterMyQuestionStr">我的问题</string>
+    <string name="bjmgf_sdk_customerCenterPhoneNumerHitStr">客服QQ：</string>
+    <string name="bjmgf_sdk_customerCenterPhoneNumerStr">800057851</string>
+
+    <string name="bjmgf_sdk_atleastten">输入最少10个字</string>
+    <string name="bjmgf_sdk_at_least_ten">请输入不少于10个字</string>
+    <string name="bjmgf_sdk_largestnumber">问题内容最长不超过200个字</string>
+    <string name="bjmgf_sdk_number">0</string>
+    <string name="bjmgf_sdk_totalnumber">/200</string>
+    <string name="bjmgf_sdk_selectquestiontype">请选择问题类型</string>
+    <string name="bjmgf_sdk_changefile">帐号资料修改</string>
+    <string name="bjmgf_sdk_none">无</string>
+    <string name="bjmgf_sdk_service">服务器</string>
+    <string name="bjmgf_sdk_inputservice">请输入所在服务器</string>
+    <string name="bjmgf_sdk_rolename">角色名</string>
+    <string name="bjmgf_sdk_inputrolename">请输入角色名</string>
+    <string name="bjmgf_sdk_questiontitle">问题标题</string>
+    <string name="bjmgf_sdk_inputquestiontitle">请输入问题标题</string>
+    <string name="bjmgf_sdk_question_details">问题描述</string>
+    <string name="bjmgf_sdk_inputyourquestion">请输入您所遇到的问题</string>
+    <string name="bjmgf_sdk_sendfile">附件上传</string>
+    <string name="bjmgf_sdk_havesendfile">已添加</string>
+    <string name="bjmgf_sdk_havenotsendfile">未上传</string>
+    <string name="bjmgf_sdk_sendbutton">上传</string>
+    <string name="bjmgf_sdk_change">修改</string>
+    <string name="bjmgf_sdk_finish">保存</string>
+    <string name="bjmgf_sdk_send">提交</string>
+    <string name="bjmgf_sdk_commonquestion_isuodate">常见问题正在更新中&#8230;</string>
+    <string name="bjmgf_sdk_data_loading">数据载入中，请稍后</string>
+    <string name="bjmgf_sdk_release">取消</string>
+    <string name="bjmgf_sdk_question_detail">问题详情</string>
+    <string name="bjmgf_sdk_question_number">问题编号：</string>
+    <string name="bjmgf_sdk_question_number_detail">123456789</string>
+    <string name="bjmgf_sdk_question_type">问题类型：</string>
+    <string name="bjmgf_sdk_service_name">123服 天下无双</string>
+    <string name="bjmgf_sdk_role_name">伏地魔</string>
+    <string name="bjmgf_sdk_question_type_detail">充值问题-充值不到账</string>
+    <string name="bjmgf_sdk_question_service_dialog">服务器：</string>
+    <string name="bjmgf_sdk_question_rolename_dialog">角色名：</string>
+    <string name="bjmgf_sdk_question_edit_send">发送</string>
+    <string name="bjmgf_sdk_question_list_time">10&#8211;28 9:39</string>
+    <string name="bjmgf_sdk_question_send_one_picture">上传了一张图!</string>
+    <string name="bjmgf_sdk_question_attach_one_picture">添加了一张图!</string>
+    <string name="bjmgf_sdk_question_watch_file">查看附件</string>
+    <string name="bjmgf_sdk_question_send_success">提交成功</string>
+    <string name="bjmgf_sdk_question_send_title_null">标题不能为空</string>
+    <string name="bjmgf_sdk_question_send_content_null">描述不能为空</string>
+    <string name="bjmgf_sdk_submit_questionIsNullStr">您还未提交任何问题</string>
+    <string name="bjmgf_sdk_question_append_hint">请添加一段描述后发送，完成上传！</string>
+    <string name="bjmgf_sdk_question_append_content_null">请您输入内容后发送</string>
+    <string name="bjmgf_sdk_question_file_invalid_format">添加失败，请选择jpg或png格式的图片上传</string>
+    <string name="bjmgf_sdk_question_image_load_failed">正在审核，请稍后查看</string>
+    <string name="bjmgf_sdk_question_image_pick_error">您选择的图片出错，请更换一张</string>
+    <string name="bjmgf_sdk_question_have_role">已获取角色名</string>
+    <string name="bjmgf_sdk_question_have_server">已获取服务器名</string>
+
+    <!-- 常见问题 -->
+    <string name="bjmgf_sdk_common_question_error">获取数据失败，请稍后重试</string>
+
+    <!-- 我的问题 -->
+    <string name="bjmgf_sdk_myquestion_stateStr">处理中</string>
+    <string name="bjmgf_sdk_myquestion_statedStr">已结单</string>
+    <string name="bjmgf_sdk_myquestion_evaluateStr">评价</string>
+    <string name="bjmgf_sdk_myquestion_emptyStr">"  "</string>
+
+    <!-- 好玩友用户协议 -->
+    <string name="bjmgf_sdk_gameFriendUserProtocolStr"><p><h3>好玩友平台用户服务协议</h3>\n</p><p>1. 好玩友平台用户服务协议的接受\n</p><p>　　好玩友平台为苏州好玩友网络科技有限公司（以下统称为：好玩友公司）所独立拥有，并按本协议及好玩友公司不时发布的规则提供基于互联网的相关服务（以下称“网络服务”）。为获得网络服务，服务使用人（以下称“用户”） 应仔细阅读本协议条款，用户同意本协议的全部条款并按照页面上的提示完成全部的注册程序。用户在进行注册程序过程中点击"同意"按钮即表示用户完全接受本协议项下的全部条款，如发生纠纷，用户不得以未仔细阅读为由进行任何实体和程序抗辩。\n</p><p>　　用户注册成功后，好玩友平台将给予每个用户一个用户帐号及相应的密码，该用户帐号和密码由用户负责保管；对于好玩友平台分配给用户的用户帐号，用户在对登录后所持帐号产生的行为依法享有权利和承担义务。用户应当对以其用户帐号进行的所有活动和事件承担相应法律责任。\n</p><p>2. 服务内容\n</p><p>2.1　 好玩友平台提供的网络服务具体内容由好玩友公司根据实际情况提供，例如网络游戏、文学、交友、论坛(BBS)、聊天室、电子邮件、发表新闻评论等。\n</p><p>2.2　 好玩友平台提供的部分网络服务可能为收费的网络服务，用户使用收费网络服务需要向好玩友平台支付一定的费用。对于收费的网络服务，好玩友平台会在用户使用之前给予用户明确的提示，用户根据提示确认其愿意支付相关费用，用户才能使用该等收费网络服务。如用户拒绝支付相关费用，则好玩友平台有权不向用户提供该等收费网络服务。\n</p><p>2.3 　用户理解，好玩友平台仅提供相关的网络服务，除此之外与相关网络服务有关的设备（如个人电脑、手机、及其他与接入互联网或移动网有关的装置）及所需的费用（如为接入互联网、接受服务而支付的电话费及上网费、手机费）均应由用户自行负担。\n</p><p>3. 服务变更、中断或终止\n</p><p>3.1　 鉴于网络服务的特殊性，用户同意好玩友平台有权随时变更、中断或终止部分或全部的网络服务（包括收费网络服务）。如变更、中断或终止的网络服务时，无需对任何用户或任何第三方承担任何责任，但好玩友平台将尽可能事先进行通告。\n</p><p>3.2 　用户理解，好玩友平台需要定期或不定期地对提供网络服务的平台或相关的设备进行检修或者维护，如因此类情况而造成网络服务（包括收费网络服务）在合理时间内的中断，好玩友平台无需为此承担任何责任，但好玩友平台应尽可能事先进行通告。\n</p><p>3.3 　用户有下列行为之一的，好玩友平台将暂停分配给用户帐号的登录和使用。若好玩友平台认为用户行为严重程度较低的，好玩友平台可能在采取暂停措施之前通知用户限期改正。若好玩友平台通知客户改正的，用户应在所通知的期限内改正。用户未在好玩友平台的通知期限内改正的，好玩友平台有权随时中断或终止向用户提供本协议项下的网络服务（包括收费网络服务）而无需对用户或任何第三方承担任何责任：用户就好玩友平台通知中所述的行为已经改正并经好玩友平台确认的，好玩友平台将恢复该帐号的登录和使用：\n</p><p>3.3.1 　用户严重违反本协议的行为。\n</p><p>3.3.2 　用户提供虚假注册身份信息的。\n</p><p>3.3.3 　用户违反本协议中规定的使用规则。\n</p><p>3.3.4 　用户在使用收费网络服务时未按规定向好玩友平台支付相应的服务费。\n</p><p>3.3.5 　通过不正当手段使用好玩友平台的产品和服务的。\n</p><p>3.3.6 　违反中华人民共和国的法律禁止性规定的。\n</p><p>3.3.7 　违背社会公德的行为。\n</p><p>3.4 　好玩友平台适用3.3款项之规定暂停用户帐号等单方中止或终止合同履行的，若需要好玩友平台举证，则好玩友平台仅在好玩友平台的现有技术限度内就用户违反法律禁止性规定和严重违反合同约定的事实承担举证责任。\n</p><p>3.5 　如用户注册的网络服务的帐号在任何连续180日内未实际使用，或者用户订购收费网络服务后连续180日内未实际使用，则好玩友平台有权删除该帐号并停止为该用户提供相关的网络服务。\n</p><p>4. 使用规则\n</p><p>4.1 　用户同意以其真实身份注册成为好玩友平台的用户，并保证所提供的个人身份资料信息真实、完整，依据法律规定和本协议约定对所提供的不实信息承担相应的法律责任和不利的法律后果。用户不应将其帐号、密码转让或出借予他人使用。如用户发现其帐号遭他人非法使用，应立即通知好玩友平台。因黑客行为或用户的保管疏忽导致帐号、密码遭他人非法使用，好玩友平台不承担任何责任。\n</p><p>4.2 　用户注册成为好玩友平台的用户后，需要修改、变更所提供的个人身份资料信息的应当根据好玩友平台公布的方式通知好玩友平台并提供相关证明。好玩友平台收到通知并审核相关证明(未免疑问，好玩友平台仅对相关文件承担形式审查责任，不对相关证明的审核承担实质性审查疑问)后，好玩友平台将在合理的时间内为用户提供修改、变更服务。\n</p><p>4.3 　好玩友平台有权审查用户注册所提供的身份信息是否真实，并采取必要的技术与管理等措施保障用户帐号的安全、有效。\n</p><p>4.4 　用户有义务妥善保管该用户帐号及密码，严格按照本协议的约定正确、安全地使用用户帐号及密码。用户因为自身原因造成密码遗失、帐号被盗而给自身和他人民事权利造成损害的，好玩友平台不承担法律责任，用户自行承担相应责任，但法律另有规定和本协议另有约定的除外。\n</p><p>4.5　用户发现所分配的帐号或密码被他人非法使用或有使用异常的情况的，应及时根据好玩友平台公布的方式通知好玩友平台，并有权要求好玩友平台采取措施暂停该帐号的登录和使用。\n</p><p>4.6　好玩友平台用户申请采取措施暂停用户帐号的登录和使用的，用户应当向好玩友平台提供有效的个人身份证件，并对用户提供的个人身份证件与其注册身份信息的一致性进行形式审查：\n</p><p>4.6.1 　好玩友平台核实要求采取措施暂停该帐号的登录和使用的用户所提供的个人有效身份证件与所注册的身份信息相一致的，将暂停该用户帐号的登录和使用，并通知用户。\n</p><p>4.6.2　 若因可归责于好玩友平台的原因，导致好玩友平台未及时采取措施暂停用户帐号的登录和使用，而造成用户与此相关的直接损失的，好玩友平台仅对未及时采取措施所导致的扩大的直接损失承担责任。\n</p><p>4.6.3 　用户未提供其个人有效身份证件或者用户提供的个人有效身份证件与所注册的身份信息不一致的，好玩友平台将拒绝用户暂停该用户帐号的登录和使用的请求。\n</p><p>4.7 　用户为了维护其合法权益，向好玩友平台提供与所注册的身份信息相一致的个人有效身份证件时，好玩友平台将为用户提供必要的协助和支持，并根据需要向有关行政机关和司法机关提供相关证据信息资料。\n</p><p>4.8 　用户同意接受好玩友平台通过电子邮件或其他方式向用户发送商品促销或其他相关商业信息。\n</p><p>4.9 　用户对于其创作并通过好玩友平台网络服务（包括但不限于论坛、新闻评论、博客）上传到好玩友平台网站上的内容依法享有版权及其他相关合法权利。对于用户通过好玩友平台网络服务上传到好玩友平台网站上可公开获取区域的任何内容，用户同意好玩友平台在全世界范围内具有免费的、永久性的、不可撤销的权利和许可，以使用、复制、修改、翻译、据以创作衍生作品、传播、表演和展示此等内容。\n</p><p>4.10 　用户在使用好玩友平台网络服务过程中，必须遵循以下原则：\n</p><p>4.10.1 　遵守中国有关的法律和法规；\n</p><p>4.10.2 　遵守好玩友平台的所有网络协议、规定和程序；\n</p><p>4.10.3 　不得为任何非法目的而使用网络服务系统；\n</p><p>4.10.4 　不得利用好玩友平台网络服务系统进行任何可能对互联网或好玩友平台正常运转造成不利影响的行为；\n</p><p>4.10.5 　不得利用好玩友平台提供的网络服务上传、展示或传播任何虚假的、骚扰性的、中伤他人的、辱骂性的、恐吓性的、庸俗淫秽的或其他任何非法的信息资料；\n</p><p>4.10.6 　不得侵犯其他任何第三方的专利权、著作权、商标权、名誉权或其他任何合法权益；\n</p><p>4.10.7 　如发现任何非法使用用户帐号或帐号出现安全漏洞的情况，应立即通告好玩友平台。\n</p><p>4.11 　如用户在使用网络服务时违反任何上述规定，好玩友平台或其授权的人有权要求用户改正或直接采取一切必要的措施（包括但不限于更改或删除用户张贴的内容等、暂停或终止用户使用网络服务的权利）以减轻用户不当行为造成的影响。好玩友平台适用本款之规定暂停用户帐号等单方中止或终止合同履行的，若需要好玩友平台举证，则好玩友平台仅在好玩友平台的现有技术限度内就用户违反法律禁止性规定和严重违反合同约定的事实承担举证责任。\n</p><p>4.12 　用户利用注册的好玩友平台帐号接受好玩友平台（及与好玩友平台存在链接关系的网站）的提供的游戏、商城、文学、邮箱等相关服务时，应视为用户已同意相关游戏、商城、文学、邮箱等服务所特有（专用）的服务协议及相关规则并承诺予以遵守。上文所称的特有（专用）的服务协议及相关规则，用户应主动在相关服务的首页（官网）上查阅，如用户对该服务协议及相关规则有异议的，应主动终止相关的服务。\n</p><p>4.13 　好玩友平台针对某些特定的好玩友平台网络服务的使用通过各种方式（包括但不限于网页公告、电子邮件、短信提醒等）作出的任何声明、通知、警示等内容视为本协议的一部分，用户如使用该等好玩友平台网络服务，视为用户同意该等声明、通知、警示的内容。如用户对该声明、通知、警示有异议的，应主动终止相关的服务。\n</p><p>5. 知识产权\n</p><p>5.1 　好玩友平台提供的网络服务中包含的任何文本、图片、图形、音频和/或视频资料均受版权、商标和/或其它财产所有权法律的保护，未经相关权利人同意，上述资料均不得在任何媒体直接或间接发布、播放、出于播放或发布目的而改写或再发行，或者被用于其他任何商业目的。所有这些资料或资料的任何部分仅可作为私人和非商业用途而保存在某台计算机内。好玩友平台不就由上述资料产生或在传送或递交全部或部分上述资料过程中产生的延误、不准确、错误和遗漏或从中产生或由此产生的任何损害赔偿，以任何形式，向用户或任何第三方负责。\n</p><p>5.2 　好玩友平台为提供网络服务而使用的任何软件（包括但不限于软件中所含的任何图像、照片、动画、录像、录音、音乐、文字和附加程序、随附的帮助材料）的一切权利均属于该软件的著作权人，未经该软件的著作权人许可，用户不得对该软件进行反向工程（reverse engineer）、反向编译（decompile）或反汇编（disassemble）。\n</p><p>6. 用户信息保护</p><p>6.1 　用户提供与其个人身份有关的信息资料给好玩友平台时，应当已了解并接受好玩友平台的隐私权保护政策和个人信息利用政策。好玩友平台将采取措施保护用户的个人信息资料的安全。\n</p><p>6.2 　未经用户许可，好玩友平台不会向任何第三方公开或共享用户注册资料中的姓名、个人有效身份证件号码、联系方式、家庭住址等个人身份信息，但下列情况除外：\n</p><p>6.2.1 　用户或用户监护人授权好玩友平台披露的；\n</p><p>6.2.2 　有关法律要求好玩友平台披露的；\n</p><p>6.2.3 　司法机关或行政机关基于法定程序要求好玩友平台提供的；\n</p><p>6.2.4 　应用户监护人的合法要求而提供用户个人身份信息时；\n</p><p>6.2.5 　好玩友平台为维护自己的合法权益向用户提起诉讼或者仲裁时；\n</p><p>6.2.6 　其它需要提供用户个人身份信息的情况。\n</p><p>6.3 　好玩友平台可能会与第三方合作向用户提供相关的网络服务，在此情况下，如该第三方同意承担与好玩友平台同等的保护用户隐私的责任，则好玩友平台有权将用户的注册资料等提供给该第三方。\n</p><p>6.4 　在不透露单个用户隐私资料的前提下，好玩友平台有权对整个用户数据库进行分析并对用户数据库进行商业上的利用。\n</p><p>7. 免责声明\n</p><p>7.1 　好玩友平台不保证为向用户提供便利而设置的外部链接的准确性和完整性，同时，对于该等外部链接指向的不由好玩友平台实际控制的任何网页上的内容，好玩友平台不承担任何责任。\n</p><p>7.2 　好玩友平台有权但无义务，改善或更正本服务任何部分之任何疏漏、错误。\n</p><p>7.3 　好玩友平台不保证（包括但不限于）：\n</p><p>7.3.1 　网络服务适合用户的使用要求；\n</p><p>7.3.2 　网络服务不受干扰，及时、安全、可靠或不出现错误，包括黑客入侵，网络中断，电信问题及其他不可抗力等；\n</p><p>7.3.3 　用户经由网络服务取得的任何产品、服务或其他材料符合用户的期望；\n</p><p>7.3.4 　对于因不可抗力或好玩友平台不能控制的原因造成的网络服务中断或其它缺陷，好玩友平台不承担任何责任，但将尽力减少因此而给用户造成的损失和影响。\n</p><p>7.4 　用户同意，对于好玩友平台向用户提供的服务的质量缺陷本身及其引发的任何损失，好玩友平台无需承担任何责任。\n</p><p>7.5 　由于用户经由好玩友平台张贴或传送内容、违反本服务条款或侵害其他人的任何权利导致任何第三人提出权利主张，用户同意赔偿好玩友平台及其分公司、关联公司、代理人或其他合作伙伴及员工，并使其免受损害。\n</p><p>8. 协议修改\n</p><p>8.1 　好玩友平台有权随时修改本协议的任何条款，一旦本协议的内容发生变动，好玩友平台将会通过网页公告等方式向用户提示修改内容。\n</p><p>8.2 　如果不同意好玩友平台对本协议相关条款所做的修改，用户有权停止使用网络服务。如果用户继续使用网络服务，则视为用户接受好玩友平台对本协议相关条款所做的修改。\n</p><p>9. 通知送达\n</p><p>9.1 　本协议项下好玩友平台对于用户所有的通知均可通过网页公告、电子邮件等方式进行；该等通知于发送之日视为已送达收件人。\n</p><p>9.2 　用户对于好玩友平台的通知应当通过好玩友平台对外正式公布的通信地址、传真号码等联系信息进行送达。\n</p><p>10. 青少年用户特别提示\n</p><p>青少年用户必须遵守全国青少年网络文明公约：\n</p><p>要善于网上学习，不浏览不良信息；要诚实友好交流，不侮辱欺诈他人；要增强自护意识，不随意约会网友；要维护网络安全，不破坏网络秩序；要有益身心健康，不沉溺虚拟时空。\n</p><p>11. 法律管辖\n</p><p>11.1 　本协议的订立、执行和解释及争议的解决均应适用中华人民共和国法律并受中国法院管辖。\n</p><p>11.2 　如双方就本协议内容或其执行发生任何争议，双方应尽量友好协商解决；协商不成时，任何一方均可向好玩友公司注册地的人民法院提起诉讼。\n</p><p>12. 其他规定\n</p><p>12.1 　本协议构成双方对本协议之约定事项及其他有关事宜的完整协议，除本协议规定的之外，未赋予本协议各方其他权利。\n</p><p>12.2 　如本协议中的任何条款无论因何种原因完全或部分无效或不具有执行力，本协议的其余条款仍应有效并且有约束力。\n</p><p>12.3 　本协议中的标题仅为方便而设，在解释本协议时应被忽略。\n</p><p>结束。\n</p></string>
+
+    <!-- 悬浮框 -->
+
+
+    <!-- 帐号管理 -->
+    <string name="bjmgf_sdk_floatWindow_accountManager_enAuthentStr">已认证</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_unAuthentStr">未认证</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_authenticationStr">实名认证</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_UIDStr">ID</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_passportStr">帐号</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_headiconStr">头像</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_nicknameStr">昵称</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_vipStr">会员</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_PhoneStr">手机号码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_unbindPhoneStr">未绑定</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_sexStr">性别</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_birthdayStr">生日</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPwdStr">修改密码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_changeAccountdStr">切换帐号</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_changeAccountdStrWithArrow">切换帐号></string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhoneStr">修改</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindPhoneStr">绑定手机号</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_NextStr">下一步</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_inputNickName">请输入昵称</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_chooseSex">请选择性别</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_chooseBirthDay">请选择生日</string>
+    <string name="bjmgf_sdk_register_dialog_checkVerifyCode_null_ErrorStr">验证码不能为空</string>
+    <string name="bjmgf_sdk_register_dialog_checkVerifyCode_length_ErrorStr">验证码不是6位</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_inputPhone_length_Str">输入的手机号不是11位</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_dialog_title">确认手机号</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_dialog_sure">确认</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_dialog_modify">修改</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_dialog_msg">（%s） </string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindPhone_inputPhoneStr">输入要绑定的手机号码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindPhone_checkBtnStr">验证</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_inputPhone_is_null_Str">输入的手机号不能为空</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_verifycode_length_less_than_six_Str">验证码少于6位</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_unBindPhone_messageToastStr">点击按钮，将向%s发送短信验证码进行验证，若该手机无法使用，请联系客服QQ:800057851</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_checkPhoneStr">验证手机号</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_inputPhoneNumberHints">请输入手机号</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_CountryNumberStr">+86</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_resendStr">重新发送</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_inputPhone_is_equals_Str">输入的手机号不能和原来绑定的一样</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_checkPhone_inputCheckCodeStr">请输入验证码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_checkPhone_messageToastStr">我们已经发送验证短信到这个号码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_checkPhone_receiveCodeToastLeftStr">"验证码20分钟内有效，%d秒后可以重试。"</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_checkPhone_receiveCodeToastRightStr">已发送(%s秒)</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_checkPhone_sureBtnStr">确认</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindPhone_oldNumberStr"> 绑定的手机号:</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_titleModifyPhoneStr">更换手机号</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_sendVerifyCodeToOldPhoneStr">将向原手机号%s发送验证短信</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_linkCustomStr">，若该手机无法使用，请联系客服QQ:800057851</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_CustomPhoneStr">QQ:800057851</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_checkBtnStr">获取验证码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_inputNewPhoneStr">将要绑定的手机号码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_VerifyCodeStr">请输入原手机收到的验证码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_titleModifyPwdStr">修改密码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPwd_oldPwdStr">原密码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPwd_newPwdStr">新密码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPwd_pwdDescribeStr">密码由字母(a&#8211;z),数字(0&#8211;9),或者下划线(_)组成，其中字符不能全部为相同的字符,另外数字不能为连续升序或降序</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPwd_sureBtnStr">确认</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_dialog_saveBtnStr">取消</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_dialog_no_saveBtnStr">是的</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_dialog_editedAccountInfo_contentStr">是否放弃已修改的内容</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_dialog_editedAccountInfo_titleStr">退出编辑帐号</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmailStr">邮箱地址</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_aboutStr">关于好玩友</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmailStr_topic">绑定邮箱地址</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmailStr_nocheck">未验证</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPwd_pwdDescribeStrForget">忘记密码？点我找回>></string>
+
+    <string name="bjmgf_sdk_floatWindow_accountManager_currentpwd">当前密码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_confirmpwd">确认密码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_pwdhinta">请输入当前密码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_pwdhintc">再次输入新密码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_pwdhintb">请输入新密码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPwd_sureBtnStra">确  认</string>
+
+    <!-- 许愿池 -->
+    <string name="bjmgf_sdk_dock_wishlistStr">许愿</string>
+    <string name="bjmgf_sdk_dock_my_wishlistStr">我DE愿望</string>
+    <string name="bjmgf_sdk_dock_help_wishlistStr">去领取</string>
+    <string name="bjmgf_sdk_dock_delete_wishlistStr">删除</string>
+    <string name="bjmgf_sdk_dock_date_wishlistStr">领取截止：</string>
+    <string name="bjmgf_sdk_dock_wishDetailStr">详情</string>
+    <string name="bjmgf_sdk_dock_wish_goods_description_Str">物品介绍\n\n</string>
+    <string name="bjmgf_sdk_dock_wishDetailTipsStr">Tips： 许愿前请确认角色，如果不正确，请重新登录正确的游戏角色后再来许愿！</string>
+    <string name="bjmgf_sdk_dock_mywishDetailTipsStr">温馨提醒：愿望实现后72小时内礼物未领取，则订单失效，对应的U币将退回到支付人账户。</string>
+    <string name="bjmgf_sdk_dock_mywishDetailUnrealizedTipsStr">温馨提醒：心愿发布后72小时内未被实现，将过期并从列表中消失。</string>
+    <string name="bjmgf_sdk_dock_wishDetailRoleTitleStr">许愿的角色：</string>
+    <string name="bjmgf_sdk_dock_wish_detail_attention_role_level_title_str">Lv</string>
+    <string name="bjmgf_sdk_dock_my_wishlist_receive_now_Str">立即领取</string>
+    <string name="bjmgf_sdk_dock_my_wishlist_had_receive_Str">已领取</string>
+    <string name="bjmgf_sdk_dock_my_wishlist_unrealized_Str">未实现</string>
+    <string name="bjmgf_sdk_dock_my_wishlist_thankshim_Str">感谢他 ></string>
+
+    <string name="bjmgf_sdk_dock_public_wish_to_Str">选择</string>
+    <string name="bjmgf_sdk_dock_public_wish_to_select_confirmStrLeftStr">确定</string>
+    <string name="bjmgf_sdk_dock_public_wish_to_publish_squareStr">发布到广场</string>
+    <string name="bjmgf_sdk_dock_public_wish_to_publish_gamedoyenStr">发给关注的人</string>
+    <string name="bjmgf_sdk_dock_public_wish_to_publish_max_person_countStr">（最多选择5个人）</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_Str">确认</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_message_left_Str">自己说点什么，更可能成功噢！</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_message_right_Str"><u>换一句</u></string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_message_maxlength">/20</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_message_sendto_Str">我要发给：</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_message_publish_btn_Str">发布</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_message_time_limit_1_Str">心愿太多就不灵了噢~</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_message_time_limit_2_Str">分钟后再来试试吧</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_message_level_limit_1_Str">您的等级太低/n达到</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_message_level_limit_2_Str">级后再来试试吧~</string>
+    <string name="bjmgf_sdk_dock_public_wish_disable_publish">一个小时之内不能再次发送心愿</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_success_share_str_title">发布成功！</string>
+    <string name="bjmgf_sdk_dock_public_wish_confirm_success_share_str">分享的心愿更容易被实现哦</string>
+    <string name="bjmgf_sdk_dock_public_wish_mywish_id_str">NO.%1$s</string>
+    <string name="bjmgf_sdk_dock_public_wish_share_title">伦家好想要嘛~</string>
+    <string name="bjmgf_sdk_dock_public_wish_prompt_str">说点什么吧，别空着~</string>
+
+    <!-- 消息通知 -->
+    <string name="bjmgf_sdk_messageStr">消息通知</string>
+    <string name="bjmgf_sdk_dock_dialog_to_download_app_str">好玩友还未安装，是否前往下载？</string>
+    <string name="bjmgf_sdk_dock_dialog_sure_download_btn_str">下载</string>
+    <string name="bjmgf_sdk_dock_dialog_to_download_app_title">下载好玩友</string>
+    <string name="bjmgf_sdk_dock_dialog_to_download_delete_title">是否前往好玩友删除此心愿</string>
+    <string name="bjmgf_sdk_dock_dialog_to_download_gonow_title">立即前往</string>
+    <string name="bjmgf_sdk_dock_dialog_to_download_gonow_get_title">请先下载并安装好玩友APP，登录后即可领取礼物</string>
+    <string name="bjmgf_sdk_dock_dialog_to_download_gonow_delete_title">请先下载并安装好玩友APP，登录后即可删除此心愿</string>
+    <string name="bjmgf_sdk_dock_no_message">还没有消息</string>
+    <string name="bjmgf_sdk_dock_load_more_message">查看更多消息</string>
+    <string name="bjmgf_sdk_dock_no_message_is_hi">你好</string>
+    <string name="bjmgf_sdk_dock_message_to_hi">陌生人&#160;向你打招呼</string>
+    <string name="bjmgf_sdk_dock_message_null">""</string>
+    <string name="bjmgf_sdk_dock_message_game_part1">[游戏 - </string>
+    <string name="bjmgf_sdk_dock_message_game_part2">]</string>
+    <string name="bjmgf_sdk_dock_split_sign">,</string>
+    <string name="bjmgf_sdk_dock_message_game_notify_update_user_title">请完善资料</string>
+    <string name="bjmgf_sdk_dock_message_game_notify_update_user_content">想勾搭更多小伙伴，请先补全您的信息！</string>
+    <string name="bjmgf_sdk_dock_message_game_notify_type_three">关注了你，相互关注成为好友。</string>
+    <string name="bjmgf_sdk_dock_message_game_notify_type_four">关注了你，你们已经成为好友。</string>
+    <string name="bjmgf_sdk_dock_message_game_system_user">好玩友小秘书</string>
+
+    <!-- dialog -->
+    <string name="bjmgf_sdk_dock_dialog_btn_fillInfo_str">完善资料</string>
+    <string name="bjmgf_sdk_dock_dialog_btn_cancel_str">取消</string>
+    <string name="bjmgf_sdk_dock_dialog_btn_ok_str">确定</string>
+    <string name="bjmgf_sdk_dock_dialog_btn_share_str">分享</string>
+    <string name="bjmgf_sdk_dock_dialog_btn_return_str">返回</string>
+    <string name="bjmgf_sdk_dock_dialog_btn_continue_str">继续</string>
+    <string name="bjmgf_sdk_dock_dialog_message_publish_wish_str">请先完善您的个人资料开启许愿功能</string>
+    <string name="bjmgf_sdk_dock_dialog_btn_login_str">立即登录</string>
+    <string name="bjmgf_sdk_dock_dialog_message_open_Wish_str">获取游戏资料失败请先登录游戏</string>
+    <string name="bjmgf_sdk_dock_dialog_message_open_Wish_str_no_account">未登录游戏</string>
+    <string name="bjmgf_sdk_dock_dialog_modify_userinfo_success">资料提交成功</string>
+    <string name="bjmgf_sdk_dock_dialog_upload_face_success">头像上传成功</string>
+
+    <!-- 绑定邮箱 -->
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindInvalidateEmailStr">修改邮箱地址</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmail_new">你的新邮箱地址</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmail_new_warn">请输入邮箱地址，你可以用验证过的邮箱来找回密码</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_editStr">编辑</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_editEmail_new_warn">该邮箱还未验证，请登录你的邮箱查收邮件并验证</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmailStr_warn">你可以用已验证过的邮箱来快速找回密码，如需修改当前绑定的邮箱地址，请联系客服QQ：800057851</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmail_next_button">更换邮箱</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmail_resend">重新发送验证邮件</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmail_resend_str">一封验证邮件已发送至%1$s请尽快登录你的邮箱查收并通过邮件验证（有效时长为30分钟）</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmail_resend_title">已发送</string>
+    <!-- 邮箱输入格式不合法 -->
+    <string name="bjmgf_sdk_InputEmailErrorStr">请输入正确的邮箱</string>
+    <string name="bjmgf_sdk_InputEmailNullStr">邮箱不能为空</string>
+
+    <!-- 下拉刷新 上拉加载控件 -->
+    <string name="bjmgf_sdk_pull_to_refresh_pull_label">向下拉刷新&#8230;</string>
+    <string name="bjmgf_sdk_pull_to_refresh_release_label">松开更新&#8230;</string>
+    <string name="bjmgf_sdk_pull_to_refresh_refreshing_label">正在加载&#8230;</string>
+
+    <!-- Just use standard Pull Down String when pulling up. These can be set for languages which require it -->
+    <string name="bjmgf_sdk_pull_to_refresh_from_bottom_pull_label">向上拉加载更多&#8230;</string>
+    <string name="bjmgf_sdk_pull_to_refresh_from_bottom_release_label">松开加载更多&#8230;</string>
+    <string name="bjmgf_sdk_pull_to_refresh_from_bottom_refreshing_label">@string/bjmgf_sdk_pull_to_refresh_refreshing_label</string>
+
+    <!-- 好玩友支付中心 -->
+    <string name="bjmgf_sdk_dock_pay_center_titleStr">好玩友支付中心</string>
+    <string name="bjmgf_sdk_dock_pay_center_rechargeBtnStr">充值</string>
+    <string name="bjmgf_sdk_dock_pay_sms_dx">电信</string>
+    <string name="bjmgf_sdk_dock_pay_sms_yd">移动</string>
+    <string name="bjmgf_sdk_dock_pay_sms_lt">联通</string>
+    <string name="bjmgf_sdk_dock_pay_center_unitStr">&#160;U币</string>
+    <string name="bjmgf_sdk_dock_pay_center_productNameUnitStr">U币</string>
+    <string name="bjmgf_sdk_dock_pay_center_ordertail">订单详情：</string>
+    <string name="bjmgf_sdk_dock_pay_center_dialog_title_str">温馨提示</string>
+    <string name="bjmgf_sdk_dock_pay_center_query_balance_fail_str">余额获取失败，请稍后再试！</string>
+    <string name="bjmgf_sdk_dock_pay_center_prompt">余额不足，还需充值&#160;%1$1d&#160;U币</string>
+    <string name="bjmgf_sdk_dock_pay_center_buyNow">立即购买</string>
+    <string name="bjmgf_sdk_dock_pay_center_choosePayTypeStr">请选择支付方式</string>
+    <string name="bjmgf_sdk_dock_pay_center_unionPayStr">银联快捷支付</string>
+    <string name="bjmgf_sdk_dock_pay_center_smsPayStr">手机短信支付</string>
+    <string name="bjmgf_sdk_dock_pay_center_rechargeCardPayStr">充值卡支付</string>
+    <string name="bjmgf_sdk_dock_pay_center_blanceStr">我的余额：</string>
+    <string name="bjmgf_sdk_dock_pay_ratio_str">充值金额（1&#160;元&#160;=&#160;10&#160;U币）</string>
+    <string name="bjmgf_sdk_dock_pay_ratio_sms_str">请选择充值金额（1&#160;元&#160;=&#160;5&#160;U币）</string>
+    <string name="bjmgf_sdk_dock_recharge_ali_titleStr">支付宝安全支付</string>
+    <string name="bjmgf_sdk_dock_pay_center_rechargeWxPayStr">微信支付</string>	
+    <string name="bjmgf_sdk_dock_recharge_unionpay_titleStr">银联快捷支付</string>
+    <string name="bjmgf_sdk_dock_recharge_prompt_paylessStr">当前金额不足以进行支付，若继续操作，则充值的金额会存入您的账户，但不会进行支付。</string>
+    <string name="bjmgf_sdk_dock_recharge_prompt_paymoreStr">支付结余&#160;%1$d&#160;U币，将存入你的好玩友账户中！</string>
+    <string name="bjmgf_sdk_dock_recharge_goods_countStr">充值金额：%1$d</string>
+    <string name="bjmgf_sdk_dock_recharge_ali_goods_otherMoneyStr">其他金额</string>
+    <string name="bjmgf_sdk_dock_recharge_price_5">5元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_6">6元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_8">8元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_10">10元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_12">12元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_15">15元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_20">20元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_30">30元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_50">50元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_100">100元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_200">200元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_300">300元</string>
+    <string name="bjmgf_sdk_dock_recharge_price_500">500元</string>
+    <string name="bjmgf_sdk_dock_recharge_rechargeOrderActionStr">充值</string>
+    <string name="bjmgf_sdk_dock_pay_center_goods">商品</string>
+    <string name="bjmgf_sdk_dock_pay_center_price">价格</string>
+    <string name="bjmgf_sdk_dock_pay_center_my_balance">我的余额:</string>
+    <string name="bjmgf_sdk_dock_pay_center_balance_pay">余额支付:</string>
+    <string name="bjmgf_sdk_dock_pay_center_balance_pay_need">还需充值:</string>
+    <string name="g_class_name">斯凯短息支付</string>
+
+    <string name="bjmgf_sdk_dock_recharge_rechargeAndbuy">充值并支付</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_nextStepbtnStr">下一步</string>
+    <string name="bjmgf_sdk_dock_recharge_ali_pleaseInputMoney">请选择或输入充值金额</string>
+    <string name="bjmgf_sdk_dock_recharge_ali_pay_order_success">恭喜你,订单支付成功!</string>
+    <string name="bjmgf_sdk_dock_recharge_ali_pay_order_comfirming">支付结果确认中</string>
+    <string name="bjmgf_sdk_dock_recharge_ali_pay_order_fail">支付失败</string>
+    <string name="bjmgf_sdk_dock_recharge_sms_pay_promptStr">*支持移动、电信和联通用户通过发送短信进行充值,短信发送费用0.1元/条,由运营商收取。</string>
+    <string name="bjmgf_sdk_dock_recharge_card_pay_promptStr">*卡实际面值必须与您所选的面值一致，否则将导致充值失败，并且卡内余额丢失。</string>
+    <string name="bjmgf_sdk_dock_recharge_pleaseChooseMoney">请选择充值金额</string>
+    <string name="bjmgf_sdk_dock_recharge_sms_app_name_yhxfpay">大额短信支付</string>
+    <string name="bjmgf_sdk_dock_recharge_sms_please_input_phone_number">请输入您的手机号码</string>
+    <string name="bjmgf_sdk_dock_recharge_sms_input_phone_number_dialog_message">请输入本机手机号码</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_choose_str">请选择充值卡类型</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_choose_operators_str">选择运营商</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_choose_cardtype_str">选择充值卡类型</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_yuan_unit_str">元</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_yuan_space_unit_str">&#160;元</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_chose_str">您当前选择&#160;</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_str">&#160;充值&#160;</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_cardNo_str">卡号</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_cardPW_str">密码</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_cardNoValue_str">卡号长度为%1$d位</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_cardPWValue_str">密码长度为%1$d位</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_input_prompt_str">请输入卡号和密码</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_input_prompt_cardno_str">卡号格式不正确</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_input_prompt_cardpw_str">密码格式不正确</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_server_msg_str">支付操作已受理</string>
+    <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_dialog_prompt_str">支付请求已受理，成功到账一般需要1&#8211;3分钟，请稍后查看</string>
+    <string name="bjmgf_sdk_dock_recharge_sms_pay_prompt_warn_one">1.支持移动、电信和联通用户通过发送短信进行充值，短信发送费用0.1元/条，由运营商收取；</string>
+    <string name="bjmgf_sdk_dock_recharge_sms_pay_prompt_warn_two">2.由于运营上需要收取50%充值渠道费用，请注意您的扣费金额，大额充值建议您使用其他充值方式更实惠；</string>
+    <string name="bjmgf_sdk_dock_recharge_sms_pay_prompt_warn_three">3.充值提示短信可能存在一定的异常，这并不影响您的充值到账，请放心使用，充值过程中遇到任何问题，请尽快与我们客服取得联系，QQ：800057851</string>
+
+    <!-- 补充  -->
+    <string name="bjmgf_sdk_switch_account_success">切换帐号成功</string>
+    <string name="bjmgf_sdk_please_login_first">请您先登录</string>
+    <string name="bjmgf_sdk_image_loading">正在加载&#8230;</string>
+    <string name="bjmgf_sdk_new_text">新</string>
+    <string name="bjmgf_sdk_open_browser">打开浏览器</string>
+    <string name="bjmgf_sdk_http_laoding">数据载入中，请稍后</string>
+    <string name="bjmgf_sdk_photo_exception_hint">请您添加照片到图库</string>
+    <string name="bjmgf_sdk_open_webview">请打开页面</string>
+    <string name="bjmgf_sdk_new_confirm_text">确认</string>
+    <string name="bjmgf_sdk_login_dialog_confirm_password_unequal">新密码与确认密码不一致！</string>
+    <string name="bjmgf_sdk_login_successful">您已经登录成功</string>
+    <string name="bjmgf_sdk_no_sim_card">抱歉,我们无法获得您的手机号码</string>
+
+    <!-- 提醒 -->
+    <string name="bjmgf_sdk_warn_title">温馨提醒</string>
+    <string name="bjmgf_sdk_warn_content_try">建议尽快完成游客转正，提高账号安全性，以防游戏记录丢失</string>
+    <string name="bjmgf_sdk_warn_content_bind">建议尽快完成绑定手机号，提高账号安全性，以防游戏记录丢失</string>
+    <string name="bjmgf_sdk_warn_cancel">稍后再说</string>
+    <string name="bjmgf_sdk_warn_ok_try">立即转正</string>
+    <string name="bjmgf_sdk_warn_ok_bind">立即绑定</string>
+    <string name="bjmgf_sdk_warn_content_authent">建议尽快进行实名认证，提高帐号安全性，以防游戏记录丢失</string>
+    <string name="bjmgf_sdk_warn_ok_authent">立即认证</string>
+    <string name="bjmgf_sdk_warn_ok_authenta">立即认证</string>
+
+    <!-- 标题 -->
+    <string name="bjmgf_sdk_floatWindow_accountManager_info">个人信息</string>
+    <string name="bjmgf_sdk_floatWindow_accountManagerStr">帐号管理</string>
+    <string name="bjmgf_sdk_trychange_restart">转正成功，请重新登录</string>
+
+    <string name="app_name_vsofo">V付宝SDK</string>
+    <string name="prompt_payment">支付提示</string>
+    <string name="business_name">商户名称：</string>
+    <string name="product_name">商品名称：</string>
+    <string name="to_pay">支付金额：</string>
+    <string name="pay_warning">本次费用将会从您的话费中扣除，信息费由运营商代收，充值成功后运营商会发短信到您的收件箱。客服热线：400-684-0755</string>
+    <string name="confirm">确认购买</string>
+    <string name="waitting">正在处理，请耐心等待...\n提醒：为保障本次支付结果的准确性，请勿进行其他操作。</string>
+    <string name="phone_info">请输入本机手机号:</string>
+    <string name="phone_info_more">（多卡手机输入默认手机号）</string>
+    <string name="input_phonenum">手机号为空，请重新输入。</string>
+    <string name="input_smscode">验证码未输入，请重新输入。</string>
+    <string name="phone_error">手机号输入有误，请重新输入。</string>
+    <string name="smscode_info">为保证您顺利完成支付，请输入您收到的短信验证码。</string>
+    <string name="money">元</string>
+    <string name="sms_code">验证码</string>
+    <string name="phone_number">手机号码</string>
+
+    <string name="smscode_error">验证码未输入，支付失败</string>
+    <string name="pay_success">支付请求已提交，请返回账户查询。</string>
+    <string name="user_confirm">支付请求已提交，请返回短信箱回复确认码。</string>
+    <string name="user_order">确认码提交失败，请返回短信箱回复确认码。</string>
+    <string name="order_error">下单失败，请稍后再试。</string>
+    <string name="network_error">网络连接失败，请检查网络设置。</string>
+    <string name="sms_send_fail">验证码无法发送，请到短信中手动发送。</string>
+    <string name="pay_fail">支付失败，请稍后再试。</string>
+    <string name="data_error">数据异常。</string>
+    <string name="sim_error">未检测到SIM卡。</string>
+
+    <string name="exit_pay">退出支付。</string>
+    <string name="bjmgf_sdk_hwynumber">玩友号:</string>
+    <string name="bjmgf_sdk_sex_man">男</string>
+    <string name="bjmgf_sdk_sex_women">女</string>
+    <string name="bjmgf_sdk_date_yestoday">昨天</string>
+    <string name="bjmgf_sdk_date_today">今天</string>
+    <string name="bjmgf_sdk_date_tomorrow">明天</string>
+    
+    <!--当前SDK 的版本号 -->
+    <string name="bjmgf_sdk_version">2.0.0.1922</string>
+
+    <!-- 充值卡充值选择标语 -->
+    <string name="bjmgf_sdk_chooseoperator">选择运营商</string>
+    <string name="bjmgf_sdk_pay_success">支付成功</string>
+
+</resources>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bjmgf_sdk_white_background_selector"
+    android:clickable="true"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp" >
+
+    <!-- 小红点 -->
+
+    <ImageView
+        android:id="@+id/bjmgf_sdk_id_my_question_server_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:background="@drawable/bjmgf_sdk_float_message_toast"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
+
+    <!-- 问题+年月 -->
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_myquestion_LlId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+        android:layout_weight="4"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_id_my_question_title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/bjmgf_sdk_margin3"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:paddingLeft="@dimen/bjmgf_sdk_margin5"
+            android:singleLine="true"
+            android:textColor="@color/bjmgf_sdk_black"
+            android:textSize="@dimen/bjmgf_sdk_font_size14" />
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_id_my_question_created_time_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textColor="@color/bjmgf_sdk_textgray"
+            android:textSize="@dimen/bjmgf_sdk_font_size14" />
+    </LinearLayout>
+
+    <!-- 处理+评价 -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_myquestion_stateTvId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bjmgf_sdk_myquestion_stateStr" />
+
+        <Button
+            android:id="@+id/bjmgf_sdk_myquestion_evaluateBtnId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bjmgf_sdk_margin2"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin2"
+            android:background="@drawable/bjmgf_sdk_btn_commend"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_myquestion_evaluatedTvId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bjmgf_sdk_margin2"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin2"
+            android:text="@string/bjmgf_sdk_myQuestionEvaluatedStr"
+            android:textColor="@color/bjmgf_sdk_textgray"
+            android:textSize="@dimen/bjmgf_sdk_font_size16"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

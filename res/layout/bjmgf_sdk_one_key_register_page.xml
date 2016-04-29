@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/bjmgf_sdk_margin10"
+    android:orientation="vertical"
+    android:background="@drawable/bjmgf_sdk_bg" >
+    
+	<include layout="@layout/bjmgf_sdk_include_titlefix"/>
+	
+	<TextView
+        android:id="@+id/bjmgf_sdk_oneKey_register_describeId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+		android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+		android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+		android:layout_marginTop="@dimen/bjmgf_sdk_margin15"
+        android:text="@string/bjmgf_sdk_register_dialog_oneKeyTextViewStr"
+        android:textColor="@color/bjmgf_sdk_gray"
+       	android:textSize="@dimen/bjmgf_sdk_font_size16" />
+	
+	<TextView
+		android:id="@+id/bjmgf_sdk_oneKey_login_smsWarn"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+		android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+		android:layout_marginTop="@dimen/bjmgf_sdk_margin15"
+		android:textColor="@color/bjmgf_sdk_recharge_light_red"
+		android:textSize="@dimen/bjmgf_sdk_font_size13" 
+		android:visibility="gone"/>
+	
+	<TextView
+        android:id="@+id/bjmgf_sdk_oneKey_register_protocolTextViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+        android:text="@string/bjmgf_sdk_register_dialog_protocolStr"
+        android:textColor="@color/bjmgf_sdk_light_gray"
+        android:textSize="@dimen/bjmgf_sdk_font_size14" />
+	
+	<Button
+		android:id="@+id/bjmgf_sdk_oneKey_register_buttonId"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+		android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+		android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+		android:layout_marginBottom="@dimen/bjmgf_sdk_margin15"
+		android:background="@drawable/bjmgf_sdk_red_button_big_selector"
+		android:text="@string/bjmgf_sdk_register_dialog_oneKeyRegisterBtnStr"
+		android:textColor="@color/bjmgf_sdk_white"
+		android:textSize="@dimen/bjmgf_sdk_font_size20" />
+
+</LinearLayout>

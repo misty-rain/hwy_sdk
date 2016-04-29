@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/bjmgf_sdk_margin10"
+    android:orientation="vertical"
+    android:background="@drawable/bjmgf_sdk_bg" >
+    
+   	<include layout="@layout/bjmgf_sdk_include_titlefix"/>
+   	
+   	<com.bojoy.bjsdk_mainland_new.widget.ClearEditText
+	    android:id="@+id/bjmgf_sdk_account_register_nameEditTextId"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+        android:singleLine="true"
+	 	android:hint="@string/bjmgf_sdk_register_dialog_accountNameContentTextViewStr"
+        android:textColor="@color/bjmgf_sdk_gray"
+        android:textSize="@dimen/bjmgf_sdk_font_size14"
+        android:textColorHint="@color/bjmgf_sdk_editTextFontGray"
+        android:imeOptions="flagNoExtractUi"
+        android:inputType="textPersonName"
+        android:digits="@string/bjmgf_sdk_edittext_digits"
+        clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close" 
+        clearedit:warn_title="@string/bjmgf_sdk_login_dialog_accountNameContentTextViewStr"/>
+    
+   	<com.bojoy.bjsdk_mainland_new.widget.ClearEditText
+	    android:id="@+id/bjmgf_sdk_account_register_passwordEditTextId"
+	    android:layout_width="match_parent"
+	   	android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+        android:singleLine="true"
+	 	android:hint="@string/bjmgf_sdk_register_dialog_accountPasswordContentTextViewStr"
+        android:textColor="@color/bjmgf_sdk_gray"
+        android:textSize="@dimen/bjmgf_sdk_font_size14"
+        android:textColorHint="@color/bjmgf_sdk_editTextFontGray"
+        android:imeOptions="flagNoExtractUi"
+        android:inputType="text"
+        android:digits="@string/bjmgf_sdk_edittext_digits"
+        clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close" 
+        clearedit:warn_title="@string/bjmgf_sdk_login_dialog_accountPasswordContentTextViewStr"/>
+   	
+	<TextView
+		android:id="@+id/bjmgf_sdk_account_register_protocolTextViewId"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+   		android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+		android:layout_gravity="left"
+		android:text="@string/bjmgf_sdk_register_dialog_protocolStr"
+		android:textColor="@color/bjmgf_sdk_light_gray"
+		android:textSize="@dimen/bjmgf_sdk_font_size14" />
+	
+    <Button
+	     android:id="@+id/bjmgf_sdk_account_register_buttonId"
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+	     android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+	     android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+	     android:layout_marginBottom="@dimen/bjmgf_sdk_margin5"
+	     android:background="@drawable/bjmgf_sdk_red_button_big_selector"
+	     android:text="@string/bjmgf_sdk_register_dialog_registerBtnStr"
+	     android:textColor="@color/bjmgf_sdk_white"
+	     android:textSize="@dimen/bjmgf_sdk_font_size20" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin15" >
+
+	  	<RelativeLayout 
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:gravity="center"
+	        android:id="@+id/bjmgf_sdk_account_register_tryTextViewId">
+	        
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/bjmgf_sdk_login_try"/>
+	        
+	    </RelativeLayout>
+	    
+	    <RelativeLayout 
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:gravity="center"
+	        android:id="@+id/bjmgf_sdk_account_register_byPhoneId">
+	        
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/bjmgf_sdk_login_phoneregister"/>
+	        
+	    </RelativeLayout>
+	    
+	    <RelativeLayout 
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:gravity="center"
+	        android:id="@+id/bjmgf_sdk_account_login_newUserRegisterTextViewId">
+	        
+	        
+	    </RelativeLayout>
+	    
+    </LinearLayout>
+	
+</LinearLayout>

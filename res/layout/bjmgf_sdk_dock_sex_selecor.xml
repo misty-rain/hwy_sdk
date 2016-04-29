@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   	android:paddingTop="@dimen/bjmgf_sdk_margin10"
+	android:paddingBottom="@dimen/bjmgf_sdk_margin10"
+	android:paddingLeft="@dimen/bjmgf_sdk_margin20"
+	android:paddingRight="@dimen/bjmgf_sdk_margin20"
+	android:background="@color/bjmgf_sdk_white"
+    android:orientation="vertical" >
+    
+   	<TextView 
+        android:id="@+id/bjmgf_sdk_sex_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin5"
+        android:singleLine="true"
+        android:textStyle="bold"
+        android:textSize="@dimen/bjmgf_sdk_font_size18"
+        android:ellipsize="end"
+        android:text="@string/bjmgf_sdk_input_sex_title" />
+    
+    <View
+       	android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/bjmgf_sdk_sex_title"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin5"
+        android:background="#a0a4a5" />
+    
+    <TextView 
+        android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+	    android:textSize="@dimen/bjmgf_sdk_font_size16"
+	    android:text="@string/bjmgf_sdk_input_sex_only_modify" />
+    
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+	    android:orientation="vertical"
+	    android:gravity="center" >
+	    
+	    <LinearLayout android:id="@+id/bjmgf_sdk_sex_selector_male_LayoutId"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:padding="@dimen/bjmgf_sdk_margin5"
+		    android:orientation="horizontal" >
+	    
+		    <ImageView 
+		        android:id="@+id/bjmgf_sdk_sex_male_image" 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+		        android:src="@drawable/bjmgf_sdk_checkbox_bg_unselected" />
+		    
+		    <TextView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="@dimen/bjmgf_sdk_font_size16"
+		        android:text="@string/bjmgf_sdk_sex_male"/>
+	    </LinearLayout>
+		    
+	    <LinearLayout android:id="@+id/bjmgf_sdk_sex_selector_female_LayoutId"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		   	android:layout_marginTop="@dimen/bjmgf_sdk_margin5"	    
+		    android:padding="@dimen/bjmgf_sdk_margin5"
+		    android:orientation="horizontal">
+		    <ImageView 
+		        android:id="@+id/bjmgf_sdk_sex_female_image" 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+		        android:src="@drawable/bjmgf_sdk_checkbox_bg_unselected" />
+		    
+		    <TextView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="@dimen/bjmgf_sdk_font_size16"
+		        android:text="@string/bjmgf_sdk_sex_female"/>"
+	    
+	    </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/bjmgf_sdk_sex_ok_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+        android:background="@drawable/bjmgf_sdk_blue_button_big_selector"
+        android:text="@string/bjmgf_sdk_dock_dialog_btn_ok_str"
+        android:textColor="@color/bjmgf_sdk_white"
+        android:textSize="@dimen/bjmgf_sdk_font_size20" />
+    
+</LinearLayout>

@@ -1,0 +1,226 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vg_blog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent" >
+
+    <include layout="@layout/bjmgf_sdk_dock_header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bjmgf_sdk_float_account_manager_navigationLlId"
+        android:background="@color/bjmgf_sdk_account_page_bg" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_headiconb"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_gap_headicona"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <!-- 头像 -->
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_headiconId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_headiconb"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingRight="@dimen/bjmgf_sdk_padding10" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_headiconStrId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_headiconStr"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_headicon_arrowImageId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_headiconImageId"
+                    android:layout_width="@dimen/bjmgf_sdk_user_head_icon_size"
+                    android:layout_height="@dimen/bjmgf_sdk_user_head_icon_size"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/bjmgf_sdk_head_face_normal"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin20"
+                    android:padding="@dimen/bjmgf_sdk_margin10" />
+            </RelativeLayout>
+
+            <!-- 分隔线 -->
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_modifyPwd"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_float_account_manager_headiconId"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin20"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <!-- 昵称栏 -->
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_nicknameItemId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_line_modifyPwd"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingBottom="@dimen/bjmgf_sdk_margin15"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingRight="@dimen/bjmgf_sdk_padding10"
+                android:paddingTop="@dimen/bjmgf_sdk_margin15" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_nicknameStrId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_nicknameStr"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_nickname_arrowImageId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_nickname_contentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin30"
+                     />
+            </RelativeLayout>
+
+            <!-- 分隔线 -->
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_float_account_manager_nicknameItemId"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin20"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <!-- 性别栏 -->
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_sexId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_sex"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingBottom="@dimen/bjmgf_sdk_margin15"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingRight="@dimen/bjmgf_sdk_padding10"
+                android:paddingTop="@dimen/bjmgf_sdk_margin15" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_sexStrId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_sexStr"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_sex_arrowImageId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_sex_contentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin30"
+                     />
+            </RelativeLayout>
+
+            <!-- 分隔线 -->
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_birthday"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_float_account_manager_sexId"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin20"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <!-- 生日 -->
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_birthdayId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_line_birthday"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingBottom="@dimen/bjmgf_sdk_margin15"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingRight="@dimen/bjmgf_sdk_padding10"
+                android:paddingTop="@dimen/bjmgf_sdk_margin15" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_birthdayStrId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_birthdayStr"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_birthday_arrowImageId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_birthday_contentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin30"
+                     />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bjmgf_sdk_bg" >
+
+    <include layout="@layout/bjmgf_sdk_include_titlefix"/>
+   	
+   	<TextView
+   	    android:id="@+id/bjmgf_sdk_find_pwd_email_confirm_text"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="wrap_content"
+   	    android:layout_marginTop="@dimen/bjmgf_sdk_margin15"
+   	    android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+   	    android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+   	    android:layout_marginBottom="@dimen/bjmgf_sdk_margin15"
+   	    android:textColor="@color/bjmgf_sdk_account_gray"
+   	    android:textSize="@dimen/bjmgf_sdk_font_size14"
+   	    android:text="@string/bjmgf_sdk_floatWindow_accountManager_bindEmail_resend_str"/>
+   	
+   	<Button
+        android:id="@+id/bjmgf_sdk_find_pwd_email_confirm_buttonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin15"
+        android:background="@drawable/bjmgf_sdk_blue_button_big_selector"
+        android:text="@string/bjmgf_sdk_floatWindow_accountManager_dialog_sure"
+        android:textColor="@color/bjmgf_sdk_white"
+        android:textSize="@dimen/bjmgf_sdk_font_size20" />
+
+</LinearLayout>

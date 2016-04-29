@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_rechargeLlId"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@color/bjmgf_sdk_navigation_background" >
+        
+        <RelativeLayout
+            android:id="@+id/bjmgf_sdk_closeLlId"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+			android:padding="@dimen/bjmgf_sdk_padding10"
+			android:layout_alignParentLeft="true" >
+            <ImageView
+                android:id="@+id/bjmgf_sdk_closeWebViewBtnId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/bjmgf_sdk_back" />
+        </RelativeLayout>
+        
+        <TextView
+            android:id="@+id/bjmgf_sdk_rechargeTextViewId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_recharge_consumeStr"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textStyle="bold"
+            android:textSize="@dimen/bjmgf_sdk_font_size20" />
+        
+    </LinearLayout>
+    
+    <WebView
+        android:id="@+id/bjmgf_sdk_rechargeWebViewId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    
+</LinearLayout>

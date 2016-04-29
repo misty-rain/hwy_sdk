@@ -1,0 +1,495 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vg_blog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bjmgf_sdk_account_page_bg" >
+
+    <!-- 标题栏 -->
+
+    <include
+        android:id="@+id/bjmgf_sdk_float_account_manager_navigationLlId"
+        layout="@layout/bjmgf_sdk_dock_header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bjmgf_sdk_float_account_manager_navigationLlId" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_account"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/bjmgf_sdk_margin10"
+                android:background="@color/bjmgf_sdk_account_page_bg" />
+
+            <!-- 分隔线 -->
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_accounta"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_gap_line_account"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <!-- 个人资料 -->
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_info_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_line_accounta"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingRight="@dimen/bjmgf_sdk_padding10" >
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_headiconImageId"
+                    android:layout_width="@dimen/bjmgf_sdk_margin100"
+                    android:layout_height="@dimen/bjmgf_sdk_margin100"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+                    android:src="@drawable/bjmgf_sdk_head_face_normal"
+                    android:padding="@dimen/bjmgf_sdk_margin5" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_headicon_arrowImageId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:layout_toRightOf="@id/bjmgf_sdk_float_account_manager_headiconImageId"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_account_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/bjmgf_sdk_font_size20" 
+                        android:textColor="@color/bjmgf_sdk_black"
+                        android:layout_marginBottom="@dimen/bjmgf_sdk_margin10"/>
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_account_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp" 
+                        android:textColor="@color/bjmgf_sdk_account_gray"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- 分隔线 -->
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_accountc"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_float_account_info_id"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_accountb"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/bjmgf_sdk_margin20"
+                android:layout_below="@id/bjmgf_sdk_gap_line_accountc"
+                android:background="@color/bjmgf_sdk_account_page_bg" />
+
+            <!-- 分隔线 -->
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_vip"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_gap_line_accountb"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_vipItemId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_vip"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingBottom="@dimen/bjmgf_sdk_margin15"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingRight="@dimen/bjmgf_sdk_padding10"
+                android:paddingTop="@dimen/bjmgf_sdk_margin15" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_vipStrId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_vipStr"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_vip_arrowImageId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_vip_contentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin30"
+                    android:text="普通会员" 
+                    android:textColor="@color/bjmgf_sdk_account_gray"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16"/>
+            </RelativeLayout>
+
+            <!-- 分隔线 -->
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_headicon"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_float_account_manager_vipItemId"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_headicona"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/bjmgf_sdk_margin20"
+                android:layout_below="@id/bjmgf_sdk_gap_headicon"
+                android:background="@color/bjmgf_sdk_account_page_bg" />
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_headiconb"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_gap_headicona"
+                android:background="@color/bjmgf_sdk_gap_gray" />
+
+            <!-- 手机号 -->
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_phoneId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_headiconb"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_phoneStrId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_PhoneStr"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_phone_arrowImageId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin20"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_bindPhoneContentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin40"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_unbindPhoneStr"
+                    android:textColor="@color/bjmgf_sdk_blue"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+
+
+                <!-- 分隔线 -->
+
+                <View
+                    android:id="@+id/bjmgf_sdk_gap_line_modifyPwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1px"
+                    android:layout_below="@id/bjmgf_sdk_float_account_manager_bindPhoneContentId"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:layout_marginTop="@dimen/bjmgf_sdk_margin25"
+                    android:background="@color/bjmgf_sdk_account_line" />
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_modifyEmailLlId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_float_account_manager_phoneId"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingBottom="@dimen/bjmgf_sdk_margin10"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingTop="@dimen/bjmgf_sdk_margin10" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_bindEmailStr"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+                
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_bindEmailTextViewId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin40"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_unbindPhoneStr"
+                    android:textColor="@color/bjmgf_sdk_blue"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_email_contentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin20"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+            </RelativeLayout>
+            
+            <!-- 分隔线 -->
+
+                <View
+                    android:id="@+id/bjmgf_sdk_gap_line_modifyEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1px"
+                    android:layout_below="@id/bjmgf_sdk_float_account_manager_modifyEmailLlId"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin20"
+                    android:background="@color/bjmgf_sdk_account_line" />
+
+            <!-- 实名认证 -->
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_authenticationId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_line_modifyEmail"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingBottom="@dimen/bjmgf_sdk_margin10"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingTop="@dimen/bjmgf_sdk_margin10" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_authenticationStr"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_enAuthenticationTextViewId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin20"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_enAuthentStr"
+                    android:textColor="@color/bjmgf_sdk_blue"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_authenticationTextViewId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin40"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_unAuthentStr"
+                    android:textColor="@color/bjmgf_sdk_blue"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_authentication_contentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin20"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+            </RelativeLayout>
+            <!-- 分隔线 -->
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_authentication"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_float_account_manager_authenticationId"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin20"
+                android:background="@color/bjmgf_sdk_account_line" />
+            <!-- 修改密码 -->
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_modifyPwdLlId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_line_authentication"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingBottom="@dimen/bjmgf_sdk_margin10"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingRight="@dimen/bjmgf_sdk_padding10"
+                android:paddingTop="@dimen/bjmgf_sdk_margin10" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_modifyPwdStrId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_modifyPwdStr"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_modifyPwd_arrowImageId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+            </RelativeLayout>
+
+
+            <!-- 分隔线 -->
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_changeAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_float_account_manager_modifyPwdLlId"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_changeAccounta"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/bjmgf_sdk_margin20"
+                android:layout_below="@id/bjmgf_sdk_gap_line_changeAccount"
+                android:background="@color/bjmgf_sdk_account_page_bg" />
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_abouta"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_gap_line_changeAccounta"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <!-- 关于我们 -->
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_aboutLlId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_line_abouta"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingBottom="@dimen/bjmgf_sdk_margin15"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingRight="@dimen/bjmgf_sdk_padding10"
+                android:paddingTop="@dimen/bjmgf_sdk_margin15" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_aboutStrId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_aboutStr"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+                    android:background="@drawable/bjmgf_sdk_forward" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_aboutc"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_float_account_manager_aboutLlId"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_aboutd"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/bjmgf_sdk_margin20"
+                android:layout_below="@id/bjmgf_sdk_gap_line_aboutc"
+                android:background="@color/bjmgf_sdk_account_page_bg" />
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_changeAccountb"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_gap_line_aboutd"
+                android:background="@color/bjmgf_sdk_account_line" />
+
+            <!-- 切换账号 -->
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_float_account_manager_changeAccountLlId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bjmgf_sdk_gap_line_changeAccountb"
+                android:background="@drawable/bjmgf_sdk_item_selector"
+                android:paddingBottom="@dimen/bjmgf_sdk_margin15"
+                android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+                android:paddingRight="@dimen/bjmgf_sdk_padding10"
+                android:paddingTop="@dimen/bjmgf_sdk_margin15" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_float_account_manager_changeAccountStrId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/bjmgf_sdk_floatWindow_accountManager_changeAccountdStr"
+                    android:textColor="@color/bjmgf_sdk_black"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line_changeAccountc"
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_below="@id/bjmgf_sdk_float_account_manager_changeAccountLlId"
+                android:background="@color/bjmgf_sdk_account_line" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

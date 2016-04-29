@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="LIBRARY_PROJECT" value="true" />
+        <proGuardCfgFiles>
+          <file>file://D:/Program Files/Java/tools/proguard/proguard-android.txt</file>
+        </proGuardCfgFiles>
+        <option name="UPDATE_PROPERTY_FILES" value="true" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="android-support-v4" level="project" />
+    <orderEntry type="library" name="alipaysdk" level="project" />
+    <orderEntry type="library" name="alipaysecsdk" level="project" />
+    <orderEntry type="library" name="alipayutdid" level="project" />
+    <orderEntry type="library" name="AndroidPay_UniPay" level="project" />
+    <orderEntry type="library" name="UPPayAssistEx" level="project" />
+    <orderEntry type="library" name="UPPayPluginExPro" level="project" />
+    <orderEntry type="library" name="VsofoPayApi_1.0.1" level="project" />
+    <orderEntry type="library" name="zimon" level="project" />
+    <orderEntry type="library" name="okhttp-3.0.1" level="project" />
+    <orderEntry type="library" name="okio-1.4.0 (2)" level="project" />
+  </component>
+</module>

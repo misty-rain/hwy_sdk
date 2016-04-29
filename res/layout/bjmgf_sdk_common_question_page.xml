@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_custom_questionLlId"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible">
+
+        <include layout="@layout/bjmgf_sdk_question_footer" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bjmgf_sdk_divider_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/bjmgf_sdk_custom_questionLlId"
+        android:background="@color/bjmgf_sdk_divider_color" />
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_common_question_is_null_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bjmgf_sdk_divider_view"
+        android:visibility="gone">
+
+        <include layout="@layout/bjmgf_sdk_questions_is_null" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_id_common_question_list_view_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bjmgf_sdk_divider_view"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ListView
+            android:id="@+id/bjmgf_sdk_common_question_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+    </LinearLayout>
+
+</RelativeLayout>

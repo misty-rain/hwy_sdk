@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bjmgf_sdk_white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_customerCenterLlId"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bjmgf_sdk_navigation_background"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/bjmgf_sdk_id_close_customer_center_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+            android:src="@drawable/bjmgf_sdk_back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_customerCenterStr"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size20"
+            android:textStyle="bold" />
+
+        <!-- 平衡用 -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/bjmgf_sdk_padding10"
+            android:src="@drawable/bjmgf_sdk_back"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bjmgf_sdk_account_page_bg"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp" >
+
+        <LinearLayout
+            android:id="@+id/bjmgf_sdk_id_common_question_layout"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bjmgf_sdk_margin40"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/bjmgf_sdk_id_common_question_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bjmgf_sdk_margin37"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/bjmgf_sdk_customerCenterFAQStr"
+                android:textColor="@color/bjmgf_sdk_question_font_line"
+                android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+            <ImageView
+                android:id="@+id/bjmgf_sdk_id_common_question_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bjmgf_sdk_margin3"
+                android:background="@color/bjmgf_sdk_question_font_line" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bjmgf_sdk_id_send_question_layout"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bjmgf_sdk_margin40"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/bjmgf_sdk_id_send_question_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bjmgf_sdk_margin37"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/bjmgf_sdk_customerCenterSendQuestionStr"
+                android:textColor="@color/bjmgf_sdk_question_font_line"
+                android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+            <ImageView
+                android:id="@+id/bjmgf_sdk_id_send_question_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bjmgf_sdk_margin3"
+                android:background="@color/bjmgf_sdk_question_font_line" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bjmgf_sdk_id_my_question_layout"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/bjmgf_sdk_margin40"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/bjmgf_sdk_id_my_question_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bjmgf_sdk_margin37"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/bjmgf_sdk_customerCenterMyQuestionStr"
+                android:textColor="@color/bjmgf_sdk_question_font_line"
+                android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+            <ImageView
+                android:id="@+id/bjmgf_sdk_id_my_question_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bjmgf_sdk_margin3"
+                android:background="@color/bjmgf_sdk_question_font_line" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 可以左右滑动 -->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/bjmgf_sdk_id_about_question_content_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bjmgf_sdk_blue_line"
+        android:visibility="gone" >
+    </android.support.v4.view.ViewPager>
+
+    <!-- 动态加载页面，加载除标题栏，提示栏的次级页面 -->
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_id_about_question_content_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bjmgf_sdk_blue_line"
+        android:orientation="vertical"
+        android:visibility="gone" >
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bjmgf_sdk_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_questions_gray_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bjmgf_sdk_page_background"
+        android:orientation="vertical"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_id_questions_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_common_text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="8.5"
+            android:paddingBottom="@dimen/bjmgf_sdk_margin15"
+            android:paddingLeft="@dimen/bjmgf_sdk_margin10"
+            android:paddingTop="@dimen/bjmgf_sdk_margin15"
+            android:singleLine="false"
+            android:text="asdjfalskdjf;laskdasdjfalskdjf;laskdasdjfalskdjf;laskdasdjfalskdjf;laskd"
+            android:textColor="@color/bjmgf_sdk_black"
+            android:textSize="@dimen/bjmgf_sdk_font_size14" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/bjmgf_sdk_questions_put_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bjmgf_sdk_forward"
+                android:clickable="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/bjmgf_sdk_common_text_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:singleLine="false"
+        android:textColor="@color/bjmgf_sdk_textgray"
+        android:textSize="@dimen/bjmgf_sdk_font_size13"
+        android:visibility="gone" />
+
+</LinearLayout>

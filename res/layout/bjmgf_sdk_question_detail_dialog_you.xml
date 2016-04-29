@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="6dp"
+    android:paddingRight="6dp"
+    android:paddingTop="@dimen/bjmgf_sdk_margin5">
+
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_respond_time_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bjmgf_sdk_customerCenterLlId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_respond_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bjmgf_sdk_time_flag_background"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/bjmgf_sdk_margin2"
+            android:paddingLeft="@dimen/bjmgf_sdk_margin6"
+            android:paddingRight="@dimen/bjmgf_sdk_margin6"
+            android:paddingTop="@dimen/bjmgf_sdk_margin2"
+            android:text="@string/bjmgf_sdk_question_list_time"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size10" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_responda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bjmgf_sdk_respond_time_total"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bjmgf_sdk_dialog_left"
+        android:maxWidth="200dp"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="12dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_respond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+            android:textSize="@dimen/bjmgf_sdk_font_size14" />
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_watch_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:text="@string/bjmgf_sdk_question_watch_file"
+            android:textColor="@drawable/bjmgf_sdk_blue_text_button_selector"
+            android:textSize="@dimen/bjmgf_sdk_font_size12" />
+
+    </LinearLayout>
+
+</RelativeLayout>

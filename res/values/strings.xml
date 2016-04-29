@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ACTIVITY_ENTRY_NAME</string>
+    <string name="button_submit_calcle">取消</string>
+    <string name="button_submit_entry">确定</string>
+</resources>

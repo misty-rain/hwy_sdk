@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bjmgf_sdk_page_background" >
+    
+    <!-- 标题栏 -->
+	<RelativeLayout 
+	    android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_title_LayoutId"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:background="@color/bjmgf_sdk_navigation_background" >
+		
+		<RelativeLayout
+            android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_closeLlId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+			android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+			android:paddingTop="@dimen/bjmgf_sdk_padding10"
+			android:paddingRight="@dimen/bjmgf_sdk_margin20"			
+			android:paddingBottom="@dimen/bjmgf_sdk_padding10"
+			android:layout_alignParentLeft="true">
+            <ImageView
+                android:id="@+id/bjmgf_sdk_closeAboutBtnId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bjmgf_sdk_back"/>
+        </RelativeLayout>
+ 
+        <TextView
+            android:id="@+id/bjmgf_sdk_messageTextViewId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_dock_pay_center_rechargeBtnStr"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size20"
+            android:textStyle="bold" />
+        
+    </RelativeLayout>
+	<RelativeLayout android:id="@+id/bjmgf_sdk_dock_pay_recharge_center_priceLayoutId"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/bjmgf_sdk_dock_pay_center_recharge_title_LayoutId"
+		android:background="@color/bjmgf_sdk_white"
+		android:paddingTop="@dimen/bjmgf_sdk_margin10"
+		android:paddingBottom="@dimen/bjmgf_sdk_margin10"
+		android:paddingLeft="@dimen/bjmgf_sdk_margin15"
+		android:paddingRight="@dimen/bjmgf_sdk_margin15"
+	    >
+		<TextView android:id="@+id/bjmgf_sdk_pay_recharge_center_prop_orderdetail_titleId"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/bjmgf_sdk_black"
+	        android:text="@string/bjmgf_sdk_dock_pay_center_ordertail"
+	        android:layout_centerVertical="true"
+	        android:textSize="@dimen/bjmgf_sdk_font_size16" />
+	    <TextView android:id="@+id/bjmgf_sdk_pay_recharge_center_priceId"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/bjmgf_sdk_text_price_color"
+	        android:layout_centerVertical="true"
+	        android:layout_toLeftOf="@+id/bjmgf_sdk_pay_recharge_center_price_unitId"
+	        android:textSize="@dimen/bjmgf_sdk_font_size16" />
+	    <TextView android:id="@+id/bjmgf_sdk_pay_recharge_center_price_unitId"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/bjmgf_sdk_dock_pay_center_unitStr"
+	        android:textColor="@color/bjmgf_sdk_textgray"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignBaseline="@+id/bjmgf_sdk_pay_recharge_center_priceId"
+	        android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+	    <TextView
+	        android:id="@+id/bjmgf_sdk_pay_recharge_center_prop_count"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/bjmgf_sdk_pay_recharge_center_priceId"
+	        android:layout_alignBottom="@+id/bjmgf_sdk_pay_recharge_center_priceId"
+	        android:layout_toLeftOf="@+id/bjmgf_sdk_pay_recharge_center_priceId"
+	        android:layout_marginRight="@dimen/bjmgf_sdk_margin2"
+	        android:text="@string/bjmgf_sdk_dock_recharge_rechargeOrderActionStr"
+	        android:textColor="@color/bjmgf_sdk_textgray"
+	        android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+	</RelativeLayout>
+    	   	
+   	<TextView android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_gap_line"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="@dimen/bjmgf_sdk_margin1"
+   	    android:background="@color/bjmgf_sdk_line_gray"
+   	    android:layout_below="@+id/bjmgf_sdk_dock_pay_recharge_center_priceLayoutId"/>
+	
+	<RelativeLayout android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_myBalanceId"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@color/bjmgf_sdk_white"
+	    android:paddingLeft="@dimen/bjmgf_sdk_margin15" 
+	    android:paddingTop="@dimen/bjmgf_sdk_margin12" 
+	    android:paddingRight="@dimen/bjmgf_sdk_margin15" 
+	    android:paddingBottom="@dimen/bjmgf_sdk_margin12" 
+	    android:layout_below="@id/bjmgf_sdk_dock_pay_center_recharge_gap_line"
+	    >
+
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:text="@string/bjmgf_sdk_dock_pay_center_blanceStr"
+	        android:textColor="@color/bjmgf_sdk_black"
+	        android:textSize="@dimen/bjmgf_sdk_font_size16" 
+	        android:layout_centerVertical="true"/>
+
+	    <TextView
+	        android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_balanceId"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toLeftOf="@+id/bjmgf_sdk_dock_pay_center_recharge_unitId"
+	        android:textColor="@color/bjmgf_sdk_text_price_color"
+	        android:textSize="@dimen/bjmgf_sdk_font_size20" 
+	        android:layout_centerVertical="true"/>
+
+	    <TextView
+	        android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_unitId"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:text="@string/bjmgf_sdk_dock_pay_center_unitStr"
+	        android:textColor="@color/bjmgf_sdk_textgray"
+	        android:textSize="@dimen/bjmgf_sdk_font_size16" 
+	        android:layout_centerVertical="true"/>
+
+	    <TextView android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_promptId"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_below="@id/bjmgf_sdk_dock_pay_center_recharge_unitId"
+	        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+	        android:textColor="#ff0000"
+	        android:textSize="@dimen/bjmgf_sdk_font_size12" 
+	        android:visibility="gone"
+	        android:layout_centerVertical="true"
+	        />
+	</RelativeLayout>
+	
+	<ScrollView android:layout_width="match_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_below="@id/bjmgf_sdk_dock_pay_center_recharge_myBalanceId"
+	    android:scrollbars="none"> 
+	
+		<LinearLayout android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_choosePayType_LayoutId"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		   	android:background="@color/bjmgf_sdk_white"
+		   	android:orientation="vertical"
+		   	android:layout_marginTop="@dimen/bjmgf_sdk_margin8"
+		   	android:layout_below="@id/bjmgf_sdk_dock_pay_center_recharge_myBalanceId"
+		   	android:visibility="visible"
+		   	>
+
+			<TextView
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:background="@color/bjmgf_sdk_page_background"
+			    android:paddingBottom="@dimen/bjmgf_sdk_margin2"
+			    android:paddingLeft="@dimen/bjmgf_sdk_margin15"
+			    android:paddingRight="@dimen/bjmgf_sdk_margin15"
+			    android:text="@string/bjmgf_sdk_dock_pay_center_choosePayTypeStr"
+			    android:textColor="@color/bjmgf_sdk_textgray"
+			    android:textSize="@dimen/bjmgf_sdk_font_size14" />
+
+		   	<TextView android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_pay_type_alipayId"
+		   	    android:layout_width="match_parent"
+		   	    android:layout_height="wrap_content"
+	       	   	android:paddingLeft="@dimen/bjmgf_sdk_margin15"
+	       	   	android:paddingTop="@dimen/bjmgf_sdk_margin10"
+	       	   	android:paddingBottom="@dimen/bjmgf_sdk_margin10"
+		   		android:paddingRight="@dimen/bjmgf_sdk_margin15"
+		   	    android:textColor="@color/bjmgf_sdk_black"
+		   	    android:gravity="center_vertical"
+		   	    android:drawableRight="@drawable/bjmgf_sdk_forward"
+		   	    android:drawableLeft="@drawable/bjmgf_sdk_dock_pay_type_alipay"
+		   	    android:drawablePadding="@dimen/bjmgf_sdk_margin10"
+		   	    android:textSize="@dimen/bjmgf_sdk_font_size16"
+		   	    android:text="@string/bjmgf_sdk_dock_recharge_ali_titleStr"/>
+		   	
+		   	<include layout="@layout/bjmgf_sdk_gray_gap_line_1dp"/>
+		   	
+		   	<TextView android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_pay_type_unionpayId"
+		   	    android:layout_width="match_parent"
+		   	    android:layout_height="wrap_content"
+	       	   	android:paddingLeft="@dimen/bjmgf_sdk_margin15"
+	       	   	android:paddingTop="@dimen/bjmgf_sdk_margin10"
+	       	   	android:paddingBottom="@dimen/bjmgf_sdk_margin10"
+		   		android:paddingRight="@dimen/bjmgf_sdk_margin15"
+		   	    android:textColor="@color/bjmgf_sdk_black"
+		   	    android:gravity="center_vertical"
+		   	    android:drawableRight="@drawable/bjmgf_sdk_forward"
+		   	    android:drawableLeft="@drawable/bjmgf_sdk_dock_pay_type_unionpay"
+		   	    android:drawablePadding="@dimen/bjmgf_sdk_margin10"
+		   	    android:textSize="@dimen/bjmgf_sdk_font_size16"
+		   	    android:text="@string/bjmgf_sdk_dock_pay_center_unionPayStr"/>
+		   	
+		   	<include layout="@layout/bjmgf_sdk_gray_gap_line_1dp"/>
+		   	
+		   	<TextView android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_pay_type_smsPayId"
+		   	    android:layout_width="match_parent"
+		   	    android:layout_height="wrap_content"
+	       	   	android:paddingLeft="@dimen/bjmgf_sdk_margin15"
+	       	   	android:paddingTop="@dimen/bjmgf_sdk_margin10"
+	       	   	android:paddingBottom="@dimen/bjmgf_sdk_margin10"
+		   		android:paddingRight="@dimen/bjmgf_sdk_margin15"
+		   	    android:textColor="@color/bjmgf_sdk_black"
+		   	    android:gravity="center_vertical"
+		   	    android:drawableRight="@drawable/bjmgf_sdk_forward"
+		   	    android:drawableLeft="@drawable/bjmgf_sdk_dock_pay_type_sms"
+		   	    android:drawablePadding="@dimen/bjmgf_sdk_margin10"
+		   	    android:textSize="@dimen/bjmgf_sdk_font_size16"
+		   	    android:text="@string/bjmgf_sdk_dock_pay_center_smsPayStr"/>
+		   	
+		   	<include layout="@layout/bjmgf_sdk_gray_gap_line_1dp"/>
+		   	
+		   	<TextView android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_pay_type_rechargeCardPayId"
+		   	    android:layout_width="match_parent"
+		   	    android:layout_height="wrap_content"
+	       	   	android:paddingLeft="@dimen/bjmgf_sdk_margin15"
+	       	   	android:paddingTop="@dimen/bjmgf_sdk_margin10"
+	       	   	android:paddingBottom="@dimen/bjmgf_sdk_margin10"
+		   		android:paddingRight="@dimen/bjmgf_sdk_margin15"
+		   	    android:textColor="@color/bjmgf_sdk_black"
+		   	    android:gravity="center_vertical"
+		   	    android:drawableRight="@drawable/bjmgf_sdk_forward"
+		   	    android:drawableLeft="@drawable/bjmgf_sdk_dock_pay_type_recharge_card"
+		   	    android:drawablePadding="@dimen/bjmgf_sdk_margin10"
+		   	    android:textSize="@dimen/bjmgf_sdk_font_size16"
+		   	    android:text="@string/bjmgf_sdk_dock_pay_center_rechargeCardPayStr"/>
+		    
+		   	<TextView 
+		   	    android:id="@+id/bjmgf_sdk_dock_pay_center_recharge_pay_type_rechargeWxPayId"
+		   	    android:layout_width="match_parent"
+		   	    android:layout_height="wrap_content"
+	       	   	android:paddingLeft="@dimen/bjmgf_sdk_margin15"
+	       	   	android:paddingTop="@dimen/bjmgf_sdk_margin10"
+	       	   	android:paddingBottom="@dimen/bjmgf_sdk_margin10"
+		   		android:paddingRight="@dimen/bjmgf_sdk_margin15"
+		   	    android:textColor="@color/bjmgf_sdk_black"
+		   	    android:gravity="center_vertical"
+		   	    android:drawableRight="@drawable/bjmgf_sdk_forward"
+		   	    android:drawableLeft="@drawable/bjmgf_sdk_dock_pay_type_recharge_card"
+		   	    android:drawablePadding="@dimen/bjmgf_sdk_margin10"
+		   	    android:textSize="@dimen/bjmgf_sdk_font_size16"
+		   	    android:text="@string/bjmgf_sdk_dock_pay_center_rechargeWxPayStr"/>
+		   	
+		</LinearLayout>
+	</ScrollView>
+
+</RelativeLayout>

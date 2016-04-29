@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/bjmgf_sdk_page_background">
+
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_submit_group"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bjmgf_sdk_white_background_selector" >
+
+        <View
+            android:id="@+id/bjmgf_sdk_dividerview"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bjmgf_sdk_divider_color" />
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_send_file"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/bjmgf_sdk_dividerview"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_send"
+            android:textColor="@drawable/bjmgf_sdk_blue_text_button_selector" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/bjmgf_sdk_question_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bjmgf_sdk_submit_group" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bjmgf_sdk_page_background" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/bjmgf_sdk_selectquestiontype"
+                    android:textColor="@color/bjmgf_sdk_black" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_idfilechanged"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bjmgf_sdk_white_background_selector" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_changetype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="12dp"
+                    android:hint="@string/bjmgf_sdk_none"
+                    android:textColor="@color/bjmgf_sdk_black" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/bjmgf_sdk_forward" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/bjmgf_sdk_changetype"
+                    android:layout_marginLeft="12dp"
+                    android:background="?android:attr/listDivider" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/bjmgf_sdk_selectpettwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bjmgf_sdk_white_background_selector" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_none"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="12dp"
+                    android:hint="@string/bjmgf_sdk_none"
+                    android:textColor="@color/bjmgf_sdk_black" />
+
+                <ImageView
+                    android:id="@+id/bjmgf_sdk_image_forward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/bjmgf_sdk_forward"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/bjmgf_sdk_send_question_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/bjmgf_sdk_page_background"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/bjmgf_sdk_selectservice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bjmgf_sdk_white_background_selector" >
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_service"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="12dp"
+                        android:text="@string/bjmgf_sdk_service"
+                        android:textColor="@color/bjmgf_sdk_black" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/bjmgf_sdk_forward" />
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_inputservice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginRight="28dp"
+                        android:ellipsize="end"
+                        android:hint="@string/bjmgf_sdk_inputservice"
+                        android:singleLine="true"
+                        android:textColor="@color/bjmgf_sdk_gray" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/bjmgf_sdk_page_background"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/bjmgf_sdk_playername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bjmgf_sdk_white_background_selector" >
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_rolename"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="12dp"
+                        android:text="@string/bjmgf_sdk_rolename"
+                        android:textColor="@color/bjmgf_sdk_black" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/bjmgf_sdk_forward" />
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_inputname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginRight="28dp"
+                        android:ellipsize="end"
+                        android:hint="@string/bjmgf_sdk_inputrolename"
+                        android:singleLine="true"
+                        android:textColor="@color/bjmgf_sdk_gray" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/bjmgf_sdk_page_background"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/bjmgf_sdk_question_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bjmgf_sdk_white_background_selector" >
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_questiontitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="12dp"
+                        android:text="@string/bjmgf_sdk_questiontitle"
+                        android:textColor="@color/bjmgf_sdk_black" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/bjmgf_sdk_forward" />
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_inputtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginRight="28dp"
+                        android:ellipsize="end"
+                        android:hint="@string/bjmgf_sdk_inputquestiontitle"
+                        android:singleLine="true"
+                        android:textColor="@color/bjmgf_sdk_gray" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/bjmgf_sdk_page_background"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/bjmgf_sdk_question_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bjmgf_sdk_white_background_selector" >
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_questiondetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="12dp"
+                        android:text="@string/bjmgf_sdk_question_details"
+                        android:textColor="@color/bjmgf_sdk_black" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/bjmgf_sdk_forward" />
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_inputquestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginRight="28dp"
+                        android:ellipsize="end"
+                        android:hint="@string/bjmgf_sdk_inputyourquestion"
+                        android:singleLine="true"
+                        android:textColor="@color/bjmgf_sdk_gray" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/bjmgf_sdk_page_background"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/bjmgf_sdk_white" >
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_sendfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="12dp"
+                        android:text="@string/bjmgf_sdk_sendfile"
+                        android:textColor="@color/bjmgf_sdk_black" />
+
+                    <Button
+                        android:id="@+id/bjmgf_sdk_change_file"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:background="@drawable/bjmgf_sdk_btn_send"
+                        android:text="@string/bjmgf_sdk_sendbutton"
+                        android:textColor="@color/bjmgf_sdk_white" />
+
+                    <TextView
+                        android:id="@+id/bjmgf_sdk_havesend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="120dp"
+                        android:hint="@string/bjmgf_sdk_havenotsendfile"
+                        android:textColor="@color/bjmgf_sdk_gray" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/bjmgf_sdk_page_background"
+                    android:orientation="vertical" >
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

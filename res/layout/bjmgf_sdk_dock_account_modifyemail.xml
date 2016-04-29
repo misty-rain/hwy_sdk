@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:orientation="vertical">
+    <!-- 标题栏 -->
+	<include layout="@layout/bjmgf_sdk_dock_header" />
+	
+    <!-- 分隔线 -->    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bjmgf_sdk_gap_gray" 
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"/>
+	
+	<TextView
+	        android:id="@+id/bjmgf_sdk_float_account_manager_bindemail_show"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:padding="@dimen/bjmgf_sdk_margin15"
+	        android:textColor="@color/bjmgf_sdk_black"
+	        android:textSize="@dimen/bjmgf_sdk_font_size16"
+	        android:background="@color/bjmgf_sdk_white"/>
+	
+	<!-- 分隔线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bjmgf_sdk_gap_gray"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin10" />
+	
+	<TextView 
+	    android:gravity="left"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="@dimen/bjmgf_sdk_margin15"
+	    android:textColor="@color/bjmgf_sdk_text_gray"
+	    android:textSize="@dimen/bjmgf_sdk_font_size14"
+	    android:text="@string/bjmgf_sdk_floatWindow_accountManager_bindEmailStr_warn"/>
+
+</LinearLayout>

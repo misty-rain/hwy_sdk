@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bjmgf_sdk_white"
+    android:orientation="vertical" >
+ 
+ <!-- 标题栏 -->
+	<RelativeLayout 
+	    android:id="@+id/bjmgf_sdk_aboutLlId"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:background="@color/bjmgf_sdk_navigation_background" >
+		
+		<RelativeLayout
+            android:id="@+id/bjmgf_sdk_about_closeLlId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+			android:padding="@dimen/bjmgf_sdk_padding10"
+			android:layout_alignParentLeft="true">
+            <ImageView
+                android:id="@+id/bjmgf_sdk_closeAboutBtnId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bjmgf_sdk_back"/>
+        </RelativeLayout>
+ 
+        <TextView
+            android:id="@+id/bjmgf_sdk_messageTextViewId"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_aboutStr"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size20"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+	<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginBottom="@dimen/bjmgf_sdk_margin5" >
+        
+	    <LinearLayout 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+		    android:layout_centerInParent="true">
+	        <ImageView
+	            android:id="@+id/bjmgf_sdk_about_logoId"
+            android:layout_width="147dp"
+            android:layout_height="62dp"
+	            android:layout_gravity="center_horizontal"
+	            android:src="@drawable/bjmgf_sdk_about_icon" />
+
+	        <TextView
+	            android:id="@+id/bjmgf_sdk_version_TvId"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginBottom="@dimen/bjmgf_sdk_margin5"
+	            android:layout_gravity="center_horizontal"
+	            android:textColor="@color/bjmgf_sdk_gray" />
+
+	      	
+	    </LinearLayout>    
+	
+	    <LinearLayout
+	        android:id="@+id/bjmgf_sdk_about_copyRightllId"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_centerHorizontal="true"
+	        android:orientation="vertical" >
+	        	        
+	      	<TextView
+	            android:id="@+id/bjmgf_sdk_about_popularize"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="center"
+	            android:layout_gravity="center_horizontal"
+	            android:textSize="@dimen/bjmgf_sdk_font_size12"
+	            android:text="@string/bjmgf_sdk_aboutCompanyPopularizeStr"
+	            android:lineSpacingMultiplier="1.2"
+	            android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+	            android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+	            android:textColor="@color/bjmgf_sdk_black" />
+	
+	        <TextView
+	            android:id="@+id/bjmgf_sdk_aboutCopyRightShowId"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:text="@string/bjmgf_sdk_aboutCopyRightStr"
+	            android:textColor="@color/bjmgf_sdk_textPhone" />
+	
+	        <TextView
+	            android:id="@+id/bjmgf_sdk_aboutAllRightShowId"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:gravity="center_horizontal"
+	            android:text="@string/bjmgf_sdk_aboutAllRightStr"
+	            android:textColor="@color/bjmgf_sdk_textPhone" />
+	    </LinearLayout>
+	    
+	</RelativeLayout>
+</LinearLayout>

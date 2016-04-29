@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bjmgf_sdk_bg" >
+
+    <include layout="@layout/bjmgf_sdk_include_titlefix"/>
+    
+    <com.bojoy.bjsdk_mainland_new.widget.ClearEditText
+	    android:id="@+id/bjmgf_sdk_find_pwd_email_passport"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+        android:singleLine="true"
+	 	android:hint="@string/bjmgf_sdk_find_password_email_input_passport"
+        android:textColor="@color/bjmgf_sdk_gray"
+        android:textSize="@dimen/bjmgf_sdk_font_size14"
+        android:textColorHint="@color/bjmgf_sdk_editTextFontGray"
+        android:imeOptions="flagNoExtractUi"
+        android:inputType="text"
+        clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close" 
+        android:paddingLeft="@dimen/bjmgf_sdk_margin10"
+		android:paddingRight="@dimen/bjmgf_sdk_margin10"/>
+    
+   	<com.bojoy.bjsdk_mainland_new.widget.ClearEditText
+	    android:id="@+id/bjmgf_sdk_find_pwd_email"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+        android:singleLine="true"
+	 	android:hint="@string/bjmgf_sdk_find_password_email_input_email"
+        android:textColor="@color/bjmgf_sdk_gray"
+        android:textSize="@dimen/bjmgf_sdk_font_size14"
+        android:textColorHint="@color/bjmgf_sdk_editTextFontGray"
+        android:imeOptions="flagNoExtractUi"
+        android:inputType="text"
+        clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close" 
+        android:paddingLeft="@dimen/bjmgf_sdk_margin10"
+		android:paddingRight="@dimen/bjmgf_sdk_margin10"/>
+   	
+   	<TextView
+   	    android:layout_width="match_parent"
+   	    android:layout_height="wrap_content"
+   	    android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+   	    android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+   	    android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+   	    android:textColor="@color/bjmgf_sdk_light_gray"
+   	    android:textSize="@dimen/bjmgf_sdk_font_size14"
+   	    android:text="@string/bjmgf_sdk_find_password_email_input_content"/>
+	
+    <Button
+        android:id="@+id/bjmgf_sdk_find_pwd_email_buttonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+        android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+        android:layout_marginBottom="@dimen/bjmgf_sdk_margin15"
+        android:background="@drawable/bjmgf_sdk_blue_button_big_selector"
+        android:text="@string/bjmgf_sdk_find_password_nextStepBtnStr"
+        android:textColor="@color/bjmgf_sdk_white"
+        android:textSize="@dimen/bjmgf_sdk_font_size20" />
+
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+ 	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bjmgf_sdk_dock_icon_layout"
+    android:layout_width="@dimen/bjmgf_sdk_dock_beta_padding_size"
+    android:layout_height="@dimen/bjmgf_sdk_dock_beta_size"
+    android:paddingLeft="@dimen/bjmgf_sdk_margin5"
+    android:paddingRight="@dimen/bjmgf_sdk_margin5" >
+        
+    <ImageView
+        android:id="@+id/bjmgf_sdk_dock_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bjmgf_sdk_float_logo_selector" />
+    
+    <ImageView
+        android:id="@+id/bjmgf_sdk_dock_hint_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/bjmgf_sdk_dock_icon"
+        android:layout_alignRight="@id/bjmgf_sdk_dock_icon"
+        android:visibility="invisible"
+        android:src="@drawable/bjmgf_sdk_float_message_toast"  />
+        
+    <ImageView
+        android:id="@+id/bjmgf_sdk_dock_hint_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/bjmgf_sdk_dock_icon"
+        android:layout_alignLeft="@id/bjmgf_sdk_dock_icon"
+        android:visibility="invisible"
+        android:src="@drawable/bjmgf_sdk_float_message_toast"  />
+   
+   </RelativeLayout>

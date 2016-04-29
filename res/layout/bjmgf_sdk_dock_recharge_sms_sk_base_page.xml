@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bjmgf_sdk_page_background" >
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_dock_recharge_sms_title_LayoutId"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bjmgf_sdk_navigation_background" >
+
+        <RelativeLayout
+            android:id="@+id/bjmgf_sdk_dock_recharge_sms_closeLlId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="@dimen/bjmgf_sdk_padding10"
+            android:paddingLeft="@dimen/bjmgf_sdk_padding10"
+            android:paddingRight="@dimen/bjmgf_sdk_margin20"
+            android:paddingTop="@dimen/bjmgf_sdk_padding10" >
+
+            <ImageView
+                android:id="@+id/bjmgf_sdk_closeAboutBtnId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bjmgf_sdk_back" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/bjmgf_sdk_sms_pay_tag_yd"
+                android:layout_width="@dimen/bjmgf_sdk_margin60"
+                android:layout_height="@dimen/bjmgf_sdk_margin35"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_sms_pay_tag_yd_str"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bjmgf_sdk_margin32"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="@string/bjmgf_sdk_dock_pay_sms_yd"
+                    android:textColor="@color/bjmgf_sdk_sms_pay_sk_title"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <View
+                    android:id="@+id/bjmgf_sdk_sms_pay_tag_yd_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bjmgf_sdk_margin1" 
+                    android:background="@color/bjmgf_sdk_white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bjmgf_sdk_sms_pay_tag_lt"
+                android:layout_width="@dimen/bjmgf_sdk_margin60"
+                android:layout_height="@dimen/bjmgf_sdk_margin35"
+                android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+                android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_sms_pay_tag_lt_str"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bjmgf_sdk_margin32"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="@string/bjmgf_sdk_dock_pay_sms_lt"
+                    android:textColor="@color/bjmgf_sdk_sms_pay_sk_title"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <View
+                    android:id="@+id/bjmgf_sdk_sms_pay_tag_lt_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bjmgf_sdk_margin1" 
+                    android:background="@color/bjmgf_sdk_white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bjmgf_sdk_sms_pay_tag_dx"
+                android:layout_width="@dimen/bjmgf_sdk_margin60"
+                android:layout_height="@dimen/bjmgf_sdk_margin35"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/bjmgf_sdk_sms_pay_tag_dx_str"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bjmgf_sdk_margin32"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="@string/bjmgf_sdk_dock_pay_sms_dx"
+                    android:textColor="@color/bjmgf_sdk_sms_pay_sk_title"
+                    android:textSize="@dimen/bjmgf_sdk_font_size16" />
+
+                <View
+                    android:id="@+id/bjmgf_sdk_sms_pay_tag_dx_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bjmgf_sdk_margin1" 
+                    android:background="@color/bjmgf_sdk_white"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_dock_recharge_sms_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/bjmgf_sdk_dock_recharge_sms_title_LayoutId"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</RelativeLayout>

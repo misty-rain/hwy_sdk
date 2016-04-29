@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:paddingTop="10dp"
+	android:paddingBottom="10dp"
+	android:paddingLeft="20dp"
+	android:paddingRight="20dp"
+	android:background="#ffffff" >
+	 
+    <TextView 
+        android:id="@+id/bjmgf_sdk_dialog_with_input_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:singleLine="true"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:ellipsize="end"
+        android:textColor="#000000" />
+    
+    <View
+        android:id="@+id/bjmgf_sdk_dialog_with_input_divider"
+       	android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/bjmgf_sdk_dialog_with_input_title"
+        android:layout_marginBottom="5dp"
+        android:background="#a0a4a5" />
+        
+    <EditText android:id="@+id/bjmgf_sdk_dialog_with_input_inputId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/bjmgf_sdk_black"
+        android:textSize="@dimen/bjmgf_sdk_font_size14"
+        android:layout_marginLeft="@dimen/bjmgf_sdk_margin10"
+        android:layout_marginRight="@dimen/bjmgf_sdk_margin10"
+        android:singleLine="true"
+        android:layout_above="@+id/bjmgf_sdk_dialog_with_input_buttons_layout"
+        android:inputType="phone|number"/>
+    
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_dialog_with_input_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bjmgf_sdk_dialog_with_input_inputId"
+        android:layout_below="@+id/bjmgf_sdk_dialog_with_input_divider" >
+        
+	    <TextView
+	        android:id="@+id/bjmgf_sdk_dialog_with_input_content"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+			android:paddingLeft="5dp"
+			android:gravity="left|top"
+	        android:layout_centerHorizontal="true"
+	        
+	        android:textSize="16sp"
+	        android:maxLines="5"
+	        android:textColor="#000000" />
+        
+    </RelativeLayout>
+    
+	<LinearLayout
+	    android:id="@+id/bjmgf_sdk_dialog_with_input_buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        
+      	<RelativeLayout
+            android:id="@+id/bjmgf_sdk_dialog_with_input_negative_btn_layout"
+            android:layout_width="0dp"
+        	android:layout_height="wrap_content" 
+        	android:layout_weight="1"
+        	android:visibility="visible">
+            
+            <Button 
+                android:id="@+id/bjmgf_sdk_dialog_with_input_negative_btn"
+                android:layout_width="80dp"
+        		android:layout_height="36dp"
+        		android:layout_centerHorizontal="true"
+                android:background="@drawable/bjmgf_sdk_dialog_button_selector"
+                android:textColor="#ffffff"                
+                android:textSize="16sp" />
+            
+        </RelativeLayout>
+        
+      	<RelativeLayout
+            android:id="@+id/bjmgf_sdk_dialog_with_input_positive_btn_layout"
+            android:layout_width="0dp"
+        	android:layout_height="wrap_content" 
+        	android:layout_weight="1"
+        	android:visibility="visible">
+            
+            <Button 
+                android:id="@+id/bjmgf_sdk_dialog_with_input_positive_btn"
+                android:layout_width="80dp"
+        		android:layout_height="36dp"
+        		android:layout_centerHorizontal="true"
+                android:background="@drawable/bjmgf_sdk_dialog_button_selector"
+                android:textSize="16sp"
+                android:textColor="#ffffff" />
+            
+        </RelativeLayout>
+        
+    </LinearLayout>
+
+</RelativeLayout>

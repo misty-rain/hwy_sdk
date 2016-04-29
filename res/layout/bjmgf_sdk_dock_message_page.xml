@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bjmgf_sdk_page_background">
+
+    <!-- 标题栏 -->
+
+    <RelativeLayout
+        android:id="@+id/bjmgf_sdk_messageLlId"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bjmgf_sdk_navigation_background" >
+
+        <RelativeLayout
+            android:id="@+id/bjmgf_sdk_dock_closeMessage_backLlId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/bjmgf_sdk_padding10" >
+
+            <ImageView
+                android:id="@+id/bjmgf_sdk_closeMessageBtnId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/bjmgf_sdk_back" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/bjmgf_sdk_messageTextViewId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/bjmgf_sdk_messageStr"
+            android:textColor="@color/bjmgf_sdk_white"
+            android:textSize="@dimen/bjmgf_sdk_font_size20"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView android:id="@+id/bjmgf_sdk_message_contentLayoutId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bjmgf_sdk_messageLlId" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/bjmgf_sdk_messageNotify_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/bjmgf_sdk_line_gray"
+                android:dividerHeight="1dp"
+                android:background="@drawable/bjmgf_sdk_item_selector">
+            </ListView>
+            <TextView
+                android:id="@+id/bjmgf_sdk_no_message_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/bjmgf_sdk_margin50"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/bjmgf_sdk_gap_line"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/bjmgf_sdk_line_gray"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/bjmgf_sdk_add_message_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bjmgf_sdk_margin50"
+                android:text="@string/bjmgf_sdk_dock_load_more_message"
+                android:visibility="gone"
+                android:background="@android:color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+    
+    <ImageView android:id="@+id/bjmgf_sdk_message_no_message_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:src="@drawable/bjmgf_sdk_no_message_bg"/>
+
+</RelativeLayout>

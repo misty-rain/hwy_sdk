@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bjmgf_sdk_dock_beta_drawer"
+    android:layout_width="@dimen/bjmgf_sdk_dock_board_beta_width"
+    android:layout_height="@dimen/bjmgf_sdk_dock_beta_drawer_height" >
+    
+    <LinearLayout
+        android:id="@+id/bjmgf_sdk_dock_beta_drawer_parent"
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:orientation="horizontal"
+    	android:layout_gravity="center_vertical" >
+    	
+        <View
+            android:id="@+id/bjmgf_sdk_dock_beta_drawer_left_half"
+        	android:layout_width="@dimen/bjmgf_sdk_dock_beta_half_size"
+    		android:layout_height="match_parent"
+    		android:visibility="gone"
+    		android:background="@drawable/bjmgf_sdk_float_left_half_bg" />
+        
+        <LinearLayout
+            android:id="@+id/bjmgf_sdk_dock_beta_drawer_layout"
+        	android:layout_width="@dimen/bjmgf_sdk_dock_board_beta_scale_width"
+    		android:layout_height="match_parent"
+    		android:orientation="horizontal">
+    		
+	       	<View
+	            android:id="@+id/bjmgf_sdk_dock_beta_drawer_right_margin"
+	        	android:layout_width="@dimen/bjmgf_sdk_margin7"
+	    		android:layout_height="match_parent"
+	    		android:visibility="gone" />
+	       	
+	       	<View
+	            android:id="@+id/bjmgf_sdk_dock_beta_drawer_left_pad"
+	        	android:layout_width="@dimen/bjmgf_sdk_dock_beta_half_size"
+	    		android:layout_height="match_parent"
+	    		android:visibility="gone" />
+
+		    <RelativeLayout
+		        android:id="@+id/bjmgf_sdk_dock_account_manager"
+		        android:layout_width="0dp"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1" >
+		
+		        <ImageView
+		            android:id="@+id/bjmgf_sdk_dock_account_manager_image"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent"
+		            android:layout_centerVertical="true"
+		            android:padding="@dimen/bjmgf_sdk_margin7"
+		            android:src="@drawable/bjmgf_sdk_float_account_manager_selector" />
+		
+		        <ImageView
+		            android:id="@+id/bjmgf_sdk_dock_account_manager_hint"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignRight="@id/bjmgf_sdk_dock_account_manager_image"
+		            android:layout_alignTop="@id/bjmgf_sdk_dock_account_manager_image"
+		            android:visibility="invisible"
+		            android:src="@drawable/bjmgf_sdk_float_message_toast" />
+		    </RelativeLayout>
+		   	
+		    <RelativeLayout
+		        android:id="@+id/bjmgf_sdk_dock_wish"
+		        android:layout_width="0dp"
+		        android:layout_height="match_parent"
+				android:visibility="gone"
+		        android:layout_weight="1" >
+		        
+		        <ImageView
+		            android:id="@+id/bjmgf_sdk_dock_wish_image"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent"
+		            android:layout_centerVertical="true" 
+		            android:padding="@dimen/bjmgf_sdk_margin7"
+		            android:src="@drawable/bjmgf_sdk_float_wish_selector" />
+		        
+		        <ImageView
+		            android:id="@+id/bjmgf_sdk_dock_wish_hint"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignTop="@id/bjmgf_sdk_dock_wish_image"
+		            android:layout_alignRight="@id/bjmgf_sdk_dock_wish_image"
+		            android:visibility="invisible"
+		            android:src="@drawable/bjmgf_sdk_float_message_toast" />
+		       
+		   	</RelativeLayout>
+		   	
+		   	<RelativeLayout
+		        android:id="@+id/bjmgf_sdk_dock_message"
+		        android:layout_width="0dp"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1" >
+		        
+		        <ImageView
+		            android:id="@+id/bjmgf_sdk_dock_message_image"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent"
+		            android:layout_centerVertical="true" 
+		            android:padding="@dimen/bjmgf_sdk_margin7"
+		            android:src="@drawable/bjmgf_sdk_float_message_selector" />
+		        
+		        <ImageView
+		            android:id="@+id/bjmgf_sdk_dock_message_hint"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignTop="@id/bjmgf_sdk_dock_message_image"
+		            android:layout_alignRight="@id/bjmgf_sdk_dock_message_image"
+		            android:visibility="invisible"
+		            android:src="@drawable/bjmgf_sdk_float_message_toast" />
+		       
+		   	</RelativeLayout>
+		    
+		    <RelativeLayout
+		        android:id="@+id/bjmgf_sdk_dock_custom_service"
+		        android:layout_width="0dp"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1" >
+		        
+		        <ImageView
+		            android:id="@+id/bjmgf_sdk_dock_custom_service_image"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent"
+		            android:layout_centerVertical="true" 
+		            android:padding="@dimen/bjmgf_sdk_margin7"
+		            android:src="@drawable/bjmgf_sdk_float_client_server_selector" />
+		        
+		        <ImageView
+		            android:id="@+id/bjmgf_sdk_dock_custom_service_hint"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignTop="@id/bjmgf_sdk_dock_custom_service_image"
+		            android:layout_alignRight="@id/bjmgf_sdk_dock_custom_service_image"
+		            android:visibility="invisible"
+		            android:src="@drawable/bjmgf_sdk_float_message_toast" />
+		       
+		   	</RelativeLayout>
+		   	
+		  <!--   <RelativeLayout
+		        android:id="@+id/bjmgf_sdk_dock_about"
+		        android:layout_width="0dp"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1" >
+		        
+		        <ImageView
+		            android:id="@+id/bjmgf_sdk_dock_about_image"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent"
+		            android:layout_centerVertical="true"
+		            android:padding="@dimen/bjmgf_sdk_margin7"
+		            android:src="@drawable/bjmgf_sdk_float_about_selector" />
+		        
+		        <ImageView
+		            android:id="@+id/bjmgf_sdk_dock_about_hint"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignTop="@id/bjmgf_sdk_dock_about_image"
+		            android:layout_alignRight="@id/bjmgf_sdk_dock_about_image"
+		            android:visibility="invisible"
+		            android:src="@drawable/bjmgf_sdk_float_message_toast" />
+		       
+		   	</RelativeLayout> -->
+		   	
+		   	<View
+	            android:id="@+id/bjmgf_sdk_dock_beta_drawer_right_pad"
+	        	android:layout_width="@dimen/bjmgf_sdk_dock_beta_half_size"
+	    		android:layout_height="match_parent"
+	    		android:visibility="gone" />
+
+		   	<View
+	            android:id="@+id/bjmgf_sdk_dock_beta_drawer_left_margin"
+	        	android:layout_width="@dimen/bjmgf_sdk_margin7"
+	    		android:layout_height="match_parent"
+	    		android:visibility="gone" />
+	   	
+ 	   	</LinearLayout>
+	   	
+	    <View
+            android:id="@+id/bjmgf_sdk_dock_beta_drawer_right_half"
+        	android:layout_width="@dimen/bjmgf_sdk_dock_beta_half_size"
+    		android:layout_height="match_parent"
+    		android:visibility="gone"
+    		android:background="@drawable/bjmgf_sdk_float_right_half_bg" />
+   	
+    </LinearLayout>
+
+</FrameLayout>
