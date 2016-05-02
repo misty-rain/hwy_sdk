@@ -2,6 +2,9 @@ package com.bojoy.bjsdk_mainland_new.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -9,6 +12,10 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
+
+import com.bojoy.bjsdk_mainland_new.model.entity.PassPort;
+import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
+import com.bojoy.bjsdk_mainland_new.ui.view.login.IAccountLoginListView;
 
 /**
  * sharedpreferences工具类
@@ -296,6 +303,32 @@ public class AccountSharePUtils {
 			}
 			editor.commit();
 		}
+	}
+
+	/**
+	 * 加载本地账户列表
+	 *
+	 * @param context 上下文
+	 */
+	public static List<PassPort> getLocalAccountList(Context context) {
+		List<String> list = new ArrayList<String>();
+		Map<String, String> accountMaps = (Map<String, String>) AccountSharePUtils.getAll(context);
+		// 循环将本地账号填入集合中
+		for (Map.Entry<String, String> entry : accountMaps
+				.entrySet()) {
+			list.add(entry.getValue());
+
+		}
+		CompartorUtil compartorUtil = CompartorUtil.getInstance();
+		Collections.sort(list, compartorUtil);
+		//Collections sort 方法默认排序为升序 ，此处利用reverse方法将所有元素重新反转，变为降序
+		Collections.reverse(list);
+		List<PassPort> passPortList = new ArrayList<PassPort>();
+		for (int i = 0; i < list.size(); i++) {
+			String jsonStr = list.get(i).substring(0, list.get(i).indexOf("}") + 1);
+			passPortList.add((JSON.parseObject(jsonStr, PassPort.class)));
+		}
+		return passPortList;
 	}
 
 }

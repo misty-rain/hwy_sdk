@@ -39,8 +39,6 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
     private IBaseView iBaseView;
     EventBus eventBus = EventBus.getDefault();
     Context context;
-    Map<String, String> accountMaps;
-    private List<String> list = new ArrayList<String>();
     private final String TAG = AccountPresenterImpl.class.getSimpleName();
 
     public AccountPresenterImpl(Context context, IBaseView iBaseView) {
@@ -226,24 +224,8 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
      */
     @Override
     public void loadAccountList(Context context) {
-        accountMaps = (Map<String, String>) AccountSharePUtils.getAll(context);
-        // 循环将本地账号填入集合中
-        for (Map.Entry<String, String> entry : accountMaps
-                  .entrySet()) {
-            list.add(entry.getValue());
-
-        }
-        CompartorUtil compartorUtil = CompartorUtil.getInstance();
-        Collections.sort(list, compartorUtil);
-        //Collections sort 方法默认排序为升序 ，此处利用reverse方法将所有元素重新反转，变为降序
-        Collections.reverse(list);
-        List<PassPort> passPortList = new ArrayList<PassPort>();
-        for (int i = 0; i < list.size(); i++) {
-            String jsonStr = list.get(i).substring(0, list.get(i).indexOf("}") + 1);
-            passPortList.add((JSON.parseObject(jsonStr, PassPort.class)));
-        }
+        List<PassPort> passPortList = AccountSharePUtils.getLocalAccountList(context);
         ((IAccountLoginListView) iBaseView).loadingAccountList(passPortList, passPortList.get(0));
-
     }
 
 

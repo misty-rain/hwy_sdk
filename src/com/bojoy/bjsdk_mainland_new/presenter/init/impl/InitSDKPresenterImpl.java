@@ -12,10 +12,13 @@ import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseResultCallbackListene
 import com.bojoy.bjsdk_mainland_new.model.IInitSDKModel;
 import com.bojoy.bjsdk_mainland_new.model.entity.BackResultBean;
 import com.bojoy.bjsdk_mainland_new.model.impl.InitSDKModelImpl;
+import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
+import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.presenter.init.IInitPresenter;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.ui.view.init.IInitView;
+import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
 import com.bojoy.bjsdk_mainland_new.utils.Utility;
@@ -89,12 +92,22 @@ public class InitSDKPresenterImpl implements IInitPresenter, BaseResultCallbackL
             switch (requestSessionEvent) {
                 case BaseRequestEvent.Request_Init: //初始化SDK  事件
                     if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
-                        if (backResultBean.getObj().indexOf("uuid") > -1)
-                            SpUtil.setStringValue(context, "uuid", JSON.parseObject(backResultBean.getObj(), Map.class).get("uuid").toString()); //初始化成功后，将UUID 存储在本地
-                        eventBus.post(new BaseReceiveEvent(BaseReceiveEvent.Flag_Success, ""));
+                        if (backResultBean.getObj().indexOf("uuid") > -1) {
+                            String cUUID = JSON
+                                      .parseObject(backResultBean.getObj(), Map.class)
+                                      .get("uuid").toString();
+                            BJMGFSDKTools.getInstance().currentUserUUID = cUUID;
+                            SpUtil.setStringValue(context, "uuid", cUUID); // 初始化成功后，将UUID
+                            // 存储在本地
+                        }
+                            eventBus.post(new BaseReceiveEvent(
+                                      BaseReceiveEvent.Flag_Success, ""));
                     } else {
-                        eventBus.post(new BaseReceiveEvent(BaseReceiveEvent.Flag_Fail, backResultBean.getMsg()));
+                        eventBus.post(new BaseReceiveEvent(
+                                  BaseReceiveEvent.Flag_Fail, backResultBean
+                                  .getMsg()));
                     }
+
                     break;
                 case BaseRequestEvent.Request_App_Check_Update: //检查更新SDK 事件
                     if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS)

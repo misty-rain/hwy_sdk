@@ -62,6 +62,8 @@ public class BJMGFSDKTools {
     public boolean isCurrUserStatusOnLine;
     //是否网页充值
     public boolean isWapRechargeFlag = true;
+    // 当前用户UUID
+    public String currentUserUUID;
 
     private String offlineMsgFlag = "";
     private String newWishMsgFlag = "";

@@ -24,6 +24,7 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.REORDER_TASKS" />
     <uses-permission android:name="com.sonymobile.permission.SYSTEM_UI_VISIBILITY_EXTENSIONS" />
+    <uses-permission android:name="android.permission.NFC" />
 
     <!-- 支付宝支付 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />

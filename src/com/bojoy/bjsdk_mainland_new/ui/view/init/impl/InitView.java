@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.*;
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseReceiveEvent;
+import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
+import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.presenter.init.IInitPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.init.impl.InitSDKPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
@@ -206,7 +208,13 @@ public class InitView extends BaseDialogPage implements IInitView {
     public void onEventMainThread(BaseReceiveEvent revEvent) {
         if (revEvent.getFlag() == BaseReceiveEvent.Flag_Success) {
             //iInitPresenter.appCheck(context);
-            setAccountLoginView();
+            if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
+                dialog.cancel();
+                IAccountPresenter iAccountPresenter = new AccountPresenterImpl(context, this);
+                iAccountPresenter.autoLogin(context);
+            } else {
+                setAccountLoginView();
+            }
         } else {
             dialog.cancel();
             showError((String) revEvent.getRespMsg());

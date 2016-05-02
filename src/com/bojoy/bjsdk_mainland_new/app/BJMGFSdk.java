@@ -64,6 +64,7 @@ public class BJMGFSdk {
     private PayOrderData payOrderData;
 
 
+
     private MessagePollingTool messageReceiver = null;
 
     private BJMGFSdk() {
@@ -211,15 +212,19 @@ public class BJMGFSdk {
         BaseAppPassport.setVersion(version);
 
         dockManager.createDock(activity.getApplicationContext(), activity);
-        /*
-         * if (BJMGFSDKTools.getInstance().isOnline()) dockManager.openDock();
-		 * else dockManager.closeDock();
-		 */
-        if (!BJMGFSDKTools.getInstance().isCurrUserStatusOnLine()) {
-            eventBus.register(this);
-            epsApplication.onStart(activity.getApplicationContext());
 
-            IInitPresenter initPresenter = new InitSDKPresenterImpl(activity, null);
+        if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine())
+            dockManager.openDock();
+        else
+            dockManager.closeDock();
+
+        if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine()) {
+            if (eventBus.isRegistered(this))
+                eventBus.register(this);
+            epsApplication.onStart(activity.getApplicationContext());
+        } else {
+            IInitPresenter initPresenter = new InitSDKPresenterImpl(activity,
+                      null);
             initPresenter.initSDK(activity);
         }
 
@@ -403,7 +408,7 @@ public class BJMGFSdk {
     public void rechargeProductSDK(Activity activity, String productName,
                                    double cash, int count, String orderSerial, String sendUrl,
                                    String appServerID, String extend, String roleId) {
-        if (BJMGFSDKTools.getInstance().getCurrUserData() == null) {
+        if (BJMGFSDKTools.getInstance().getCurrentPassPort() == null) {
             Toast.makeText(
                       activity,
                       activity.getResources()

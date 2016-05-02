@@ -29,6 +29,8 @@ import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
 import java.util.List;
 
+import static com.bojoy.bjsdk_mainland_new.utils.Resource.layout.bjmgf_sdk_account_login_list_page;
+
 /**
  * Created by wutao on 2015/12/29.
  * 账户列表视图 ，如果当前已经存储用户 ，初始化 跳至此view ，反之跳至AccountLoginview
@@ -52,7 +54,7 @@ public class AccountLoginListView extends BaseDialogPage implements IAccountLogi
     public AccountLoginListView(Context context, PageManager manager,
                                 BJMGFDialog dialog) {
         super(ReflectResourceId.getLayoutId(context,
-                  Resource.layout.bjmgf_sdk_account_login_list_page), context,
+                  bjmgf_sdk_account_login_list_page), context,
                   manager, dialog);
     }
 
