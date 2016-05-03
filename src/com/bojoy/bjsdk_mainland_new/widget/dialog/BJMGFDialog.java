@@ -14,6 +14,7 @@ import android.view.WindowManager;
 
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
+import com.bojoy.bjsdk_mainland_new.presenter.account.logout.LogoutView;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.impl.TryChangePage;
 import com.bojoy.bjsdk_mainland_new.ui.view.init.impl.InitView;
@@ -206,8 +207,8 @@ public class BJMGFDialog extends Dialog {
                 manager.addPage(initPage);
                 break;
             case Page_Logout://登出窗口
-               /* LogoutPage logoutPage = new LogoutPage(getContext(), manager, this);
-                manager.addPage(logoutPage);*/
+               LogoutView logoutPage = new LogoutView(getContext(), manager, this);
+                manager.addPage(logoutPage);
                 break;
             case Page_Login://登陆窗口
                 AccountLoginView loginPage = new AccountLoginView(getContext(), manager, this);

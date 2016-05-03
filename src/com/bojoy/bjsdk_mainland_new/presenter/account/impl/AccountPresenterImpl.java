@@ -94,7 +94,8 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
                         iAccountModel.getUserInfoForSelf(context, SysConstant.GET_USERINFO_TYPE_BASE, this);
                         iAccountModel.getAccountInfo(context, this); //查询账户信息
-                        ((IAccountLoginListView) iBaseView).autoLoginSuccess();
+                       // ((IAccountLoginListView) iBaseView).autoLoginSuccess();
+                        iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.Request_Register://平台注册
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);

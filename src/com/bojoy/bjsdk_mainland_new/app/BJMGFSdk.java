@@ -218,11 +218,12 @@ public class BJMGFSdk {
         else
             dockManager.closeDock();
 
-        if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine()) {
-            if (eventBus.isRegistered(this))
+        if (!BJMGFSDKTools.getInstance().isCurrUserStatusOnLine()) {
+            if (!eventBus.isRegistered(this)) {
                 eventBus.register(this);
-            epsApplication.onStart(activity.getApplicationContext());
-        } else {
+                //epsApplication.onStart(activity.getApplicationContext());
+            }
+
             IInitPresenter initPresenter = new InitSDKPresenterImpl(activity,
                       null);
             initPresenter.initSDK(activity);
@@ -267,13 +268,15 @@ public class BJMGFSdk {
                   online, screenOrientation, listener);
         LogProxy.i(TAG, "productId = " + productId);
 
-        if (!BJMGFSDKTools.getInstance().checkDialogType(bjmgfDialog,
-                  BJMGFDialog.Page_Init)) {
-            bjmgfDialog = new BJMGFDialog((Context) activity, activity,
-                      BJMGFDialog.Page_Init);
-            bjmgfDialog.show();
-        }
 
+        if (!BJMGFSDKTools.getInstance().isCurrUserStatusOnLine()) {
+            if (!BJMGFSDKTools.getInstance().checkDialogType(bjmgfDialog,
+                      BJMGFDialog.Page_Init)) {
+                bjmgfDialog = new BJMGFDialog((Context) activity, activity,
+                          BJMGFDialog.Page_Init);
+                bjmgfDialog.show();
+            }
+        }
     }
 
     /**
@@ -512,6 +515,7 @@ public class BJMGFSdk {
 
     public void onDestroy(Activity activity) {
         LogProxy.i(TAG, "onDestroy");
+        eventBus.unregister(this);
     }
 
     public void closeSdk() {

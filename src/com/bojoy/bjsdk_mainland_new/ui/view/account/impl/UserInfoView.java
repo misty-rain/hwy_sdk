@@ -181,8 +181,8 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
                 checkTextIsEmpty();
                 showProgressDialog();
                 if (flag == 1)
-                    // editUserInfo();
-                    uploadFaceIcon();
+                    editUserInfo();
+                   // uploadFaceIcon();
                 else
                     registerHWYPlatform();
 
@@ -323,7 +323,7 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
 
     @Override
     public void showEditUserInfoSuccess() {
-        if (modifyFaceFlag)
+        if (modifyFaceFlag && filePath != null)
             uploadFaceIcon();
         else
             showSuccess();
@@ -331,7 +331,7 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
 
     @Override
     public void showRegisterHwySuccess() {
-        if (modifyFaceFlag)
+        if (modifyFaceFlag && filePath != null)
             uploadFaceIcon();
         else
             showSuccess();

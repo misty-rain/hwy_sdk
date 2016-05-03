@@ -3,6 +3,8 @@ package com.bojoy.bjsdk_mainland_new.utils;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AppOpsManager;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -27,14 +29,17 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images.Media;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -62,6 +67,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.NetworkInterface;
@@ -77,6 +83,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import okhttp3.internal.Util;
 
 
 /**
@@ -1220,4 +1228,92 @@ public class Utility {
     public static final boolean stringIsEmpty(String s) {
         return s == null || s.trim().isEmpty();
     }
+
+
+    /**
+     * 判断悬浮窗权限是否打开
+     * @param context
+     * @return
+     */
+    public static boolean isSystemAlertWindowOpAllowed(Context context) {
+        final int version = Build.VERSION.SDK_INT;
+        LogProxy.i(TAG, "version = " + version);
+        if (version >= 19) {
+            int op = 24;  // 自己写就是24  为什么是24?看AppOpsManager (默认值)
+            try {
+                Class<?> clazz = AppOpsManager.class;
+                Field field = clazz.getDeclaredField("OP_SYSTEM_ALERT_WINDOW");
+                op = field.getInt(null);
+                LogProxy.i(TAG, "op = " + op);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+            return checkOp(context, op);
+        } else {
+            LogProxy.i(TAG, "permission = " + context.getApplicationInfo().permission);
+            if ((context.getApplicationInfo().flags & 1 << 27) == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    /**
+     * 判断某一权限是否打开
+     * @param context
+     * @param op       权限ID
+     * @return
+     */
+    public static boolean checkOp(Context context, int op) {
+        final int version = Build.VERSION.SDK_INT;
+        if (version >= 19) {
+            AppOpsManager manager = (AppOpsManager) context
+                      .getSystemService(Context.APP_OPS_SERVICE);
+            try {
+                Class<?> clazz = AppOpsManager.class;
+                Method method = clazz.getMethod("checkOp", int.class, int.class, String.class);
+                int permisson = (Integer) method.invoke(manager, op,
+                          Binder.getCallingUid(), context.getPackageName());
+                LogProxy.i(TAG, "permission = " + permisson);
+                if (AppOpsManager.MODE_ALLOWED == permisson) { //
+                    LogProxy.i(TAG, "allowed");
+                    return true;
+                } else {
+                    LogProxy.i(TAG, "ignored");
+                }
+            } catch (Exception e) {
+                LogProxy.w(TAG, e.getMessage());
+            }
+        } else {
+            LogProxy.w(TAG, "Below API 19 cannot invoke!");
+        }
+        return false;
+    }
+
+    /**
+     * 跳转到应用详情页面
+     */
+    public static void goToMiuiSettingPage(Context context){
+        try {
+            Log.i(TAG, "com.miui.securitycenter");
+            Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+            localIntent.setClassName("com.miui.securitycenter","com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+            localIntent.putExtra("extra_pkgname", context.getPackageName());
+            context.startActivity(localIntent);
+        } catch (ActivityNotFoundException localActivityNotFoundException) {
+            Log.i(TAG, "ACTION_APPLICATION_DETAILS_SETTINGS");
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            Uri uri = Uri.fromParts("package", context.getPackageName(), null);
+            intent.setData(uri);
+            context.startActivity(intent);
+        }
+    }
+
+
+
 }

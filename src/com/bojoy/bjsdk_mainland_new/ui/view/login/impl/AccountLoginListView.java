@@ -187,7 +187,6 @@ public class AccountLoginListView extends BaseDialogPage implements IAccountLogi
     public void autoLoginSuccess() {
         dismissProgressDialog();
         openWelcomePage();
-
     }
 
 

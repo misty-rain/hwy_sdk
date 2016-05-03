@@ -30,5 +30,6 @@
     <orderEntry type="library" name="zimon" level="project" />
     <orderEntry type="library" name="okhttp-3.0.1" level="project" />
     <orderEntry type="library" name="okio-1.4.0 (2)" level="project" />
+    <orderEntry type="library" name="collect_v1.0.4" level="project" />
   </component>
 </module>

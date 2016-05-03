@@ -1,6 +1,8 @@
 package com.bojoy.bjsdk_mainland_new.presenter.account.impl;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -29,6 +31,7 @@ import com.bojoy.bjsdk_mainland_new.utils.AccountUtil;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
+import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
 import java.io.File;
 import java.util.Map;
@@ -49,6 +52,7 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
     private String nickName,birth;
 
     private final String TAG = AccountCenterPresenterImpl.class.getSimpleName();
+    private EventBus eventBus = EventBus.getDefault();
 
 
     public AccountCenterPresenterImpl(Context context, IBaseView iBaseView) {
@@ -237,7 +241,7 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
                     case BaseRequestEvent.Request_Logout://登出
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
                         BJMGFSDKTools.getInstance().setCurrUserData(null);
-                        EventBus.getDefault().post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Logout));
+                        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Logout));
                         break;
                 }
             } else {

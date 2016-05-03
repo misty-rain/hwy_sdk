@@ -128,6 +128,8 @@ public class SysConstant {
     public static final int SDK_DOCK_SNS_TYPE = 2;
     public static final int SDK_DOCK_SNS_WISH_POLLMSG_TYPE = 50;
 
+    public static final String MIUI_WARN_FLAG = "MIUI_WARN_FLAG";
+
 
 
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.view.View;
 import android.widget.*;
+
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseReceiveEvent;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
@@ -13,11 +14,13 @@ import com.bojoy.bjsdk_mainland_new.presenter.init.impl.InitSDKPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseDialogPage;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
+import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
 import com.bojoy.bjsdk_mainland_new.ui.view.init.IInitView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.impl.AccountLoginListView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.impl.AccountLoginView;
 import com.bojoy.bjsdk_mainland_new.utils.*;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
+import com.bojoy.bjsdk_mainland_new.widget.dialog.WelComeDialog;
 
 /**
  * Created by wutao on 2015/12/21.
@@ -38,7 +41,7 @@ public class InitView extends BaseDialogPage implements IInitView {
 
     public InitView(Context context, PageManager manager, BJMGFDialog dialog) {
         super(ReflectResourceId.getLayoutId(context, Resource.layout.bjmgf_sdk_init_page),
-                context, manager, dialog);
+                  context, manager, dialog);
         eventBus.register(this);
     }
 
@@ -46,29 +49,29 @@ public class InitView extends BaseDialogPage implements IInitView {
     @Override
     public void onCreateView(View view) {
         mTextView = (TextView) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_init_dialog_textView));
+                  Resource.id.bjmgf_sdk_init_dialog_textView));
         mProgressBar = (ProgressBar) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_init_dialog_progressBar));
+                  Resource.id.bjmgf_sdk_init_dialog_progressBar));
         mButtonByOne = (Button) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_init_dialog_BtnByone));
+                  Resource.id.bjmgf_sdk_init_dialog_BtnByone));
         mUpdateLinearLayout = (LinearLayout) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_init_dialog_updateLinearLayout));
+                  Resource.id.bjmgf_sdk_init_dialog_updateLinearLayout));
         mUpdateButton = (Button) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_init_dialog_updateBtn));
+                  Resource.id.bjmgf_sdk_init_dialog_updateBtn));
         mNotUpdateButton = (Button) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_init_dialog_notUpdateBtn));
+                  Resource.id.bjmgf_sdk_init_dialog_notUpdateBtn));
         mUpdate2Button = (Button) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_init_dialog_update2Btn));
+                  Resource.id.bjmgf_sdk_init_dialog_update2Btn));
         mNotUpdate2Button = (Button) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_init_dialog_notUpdate2Btn));
+                  Resource.id.bjmgf_sdk_init_dialog_notUpdate2Btn));
         /** 检查网络、强制关闭按钮  */
         mButtonByOne.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
                 if (mButtonByOne.getText().toString().equalsIgnoreCase(
-                        context.getResources().getString(ReflectResourceId.getStringId(context,
-                                Resource.string.bjmgf_sdk_init_dialog_checknet_btnStr)))) {
+                          context.getResources().getString(ReflectResourceId.getStringId(context,
+                                    Resource.string.bjmgf_sdk_init_dialog_checknet_btnStr)))) {
                     /** ?暂时先关闭初始化对话框 */
 
                     quit();
@@ -83,15 +86,15 @@ public class InitView extends BaseDialogPage implements IInitView {
             @Override
             public void onClick(View arg0) {
                 if (mUpdateButton.getText().toString().equalsIgnoreCase(
-                        context.getResources().getString(ReflectResourceId.getStringId(context,
-                                Resource.string.bjmgf_sdk_init_dialog_updateVersion_btnStr)))) {
+                          context.getResources().getString(ReflectResourceId.getStringId(context,
+                                    Resource.string.bjmgf_sdk_init_dialog_updateVersion_btnStr)))) {
                     if (Utility.isWifi(context)) {
                         downloadApk();
                     } else {
                         mUpdateButton.setText(ReflectResourceId.getStringId(context,
-                                Resource.string.bjmgf_sdk_init_dialog_continue_updateVersion_btnStr));
+                                  Resource.string.bjmgf_sdk_init_dialog_continue_updateVersion_btnStr));
                         mTextView.setText(ReflectResourceId.getStringId(context,
-                                Resource.string.bjmgf_sdk_init_dialog_isNotWifiNet_TxtViewStr));
+                                  Resource.string.bjmgf_sdk_init_dialog_isNotWifiNet_TxtViewStr));
                         mNotUpdateButton.setVisibility(View.GONE);
                         mNotUpdate2Button.setVisibility(View.VISIBLE);
                     }
@@ -114,8 +117,8 @@ public class InitView extends BaseDialogPage implements IInitView {
             @Override
             public void onClick(View arg0) {
                 if (mNotUpdateButton.getText().toString().equalsIgnoreCase(
-                        context.getResources().getString(ReflectResourceId.getStringId(context,
-                                Resource.string.bjmgf_sdk_init_dialog_closeAppStr)))) {
+                          context.getResources().getString(ReflectResourceId.getStringId(context,
+                                    Resource.string.bjmgf_sdk_init_dialog_closeAppStr)))) {
                     closeApp();
                 } else {
                     //eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_INIT_SUCCESS));//通知游戏登录
@@ -157,7 +160,7 @@ public class InitView extends BaseDialogPage implements IInitView {
 
                     @Override
                     public void run() {
-                      //  eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Init_Offline));
+                        //  eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Init_Offline));
                         quit();
                     }
                 }, 1000);
@@ -170,7 +173,7 @@ public class InitView extends BaseDialogPage implements IInitView {
     @Override
     public void setView() {
         setInitView();
-        iInitPresenter=new InitSDKPresenterImpl(context,this);
+        iInitPresenter = new InitSDKPresenterImpl(context, this);
     }
 
 
@@ -223,20 +226,16 @@ public class InitView extends BaseDialogPage implements IInitView {
     }
 
 
-
-
-
-
     /**
      * 显示登陆视图
      */
     @Override
     public void setAccountLoginView() {
-        BaseDialogPage dialogPage=null;
-        if(AccountSharePUtils.getAll(context).size()>0) {
+        BaseDialogPage dialogPage = null;
+        if (AccountSharePUtils.getAll(context).size() > 0) {
             dialogPage = new AccountLoginListView(context, manager, dialog);
-        }else{
-            dialogPage =new AccountLoginView(context,manager,dialog);
+        } else {
+            dialogPage = new AccountLoginView(context, manager, dialog);
         }
         manager.clearTopPage(dialogPage);
     }
@@ -254,7 +253,7 @@ public class InitView extends BaseDialogPage implements IInitView {
     @Override
     public void openUpdateView() {
         mTextView.setText(ReflectResourceId.getStringId(context,
-                Resource.string.bjmgf_sdk_init_dialog_autologin));
+                  Resource.string.bjmgf_sdk_init_dialog_autologin));
         mProgressBar.setVisibility(View.VISIBLE);
         mButtonByOne.setVisibility(View.GONE);
         mUpdateLinearLayout.setVisibility(View.GONE);
@@ -269,6 +268,13 @@ public class InitView extends BaseDialogPage implements IInitView {
     @Override
     public void showSuccess() {
 
+        LogProxy.d(TAG, "openWelcomePage----------------------");
+        dialog.dismiss();
+        WelComeDialog welcomeDialog = new WelComeDialog(context,
+                  BJMGFDialog.Page_Welcome);
+        welcomeDialog.show();
+
+
     }
 
     private void openOneButtonView() {
@@ -276,7 +282,6 @@ public class InitView extends BaseDialogPage implements IInitView {
         mButtonByOne.setVisibility(View.VISIBLE);
         mUpdateLinearLayout.setVisibility(View.GONE);
     }
-
 
 
 }

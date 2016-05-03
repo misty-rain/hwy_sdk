@@ -16,7 +16,7 @@
     <string name="bjmgf_sdk_init_dialog_isNotWifiNet_TxtViewStr">当前未连接WIFI,是否继续更新</string>
     <string name="bjmgf_sdk_init_dialog_closeAppStr">关闭应用</string>
     <string name="bjmgf_sdk_init_dialog_connect_customer_serverStr">初始化失败,请联系客服</string>
-    <string name="bjmgf_sdk_init_dialog_connect_customer_serverStra">QQ:800057851</string>
+    <string name="bjmgf_sdk_init_dialog_connect_customer_serverStra">QQ公众号:800057851</string>
     <string name="bjmgf_sdk_init_dialog_restart_TxtViewStr">初始化失败,请重新启动</string>
     <string name="bjmgf_sdk_init_dialog_updateVersion_TxtViewStr">发现新版本 v%s</string>
     <string name="bjmgf_sdk_init_dialog_autologin">正在登录&#8230; &#8230;</string>
@@ -169,7 +169,7 @@
     <string name="bjmgf_sdk_customerCenterFAQStr">常见问题</string>
     <string name="bjmgf_sdk_customerCenterSendQuestionStr">提交问题</string>
     <string name="bjmgf_sdk_customerCenterMyQuestionStr">我的问题</string>
-    <string name="bjmgf_sdk_customerCenterPhoneNumerHitStr">客服QQ：</string>
+    <string name="bjmgf_sdk_customerCenterPhoneNumerHitStr">客服QQ公众号：</string>
     <string name="bjmgf_sdk_customerCenterPhoneNumerStr">800057851</string>
 
     <string name="bjmgf_sdk_atleastten">输入最少10个字</string>
@@ -272,7 +272,7 @@
     <string name="bjmgf_sdk_floatWindow_accountManager_bindPhone_checkBtnStr">验证</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_inputPhone_is_null_Str">输入的手机号不能为空</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_verifycode_length_less_than_six_Str">验证码少于6位</string>
-    <string name="bjmgf_sdk_floatWindow_accountManager_unBindPhone_messageToastStr">点击按钮，将向%s发送短信验证码进行验证，若该手机无法使用，请联系客服QQ:800057851</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_unBindPhone_messageToastStr">点击按钮，将向%s发送短信验证码进行验证，若该手机无法使用，请联系客服QQ公众号:800057851</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_checkPhoneStr">验证手机号</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_inputPhoneNumberHints">请输入手机号</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_CountryNumberStr">+86</string>
@@ -286,8 +286,8 @@
     <string name="bjmgf_sdk_floatWindow_accountManager_bindPhone_oldNumberStr"> 绑定的手机号:</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_titleModifyPhoneStr">更换手机号</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_sendVerifyCodeToOldPhoneStr">将向原手机号%s发送验证短信</string>
-    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_linkCustomStr">，若该手机无法使用，请联系客服QQ:800057851</string>
-    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_CustomPhoneStr">QQ:800057851</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_linkCustomStr">，若该手机无法使用，请联系客服QQ公众号:800057851</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_CustomPhoneStr">QQ公众号:800057851</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_checkBtnStr">获取验证码</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_inputNewPhoneStr">将要绑定的手机号码</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_modifyPhone_VerifyCodeStr">请输入原手机收到的验证码</string>
@@ -396,7 +396,7 @@
     <string name="bjmgf_sdk_floatWindow_accountManager_bindEmail_new_warn">请输入邮箱地址，你可以用验证过的邮箱来找回密码</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_editStr">编辑</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_editEmail_new_warn">该邮箱还未验证，请登录你的邮箱查收邮件并验证</string>
-    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmailStr_warn">你可以用已验证过的邮箱来快速找回密码，如需修改当前绑定的邮箱地址，请联系客服QQ：800057851</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_bindEmailStr_warn">你可以用已验证过的邮箱来快速找回密码，如需修改当前绑定的邮箱地址，请联系客服QQ公众号：800057851</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_bindEmail_next_button">更换邮箱</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_bindEmail_resend">重新发送验证邮件</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_bindEmail_resend_str">一封验证邮件已发送至%1$s请尽快登录你的邮箱查收并通过邮件验证（有效时长为30分钟）</string>
@@ -493,7 +493,7 @@
     <string name="bjmgf_sdk_dock_recharge_cardPay_next_recharge_dialog_prompt_str">支付请求已受理，成功到账一般需要1&#8211;3分钟，请稍后查看</string>
     <string name="bjmgf_sdk_dock_recharge_sms_pay_prompt_warn_one">1.支持移动、电信和联通用户通过发送短信进行充值，短信发送费用0.1元/条，由运营商收取；</string>
     <string name="bjmgf_sdk_dock_recharge_sms_pay_prompt_warn_two">2.由于运营上需要收取50%充值渠道费用，请注意您的扣费金额，大额充值建议您使用其他充值方式更实惠；</string>
-    <string name="bjmgf_sdk_dock_recharge_sms_pay_prompt_warn_three">3.充值提示短信可能存在一定的异常，这并不影响您的充值到账，请放心使用，充值过程中遇到任何问题，请尽快与我们客服取得联系，QQ：800057851</string>
+    <string name="bjmgf_sdk_dock_recharge_sms_pay_prompt_warn_three">3.充值提示短信可能存在一定的异常，这并不影响您的充值到账，请放心使用，充值过程中遇到任何问题，请尽快与我们客服取得联系，QQ公众号：800057851</string>
 
     <!-- 补充  -->
     <string name="bjmgf_sdk_switch_account_success">切换帐号成功</string>

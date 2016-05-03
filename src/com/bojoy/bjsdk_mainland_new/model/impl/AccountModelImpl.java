@@ -15,6 +15,7 @@ import com.bojoy.bjsdk_mainland_new.support.http.HttpUtility;
 import com.bojoy.bjsdk_mainland_new.support.http.callback.StringCallback;
 import com.bojoy.bjsdk_mainland_new.support.http.config.FileInput;
 import com.bojoy.bjsdk_mainland_new.support.http.config.HttpMethod;
+import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.DomainUtility;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.TransferDesEncrypt;
@@ -251,6 +252,7 @@ public class AccountModelImpl implements IAccountModel {
     @Override
     public void autoLogin(Context context, final BaseResultCallbackListener listener) {
         Map<String, String> params = ParamsTools.getInstance().getBaseParamsMap(context, false);
+        params.put("token", AccountSharePUtils.getLocalAccountList(context).get(0).getToken());
         try {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_AUTO_LOGIN, params, new StringCallback() {
                 @Override

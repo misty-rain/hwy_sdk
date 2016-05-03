@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
+import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BJMGFSdkEvent;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
@@ -15,6 +16,8 @@ import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.utils.*;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.WelComeDialog;
+
+import okhttp3.internal.Util;
 
 /**
  * Created by wutao on 2015/12/24.
@@ -57,14 +60,12 @@ public class WelcomePage extends BaseDialogPage {
 
     public void showNextPage() {
         hideWelcomeShowDock();
-        // by sunhaoyang
-        //判断当前是否是小米系统V5或者V6或者都不是
-//		if(Util.invalidateSystem().equals("V5")){
-//			//V5判断之前是否点击过应用详情页面
-//			if(!BJMGFGlobalData.getSharePref().getBoolean(BJMGFGlobalData.MIUI_WARN_SAVED, false)){
-//				showGuidePage();
-//			}
-//		}else
+        if(Utility.invalidateSystem().equals("V5")){
+            //V5判断之前是否点击过应用详情页面
+            if(!SpUtil.getBooleanValue(context, SysConstant.MIUI_WARN_FLAG, false)){
+                showGuidePage();
+            }
+        }else
         if (Utility.invalidateSystem().equals("V6")) {
             showGuidePage();
         }
@@ -74,12 +75,12 @@ public class WelcomePage extends BaseDialogPage {
     public void hide(BJMGFDialog bjmgfDialog) {
         handler.removeCallbacks(runnable);
         hideWelcomeShowDock();
-//		if(Util.invalidateSystem().equals("V5")){
-//			//V5判断之前是否点击过应用详情页面
-//			if(!BJMGFGlobalData.getSharePref().getBoolean(BJMGFGlobalData.MIUI_WARN_SAVED, false)){wo xi
-//				showGuidePage();
-//			}
-//		}else
+		if(Utility.invalidateSystem().equals("V5")){
+			//V5判断之前是否点击过应用详情页面
+			if(!SpUtil.getBooleanValue(context, SysConstant.MIUI_WARN_FLAG, false)){
+				showGuidePage();
+			}
+		}else
         if (Utility.invalidateSystem().equals("V6")) {
             showGuidePage();
         }
@@ -129,11 +130,11 @@ public class WelcomePage extends BaseDialogPage {
      */
     private void showGuidePage() {
         //判断当前是否打开悬浮窗
-     /*   if(!Util.isSystemAlertWindowOpAllowed(getContext())){
+        if(!Utility.isSystemAlertWindowOpAllowed(getContext())){
             dialog.dismiss();
             MiuiGuideDialog guideDialog = new MiuiGuideDialog(context, BJMGFDialog.Page_MiuiGuide);
             guideDialog.show();
-        }*/
+        }
     }
 
     /**

@@ -174,8 +174,6 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
                 quit();
                 IAccountCenterPresenter iAccountCenterPresenter = new AccountCenterPresenterImpl(context, null);
                 iAccountCenterPresenter.logout(context);
-                BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
-                bjmgfDialog.show();
             }
         });
 

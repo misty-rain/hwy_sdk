@@ -1,6 +1,7 @@
 package com.bojoy.bjsdk_mainland_new.app.tools;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.bojoy.bjsdk_mainland_new.api.BaseApi;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
@@ -284,37 +285,6 @@ public class BJMGFSDKTools {
 
     }
 
-  /*  *//**
-     * 获得基本参数集合 ，主要用来组装基本参数的集合，避免重复在每个方法内重复组装
-     *
-     * @param context             上下文
-     * @param isContainDeviceInfo 此变量 主要用来判断 是否组合设备信息的参数，主要包括mac、device、model 参数
-     * @return
-     *//*
-    public Map<String, String> getBaseParamsMap(Context context, boolean isContainDeviceInfo) {
-        Map<String, String> params = new HashMap<String, String>();
-        final String time = String.valueOf(System.currentTimeMillis());
-        String uuid = SpUtil.getStringValue(context, "uuid", "");
-        if (uuid != "") {
-            params.put("uuid", uuid);
-        }
-        if (getCurrentPassPort() != null)
-            params.put("token", getCurrentPassPort().getToken());
-        params.put("appid", BaseAppPassport.appId);
-        params.put("platformid", BaseAppPassport.platformId);
-        params.put("version", BaseAppPassport.version);
-        params.put("sign", StringUtility.md5(uuid + BaseAppPassport.appId + time + BaseAppPassport.appKey + BaseAppPassport.APP_SECRET));
-        //  params.put("formatObjType", "");
-        params.put("vtime", time);
-        if (isContainDeviceInfo) {
-            params.put("mac", BJMGFSDKTools.getInstance().getBJMGFMac(context));
-            params.put("device", Utility.getDeviceIMEI(context));
-            params.put("model", Build.MODEL);
-        }
-
-        return params;
-    }*/
-
     /**
      * 获取游客试玩接口参数trykey
      *
@@ -465,5 +435,7 @@ public class BJMGFSDKTools {
         params.put("content", content);
         return params;
     }
+
+
 
 }
