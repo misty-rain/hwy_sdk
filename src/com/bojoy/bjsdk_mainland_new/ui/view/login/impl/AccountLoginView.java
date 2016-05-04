@@ -1,12 +1,15 @@
 package com.bojoy.bjsdk_mainland_new.ui.view.login.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
@@ -17,6 +20,7 @@ import com.bojoy.bjsdk_mainland_new.ui.view.account.findpwd.impl.FindPwdSplashPa
 import com.bojoy.bjsdk_mainland_new.utils.*;
 import com.bojoy.bjsdk_mainland_new.widget.ClearEditText;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,36 +47,36 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
 
     public AccountLoginView(Context context, PageManager manager, BJMGFDialog dialog) {
         super(ReflectResourceId.getLayoutId(context, Resource.layout.bjmgf_sdk_account_login_page),
-                context, manager, dialog);
+                  context, manager, dialog);
     }
 
     @Override
     public void onCreateView(View view) {
         mOneKeyLoginTextView = (RelativeLayout) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_account_login_byPhoneId));
+                  Resource.id.bjmgf_sdk_account_login_byPhoneId));
         mNewUserRegisterTextView = (RelativeLayout) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_account_login_newUserRegisterTextViewId));
+                  Resource.id.bjmgf_sdk_account_login_newUserRegisterTextViewId));
         mForgetPasswordTextView = (TextView) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_account_login_forgetPasswordTextViewId));
+                  Resource.id.bjmgf_sdk_account_login_forgetPasswordTextViewId));
         mLoginTryTextView = (RelativeLayout) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_account_login_tryTextViewId));
+                  Resource.id.bjmgf_sdk_account_login_tryTextViewId));
         mAccountLoginButton = (Button) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_account_login_buttonId));
+                  Resource.id.bjmgf_sdk_account_login_buttonId));
         mAccountEditText = (ClearEditText) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_account_login_nameEditTextId));
+                  Resource.id.bjmgf_sdk_account_login_nameEditTextId));
         mPwdEditText = (ClearEditText) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_account_login_passwordEditTextId));
+                  Resource.id.bjmgf_sdk_account_login_passwordEditTextId));
 
         /** 手机登录 */
         mOneKeyLoginTextView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                if(Utility.isHaveSimCard(context)){
+                if (Utility.isHaveSimCard(context)) {
                     showProgressDialog();
                     iAccountPresenter.sendInfo(context);
 
-                }else{
+                } else {
                     showError(getString(Resource.string.bjmgf_sdk_cannot_get_phone));
                     manager.backToTopPage();
                 }
@@ -98,8 +102,8 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
             @Override
             public void onClick(View arg0) {
                 //忘记密码
-            	FindPwdSplashPage findPwdPage = new FindPwdSplashPage(context, manager, dialog);
-            	manager.addPage(findPwdPage);
+                FindPwdSplashPage findPwdPage = new FindPwdSplashPage(context, manager, dialog);
+                manager.addPage(findPwdPage);
             }
         });
         mAccountLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -134,18 +138,18 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
             }
         });
 
-        mAccountEditText.getEdit().setFilters(new InputFilter[] { new BJMInputFilter() });
+        mAccountEditText.getEdit().setFilters(new InputFilter[]{new BJMInputFilter()});
 
 
-        Iterator iterator=AccountSharePUtils.getAll(context).keySet().iterator();
-        String json="";
-        while (iterator.hasNext()){
-            json= (String) iterator.next();
-           break;
-       }
+        Iterator iterator = AccountSharePUtils.getAll(context).keySet().iterator();
+        String json = "";
+        while (iterator.hasNext()) {
+            json = (String) iterator.next();
+            break;
+        }
 
         try {
-            JSONObject jsonObject=new JSONObject(json);
+            JSONObject jsonObject = new JSONObject(json);
             mAccountEditText.getEdit().setText(jsonObject.getString("pp"));
         } catch (JSONException e) {
             e.printStackTrace();
@@ -155,20 +159,35 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
      /*   if(!BJMGFCommon.getPassport().contains("@")) {
             mAccountEditText.getEdit().setText(BJMGFCommon.getPassport());
         }*/
-
-
         super.onCreateView(view);
     }
 
-    @Override
-    public boolean canBack() {
-        return true;
-    }
 
+    /**
+     * 是否显示back 按钮
+     */
+    private void isDisplayBackIcon() {
+        if (AccountSharePUtils.getAll(context).size() > 0) {
+            backView = (LinearLayout) getView(Resource.id.bjmgf_sdk_back);
+            if (backView != null) {
+                backView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
+                        bjmgfDialog.show();
+                    }
+                });
+            }
+            showBack();
+        } else {
+            hideBack();
+        }
+
+    }
 
     @Override
     public void setView() {
-        hideBack();
+        isDisplayBackIcon();
         iAccountPresenter = new AccountPresenterImpl(context, this);
     }
 
@@ -178,7 +197,7 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
         dialog.setCancelable(true);
         context.registerReceiver(sendMessage, new IntentFilter(SENT_SMS_ACTION));
         context.registerReceiver(receiverMessage, new IntentFilter(
-                DELIVERED_SMS_ACTION));
+                  DELIVERED_SMS_ACTION));
     }
 
     @Override

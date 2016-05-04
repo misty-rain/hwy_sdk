@@ -131,19 +131,6 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-
-        <meta-data
-            android:name="ZMMerchantId"
-            android:value="14438" />
-        <meta-data
-            android:name="ZMAppId"
-            android:value="7011731" />
-        <meta-data
-            android:name="ZMAppSecret"
-            android:value="5569878979879((770" />
-        <meta-data
-            android:name="ZMOtherEnv"
-            android:value="false" />
     </application>
 
 </manifest>

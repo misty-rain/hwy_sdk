@@ -1,12 +1,15 @@
 package com.bojoy.bjsdk_mainland_new.presenter.account.impl;
 
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.congfig.ErrorCodeConstants;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
+import com.bojoy.bjsdk_mainland_new.eventhandler.event.AuthExpiredEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BJMGFSdkEvent;
+import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseReceiveEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseRequestEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseResultCallbackListener;
 import com.bojoy.bjsdk_mainland_new.model.IAccountModel;
@@ -17,11 +20,15 @@ import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
+import com.bojoy.bjsdk_mainland_new.ui.view.init.impl.InitView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.IAccountLoginListView;
 import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.AccountUtil;
 import com.bojoy.bjsdk_mainland_new.utils.CompartorUtil;
+import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
+import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
+import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -64,7 +71,7 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         iAccountModel.getUserInfoForSelf(context, SysConstant.GET_USERINFO_TYPE_BASE, this);//查询用户信息
                         iAccountModel.getAccountInfo(context, this); //查询账户信息
                         eventBus.post(BJMGFSdkEvent.App_Login_Success);
-                         iBaseView.showSuccess();
+                        iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.Request_Try_Login: //试玩事件
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
@@ -94,7 +101,7 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
                         iAccountModel.getUserInfoForSelf(context, SysConstant.GET_USERINFO_TYPE_BASE, this);
                         iAccountModel.getAccountInfo(context, this); //查询账户信息
-                       // ((IAccountLoginListView) iBaseView).autoLoginSuccess();
+                        // ((IAccountLoginListView) iBaseView).autoLoginSuccess();
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.Request_Register://平台注册
@@ -120,8 +127,14 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         break;
                 }
             } else {
-                iBaseView.showError(backResultBean.getMsg());
-
+                if (backResultBean.getMsg().equals(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_auth_id_expired)))) {
+                    EventBus.getDefault().post(new AuthExpiredEvent(
+                              String.valueOf(backResultBean.getCode()), backResultBean
+                              .getMsg()));
+                } else {
+                    iBaseView.showError(backResultBean.getMsg());
+                }
+                // iBaseView.showError(backResultBean.getMsg());
             }
 
         } catch (Exception e) {
@@ -139,8 +152,9 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
 
     /**
      * 平台注册
+     * <p>
+     * 0  44* @param context  上下文
      *
-0  44* @param context  上下文
      * @param userName 用户名
      * @param passWord 密码
      * @param email    邮箱

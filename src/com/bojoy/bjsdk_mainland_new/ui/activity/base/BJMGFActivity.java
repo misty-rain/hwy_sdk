@@ -27,6 +27,7 @@ import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseActivityPage;
 import com.bojoy.bjsdk_mainland_new.utils.*;
+import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -142,6 +143,7 @@ public class BJMGFActivity extends Activity {
         PayTools.getInstance().clearPayDatas();//清除支付订单数据
         if (isNeedOpenDock) {
             BJMGFSdk.getDefault().getDockManager().openDock(); // 打开悬浮窗
+
         }
         manager.clean();
         super.onDestroy();
@@ -303,6 +305,8 @@ public class BJMGFActivity extends Activity {
     @Override
     protected void onPause() {
         Log.i(TAG, "activity onpause");
+        BJMGFDialog bjmgfDialog = new BJMGFDialog(this, (Activity) this, BJMGFDialog.Page_AccountLogin);
+        bjmgfDialog.show();
         super.onPause();
     }
 

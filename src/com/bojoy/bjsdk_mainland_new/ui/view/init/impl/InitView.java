@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.*;
 
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
+import com.bojoy.bjsdk_mainland_new.eventhandler.event.AuthExpiredEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseReceiveEvent;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
@@ -15,6 +16,7 @@ import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseDialogPage;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
+import com.bojoy.bjsdk_mainland_new.ui.view.account.findpwd.impl.FindPwdSplashPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.init.IInitView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.impl.AccountLoginListView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.impl.AccountLoginView;
@@ -33,7 +35,6 @@ public class InitView extends BaseDialogPage implements IInitView {
     private TextView mTextView;
     private ProgressBar mProgressBar;
     private Button mButtonByOne, mUpdateButton, mUpdate2Button, mNotUpdateButton, mNotUpdate2Button;
-    private EventBus eventBus = EventBus.getDefault();
 
 
     private Handler handler = new Handler();
@@ -42,7 +43,6 @@ public class InitView extends BaseDialogPage implements IInitView {
     public InitView(Context context, PageManager manager, BJMGFDialog dialog) {
         super(ReflectResourceId.getLayoutId(context, Resource.layout.bjmgf_sdk_init_page),
                   context, manager, dialog);
-        eventBus.register(this);
     }
 
 
@@ -209,7 +209,7 @@ public class InitView extends BaseDialogPage implements IInitView {
      * @param revEvent 返回事件
      */
     public void onEventMainThread(BaseReceiveEvent revEvent) {
-        if (revEvent.getFlag() == BaseReceiveEvent.Flag_Success) {
+        if  (revEvent.getFlag() == BaseReceiveEvent.Flag_Success) {
             //iInitPresenter.appCheck(context);
             if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
                 dialog.cancel();
@@ -221,23 +221,33 @@ public class InitView extends BaseDialogPage implements IInitView {
         } else {
             dialog.cancel();
             showError((String) revEvent.getRespMsg());
-
         }
     }
 
+    public void onEventMainThread(AuthExpiredEvent revEvent) {
+        if  (revEvent.getCode() == "1100") {
+
+            //iInitPresenter.appCheck(context);
+            if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
+                dialog.cancel();
+                IAccountPresenter iAccountPresenter = new AccountPresenterImpl(context, this);
+                iAccountPresenter.autoLogin(context);
+            } else {
+                setAccountLoginView();
+            }
+        } else {
+            dialog.cancel();
+          //  showError((String) revEvent.getRespMsg());
+        }
+    }
 
     /**
      * 显示登陆视图
      */
     @Override
     public void setAccountLoginView() {
-        BaseDialogPage dialogPage = null;
-        if (AccountSharePUtils.getAll(context).size() > 0) {
-            dialogPage = new AccountLoginListView(context, manager, dialog);
-        } else {
-            dialogPage = new AccountLoginView(context, manager, dialog);
-        }
-        manager.clearTopPage(dialogPage);
+        FindPwdSplashPage findPwdPage = new FindPwdSplashPage(context, manager, dialog);
+        manager.addPage(findPwdPage);
     }
 
     @Override
@@ -262,7 +272,21 @@ public class InitView extends BaseDialogPage implements IInitView {
 
     @Override
     public void showError(String message) {
-        ToastUtil.showMessage(context, message);
+
+        FindPwdSplashPage findPwdPage = new FindPwdSplashPage(context, manager, dialog);
+        manager.addPage(findPwdPage);
+
+   /*     if (AccountSharePUtils.getAll(context).size() > 0) {
+            AccountLoginListView accountLoginListView = new AccountLoginListView(context, manager, dialog);
+            manager.clearTopPage(accountLoginListView);
+        } else {
+            AccountLoginView accountLoginView = new AccountLoginView(context, manager, dialog);
+            manager.clearTopPage(accountLoginView);
+        }
+*/
+
+
+
     }
 
     @Override

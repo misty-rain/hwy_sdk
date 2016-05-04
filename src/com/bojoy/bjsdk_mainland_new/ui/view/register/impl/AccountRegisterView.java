@@ -18,6 +18,7 @@ import com.bojoy.bjsdk_mainland_new.ui.view.register.ISmsView;
 import com.bojoy.bjsdk_mainland_new.utils.*;
 import com.bojoy.bjsdk_mainland_new.widget.ClearEditText;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
+import com.bojoy.bjsdk_mainland_new.widget.dialog.ProtocolDialog;
 
 /**
  * Created by wutao on 2015/12/28.
@@ -64,6 +65,8 @@ public class AccountRegisterView extends OneKeyLoginView implements IBaseView, I
 
             @Override
             public void onClick(View arg0) {
+                ProtocolDialog protocolDialog = new ProtocolDialog(context);
+                protocolDialog.show();
 
             }
         });

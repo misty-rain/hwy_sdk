@@ -52,6 +52,7 @@ public final class Resource {
         public static final String bjmgf_sdk_transcutestyle_yhxf = "bjmgf_sdk_transcutestyle_yhxf";
    }
     public static final class string {
+        public static final String bjmgf_sdk_auth_id_expired = "bjmgf_sdk_auth_id_expired";
         public static final String bjmgf_sdk_version = "bjmgf_sdk_version";
         public static final String bjmgf_sdk_pay_success = "bjmgf_sdk_pay_success";
         public static final String bjmgf_sdk_chooseoperator = "bjmgf_sdk_chooseoperator";
@@ -610,6 +611,7 @@ public final class Resource {
         public static final String bjmgf_sdk_sendQuestionBtnId = "bjmgf_sdk_sendQuestionBtnId";
         public static final String bjmgf_sdk_aboutAllRightShowId = "bjmgf_sdk_aboutAllRightShowId";
         public static final String bjmgf_sdk_gap_line_authentication = "bjmgf_sdk_gap_line_authentication";
+        public static final String bjmgf_sdk_float_account_manager_authentication_contentId = "bjmgf_sdk_float_account_manager_authentication_contentId";
         public static final String bjmgf_sdk_float_account_manager_authenticationId = "bjmgf_sdk_float_account_manager_authenticationId";
         public static final String bjmgf_sdk_float_account_manager_authenticationTextViewId = "bjmgf_sdk_float_account_manager_authenticationTextViewId";
         public static final String bjmgf_sdk_float_account_manager_enAuthenticationTextViewId = "bjmgf_sdk_float_account_manager_enAuthenticationTextViewId";
@@ -620,6 +622,7 @@ public final class Resource {
         public static final String bjmgf_sdk_about_logoId = "bjmgf_sdk_about_logoId";
         public static final String bjmgf_sdk_about_popularize = "bjmgf_sdk_about_popularize";
         public static final String bjmgf_sdk_account_id = "bjmgf_sdk_account_id";
+
         public static final String bjmgf_sdk_account_login_buttonId = "bjmgf_sdk_account_login_buttonId";
         public static final String bjmgf_sdk_account_login_byPhoneId = "bjmgf_sdk_account_login_byPhoneId";
         public static final String bjmgf_sdk_account_login_forgetPasswordTextViewId = "bjmgf_sdk_account_login_forgetPasswordTextViewId";

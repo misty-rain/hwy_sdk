@@ -34,6 +34,8 @@ import com.bojoy.bjsdk_mainland_new.widget.dialog.SexDialogPage;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.bojoy.bjsdk_mainland_new.utils.Resource.layout.bjmgf_sdk_dock_account_page_info;
+
 /**
  * Created by wutao on 2016/1/11.
  * 用户中心视图
@@ -52,18 +54,18 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
     IAccountCenterPresenter iAccountCenterPresenter;
     EventBus eventBus = EventBus.getDefault();
     //用来标识 修改资料时 修改个人信息还是注册好玩友平台 ，0 为 未注册 1已注册;
-    private int flag = 0;
+    private int isRegisterPlatform = 0;
     private UserData baseUserData, afterUserData;
 
     private ImageLoaderUtil imageLoaderHelper = ImageLoaderUtil.getInstance();
     //用来判断是否修改了头像
     private boolean modifyFaceFlag;
-    private String filePath,backFilePath;
+    private String filePath, backFilePath;
 
     public UserInfoView(Context context, PageManager manager,
                         BJMGFActivity activity) {
         super(ReflectResourceId.getLayoutId(context,
-                  Resource.layout.bjmgf_sdk_dock_account_page_info), context,
+                  bjmgf_sdk_dock_account_page_info), context,
                   manager, activity);
         themeResId = activity.getThemeId();
         imageLoaderHelper.init(context);
@@ -180,9 +182,8 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
             public void onClick(View arg0) {
                 checkTextIsEmpty();
                 showProgressDialog();
-                if (flag == 1)
+                if (isRegisterPlatform == 1)
                     editUserInfo();
-                   // uploadFaceIcon();
                 else
                     registerHWYPlatform();
 
@@ -276,7 +277,7 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
     public void showUserInfo() {
         baseUserData = BJMGFSDKTools.getInstance().getCurrUserData();
         if (baseUserData != null) {
-            flag = 1;
+            isRegisterPlatform = 1;
             if (baseUserData.getNick() != null) {
                 nickText.setText(baseUserData.getNick());
                 nickText.setTextColor(context.getResources().getColor(
@@ -294,6 +295,7 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
                 sexText.setTextColor(context.getResources().getColor(
                           ReflectResourceId.getColorId(context,
                                     Resource.color.bjmgf_sdk_black)));
+                sexArrowImage.setVisibility(View.GONE);
             } else {
                 sexText.setText(getString(Resource.string.bjmgf_sdk_floatWindow_accountManager_chooseSex));
                 sexText.setTextColor(context.getResources().getColor(

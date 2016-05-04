@@ -22,7 +22,6 @@ public abstract class BaseDialogPage<T> extends BasePage {
 	private final String TAG = BaseDialogPage.class.getSimpleName();
 	protected BJMGFDialog dialog;
 	protected LinearLayout backView;
-	EventBus eventBus=EventBus.getDefault();
 
 	public BaseDialogPage(int layoutId, Context context, PageManager manager,
 			BJMGFDialog dialog) {

@@ -399,6 +399,30 @@ public class BJMGFSDKTools {
     }
 
     /**
+     * 获得实名认证URl
+     *
+     * @return
+     */
+    public String getAuthenticaionUrl(Context context) {
+        Map<String, String> params = new HashMap<String, String>();
+        final String time = String.valueOf(System.currentTimeMillis());
+        String uuid = SpUtil.getStringValue(context, "uuid", "");
+        if (uuid != "") {
+            params.put("uuid", uuid);
+        }
+        params.put("appid", BaseAppPassport.appId);
+        params.put("platformid", BaseAppPassport.platformId);
+        params.put("token", getCurrentPassPort().getToken());
+        params.put("redirect", "2");
+
+        String url = DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_WEB_SIGN + params.toString().replaceAll(", ", "&").replaceAll("\\{", "").replaceAll("\\}", "").trim();
+        return url;
+    }
+
+
+
+
+    /**
      * 将保存 用户个人信息方法剥离 ，以此公用
      *
      * @param context        上下文

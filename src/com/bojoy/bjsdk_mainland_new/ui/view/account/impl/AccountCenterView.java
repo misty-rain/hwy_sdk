@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bojoy.bjsdk_mainland_new.app.BJMGFSdk;
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.app.tools.DockTypeTools;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountCenterPresenter;
@@ -26,8 +27,12 @@ import com.bojoy.bjsdk_mainland_new.ui.view.account.bindmail.BindEmailView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.bindmail.DisplayEmailView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.bindphone.impl.GetBindPhoneSmsCodeView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.bindphone.impl.ModifyBindPhoneView;
+import com.bojoy.bjsdk_mainland_new.ui.view.account.findpwd.impl.FindPwdSplashPage;
+import com.bojoy.bjsdk_mainland_new.ui.view.login.impl.AccountLoginView;
+import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.DomainUtility;
 import com.bojoy.bjsdk_mainland_new.utils.ImageLoaderUtil;
+import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
@@ -105,6 +110,7 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
         authentText = getView(Resource.id.bjmgf_sdk_float_account_manager_authenticationTextViewId);
         enAuthText = getView(Resource.id.bjmgf_sdk_float_account_manager_enAuthenticationTextViewId);
         authentLine = getView(Resource.id.bjmgf_sdk_gap_line_authentication);
+        authentImage = getView(Resource.id.bjmgf_sdk_float_account_manager_authentication_contentId);
 
 
         //设置实名认证选项状态
@@ -170,10 +176,31 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
 
             @Override
             public void onClick(View v) {
-                activity.setNeedOpenDock(false);
+                //activity.setNeedOpenDock(false);
+                activity.setNeedOpenDock(true);
                 quit();
-                IAccountCenterPresenter iAccountCenterPresenter = new AccountCenterPresenterImpl(context, null);
-                iAccountCenterPresenter.logout(context);
+
+          /*      Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+
+                        if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
+                            BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
+                            bjmgfDialog.show();
+
+                        } else {
+                            BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
+                            bjmgfDialog.show();
+                        }
+                    }
+                }, 500);*/
+
+                //
+               // BJMGFSdk.getDefault().switchAccount(context);
+
             }
         });
 
@@ -205,6 +232,17 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
                     baseActivityPage.putParams(maps);
                     manager.addPage(baseActivityPage);
                 }
+            }
+        });
+
+        //实名认证
+        mAuthentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LogProxy.d(TAG,BJMGFSDKTools.getInstance().getAuthenticaionUrl(context));
+                Uri levelUri = Uri.parse(BJMGFSDKTools.getInstance().getAuthenticaionUrl(context));
+                Intent intent = new Intent(Intent.ACTION_VIEW, levelUri);
+                activity.startActivity(intent);
             }
         });
 

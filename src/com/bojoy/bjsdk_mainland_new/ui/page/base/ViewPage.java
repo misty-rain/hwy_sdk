@@ -19,6 +19,7 @@ public abstract class ViewPage {
 	 * 新的布局layout.xml的id号
 	 */
 	protected int layoutId;
+	protected EventBus eventBus = EventBus.getDefault();
 	protected View pageView;
 	protected PageManager manager;
 	private String tag = "";
@@ -39,6 +40,9 @@ public abstract class ViewPage {
 		return manager;
 	}
 
+	public EventBus getEventBus() {
+		return eventBus;
+	}
 
 
 	public void onAttach(ViewGroup parent) {
@@ -46,6 +50,7 @@ public abstract class ViewPage {
 			pageView = View.inflate(context, layoutId, null);
 			onCreateView(pageView);
 		}
+		eventBus.register(this);
 		onResume();
 	}
 
@@ -57,6 +62,7 @@ public abstract class ViewPage {
 	public abstract void onCreateView(View view);
 
 	public void onDetach() {
+		eventBus.unregister(this);
 		onPause();
 	}
 

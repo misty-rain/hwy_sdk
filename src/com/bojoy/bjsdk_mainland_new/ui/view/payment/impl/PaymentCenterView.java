@@ -237,18 +237,13 @@ public class PaymentCenterView extends BaseActivityPage implements IPaymentView 
 
             @Override
             public void onClick(View arg0) {
-                // 0:盈华讯方 1:斯凯
+                // 0:盈华讯方
                 LogProxy.i(TAG, "channel is " + DomainUtility.getInstance().getSmsChannel(context));
                 if (DomainUtility.getInstance().getSmsChannel(context).equals("0")) {
                     // 盈华讯方短信支付方式界面
                     BaseActivityPage page = new DockSMSpayTypePage(context,
                             manager, false, activity);
                     manager.addPage(page);
-                } else {
-                    // 斯凯短信支付方式界面
-					BaseActivityPage page = new DockSMSpaySKBasePage(context,
-							manager, false, activity);
-					manager.addPage(page);
                 }
             }
         });

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.os.Handler;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
@@ -28,8 +29,10 @@ import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.ui.activity.base.BJMGFActivity;
 import com.bojoy.bjsdk_mainland_new.ui.activity.base.WebViewActivity;
 import com.bojoy.bjsdk_mainland_new.ui.dock.DockManagerBeta;
+import com.bojoy.bjsdk_mainland_new.ui.view.account.findpwd.impl.FindPwdSplashPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.cs.impl.CustomerServiceView;
 import com.bojoy.bjsdk_mainland_new.ui.view.payment.impl.PaymentCenterView;
+import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.DialogUtil;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.MessagePollingTool;
@@ -37,10 +40,8 @@ import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.StringUtility;
 import com.bojoy.bjsdk_mainland_new.utils.Utility;
-import com.bojoy.bjsdk_mainland_new.utils.payment.SKStartSmsPay;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.ExitDialog;
-import com.skymobi.pay.sdk.normal.zimon.EpsApplication;
 
 /**
  * Created by wutao on 2015/12/16. * 直接与开发者对接的API接口类
@@ -59,10 +60,8 @@ public class BJMGFSdk {
     private final int NETWORK_REQUESTCODE = 100;
     EventBus eventBus = EventBus.getDefault();
 
-    EpsApplication epsApplication = new EpsApplication();
     private PayTools payTools = PayTools.getInstance();
     private PayOrderData payOrderData;
-
 
 
     private MessagePollingTool messageReceiver = null;
@@ -172,10 +171,6 @@ public class BJMGFSdk {
         String channelMeta = null;
         String appIdMeta = null;
         String appKeyMeta = null;
-        /** SK SMS Pay */
-        String SKMerchantId = null;
-        String SKAppId = null;
-        String SKMerchantPasswd = null;
         try {
             appInfo = activity.getPackageManager().getApplicationInfo(
                       activity.getPackageName(), PackageManager.GET_META_DATA);
@@ -183,9 +178,6 @@ public class BJMGFSdk {
             channelMeta = Utility.getAppMetaData(appInfo, "BJMGF_CHANNEL");
             appIdMeta = Utility.getAppMetaData(appInfo, "BJMGF_APPID");
             appKeyMeta = Utility.getAppMetaData(appInfo, "BJMGF_APPKEY");
-            SKMerchantId = Utility.getAppMetaData(appInfo, "ZMMerchantId");
-            SKAppId = Utility.getAppMetaData(appInfo, "ZMAppId");
-            SKMerchantPasswd = Utility.getAppMetaData(appInfo, "ZMAppSecret");
 
         } catch (PackageManager.NameNotFoundException e) {
             LogProxy.i(TAG, "Not get appInfo " + activity.getPackageName());
@@ -198,11 +190,6 @@ public class BJMGFSdk {
         }
         if (StringUtility.isEmpty(appKey)) {
             appKey = StringUtility.isEmpty(appKeyMeta) ? "" : appKeyMeta;
-        }
-        if (StringUtility.isEmpty(SKMerchantId) || StringUtility.isEmpty(SKAppId) || StringUtility.isEmpty(SKMerchantPasswd)) {
-            LogProxy.e(TAG, "SKStartSmsPay.init : get SKStartSmsPay init info failed from Application meta data!");
-        } else {
-            SKStartSmsPay.init(SKMerchantId, SKAppId, SKMerchantPasswd);
         }
 
         BaseAppPassport.setAppId(appId);
@@ -224,10 +211,10 @@ public class BJMGFSdk {
                 //epsApplication.onStart(activity.getApplicationContext());
             }
 
-            IInitPresenter initPresenter = new InitSDKPresenterImpl(activity,
-                      null);
-            initPresenter.initSDK(activity);
         }
+        IInitPresenter initPresenter = new InitSDKPresenterImpl(activity,
+                  null);
+        initPresenter.initSDK(activity);
 
     }
 
@@ -324,7 +311,7 @@ public class BJMGFSdk {
     }
 
     /**
-     * 切换账号 or 登出
+     * 登出 ,调用登出接口
      *
      * @param context
      */
@@ -332,8 +319,49 @@ public class BJMGFSdk {
         if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
             IAccountCenterPresenter iAccountCenterPresenter = new AccountCenterPresenterImpl(context, null);
             iAccountCenterPresenter.logout(context);
-            BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
-            bjmgfDialog.show();
+            if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
+                BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
+                bjmgfDialog.show();
+            } else {
+                BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
+                bjmgfDialog.show();
+            }
+        }
+    }
+
+
+    /**
+     * 切换账号
+     *
+     * @param context
+     */
+    public void switchAccount(Context context) {
+        if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
+            BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
+            BJMGFSDKTools.getInstance().setCurrUserData(null);
+            dockManager.closeDock();
+
+
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+
+
+                    if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
+                        BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
+                        bjmgfDialog.show();
+
+                    } else {
+                        BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
+                        bjmgfDialog.show();
+                    }
+                }
+            }, 500);
+
+
         }
     }
 
@@ -355,7 +383,7 @@ public class BJMGFSdk {
      */
 
     public void rechargeProduct(Activity activity, String orderSerial,
-                                    String productId, String productName, int count, int money,
+                                String productId, String productName, int count, int money,
                                 String serverId, String roleId) {
         //判断是否需要网页充值 1 - 网页充值 0 - 非网页充值
         if (!BJMGFSDKTools.getInstance().isWapRechargeFlag) {

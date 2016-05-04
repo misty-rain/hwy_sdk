@@ -28,7 +28,6 @@ public class PayTools {
 
 	public static final String ALIPAY_TYPE = "115";		//115-支付宝无线快捷支付 
 	public static final String SMSPAY_TYPE = "116";		//116-大额短信支付SDK
-	public static final String SK_SMSPAY_TYPE = "114";		//114-斯凯短信充值SDK
 	public static final String UNIONPAY_TYPE = "117";		//117-银联支付
 	public static final String CM_CARD_PAY_TYPE = "111";	//111-移动卡支付
 	public static final String CU_CARD_PAY_TYPE = "112";	//112-联通卡支付

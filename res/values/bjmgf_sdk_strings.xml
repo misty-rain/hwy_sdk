@@ -101,7 +101,7 @@
     <string name="bjmgf_sdk_find_password_backLoginStr">&#60;&#60;返回登录</string>
     <string name="bjmgf_sdk_find_password_inputContentEditTextStr">请输入用户名/手机号</string>
     <string name="bjmgf_sdk_find_password_nextStepBtnStr">下一步</string>
-    <string name="bjmgf_sdk_find_password_connectClientServerTextViewStr">点击下一步，将向绑定的手机号发送一条短信进行验证，未绑定手机的用户，请联系客服 <b>QQ:800057851</b></string>
+    <string name="bjmgf_sdk_find_password_connectClientServerTextViewStr">点击下一步，将向绑定的手机号发送一条短信进行验证，未绑定手机的用户，请联系客服 <b>QQ公众号:800057851</b></string>
     <string name="bjmgf_sdk_find_password_sendMessageToPhoneTextViewStr">已经发送验证短信至绑定手机 </string>
     <string name="bjmgf_sdk_find_password_inputCheckCodeContentEditTextStr">请输入6位验证码</string>
     <string name="bjmgf_sdk_find_password_checkCodeReSendBtnStr">60秒以后未收到,点击重试</string>
@@ -117,7 +117,7 @@
     <string name="bjmgf_sdk_find_password_email_input_passport">请输入用户名</string>
     <string name="bjmgf_sdk_find_password_email_input_email">请输入邮箱地址</string>
     <string name="bjmgf_sdk_find_bind_email_input_email_faile">请输入正确的邮箱地址</string>
-    <string name="bjmgf_sdk_find_password_email_input_content">点击下一步，将向已绑定的邮箱发送一封邮件进行验证，未绑定邮箱的用户，请联系客服 QQ：800057851</string>
+    <string name="bjmgf_sdk_find_password_email_input_content">点击下一步，将向已绑定的邮箱发送一封邮件进行验证，未绑定邮箱的用户，请联系客服 QQ公众号：800057851</string>
 
     <!-- 帐号登出 -->
     <string name="bjmgf_sdk_login_out_describeTextViewStr">退出登录后您将同时退出好玩友平台帐号,下一次需要重新登录帐号.</string>
@@ -568,5 +568,6 @@
     <!-- 充值卡充值选择标语 -->
     <string name="bjmgf_sdk_chooseoperator">选择运营商</string>
     <string name="bjmgf_sdk_pay_success">支付成功</string>
+    <string name="bjmgf_sdk_auth_id_expired">身份已过期，请重新登录!</string>
 
 </resources>

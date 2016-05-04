@@ -18,6 +18,7 @@ import com.bojoy.bjsdk_mainland_new.presenter.account.logout.LogoutView;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.impl.TryChangePage;
 import com.bojoy.bjsdk_mainland_new.ui.view.init.impl.InitView;
+import com.bojoy.bjsdk_mainland_new.ui.view.login.impl.AccountLoginListView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.impl.AccountLoginView;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
@@ -214,10 +215,15 @@ public class BJMGFDialog extends Dialog {
                 AccountLoginView loginPage = new AccountLoginView(getContext(), manager, this);
                 manager.addPage(loginPage);
                 break;
-            case Page_TryChange:
+            case Page_TryChange://试玩窗口
                 TryChangePage tryChangePage = new TryChangePage(context, manager, this);
                 manager.addPage(tryChangePage);
                 break;
+            case Page_AccountLogin://账户列表窗口
+                AccountLoginListView loginListView = new AccountLoginListView(context, manager, this);
+                manager.addPage(loginListView);
+                break;
+
 
         }
      /*   if (pageType == Page_Init) {

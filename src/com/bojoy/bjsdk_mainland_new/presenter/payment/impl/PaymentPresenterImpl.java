@@ -126,7 +126,7 @@ public class PaymentPresenterImpl implements IPaymentPresenter, BaseResultCallba
                             break;
                         case BaseRequestEvent.Request_Recharge_Order:
 
-                            if (payType.equals(PayTools.ALIPAY_TYPE) || payType.equals(PayTools.SMSPAY_TYPE) || payType.equals(PayTools.SK_SMSPAY_TYPE) || payType.equals(PayTools.WXPAY_TYPE)) {
+                            if (payType.equals(PayTools.ALIPAY_TYPE) || payType.equals(PayTools.SMSPAY_TYPE) || payType.equals(PayTools.WXPAY_TYPE)) {
                                 String payInfo = JSON
                                         .parseObject(backResultBean.getObj(),
                                                 Map.class).get("payInfo")

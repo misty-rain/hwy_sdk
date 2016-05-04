@@ -49,7 +49,7 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
     private ISmsModel iSmsModel;
     private IBaseView iBaseView;
     Context context;
-    private String nickName,birth;
+    private String nickName, birth;
 
     private final String TAG = AccountCenterPresenterImpl.class.getSimpleName();
     private EventBus eventBus = EventBus.getDefault();
@@ -214,8 +214,8 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
                         BJMGFSDKTools.getInstance().setCurrUserData(userData);
                         break;
                     case BaseRequestEvent.Request_PF_Upload_Face_Image://上传用户头像
-                        String faceUrl = BJMGFSDKTools.getInstance().getPFFaceUrl(context,Long.valueOf(BJMGFSDKTools.getInstance().getCurrentPassPort().getUid()),JSON.parseObject(backResultBean.getObj()).getString("path"));
-                        Log.d(TAG,faceUrl);
+                        String faceUrl = BJMGFSDKTools.getInstance().getPFFaceUrl(context, Long.valueOf(BJMGFSDKTools.getInstance().getCurrentPassPort().getUid()), JSON.parseObject(backResultBean.getObj()).getString("path"));
+                        Log.d(TAG, faceUrl);
                         BJMGFSDKTools.getInstance().getCurrUserData().setFaceUrl(faceUrl);
                         iBaseView.showSuccess();
                         break;
@@ -242,10 +242,16 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
                         BJMGFSDKTools.getInstance().setCurrUserData(null);
                         eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Logout));
+
                         break;
                 }
             } else {
-                iBaseView.showError(backResultBean.getMsg());
+                if (backResultBean.getMsg().matches("身份过期")) {
+                    BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
+                    bjmgfDialog.show();
+                } else {
+                    iBaseView.showError(backResultBean.getMsg());
+                }
             }
 
         } catch (Exception e) {
