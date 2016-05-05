@@ -65,7 +65,7 @@ public class CustomerServiceModelImpl implements ICustomerServiceModel {
                         public void onError(Call call, Exception e) {
                             LogProxy.d(TAG, "onError=" + "request=" + call + "\texception=" + e);
                             // 从网络获取文件失败
-                            listener.onError(call, e, BaseRequestEvent.Request_FAQ_JSON);
+                            listener.onError(call, e, BaseRequestEvent.REQUEST_FAQ_JSON);
                         }
 
                         @Override
@@ -138,7 +138,7 @@ public class CustomerServiceModelImpl implements ICustomerServiceModel {
 
         }
         LogProxy.d(TAG, content.toString());
-        listener.onSuccess(content.toString(), BaseRequestEvent.Request_FAQ_JSON);
+        listener.onSuccess(content.toString(), BaseRequestEvent.REQUEST_FAQ_JSON);
 
     }
 
@@ -191,12 +191,12 @@ public class CustomerServiceModelImpl implements ICustomerServiceModel {
             HttpUtility.getInstance().execute(DomainUtility.getInstance().getCustomeServiceDomain(context) + BaseApi.APP_SUBMIT_QUES, params, list.isEmpty() ? null : list, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    callbackListener.onError(call, e, BaseRequestEvent.Request_Send_Question);
+                    callbackListener.onError(call, e, BaseRequestEvent.REQUEST_SEND_QUESTION);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    callbackListener.onSuccess(response, BaseRequestEvent.Request_Send_Question);
+                    callbackListener.onSuccess(response, BaseRequestEvent.REQUEST_SEND_QUESTION);
                 }
             });
         } catch (Exception e) {

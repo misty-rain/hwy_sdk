@@ -62,6 +62,7 @@ public class BJMGFSdk {
 
     private PayTools payTools = PayTools.getInstance();
     private PayOrderData payOrderData;
+    public Activity rootActivity;
 
 
     private MessagePollingTool messageReceiver = null;
@@ -208,7 +209,6 @@ public class BJMGFSdk {
         if (!BJMGFSDKTools.getInstance().isCurrUserStatusOnLine()) {
             if (!eventBus.isRegistered(this)) {
                 eventBus.register(this);
-                //epsApplication.onStart(activity.getApplicationContext());
             }
 
         }
@@ -242,6 +242,7 @@ public class BJMGFSdk {
                         int sdkType, int wapRecharge, String platform, String productId,
                         String gameVersion, String operator, String gameDomain) {
 
+        rootActivity = activity;
         messageReceiver = new MessagePollingTool(activity);
         DockTypeTools.getInstance().setType(sdkType);
         BJMGFSDKTools.getInstance().setWapRecharge(wapRecharge);
@@ -317,15 +318,10 @@ public class BJMGFSdk {
      */
     public void logout(Context context) {
         if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
+            dockManager.removeDock();
             IAccountCenterPresenter iAccountCenterPresenter = new AccountCenterPresenterImpl(context, null);
             iAccountCenterPresenter.logout(context);
-            if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
-                BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
-                bjmgfDialog.show();
-            } else {
-                BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
-                bjmgfDialog.show();
-            }
+            BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
         }
     }
 
@@ -339,31 +335,11 @@ public class BJMGFSdk {
         if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
             BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
             BJMGFSDKTools.getInstance().setCurrUserData(null);
-            dockManager.closeDock();
-
-
-
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-
-
-                    if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
-                        BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
-                        bjmgfDialog.show();
-
-                    } else {
-                        BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
-                        bjmgfDialog.show();
-                    }
-                }
-            }, 500);
-
-
+            dockManager.removeDock();
+            BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
         }
     }
+
 
     public void startSMSPay() {
 

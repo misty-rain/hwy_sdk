@@ -1,15 +1,12 @@
 package com.bojoy.bjsdk_mainland_new.presenter.account.impl;
 
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.congfig.ErrorCodeConstants;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
-import com.bojoy.bjsdk_mainland_new.eventhandler.event.AuthExpiredEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BJMGFSdkEvent;
-import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseReceiveEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseRequestEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseResultCallbackListener;
 import com.bojoy.bjsdk_mainland_new.model.IAccountModel;
@@ -20,20 +17,15 @@ import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
-import com.bojoy.bjsdk_mainland_new.ui.view.init.impl.InitView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.IAccountLoginListView;
 import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.AccountUtil;
-import com.bojoy.bjsdk_mainland_new.utils.CompartorUtil;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import okhttp3.Call;
 
@@ -62,7 +54,7 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
             if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
                 PassPort passPort = null;
                 switch (requestSessionEvent) {
-                    case BaseRequestEvent.Request_Login://登陆回话事件
+                    case BaseRequestEvent.REQUEST_LOGIN://登陆回话事件
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort);//保存当前用户passport
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(true);
@@ -73,13 +65,13 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         eventBus.post(BJMGFSdkEvent.App_Login_Success);
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_Try_Login: //试玩事件
+                    case BaseRequestEvent.REQUEST_TRY_LOGIN: //试玩事件
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort);//保存当前用户passport
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(true);
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_Try_change:   //修改试玩账号
+                    case BaseRequestEvent.REQUEST_TRY_CHANGE:   //修改试玩账号
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         AccountUtil.remove(context, passPort.getUid());
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
@@ -87,13 +79,13 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         EventBus.getDefault().post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Logout));
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_PF_User_Info: //获得自己的个人信息
+                    case BaseRequestEvent.REQUEST_PF_USER_INFO: //获得自己的个人信息
                         BJMGFSDKTools.getInstance().saveCurrentUserInfo(context, backResultBean, (String) response);
                         break;
-                    case BaseRequestEvent.Request_Get_Account_Info://获取账号信息事件
+                    case BaseRequestEvent.REQUEST_GET_ACCOUNT_INFO://获取账号信息事件
                         SpUtil.setStringValue(context, BJMGFSDKTools.getInstance().currentPassPort.getUid(), backResultBean.getObj());
                         break;
-                    case BaseRequestEvent.Request_Auto_Login://自动登陆
+                    case BaseRequestEvent.REQUEST_AUTO_LOGIN://自动登陆
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort);
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(true);
@@ -104,7 +96,7 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         // ((IAccountLoginListView) iBaseView).autoLoginSuccess();
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_Register://平台注册
+                    case BaseRequestEvent.REQUEST_REGISTER://平台注册
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort);
                         AccountUtil.remove(context, passPort.getUid());
@@ -113,11 +105,11 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         iAccountModel.getAccountInfo(context, this); //查询账户信息
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_One_Key_Info://发送短信
+                    case BaseRequestEvent.REQUEST_ONE_KEY_INFO://发送短信
                         //((ISmsView)iBaseView).showGetInfoSuccess();
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_One_Key_Check: //一键注册
+                    case BaseRequestEvent.REQUEST_ONE_KEY_CHECK: //一键注册
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort); //保存当期用户passport
                         AccountUtil.remove(context, passPort.getUid());
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
@@ -128,13 +120,10 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                 }
             } else {
                 if (backResultBean.getMsg().equals(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_auth_id_expired)))) {
-                    EventBus.getDefault().post(new AuthExpiredEvent(
-                              String.valueOf(backResultBean.getCode()), backResultBean
-                              .getMsg()));
+                    BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
                 } else {
                     iBaseView.showError(backResultBean.getMsg());
                 }
-                // iBaseView.showError(backResultBean.getMsg());
             }
 
         } catch (Exception e) {

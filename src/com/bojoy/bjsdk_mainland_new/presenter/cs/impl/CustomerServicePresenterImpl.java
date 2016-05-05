@@ -106,7 +106,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
         String uid = passPort.getUid();
         LogProxy.d(TAG, "passport=  " + passportString);
         iCustomerServiceModel.getMyQuestionDataWithURL(context, URL + "passport=" + passportString,
-                BaseRequestEvent.Request_MY_QUESTION_JSON, this);
+                BaseRequestEvent.REQUEST_MY_QUESTION_JSON, this);
     }
 
 
@@ -124,7 +124,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
         this.evaluatePosition = position;
         String URL = DomainUtility.getInstance().getCustomeServiceDomain(context) + BaseApi.APP_MY_QUESTION_EVALUATE
                 + "fid=" + questionId + "&score=" + score + "&content=" + content;
-        iCustomerServiceModel.sendMyQuestionEvaluate(context, URL, BaseRequestEvent.Request_MY_QUESTION_EVALUATE, this);
+        iCustomerServiceModel.sendMyQuestionEvaluate(context, URL, BaseRequestEvent.REQUEST_MY_QUESTION_EVALUATE, this);
     }
 
     /**
@@ -138,7 +138,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
     public void sendMyQuestionRead(Context context, String questionId, int position) {
         this.readStatePosition = position;
         iCustomerServiceModel.sendMyQuestionRead(context, DomainUtility.getInstance().getCustomeServiceDomain(context) + BaseApi.APP_MY_QUESTION_READ_STATE + "fids=" + questionId,
-                BaseRequestEvent.Request_MY_QUESTION_READ_STATE, this);
+                BaseRequestEvent.REQUEST_MY_QUESTION_READ_STATE, this);
     }
 
     /**
@@ -166,7 +166,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
         String URL = DomainUtility.getInstance().getCustomeServiceDomain(context)
                 + BaseApi.APP_MY_QUESTION_GET_DETAIL_RECORD + "fid=" + questionId;
         LogProxy.d(TAG, "getMyQuestionDetailRecord URL=" + URL);
-        iCustomerServiceModel.getMyQuestionDetailRecord(context, URL, BaseRequestEvent.Request_MY_QUESTION_GET_DETAIL_RECORD, this);
+        iCustomerServiceModel.getMyQuestionDetailRecord(context, URL, BaseRequestEvent.REQUEST_MY_QUESTION_GET_DETAIL_RECORD, this);
     }
 
     /**
@@ -215,7 +215,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
     @Override
     public void getPicWithURL(Context context, String picURL) {
         iCustomerServiceModel.getPicWithURL(context, picURL, context.getFilesDir().toString(),
-                SysConstant.MY_QUESTION_DETAIL_ATTACH_FILE_NAME, BaseRequestEvent.Request_MY_QUESTION_ATTACH_IMAGE, this);
+                SysConstant.MY_QUESTION_DETAIL_ATTACH_FILE_NAME, BaseRequestEvent.REQUEST_MY_QUESTION_ATTACH_IMAGE, this);
     }
 
     /**
@@ -248,7 +248,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
             file = new File(tempFilePath);
         }
         iCustomerServiceModel.sendMyQuestionDetailAppend(context, URL, params, fileName,
-                file, BaseRequestEvent.Request_MY_QUESTION_APPEND, this);
+                file, BaseRequestEvent.REQUEST_MY_QUESTION_APPEND, this);
     }
 
     @Override
@@ -256,7 +256,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
         LogProxy.d(TAG, "onSuccess" + "\trequestSessionEvent=" + requestSessionEvent);
         BackResultBean backResultBean = null;
         switch (requestSessionEvent) {
-            case BaseRequestEvent.Request_FAQ_JSON: //常见问题页面
+            case BaseRequestEvent.REQUEST_FAQ_JSON: //常见问题页面
                 //返回json数据没有code节点，不能使用BackResultBean转换
                 // 1.储存FAQ版本号
                 // 2.返回json解析后的数据
@@ -267,7 +267,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
                         .getFAQVersion(context));
                 ((ICommonQuestionView) iBaseView).showCommonQuestion(commonQuestionListVIewDatas);
                 break;
-            case BaseRequestEvent.Request_MY_QUESTION_JSON:  //我的问题页面
+            case BaseRequestEvent.REQUEST_MY_QUESTION_JSON:  //我的问题页面
                 //每次点击标题栏都要重新请求
                 backResultBean = JSON.parseObject((String) response, BackResultBean.class);
                 if (ErrorCodeConstants.ERROR_CODE_SUCCESS == backResultBean.getCode()) {
@@ -286,7 +286,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
                 }
 
                 break;
-            case BaseRequestEvent.Request_MY_QUESTION_EVALUATE:   //我的问题 评价
+            case BaseRequestEvent.REQUEST_MY_QUESTION_EVALUATE:   //我的问题 评价
                 backResultBean = JSON.parseObject((String) response, BackResultBean.class);
                 if (ErrorCodeConstants.ERROR_CODE_SUCCESS == backResultBean.getCode()) {
                     //评价成功
@@ -295,7 +295,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
                     iBaseView.showError(backResultBean.getMsg());
                 }
                 break;
-            case BaseRequestEvent.Request_MY_QUESTION_READ_STATE://我的问题 阅读状态
+            case BaseRequestEvent.REQUEST_MY_QUESTION_READ_STATE://我的问题 阅读状态
                 backResultBean = JSON.parseObject((String) response, BackResultBean.class);
                 if (ErrorCodeConstants.ERROR_CODE_SUCCESS == backResultBean.getCode()) {
                     //提交成功
@@ -304,14 +304,14 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
                     iBaseView.showError(backResultBean.getMsg());
                 }
                 break;
-            case BaseRequestEvent.Request_Send_Question://提交问题
+            case BaseRequestEvent.REQUEST_SEND_QUESTION://提交问题
                 backResultBean = JSON.parseObject((String) response, BackResultBean.class);
                 if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS)
                     iBaseView.showSuccess();
                 else
                     iBaseView.showError(backResultBean.getMsg());
                 break;
-            case BaseRequestEvent.Request_MY_QUESTION_GET_DETAIL_RECORD: //我的问题详细记录
+            case BaseRequestEvent.REQUEST_MY_QUESTION_GET_DETAIL_RECORD: //我的问题详细记录
                 backResultBean = JSON.parseObject((String) response, BackResultBean.class);
                 if (ErrorCodeConstants.ERROR_CODE_SUCCESS == backResultBean.getCode()) {
                     ArrayList<MyQuestionDetailBean> datas = null;
@@ -328,11 +328,11 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
                     iBaseView.showError(backResultBean.getMsg());
                 }
                 break;
-            case BaseRequestEvent.Request_MY_QUESTION_ATTACH_IMAGE://我的问题图片
+            case BaseRequestEvent.REQUEST_MY_QUESTION_ATTACH_IMAGE://我的问题图片
                 //我的问题 详情 下载图片完成后回调显示图片
                 ((IShowPictureView) iBaseView).showPicture((File) response);
                 break;
-            case BaseRequestEvent.Request_MY_QUESTION_APPEND://问题详情聊天页面，追加回复
+            case BaseRequestEvent.REQUEST_MY_QUESTION_APPEND://问题详情聊天页面，追加回复
                 JSONObject jsonObject = JSON.parseObject((String) response);
                 if ("0".equals(jsonObject.get("code"))) {
                     ((IMyQuestionDetailView) iBaseView).showQuestionAppendSendResult();
@@ -350,7 +350,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
     @Override
     public void onError(Call request, Exception exception, int requestSessionEvent) {
         switch (requestSessionEvent) {
-            case BaseRequestEvent.Request_MY_QUESTION_ATTACH_IMAGE:
+            case BaseRequestEvent.REQUEST_MY_QUESTION_ATTACH_IMAGE:
                 //聊天详情页面，聊天详细信息，聊天ListView的HeaderView获取图片失败，图片正在审核
                 ((IShowPictureView) iBaseView).showPictureNotAvailableError(exception.getMessage(), requestSessionEvent);
                 break;

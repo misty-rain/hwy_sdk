@@ -52,7 +52,6 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
 
     private int roundRectSize, themeResId;
     IAccountCenterPresenter iAccountCenterPresenter;
-    EventBus eventBus = EventBus.getDefault();
     //用来标识 修改资料时 修改个人信息还是注册好玩友平台 ，0 为 未注册 1已注册;
     private int isRegisterPlatform = 0;
     private UserData baseUserData, afterUserData;
@@ -69,7 +68,6 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
                   manager, activity);
         themeResId = activity.getThemeId();
         imageLoaderHelper.init(context);
-        eventBus.register(this);
     }
 
     @Override
@@ -248,6 +246,7 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
     public void showSuccess() {
         dismissProgressDialog();
         mBundle.putString("facePath", backFilePath);
+        showError(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_dock_dialog_modify_userinfo_success)));
         goBack();
     }
 

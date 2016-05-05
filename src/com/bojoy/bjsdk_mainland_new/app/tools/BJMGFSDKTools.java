@@ -11,6 +11,7 @@ import com.bojoy.bjsdk_mainland_new.model.entity.PassPort;
 import com.bojoy.bjsdk_mainland_new.model.entity.UserData;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseDialogPage;
+import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.DomainUtility;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
@@ -69,6 +70,8 @@ public class BJMGFSDKTools {
     private String offlineMsgFlag = "";
     private String newWishMsgFlag = "";
     private String offlineTime = "";
+    //全局 dialog
+    public BJMGFDialog bjmgfDialog = null;
 
     public boolean getOfflineMsgFlag() {
         if (offlineMsgFlag.equals("1")) {
@@ -381,7 +384,7 @@ public class BJMGFSDKTools {
      *
      * @return
      */
-    public String getIdentityUrl(Context context,int sign) {
+    public String getIdentityUrl(Context context, int sign) {
         Map<String, String> params = new HashMap<String, String>();
         final String time = String.valueOf(System.currentTimeMillis());
         String uuid = SpUtil.getStringValue(context, "uuid", "");
@@ -418,8 +421,6 @@ public class BJMGFSDKTools {
         String url = DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_WEB_SIGN + params.toString().replaceAll(", ", "&").replaceAll("\\{", "").replaceAll("\\}", "").trim();
         return url;
     }
-
-
 
 
     /**
@@ -460,6 +461,21 @@ public class BJMGFSDKTools {
         return params;
     }
 
+    /**
+     * 用来判断跳转  登陆list or 登陆视图
+     *
+     * @param context
+     */
+    public void switchLoginOrLoginListView(Context context) {
+        if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
+            bjmgfDialog = new BJMGFDialog(context, Utility.scanForActivity(context), BJMGFDialog.Page_AccountLogin);
+            bjmgfDialog.show();
+
+        } else {
+            bjmgfDialog = new BJMGFDialog(context, Utility.scanForActivity(context), BJMGFDialog.Page_Login);
+            bjmgfDialog.show();
+        }
+    }
 
 
 }

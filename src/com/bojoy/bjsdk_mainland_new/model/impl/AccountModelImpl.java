@@ -21,6 +21,8 @@ import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.TransferDesEncrypt;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -53,12 +55,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_PLATFORM_LOGIN, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    callbackListener.onError(call, e, BaseRequestEvent.Request_Login);
+                    callbackListener.onError(call, e, BaseRequestEvent.REQUEST_LOGIN);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    callbackListener.onSuccess(response, BaseRequestEvent.Request_Login);
+                    callbackListener.onSuccess(response, BaseRequestEvent.REQUEST_LOGIN);
                 }
             });
         } catch (Exception e) {
@@ -89,12 +91,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_PLATFORM_REGISTER, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    callbackListener.onError(call, e, BaseRequestEvent.Request_Register);
+                    callbackListener.onError(call, e, BaseRequestEvent.REQUEST_REGISTER);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    callbackListener.onSuccess(response, BaseRequestEvent.Request_Register);
+                    callbackListener.onSuccess(response, BaseRequestEvent.REQUEST_REGISTER);
                 }
             });
         } catch (Exception e) {
@@ -120,12 +122,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_TRY_LOGIN, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Try_Login);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_TRY_LOGIN);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Try_Login);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_TRY_LOGIN);
                 }
             });
         } catch (Exception e) {
@@ -143,12 +145,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_TRY_CHANGE, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Try_change);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_TRY_CHANGE);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Try_change);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_TRY_CHANGE);
                 }
             });
         }catch (Exception e){
@@ -171,12 +173,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_ONEKEY_CHECK, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_One_Key_Check);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_ONE_KEY_CHECK);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_One_Key_Check);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_ONE_KEY_CHECK);
                 }
             });
         } catch (Exception e) {
@@ -201,12 +203,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_SEND_PHONE_CODE, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_SENDSMS_CODE);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_SENDSMS_CODE);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_SENDSMS_CODE);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_SENDSMS_CODE);
                 }
             });
         } catch (Exception e) {
@@ -226,12 +228,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_MOBILE_REG_CHECK, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Mobile_Register_Check);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_MOBILE_REGISTER_CHECK);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Mobile_Register_Check);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_MOBILE_REGISTER_CHECK);
                 }
             });
         } catch (Exception e) {
@@ -257,12 +259,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_AUTO_LOGIN, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Auto_Login);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_AUTO_LOGIN);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Auto_Login);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_AUTO_LOGIN);
                 }
             });
         } catch (Exception e) {
@@ -285,12 +287,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_MOBILE_FIND_PSW, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Find_Password_Verify_Code);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_FIND_PASSWORD_VERIFY_CODE);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Find_Password_Verify_Code);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_FIND_PASSWORD_VERIFY_CODE);
                 }
             });
         } catch (Exception e) {
@@ -319,12 +321,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_MOBILE_RESET_PSW, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Reset_Password);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_RESET_PASSWORD);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Reset_Password);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_RESET_PASSWORD);
                 }
             });
         } catch (Exception e) {
@@ -350,12 +352,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_EMAIL_FIND_PSW, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_EmailFindPwd);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_EMAILFINDPWD);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_EmailFindPwd);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_EMAILFINDPWD);
                 }
             });
         } catch (Exception e) {
@@ -377,12 +379,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_GET_ACCOUNT_INFO, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Get_Account_Info);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_GET_ACCOUNT_INFO);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Get_Account_Info);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_GET_ACCOUNT_INFO);
                 }
             });
         } catch (Exception e) {
@@ -404,12 +406,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_GET_USERVIP_INFO, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_VIP_Level);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_VIP_LEVEL);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_VIP_Level);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_VIP_LEVEL);
                 }
             });
         } catch (Exception e) {
@@ -443,13 +445,13 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getUserCenterDomain(context) + BaseApi.APP_USERCERTER_REQUEST, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_PF_User_Info);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_PF_USER_INFO);
                 }
 
                 @Override
 
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_PF_User_Info);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_PF_USER_INFO);
                 }
             });
         } catch (Exception e) {
@@ -469,17 +471,32 @@ public class AccountModelImpl implements IAccountModel {
     @Override
     public void editUserInfo(Context context, String nickName, String birth, final BaseResultCallbackListener listener) {
         Map<String, String> params = ParamsTools.getInstance().getUserCenterParamsMap(context);
+       /* String nickNameUTF = "";
+        try {
+            nickNameUTF = URLEncoder.encode(nickName, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+          String code = TransferDesEncrypt.encryptDef( SysConstant.USERCENTER_HEADER_REQUEST_CODE_EDIT_USERINFO_FOR_SELF + "|" + nickName + "||" + birth + "|||||||||||");
+        String c = null;
+        try {
+            c = URLEncoder.encode(code, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        */
         params.put("c", SysConstant.USERCENTER_HEADER_REQUEST_CODE_EDIT_USERINFO_FOR_SELF + "|" + nickName + "||" + birth + "|||||||||||");
+        //params.put("c",c);
         try {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getUserCenterDomain(context) + BaseApi.APP_USERCERTER_REQUEST, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_PF_Modify_User_Info);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_PF_MODIFY_USER_INFO);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_PF_Modify_User_Info);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_PF_MODIFY_USER_INFO);
                 }
             });
         } catch (Exception e) {
@@ -509,12 +526,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().executeUpLoadFile(DomainUtility.getInstance().getUploadDomain(context) + BaseApi.APP_UPLOAD_USER_FACE, params, list.isEmpty() ? null : list, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_PF_Upload_Face_Image);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_PF_UPLOAD_FACE_IMAGE);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_PF_Upload_Face_Image);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_PF_UPLOAD_FACE_IMAGE);
                 }
             });
         } catch (Exception e) {
@@ -541,12 +558,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_MODIFY_PWD, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Password_Modify);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_PASSWORD_MODIFY);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Password_Modify);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_PASSWORD_MODIFY);
                 }
             });
         } catch (Exception e) {
@@ -572,12 +589,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getUserCenterDomain(context) + BaseApi.APP_USERCERTER_REQUEST, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_PF_Register);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_PF_REGISTER);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_PF_Register);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_PF_REGISTER);
                 }
             });
         } catch (Exception e) {
@@ -601,12 +618,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_BIND_EMAIL, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_BindEmail);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_BINDEMAIL);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_BindEmail);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_BINDEMAIL);
                 }
             });
         } catch (Exception e) {
@@ -619,10 +636,10 @@ public class AccountModelImpl implements IAccountModel {
     /**
      * 绑定手机号
      *
-     * @param context
-     * @param phoneNum
-     * @param verifyCode
-     * @param listener
+     * @param context 上下文
+     * @param phoneNum 需要绑定的手机号
+     * @param verifyCode 验证码
+     * @param listener 回调事件 将结果通知presenter
      */
     @Override
     public void bindPhone(Context context, String phoneNum, String verifyCode, final BaseResultCallbackListener listener) {
@@ -633,12 +650,40 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_BIND_PHONE, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_BindPhone);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_BINDPHONE);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_BindPhone);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_BINDPHONE);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            LogProxy.e(TAG, e.getMessage());
+        }
+    }
+
+    /**
+     * 验证解除绑定手机号 时获得验证码
+     * @param context 上下文
+     * @param verifyCode 验证码
+     * @param listener 回调事件 将结果通知presenter
+     */
+    @Override
+    public void validateCodeForUnBindPhone(Context context, String verifyCode, BaseResultCallbackListener listener) {
+        Map<String, String> params = ParamsTools.getInstance().getBaseParamsMap(context, false);
+        params.put("verifyCode", verifyCode);
+        try {
+            HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_UNBIND_PHONE, params, new StringCallback() {
+                @Override
+                public void onError(Call call, Exception e) {
+                    listener.onError(call, e, BaseRequestEvent.GETREQUEST_UNBINDPHONE_VERIFY_CODE_CHECK);
+                }
+
+                @Override
+                public void onResponse(String response) {
+                    listener.onSuccess(response, BaseRequestEvent.GETREQUEST_UNBINDPHONE_VERIFY_CODE_CHECK);
                 }
             });
         } catch (Exception e) {
@@ -653,12 +698,12 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_SEND_INFO, ParamsTools.getInstance().getBaseParamsMap(context, false), new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_One_Key_Info);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_ONE_KEY_INFO);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_One_Key_Info);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_ONE_KEY_INFO);
                 }
             });
         } catch (Exception e) {
@@ -696,13 +741,13 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getUserCenterDomain(context) + BaseApi.APP_USERCERTER_REQUEST, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_PF_Other_Users_Info);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_PF_OTHER_USERS_INFO);
                 }
 
                 @Override
 
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_PF_Other_Users_Info);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_PF_OTHER_USERS_INFO);
                 }
             });
         } catch (Exception e) {
@@ -725,13 +770,13 @@ public class AccountModelImpl implements IAccountModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_PLATFORM_LOGOUT, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Logout);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_LOGOUT);
 
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Logout);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_LOGOUT);
                 }
             });
         } catch (Exception e) {

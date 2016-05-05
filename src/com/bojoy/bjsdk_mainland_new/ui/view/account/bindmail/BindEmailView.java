@@ -1,6 +1,7 @@
 package com.bojoy.bjsdk_mainland_new.ui.view.account.bindmail;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountCenterPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountCenterPresenterImpl;
@@ -73,10 +74,10 @@ public class BindEmailView extends BaseActivityPage implements IBaseView{
     public void showSuccess() {
         dismissProgressDialog();
         BaseActivityPage baseActivityPage = new VerifiedEmailView(context,manager,activity);
-        Map<String,Object> paramsMap = new HashMap<String,Object>();
-        paramsMap.put("email",email);
-        paramsMap.put("isShowSendEmailDialog",true);
-        putParams(paramsMap);
+        Bundle bundle = new Bundle();
+        bundle.putString("email",email);
+        bundle.putString("isShowSendEmailDialog","true");
+        baseActivityPage.setBundle(bundle);
         manager.addPage(baseActivityPage);
 
     }

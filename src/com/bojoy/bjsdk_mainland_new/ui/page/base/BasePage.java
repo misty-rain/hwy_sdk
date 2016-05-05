@@ -7,11 +7,14 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.utils.DialogUtil;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
+import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
+import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMSdkDialog;
 
 /**
  * @author xuxiaobin BasePage 基类，用于子类基本的数据及规定其子类的一些行为 BaseDialogPage
@@ -143,6 +146,10 @@ public abstract class BasePage extends ViewPage {
             // if (mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
             // }
+        }
+
+        if (BJMGFSDKTools.getInstance().bjmgfDialog != null) {
+            BJMGFSDKTools.getInstance().bjmgfDialog .dismiss();
         }
     }
     public void showToastCenter(String content) {

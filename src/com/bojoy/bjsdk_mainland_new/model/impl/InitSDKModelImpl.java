@@ -51,12 +51,12 @@ public class InitSDKModelImpl implements IInitSDKModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.INIT, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Init); //将结果通过回调给Presenter
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_INIT); //将结果通过回调给Presenter
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Init);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_INIT);
                 } //将结果通过回调给Presenter
             });
         } catch (Exception e) {
@@ -81,13 +81,13 @@ public class InitSDKModelImpl implements IInitSDKModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APPCHECK, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_App_Check_Update);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_APP_CHECK_UPDATE);
 
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_App_Check_Update);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_APP_CHECK_UPDATE);
                 }
             });
         } catch (Exception e) {
@@ -115,7 +115,7 @@ public class InitSDKModelImpl implements IInitSDKModel {
 
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_First_Deploy);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_FIRST_DEPLOY);
                 }
 
                 @Override
@@ -139,7 +139,7 @@ public class InitSDKModelImpl implements IInitSDKModel {
                         Log.d(TAG, e.getMessage());
                     }
                     LogProxy.e(TAG, content);
-                    listener.onSuccess(content, BaseRequestEvent.Request_First_Deploy);
+                    listener.onSuccess(content, BaseRequestEvent.REQUEST_FIRST_DEPLOY);
                 }
             });
         } catch (Exception e) {
@@ -159,12 +159,12 @@ public class InitSDKModelImpl implements IInitSDKModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceIMDomain(context) + BaseApi.APP_OFFLINE_MSG, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_Message_Offline);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_MESSAGE_OFFLINE);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_Message_Offline);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_MESSAGE_OFFLINE);
                 }
             });
         } catch (Exception e) {

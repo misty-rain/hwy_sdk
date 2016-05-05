@@ -1,6 +1,8 @@
 package com.bojoy.bjsdk_mainland_new.ui.view.init.impl;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.os.Handler;
 import android.view.View;
 import android.widget.*;
@@ -209,7 +211,7 @@ public class InitView extends BaseDialogPage implements IInitView {
      * @param revEvent 返回事件
      */
     public void onEventMainThread(BaseReceiveEvent revEvent) {
-        if  (revEvent.getFlag() == BaseReceiveEvent.Flag_Success) {
+        if (revEvent.getFlag() == BaseReceiveEvent.Flag_Success) {
             //iInitPresenter.appCheck(context);
             if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
                 dialog.cancel();
@@ -224,30 +226,18 @@ public class InitView extends BaseDialogPage implements IInitView {
         }
     }
 
-    public void onEventMainThread(AuthExpiredEvent revEvent) {
-        if  (revEvent.getCode() == "1100") {
-
-            //iInitPresenter.appCheck(context);
-            if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
-                dialog.cancel();
-                IAccountPresenter iAccountPresenter = new AccountPresenterImpl(context, this);
-                iAccountPresenter.autoLogin(context);
-            } else {
-                setAccountLoginView();
-            }
-        } else {
-            dialog.cancel();
-          //  showError((String) revEvent.getRespMsg());
-        }
-    }
-
     /**
      * 显示登陆视图
      */
     @Override
     public void setAccountLoginView() {
-        FindPwdSplashPage findPwdPage = new FindPwdSplashPage(context, manager, dialog);
-        manager.addPage(findPwdPage);
+        if (AccountSharePUtils.getAll(context).size() > 0) {
+            AccountLoginListView accountLoginListView = new AccountLoginListView(context, manager, dialog);
+            manager.clearTopPage(accountLoginListView);
+        } else {
+            AccountLoginView accountLoginView = new AccountLoginView(context, manager, dialog);
+            manager.clearTopPage(accountLoginView);
+        }
     }
 
     @Override
@@ -272,21 +262,8 @@ public class InitView extends BaseDialogPage implements IInitView {
 
     @Override
     public void showError(String message) {
-
-        FindPwdSplashPage findPwdPage = new FindPwdSplashPage(context, manager, dialog);
-        manager.addPage(findPwdPage);
-
-   /*     if (AccountSharePUtils.getAll(context).size() > 0) {
-            AccountLoginListView accountLoginListView = new AccountLoginListView(context, manager, dialog);
-            manager.clearTopPage(accountLoginListView);
-        } else {
-            AccountLoginView accountLoginView = new AccountLoginView(context, manager, dialog);
-            manager.clearTopPage(accountLoginView);
-        }
-*/
-
-
-
+        dismissProgressDialog();
+        ToastUtil.showMessage(context, message);
     }
 
     @Override
@@ -297,8 +274,6 @@ public class InitView extends BaseDialogPage implements IInitView {
         WelComeDialog welcomeDialog = new WelComeDialog(context,
                   BJMGFDialog.Page_Welcome);
         welcomeDialog.show();
-
-
     }
 
     private void openOneButtonView() {

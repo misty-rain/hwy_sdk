@@ -40,13 +40,41 @@ public class SmsModelImpl implements ISmsModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_GET_SMSCODE_BY_BIND_PHONE, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    listener.onError(call, e, BaseRequestEvent.Request_BindPhone_Check_Code);
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_BINDPHONE_CHECK_CODE);
 
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    listener.onSuccess(response, BaseRequestEvent.Request_BindPhone_Check_Code);
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_BINDPHONE_CHECK_CODE);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            LogProxy.e(TAG, e.getMessage());
+        }
+
+
+    }
+
+    /**
+     * 获得解除绑定手机号的验证码
+     * @param context 上下文
+     * @param listener 回调事件 将结果通知 给presenter
+     */
+    @Override
+    public void getUnBindPhoneCode(Context context, BaseResultCallbackListener listener) {
+        Map<String, String> params = ParamsTools.getInstance().getBaseParamsMap(context, false);
+        try {
+            HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_GET_SMSCODE_BY_UNBIND_PHONE, params, new StringCallback() {
+                @Override
+                public void onError(Call call, Exception e) {
+                    listener.onError(call, e, BaseRequestEvent.REQUEST_UNBINDPHONE_VERIFY_CODE);
+
+                }
+                @Override
+                public void onResponse(String response) {
+                    listener.onSuccess(response, BaseRequestEvent.REQUEST_UNBINDPHONE_VERIFY_CODE);
                 }
             });
         } catch (Exception e) {

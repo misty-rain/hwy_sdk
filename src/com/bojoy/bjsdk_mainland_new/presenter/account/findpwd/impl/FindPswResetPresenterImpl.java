@@ -41,7 +41,7 @@ public class FindPswResetPresenterImpl implements IFindPswResetPresenter, BaseRe
     public void onSuccess(Object response, int requestSessionEvent) {
         BackResultBean backResultBean = JSON.parseObject((String) response, BackResultBean.class);
         switch (requestSessionEvent) {
-            case BaseRequestEvent.Request_Reset_Password://通过验证码找回密码事件回调
+            case BaseRequestEvent.REQUEST_RESET_PASSWORD://通过验证码找回密码事件回调
                 if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
                     mIBaseView.showSuccess();
 

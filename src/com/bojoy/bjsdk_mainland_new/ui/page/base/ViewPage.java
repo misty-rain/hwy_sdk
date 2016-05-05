@@ -110,7 +110,7 @@ public abstract class ViewPage {
 	}
 
 	/**
-	 * 
+	 *
 	 * 得到传递的参数
 	 * @return
      */

@@ -45,7 +45,7 @@ public class PswFindPresenterImpl implements IPswFindPresenter, BaseResultCallba
     public void onSuccess(Object response, int requestSessionEvent) {
     	BackResultBean backResultBean= JSON.parseObject((String)response,BackResultBean.class);
         switch (requestSessionEvent) {
-            case BaseRequestEvent.Request_Find_Password_Verify_Code://通过验证码找回密码事件回调
+            case BaseRequestEvent.REQUEST_FIND_PASSWORD_VERIFY_CODE://通过验证码找回密码事件回调
             	 if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
             		 String mobileKey  = JSON.parseObject(backResultBean.getObj(), Map.class).get("mobileKey").toString();
             		 if(!StringUtility.isEmpty(mobileKey)){

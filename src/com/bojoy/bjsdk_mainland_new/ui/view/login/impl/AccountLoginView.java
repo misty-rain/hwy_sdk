@@ -10,9 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
+import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
+import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.view.register.ISmsView;
 import com.bojoy.bjsdk_mainland_new.ui.view.register.impl.AccountRegisterView;
@@ -167,20 +170,26 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
      * 是否显示back 按钮
      */
     private void isDisplayBackIcon() {
-        if (AccountSharePUtils.getAll(context).size() > 0) {
-            backView = (LinearLayout) getView(Resource.id.bjmgf_sdk_back);
-            if (backView != null) {
-                backView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
-                        bjmgfDialog.show();
-                    }
-                });
-            }
-            showBack();
+        if (AccountSharePUtils.getAll(context).size() > 0 ) {
+                backView = (LinearLayout) getView(Resource.id.bjmgf_sdk_back);
+                if (backView != null) {
+                    backView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            BJMGFSDKTools.getInstance().bjmgfDialog = new BJMGFDialog(context, Utility.scanForActivity(context), BJMGFDialog.Page_AccountLogin);
+                            BJMGFSDKTools.getInstance().bjmgfDialog.show();
+                        }
+                    });
+                }
+                showBack();
+
         } else {
             hideBack();
+        }
+
+        if (SpUtil.getIntValue(context, SysConstant.ISMODIFYPWDFLAGFORDIALOG,0) == 1) {
+            hideBack();
+            SpUtil.setIntValue(context, SysConstant.ISMODIFYPWDFLAGFORDIALOG,0);
         }
 
     }

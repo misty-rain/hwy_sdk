@@ -22,15 +22,18 @@ import com.bojoy.bjsdk_mainland_new.model.impl.SmsModelImpl;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountCenterPresenter;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
+import com.bojoy.bjsdk_mainland_new.ui.page.base.BasePage;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.IAccountCenterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.IUserInfoView;
+import com.bojoy.bjsdk_mainland_new.ui.view.account.bindphone.IModifyBindPhoneView;
 import com.bojoy.bjsdk_mainland_new.ui.view.cs.IQuestionView;
 import com.bojoy.bjsdk_mainland_new.ui.view.cs.impl.SendQuestionView;
 import com.bojoy.bjsdk_mainland_new.utils.AccountUtil;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
+import com.bojoy.bjsdk_mainland_new.utils.Utility;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
 import java.io.File;
@@ -46,18 +49,17 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
 
 
     private IAccountModel iAccountModel;
-    private ISmsModel iSmsModel;
     private IBaseView iBaseView;
     Context context;
     private String nickName, birth;
 
     private final String TAG = AccountCenterPresenterImpl.class.getSimpleName();
     private EventBus eventBus = EventBus.getDefault();
+    private ISmsModel iSmsModel = new SmsModelImpl();
 
 
     public AccountCenterPresenterImpl(Context context, IBaseView iBaseView) {
         iAccountModel = new AccountModelImpl();
-
         this.iBaseView = iBaseView;
         this.context = context;
     }
@@ -151,8 +153,17 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
      */
     @Override
     public void getSmsCodeByBindPhone(Context context, String phoneNum) {
-        iSmsModel = new SmsModelImpl();
         iSmsModel.getBindPhoneCode(context, phoneNum, this);
+    }
+
+    /**
+     * 获得解除绑定手机 验证码
+     *
+     * @param context 上下文
+     */
+    @Override
+    public void getSmsCodeByUnBindPhone(Context context) {
+        iSmsModel.getUnBindPhoneCode(context, this);
     }
 
     /**
@@ -166,6 +177,17 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
     public void bindPhone(Context context, String phoneNum, String verifyCode) {
         iAccountModel.bindPhone(context, phoneNum, verifyCode, this);
 
+    }
+
+    /**
+     * 验证解除绑定手机号 时获得验证码
+     *
+     * @param context    上下文
+     * @param verifyCode 验证码
+     */
+    @Override
+    public void validateCodeForUnBindPhone(Context context, String verifyCode) {
+        iAccountModel.validateCodeForUnBindPhone(context, verifyCode, this);
     }
 
     /**
@@ -198,7 +220,7 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
             if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
                 Map<String, String> paramsMap = null;
                 switch (requestSessionEvent) {
-                    case BaseRequestEvent.Request_VIP_Level://获得会员等级信息
+                    case BaseRequestEvent.REQUEST_VIP_LEVEL://获得会员等级信息
                         paramsMap = JSON.parseObject(backResultBean.getObj(), Map.class);
                         if (iBaseView instanceof SendQuestionView) {
                             ((IQuestionView) iBaseView).showUserVipInfo(paramsMap);
@@ -206,39 +228,46 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
                             ((IAccountCenterView) iBaseView).showUserVipInfo(paramsMap);
                         }
                         break;
-                    case BaseRequestEvent.Request_PF_Modify_User_Info://修改个人信息
+                    case BaseRequestEvent.REQUEST_PF_MODIFY_USER_INFO://修改个人信息
                         ((IUserInfoView) iBaseView).showEditUserInfoSuccess();
                         UserData userData = BJMGFSDKTools.getInstance().getCurrUserData();
                         userData.setBirth(birth);
                         userData.setNick(nickName);
                         BJMGFSDKTools.getInstance().setCurrUserData(userData);
+
                         break;
-                    case BaseRequestEvent.Request_PF_Upload_Face_Image://上传用户头像
+                    case BaseRequestEvent.REQUEST_PF_UPLOAD_FACE_IMAGE://上传用户头像
                         String faceUrl = BJMGFSDKTools.getInstance().getPFFaceUrl(context, Long.valueOf(BJMGFSDKTools.getInstance().getCurrentPassPort().getUid()), JSON.parseObject(backResultBean.getObj()).getString("path"));
                         Log.d(TAG, faceUrl);
                         BJMGFSDKTools.getInstance().getCurrUserData().setFaceUrl(faceUrl);
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_Password_Modify://修改个人密码
+                    case BaseRequestEvent.REQUEST_PASSWORD_MODIFY://修改个人密码
                         PassPort passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort);
                         AccountUtil.remove(context, passPort.getUid());
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_PF_Register://好玩友平台注册
+                    case BaseRequestEvent.REQUEST_PF_REGISTER://好玩友平台注册
                         ((IUserInfoView) iBaseView).showRegisterHwySuccess();
                         break;
-                    case BaseRequestEvent.Request_BindPhone_Check_Code:// 获取绑定手机验证码
+                    case BaseRequestEvent.REQUEST_BINDPHONE_CHECK_CODE:// 获取绑定手机验证码
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_BindPhone://绑定手机
+                    case BaseRequestEvent.REQUEST_UNBINDPHONE_VERIFY_CODE://获得接触绑定手机验证码
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_BindEmail://绑定邮箱
+                    case BaseRequestEvent.REQUEST_BINDPHONE://绑定手机
                         iBaseView.showSuccess();
                         break;
-                    case BaseRequestEvent.Request_Logout://登出
+                    case BaseRequestEvent.GETREQUEST_UNBINDPHONE_VERIFY_CODE_CHECK://解除绑定手机时获得验证码 的验证
+                        ((IModifyBindPhoneView) iBaseView).unbindPhoneCheckVerifyCodeSuccess(backResultBean.getMsg());
+                        break;
+                    case BaseRequestEvent.REQUEST_BINDEMAIL://绑定邮箱
+                        iBaseView.showSuccess();
+                        break;
+                    case BaseRequestEvent.REQUEST_LOGOUT://登出
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
                         BJMGFSDKTools.getInstance().setCurrUserData(null);
                         eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Logout));
@@ -246,9 +275,8 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
                         break;
                 }
             } else {
-                if (backResultBean.getMsg().matches("身份过期")) {
-                    BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
-                    bjmgfDialog.show();
+                if (backResultBean.getMsg().equals(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_auth_id_expired)))) {
+                    BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
                 } else {
                     iBaseView.showError(backResultBean.getMsg());
                 }

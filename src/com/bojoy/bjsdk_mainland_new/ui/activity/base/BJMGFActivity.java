@@ -305,8 +305,6 @@ public class BJMGFActivity extends Activity {
     @Override
     protected void onPause() {
         Log.i(TAG, "activity onpause");
-        BJMGFDialog bjmgfDialog = new BJMGFDialog(this, (Activity) this, BJMGFDialog.Page_AccountLogin);
-        bjmgfDialog.show();
         super.onPause();
     }
 

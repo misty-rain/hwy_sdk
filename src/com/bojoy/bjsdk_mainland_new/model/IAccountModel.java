@@ -183,6 +183,14 @@ public interface IAccountModel{
     void bindPhone(Context context,String phoneNum,String verifyCode,final BaseResultCallbackListener listener);
 
     /**
+     * 验证解除绑定手机号 时获得验证码
+     * @param context
+     * @param verifyCode
+     * @param listener
+     */
+    void validateCodeForUnBindPhone(Context context,String verifyCode,final BaseResultCallbackListener listener);
+
+    /**
      * 获取我方短信平台手机号
      * @param context
      * @param listener

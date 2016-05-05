@@ -10,7 +10,7 @@ import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountCenterPresente
 import com.bojoy.bjsdk_mainland_new.ui.activity.base.BJMGFActivity;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseActivityPage;
-import com.bojoy.bjsdk_mainland_new.ui.view.account.bindphone.IBindPhoneView;
+import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
 import com.bojoy.bjsdk_mainland_new.utils.*;
 import com.bojoy.bjsdk_mainland_new.widget.ClearEditText;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMSdkDialog;
@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by wutao on 2016/1/15.
  * 绑定  or 修改绑定 视图
  */
-public class GetBindPhoneSmsCodeView extends BaseActivityPage implements IBindPhoneView {
+public class GetBindPhoneSmsCodeView extends BaseActivityPage implements IBaseView {
 
     private final String TAG = GetBindPhoneSmsCodeView.class.getSimpleName();
 
@@ -145,8 +145,6 @@ public class GetBindPhoneSmsCodeView extends BaseActivityPage implements IBindPh
             public void onClick(View arg0) {
                 dialog.dismiss();
                 iAccountCenterPresenter.getSmsCodeByBindPhone(context, inputPhoneNumberStr);
-
-
             }
         });
         dialog.setNegativeButton(modifyStr, new View.OnClickListener() {

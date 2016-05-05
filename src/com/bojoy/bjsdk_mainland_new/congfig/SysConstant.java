@@ -129,6 +129,8 @@ public class SysConstant {
     public static final int SDK_DOCK_SNS_WISH_POLLMSG_TYPE = 50;
 
     public static final String MIUI_WARN_FLAG = "MIUI_WARN_FLAG";
+    //用来判断是否为修改密码 后弹出的登陆对话框
+    public static final String ISMODIFYPWDFLAGFORDIALOG = "ISMODIFYPWDFLAGFORDIALOG";
 
 
 

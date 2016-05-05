@@ -15,4 +15,11 @@ public interface ISmsModel {
      * @param listener 回调事件 将结果通知 给presenter
      */
     void getBindPhoneCode(Context context, String phoneNum, final BaseResultCallbackListener listener);
+
+    /**
+     * 获得解除绑定手机号的验证码
+     * @param context 上下文
+     * @param listener 回调事件 将结果通知 给presenter
+     */
+    void getUnBindPhoneCode(Context context,final BaseResultCallbackListener listener);
 }

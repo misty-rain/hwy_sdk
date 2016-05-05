@@ -6,6 +6,7 @@ import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -1312,6 +1313,22 @@ public class Utility {
             intent.setData(uri);
             context.startActivity(intent);
         }
+    }
+
+    /**
+     * 扫描当前context
+     * @param cont
+     * @return
+     */
+    public static Activity scanForActivity(Context cont) {
+        if (cont == null)
+            return null;
+        else if (cont instanceof Activity)
+            return (Activity) cont;
+        else if (cont instanceof ContextWrapper)
+            return scanForActivity(((ContextWrapper) cont).getBaseContext());
+
+        return null;
     }
 
 

@@ -38,6 +38,7 @@ import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
 import com.bojoy.bjsdk_mainland_new.utils.StringUtility;
 import com.bojoy.bjsdk_mainland_new.utils.ToastUtil;
+import com.bojoy.bjsdk_mainland_new.utils.Utility;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
 import java.util.HashMap;
@@ -176,31 +177,10 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
 
             @Override
             public void onClick(View v) {
-                //activity.setNeedOpenDock(false);
-                activity.setNeedOpenDock(true);
+                activity.setNeedOpenDock(false);
+                // activity.setNeedOpenDock(true);
                 quit();
-
-          /*      Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-
-
-
-                        if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
-                            BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
-                            bjmgfDialog.show();
-
-                        } else {
-                            BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
-                            bjmgfDialog.show();
-                        }
-                    }
-                }, 500);*/
-
-                //
-               // BJMGFSdk.getDefault().switchAccount(context);
-
+                BJMGFSdk.getDefault().switchAccount(context);
             }
         });
 
@@ -239,7 +219,7 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
         mAuthentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LogProxy.d(TAG,BJMGFSDKTools.getInstance().getAuthenticaionUrl(context));
+                LogProxy.d(TAG, BJMGFSDKTools.getInstance().getAuthenticaionUrl(context));
                 Uri levelUri = Uri.parse(BJMGFSDKTools.getInstance().getAuthenticaionUrl(context));
                 Intent intent = new Intent(Intent.ACTION_VIEW, levelUri);
                 activity.startActivity(intent);
@@ -323,10 +303,12 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
         if (!jsonObject.get("bindMobile").equals("")) {
             phoneNum = jsonObject.get("bindMobile").toString();
             bindPhoneText.setText(jsonObject.get("bindMobile").toString());
+            bindPhoneText.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_account_gray));
             isBindPhone = true;
         }
         if (!jsonObject.get("bindEmail").equals("")) {
             bindEmailText.setText(jsonObject.get("bindEmail").toString());
+            bindEmailText.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_account_gray));
             isBindEmail = true;
         }
         mNickName.setText(BJMGFSDKTools.getInstance().getCurrentPassPort().getPp());
@@ -366,6 +348,7 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
             imageLoaderUtil.loadImageUrl(context, faceImage, BJMGFSDKTools.getInstance().getCurrUserData().faceUrl, null, roundRectSize);
         }
     }
+
 
     @Override
     public void showError(String message) {

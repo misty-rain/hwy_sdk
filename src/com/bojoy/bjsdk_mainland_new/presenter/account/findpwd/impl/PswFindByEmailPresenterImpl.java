@@ -45,7 +45,7 @@ public class PswFindByEmailPresenterImpl implements IPswFindByEmailPresenter, Ba
     public void onSuccess(Object response, int requestSessionEvent) {
     	BackResultBean backResultBean= JSON.parseObject((String)response,BackResultBean.class);
         switch (requestSessionEvent) {
-            case BaseRequestEvent.Request_EmailFindPwd://通过验证码找回密码事件回调
+            case BaseRequestEvent.REQUEST_EMAILFINDPWD://通过验证码找回密码事件回调
             	 if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
             		 String email  = JSON.parseObject(backResultBean.getObj(), Map.class).get("email").toString();
             		 if(!StringUtility.isEmpty(email)){

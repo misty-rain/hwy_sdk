@@ -39,19 +39,19 @@ public class AccountMobileRegisterImpl implements IAccountMobileRegristerPresent
     public void onSuccess(Object response, int requestSessionEvent) {
         try {
             BackResultBean backResultBean = JSON.parseObject((String) response, BackResultBean.class);
-            if(requestSessionEvent == BaseRequestEvent.Request_One_Key_Check) {
+            if(requestSessionEvent == BaseRequestEvent.REQUEST_ONE_KEY_CHECK) {
                 if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
                     iBaseView.showSuccess();
                 }else{
                     iBaseView.showError(backResultBean.getMsg());
                 }
-            }else if(requestSessionEvent == BaseRequestEvent.Request_SENDSMS_CODE) {
+            }else if(requestSessionEvent == BaseRequestEvent.REQUEST_SENDSMS_CODE) {
                 if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
                     iBaseView.showSuccess();
                 }else{
                     iBaseView.showError(backResultBean.getMsg());
                 }
-            }else if(requestSessionEvent == BaseRequestEvent.Request_Mobile_Register_Check){
+            }else if(requestSessionEvent == BaseRequestEvent.REQUEST_MOBILE_REGISTER_CHECK){
                 if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
                     if(MOBILE_REG_STATUS == 1){
                         iBaseView.MobileVerifyCodeSuccess(backResultBean.getObj());

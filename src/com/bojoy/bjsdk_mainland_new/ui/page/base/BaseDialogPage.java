@@ -1,7 +1,9 @@
 package com.bojoy.bjsdk_mainland_new.ui.page.base;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
@@ -35,6 +37,21 @@ public abstract class BaseDialogPage<T> extends BasePage {
 		super.onCreateView(view);
 	}
 
+	/**
+	 * 用来扫描当前context
+	 * @param cont
+	 * @return
+     */
+	public Activity scanForActivity(Context cont) {
+		if (cont == null)
+			return null;
+		else if (cont instanceof Activity)
+			return (Activity) cont;
+		else if (cont instanceof ContextWrapper)
+			return scanForActivity(((ContextWrapper) cont).getBaseContext());
+
+		return null;
+	}
 	/**
 	 * 启动页面时设置页面内容
 	 */

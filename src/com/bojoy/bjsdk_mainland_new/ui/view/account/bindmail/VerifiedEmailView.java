@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountCenterPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountCenterPresenterImpl;
@@ -31,8 +32,8 @@ public class VerifiedEmailView extends BaseActivityPage implements IBaseView {
     public VerifiedEmailView(Context context, PageManager manager,
                              BJMGFActivity activity) {
         super(ReflectResourceId.getLayoutId(context,
-                Resource.layout.bjmgf_sdk_dock_account_noverified_email),
-                context, manager, activity);
+                  Resource.layout.bjmgf_sdk_dock_account_noverified_email),
+                  context, manager, activity);
     }
 
     public void onCreateView(View view) {
@@ -52,9 +53,9 @@ public class VerifiedEmailView extends BaseActivityPage implements IBaseView {
         setTopicStr(getString(Resource.string.bjmgf_sdk_floatWindow_accountManager_bindInvalidateEmailStr));
         setRightButtonStr(getString(Resource.string.bjmgf_sdk_floatWindow_accountManager_editStr));
 
-        email = (String) getParams().get("email");
-        mTvShowEmail.setText(email);
 
+        email = getBundle().getString("email");
+        mTvShowEmail.setText(email);
         setRightButtonClick(new View.OnClickListener() {
 
             @Override
@@ -84,11 +85,10 @@ public class VerifiedEmailView extends BaseActivityPage implements IBaseView {
             }
         });
 
-      //  if((boolean)getParams().get("isShowSendEmailDialog")){
-          //  showDialog();
-      //  }
-
-        SpUtil.setStringValue(context, String.valueOf(BJMGFSDKTools.getInstance().getCurrUserData().getUid()),email);
+        if (getBundle().getString("isShowSendEmailDialog").equals("true")) {
+            showDialog();
+        }
+        SpUtil.setStringValue(context, String.valueOf(BJMGFSDKTools.getInstance().getCurrUserData().getUid()), email);
 
     }
 
@@ -98,20 +98,20 @@ public class VerifiedEmailView extends BaseActivityPage implements IBaseView {
 
         final BJMSdkDialog dialog = new BJMSdkDialog(context);
         dialog.setTitle(Utility
-                .getString(
-                        Resource.string.bjmgf_sdk_floatWindow_accountManager_bindEmail_resend_title,
-                        context));
+                  .getString(
+                            Resource.string.bjmgf_sdk_floatWindow_accountManager_bindEmail_resend_title,
+                            context));
         dialog.setMessage(sFinalStr);
         dialog.setPositiveButton(
-                Utility.getString(
-                        Resource.string.bjmgf_sdk_dock_public_wish_to_select_confirmStrLeftStr,
-                        context), new View.OnClickListener() {
+                  Utility.getString(
+                            Resource.string.bjmgf_sdk_dock_public_wish_to_select_confirmStrLeftStr,
+                            context), new View.OnClickListener() {
 
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
+                      @Override
+                      public void onClick(View v) {
+                          dialog.dismiss();
+                      }
+                  });
         dialog.show();
     }
 

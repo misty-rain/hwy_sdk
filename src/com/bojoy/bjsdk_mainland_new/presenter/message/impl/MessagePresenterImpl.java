@@ -53,7 +53,7 @@ public class MessagePresenterImpl implements IMessagePresenter, BaseResultCallba
             if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
                 Map<String, String> paramsMap = null;
                 switch (requestSessionEvent) {
-                    case BaseRequestEvent.Request_Message_Notify://获取未读消息
+                    case BaseRequestEvent.REQUEST_MESSAGE_NOTIFY://获取未读消息
                         list = MessageNoticeTools.getInstance().getUnReadMessageList(backResultBean.getObj());
                         if (list.size() > 0) {
                             //根据消息list得到所有用户信息 此处主要用的 头像
@@ -62,7 +62,7 @@ public class MessagePresenterImpl implements IMessagePresenter, BaseResultCallba
                             ((IMessageView) iBaseView).showNoResultView();
                         }
                         break;
-                    case BaseRequestEvent.Request_PF_Other_Users_Info://根据id 获得 用户 信息
+                    case BaseRequestEvent.REQUEST_PF_OTHER_USERS_INFO://根据id 获得 用户 信息
                         Map<Long, UserData> map = MessageNoticeTools.getInstance().parseOtherUsersData(context, backResultBean.getObj());
                         MessageNoticeTools.getInstance().setCurrMsgUserMap(map);
                         ((IMessageView) iBaseView).showMsgListView(list);

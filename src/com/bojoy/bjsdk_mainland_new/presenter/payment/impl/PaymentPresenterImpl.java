@@ -72,7 +72,7 @@ public class PaymentPresenterImpl implements IPaymentPresenter, BaseResultCallba
     public void onSuccess(Object response, int requestSessionEvent) {
 
         try {
-            if (requestSessionEvent == BaseRequestEvent.Request_PAYMENT_RECHARGE_CARDS_CONFIG_JSON) {
+            if (requestSessionEvent == BaseRequestEvent.REQUEST_PAYMENT_RECHARGE_CARDS_CONFIG_JSON) {
 
                 if (!StringUtility.isEmpty(String.valueOf(response))) {
                     Object obj = JSONObject.parseObject(
@@ -101,14 +101,14 @@ public class PaymentPresenterImpl implements IPaymentPresenter, BaseResultCallba
                         (String) response, BackResultBean.class);
                 //因为充值卡成功返回的结果码不为0故重写以和其他充值结果区分
                 if(backResultBean.getCode()==ErrorCodeConstants.ERROR_CODE_RECHARGECARDRESULTCODE_SUCCESS){
-                    if(requestSessionEvent==BaseRequestEvent.Request_Recharge_Order){
+                    if(requestSessionEvent==BaseRequestEvent.REQUEST_RECHARGE_ORDER){
                       String msg=backResultBean.getMsg().toString();
                        iPayRechargeCardViewNext.showReturn(msg);
                     }
                 }
                 //如果u币余额不足时支付调用此方法 因为U币余额不足支付与余额充足支付返回码不同故重写
                 if(backResultBean.getCode()==ErrorCodeConstants.ERROR_CODE_PAYORDERCODE){
-                    if(requestSessionEvent==BaseRequestEvent.Request_Pay_Order){
+                    if(requestSessionEvent==BaseRequestEvent.REQUEST_PAY_ORDER){
                         String backMsg = backResultBean.getMsg().toString();
                         mIPaymentView.getPayResult("",backMsg);
                     }
@@ -116,7 +116,7 @@ public class PaymentPresenterImpl implements IPaymentPresenter, BaseResultCallba
 
                 if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
                     switch (requestSessionEvent) {
-                        case BaseRequestEvent.Request_User_Balance:// 获取U币余额
+                        case BaseRequestEvent.REQUEST_USER_BALANCE:// 获取U币余额
                             String balance = JSON
                                     .parseObject(backResultBean.getObj(), Map.class)
                                     .get("data").toString();
@@ -124,7 +124,7 @@ public class PaymentPresenterImpl implements IPaymentPresenter, BaseResultCallba
                                 mIPaymentView.showResult(balance);
                             }
                             break;
-                        case BaseRequestEvent.Request_Recharge_Order:
+                        case BaseRequestEvent.REQUEST_RECHARGE_ORDER:
 
                             if (payType.equals(PayTools.ALIPAY_TYPE) || payType.equals(PayTools.SMSPAY_TYPE) || payType.equals(PayTools.WXPAY_TYPE)) {
                                 String payInfo = JSON
@@ -152,7 +152,7 @@ public class PaymentPresenterImpl implements IPaymentPresenter, BaseResultCallba
 
                             }
                             break;
-                        case BaseRequestEvent.Request_Pay_Order:
+                        case BaseRequestEvent.REQUEST_PAY_ORDER:
                             String data = JSON
                                     .parseObject(backResultBean.getObj(),
                                             Map.class).get("data").toString();

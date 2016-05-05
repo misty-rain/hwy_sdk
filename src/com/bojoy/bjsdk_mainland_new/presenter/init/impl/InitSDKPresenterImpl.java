@@ -12,13 +12,10 @@ import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseResultCallbackListene
 import com.bojoy.bjsdk_mainland_new.model.IInitSDKModel;
 import com.bojoy.bjsdk_mainland_new.model.entity.BackResultBean;
 import com.bojoy.bjsdk_mainland_new.model.impl.InitSDKModelImpl;
-import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
-import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.presenter.init.IInitPresenter;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.ui.view.init.IInitView;
-import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
 import com.bojoy.bjsdk_mainland_new.utils.Utility;
@@ -90,7 +87,7 @@ public class InitSDKPresenterImpl implements IInitPresenter, BaseResultCallbackL
         try {
             BackResultBean backResultBean = JSON.parseObject((String) response, BackResultBean.class);
             switch (requestSessionEvent) {
-                case BaseRequestEvent.Request_Init: //初始化SDK  事件
+                case BaseRequestEvent.REQUEST_INIT: //初始化SDK  事件
                     if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
                         if (backResultBean.getObj().indexOf("uuid") > -1) {
                             String cUUID = JSON
@@ -100,8 +97,8 @@ public class InitSDKPresenterImpl implements IInitPresenter, BaseResultCallbackL
                             SpUtil.setStringValue(context, "uuid", cUUID); // 初始化成功后，将UUID
                             // 存储在本地
                         }
-                            eventBus.post(new BaseReceiveEvent(
-                                      BaseReceiveEvent.Flag_Success, ""));
+                        eventBus.post(new BaseReceiveEvent(
+                                  BaseReceiveEvent.Flag_Success, ""));
                     } else {
                         eventBus.post(new BaseReceiveEvent(
                                   BaseReceiveEvent.Flag_Fail, backResultBean
@@ -109,19 +106,19 @@ public class InitSDKPresenterImpl implements IInitPresenter, BaseResultCallbackL
                     }
 
                     break;
-                case BaseRequestEvent.Request_App_Check_Update: //检查更新SDK 事件
+                case BaseRequestEvent.REQUEST_APP_CHECK_UPDATE: //检查更新SDK 事件
                     if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS)
                         iInitView.openUpdateView();
                     else
                         iInitView.showError(backResultBean.getMsg());
 
                     break;
-                case BaseRequestEvent.Request_First_Deploy: //第一次读取cdn配置事件,读取成功后 ，将文件保存，执行 初始化 操作
+                case BaseRequestEvent.REQUEST_FIRST_DEPLOY: //第一次读取cdn配置事件,读取成功后 ，将文件保存，执行 初始化 操作
                     SpUtil.setStringValue(context, SysConstant.CDN_JSON_FILE_NAME, response.toString());
                     initSDKModel.initSDK(context, this);
                     break;
 
-                case BaseRequestEvent.Request_Message_Offline:
+                case BaseRequestEvent.REQUEST_MESSAGE_OFFLINE:
                     BJMGFSDKTools.getInstance().setOfflineMsgFlag("");
                     BJMGFSDKTools.getInstance().setNewWishMsgFlag("");
                     BJMGFSDKTools.getInstance().setOfflineTime("");

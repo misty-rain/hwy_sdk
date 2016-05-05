@@ -61,6 +61,10 @@ public class BaseApi {
     public static final String APP_BIND_EMAIL = BASE_ROOT + "emailbind.do";
     //获取绑定手机 时的短信验证码
     public static final String APP_GET_SMSCODE_BY_BIND_PHONE = BASE_ROOT + "mobileBindKey.do";
+    //解除绑定手机号码
+    public static final String APP_UNBIND_PHONE = BASE_ROOT + "mobileUnBindCheck.do";
+    //获取解除绑定手机 时的短信验证码
+    public static final String APP_GET_SMSCODE_BY_UNBIND_PHONE = BASE_ROOT + "mobileUnBindKey.do";
     //绑定手机号
     public static final String APP_BIND_PHONE = BASE_ROOT + "mobileBind.do";
     //web 签名
@@ -94,8 +98,8 @@ public class BaseApi {
     public static final String APP_WAP_RECHARGE = BASE_PAY_ROOT + "init.do";
 
     //请求doman cdn 配置 信息
-  public static final String APP_COLLOCATION_INFO = "http://123.59.67.156/version/HWY_cn_cn/client/sdk_android/1/clientConf.json?";
-    //public static final String APP_COLLOCATION_INFO = "http://192.168.0.26:801/version/HWY_cn_cn/client/sdk_android/1/clientConf.json?";
+  //public static final String APP_COLLOCATION_INFO = "http://123.59.67.156/version/HWY_cn_cn/client/sdk_android/1/clientConf.json?";
+    public static final String APP_COLLOCATION_INFO = "http://192.168.0.46:8888/version/HWY_cn_cn/client/sdk_android/1/clientConf.json?";
     public static final String APP_CS_DOMAIN = "http://m-service.haowanyou.com";
     //问题详情追加回复
     public static final String APP_MY_QUESTION_APPEND = BASE_CS_ROOT + "append.do?";

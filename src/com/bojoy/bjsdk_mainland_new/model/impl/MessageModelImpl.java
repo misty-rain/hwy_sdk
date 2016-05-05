@@ -51,12 +51,12 @@ public class MessageModelImpl implements IMessageModel {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceIMDomain(context) + BaseApi.APP_IM_REQUEST, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
-                    callbackListener.onError(call, e, BaseRequestEvent.Request_Message_Notify);
+                    callbackListener.onError(call, e, BaseRequestEvent.REQUEST_MESSAGE_NOTIFY);
                 }
 
                 @Override
                 public void onResponse(String response) {
-                    callbackListener.onSuccess(response, BaseRequestEvent.Request_Message_Notify);
+                    callbackListener.onSuccess(response, BaseRequestEvent.REQUEST_MESSAGE_NOTIFY);
                 }
             });
         } catch (Exception e) {

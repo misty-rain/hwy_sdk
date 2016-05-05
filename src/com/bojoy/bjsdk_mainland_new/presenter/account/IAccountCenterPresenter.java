@@ -68,12 +68,25 @@ public interface IAccountCenterPresenter {
     void getSmsCodeByBindPhone(Context context,String phoneNum);
 
     /**
+     * 获得接触绑定手机 验证码
+     * @param context 上下文
+     */
+    void getSmsCodeByUnBindPhone(Context context);
+
+    /**
      * 绑定手机
      * @param context 上下文
      * @param phoneNum 手机号
      * @param verifyCode 验证码
      */
     void bindPhone(Context context,String phoneNum,String verifyCode);
+
+    /**
+     * 验证解除绑定手机号 时获得验证码
+     * @param context 上下文
+     * @param verifyCode 验证码
+     */
+    void validateCodeForUnBindPhone(Context context,String verifyCode);
 
     /**
      * 绑定邮箱

@@ -57,13 +57,13 @@ public class PaymentModelImpl implements IPaymentModel {
                           @Override
                           public void onError(Call call, Exception e) {
                               listener.onError(call, e,
-                                        BaseRequestEvent.Request_User_Balance);
+                                        BaseRequestEvent.REQUEST_USER_BALANCE);
                           }
 
                           @Override
                           public void onResponse(String response) {
                               listener.onSuccess(response,
-                                        BaseRequestEvent.Request_User_Balance);
+                                        BaseRequestEvent.REQUEST_USER_BALANCE);
                           }
                       });
         } catch (Exception e) {
@@ -98,13 +98,13 @@ public class PaymentModelImpl implements IPaymentModel {
 
                               listener.onError(call
                                         , e,
-                                        BaseRequestEvent.Request_Recharge_Order);
+                                        BaseRequestEvent.REQUEST_RECHARGE_ORDER);
                           }
 
                           @Override
                           public void onResponse(String response) {
                               listener.onSuccess(response,
-                                        BaseRequestEvent.Request_Recharge_Order);
+                                        BaseRequestEvent.REQUEST_RECHARGE_ORDER);
 
                               LogProxy.d(TAG, response + "");
 
@@ -141,14 +141,14 @@ public class PaymentModelImpl implements IPaymentModel {
                           @Override
                           public void onError(Call call, Exception e) {
                               listener.onError(call, e,
-                                        BaseRequestEvent.Request_Pay_Order);
+                                        BaseRequestEvent.REQUEST_PAY_ORDER);
 
                           }
 
                           @Override
                           public void onResponse(String response) {
                               listener.onSuccess(response,
-                                        BaseRequestEvent.Request_Pay_Order);
+                                        BaseRequestEvent.REQUEST_PAY_ORDER);
                           }
 
                       });
@@ -201,7 +201,7 @@ public class PaymentModelImpl implements IPaymentModel {
                     listener.onError(
                               call,
                               e,
-                              BaseRequestEvent.Request_PAYMENT_RECHARGE_CARDS_CONFIG_JSON);
+                              BaseRequestEvent.REQUEST_PAYMENT_RECHARGE_CARDS_CONFIG_JSON);
                 }
 
                 @Override
@@ -253,12 +253,12 @@ public class PaymentModelImpl implements IPaymentModel {
         LogProxy.d(TAG, content.toString());
         if (!StringUtility.isEmpty(content.toString())) {
             listener.onSuccess(content.toString(),
-                      BaseRequestEvent.Request_PAYMENT_RECHARGE_CARDS_CONFIG_JSON);
+                      BaseRequestEvent.REQUEST_PAYMENT_RECHARGE_CARDS_CONFIG_JSON);
         } else {
             //如果没有取到网络数据取本地数据
             String localstr = "{rechargecard: [{111: {text: \"移动充值卡支付\",tip: \"移动充值卡\",ct: [{id: \"CMJFK00010001\",name: \"全国移动充值卡\",cardNumberLength: 17,cardPwdLength: 18,rule: [10, 20, 30, 50, 100, 200, 300, 500]},{id: \"CMJFK00010112\", name: \"浙江移动缴费券\", cardNumberLength: 10, cardPwdLength: 8, rule: [10, 20, 30, 50, 100, 200]}, {id: \"CMJFK00010014\", name: \"福建呱呱通充值卡\", cardNumberLength: 16, cardPwdLength: 17, rule: [10, 20, 30, 50, 100]}]}}, {112: {text: \"联通充值卡支付\", tip: \"联通充值卡\", ct: [{id: \"LTJFK00020000\", name: \"全国联通一卡充\", cardNumberLength: 15, cardPwdLength: 19, rule: [10,20,30,50,100,200,300,500]}]}}, {113: { text: \"电信充值卡支付\", tip: \"电信充值卡\", ct: [{id : \"DXJFK00010001\", name: \"全国电信卡\", cardNumberLength: 19, cardPwdLength: 18, rule: [10, 20, 30, 50, 100, 200]}]}}]}";
             listener.onSuccess(localstr,
-                      BaseRequestEvent.Request_PAYMENT_RECHARGE_CARDS_CONFIG_JSON);
+                      BaseRequestEvent.REQUEST_PAYMENT_RECHARGE_CARDS_CONFIG_JSON);
         }
 
     }

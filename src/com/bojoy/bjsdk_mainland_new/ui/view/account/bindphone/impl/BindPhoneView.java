@@ -139,8 +139,6 @@ public class BindPhoneView extends BaseActivityPage implements IBaseView {
         //注册短信监听
         content = new SmsContentObserver(activity, smsHandler);
         activity.getContentResolver().registerContentObserver(Uri.parse("content://sms/"), true, content);
-        //注册定时任务的事件
-        EventBus.getDefault().register(this);
 
         //开始轮询时间
         PollingTaskUtil.getDefault().startPollingTask(SysConstant.SMS_POLLING_PERIOD_TIME,SysConstant.SMS_POLLING_DELAY_TIME, SysConstant.SMS_POLLING_MAX_TIME,TAG);

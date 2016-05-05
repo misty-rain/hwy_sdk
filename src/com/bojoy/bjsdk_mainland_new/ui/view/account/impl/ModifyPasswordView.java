@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
+import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountCenterPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountCenterPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.ui.activity.base.BJMGFActivity;
@@ -14,6 +16,7 @@ import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseActivityPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
+import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
 import com.bojoy.bjsdk_mainland_new.utils.StringUtility;
 import com.bojoy.bjsdk_mainland_new.utils.ToastUtil;
 import com.bojoy.bjsdk_mainland_new.widget.ClearEditTextForPassword;
@@ -113,8 +116,10 @@ public class ModifyPasswordView extends BaseActivityPage implements IBaseView {
         ToastUtil.showMessage(context,getString(Resource.string.bjmgf_sdk_PswModifySuccessedStr));
         IAccountCenterPresenter iAccountCenterPresenter = new AccountCenterPresenterImpl(context, null);
         iAccountCenterPresenter.logout(context);
-        BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
-        bjmgfDialog.show();
+        SpUtil.setIntValue(context, SysConstant.ISMODIFYPWDFLAGFORDIALOG,1);
+        manager.clear();
+        BJMGFSDKTools.getInstance().bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
+        BJMGFSDKTools.getInstance().bjmgfDialog.show();
 
     }
 }
