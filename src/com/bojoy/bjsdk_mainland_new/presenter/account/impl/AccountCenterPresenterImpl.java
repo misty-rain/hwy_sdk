@@ -22,6 +22,7 @@ import com.bojoy.bjsdk_mainland_new.model.impl.SmsModelImpl;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountCenterPresenter;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
+import com.bojoy.bjsdk_mainland_new.support.fastjson.JSONObject;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BasePage;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.IAccountCenterView;
@@ -33,6 +34,7 @@ import com.bojoy.bjsdk_mainland_new.utils.AccountUtil;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
+import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
 import com.bojoy.bjsdk_mainland_new.utils.Utility;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
@@ -52,6 +54,7 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
     private IBaseView iBaseView;
     Context context;
     private String nickName, birth;
+    private String bindPhoneNum;
 
     private final String TAG = AccountCenterPresenterImpl.class.getSimpleName();
     private EventBus eventBus = EventBus.getDefault();
@@ -175,6 +178,7 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
      */
     @Override
     public void bindPhone(Context context, String phoneNum, String verifyCode) {
+        this.bindPhoneNum = phoneNum;
         iAccountModel.bindPhone(context, phoneNum, verifyCode, this);
 
     }
@@ -259,6 +263,9 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_BINDPHONE://绑定手机
+                        JSONObject jsonObject = JSON.parseObject(SpUtil.getStringValue(context, BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), ""));
+                        jsonObject.put("bindMobile",bindPhoneNum);
+                        SpUtil.setStringValue(context,BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), jsonObject.toJSONString());
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.GETREQUEST_UNBINDPHONE_VERIFY_CODE_CHECK://解除绑定手机时获得验证码 的验证
