@@ -3,6 +3,7 @@ package com.bojoy.bjsdk_mainland_new.presenter.account.impl;
 
 import android.content.Context;
 
+import com.bojoy.bjsdk_mainland_new.app.GlobalContext;
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.congfig.ErrorCodeConstants;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
@@ -17,6 +18,7 @@ import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
+import com.bojoy.bjsdk_mainland_new.ui.view.account.IAccountCenterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.IAccountLoginListView;
 import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.AccountUtil;
@@ -39,6 +41,7 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
     EventBus eventBus = EventBus.getDefault();
     Context context;
     private final String TAG = AccountPresenterImpl.class.getSimpleName();
+    private int viewFlag = 0;
 
     public AccountPresenterImpl(Context context, IBaseView iBaseView) {
         iAccountModel = new AccountModelImpl();
@@ -61,9 +64,12 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         AccountUtil.remove(context, passPort.getUid());
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
                         iAccountModel.getUserInfoForSelf(context, SysConstant.GET_USERINFO_TYPE_BASE, this);//查询用户信息
-                        iAccountModel.getAccountInfo(context, this); //查询账户信息
+                         iAccountModel.getAccountInfo(context, this); //查询账户信息
                         eventBus.post(BJMGFSdkEvent.App_Login_Success);
                         iBaseView.showSuccess();
+                        break;
+                    case BaseRequestEvent.REQUEST_GET_ACCOUNT_INFO://获取账号信息事件
+                        SpUtil.setStringValue(context, BJMGFSDKTools.getInstance().currentPassPort.getUid(), backResultBean.getObj());
                         break;
                     case BaseRequestEvent.REQUEST_TRY_LOGIN: //试玩事件
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
@@ -81,9 +87,6 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         break;
                     case BaseRequestEvent.REQUEST_PF_USER_INFO: //获得自己的个人信息
                         BJMGFSDKTools.getInstance().saveCurrentUserInfo(context, backResultBean, (String) response);
-                        break;
-                    case BaseRequestEvent.REQUEST_GET_ACCOUNT_INFO://获取账号信息事件
-                        SpUtil.setStringValue(context, BJMGFSDKTools.getInstance().currentPassPort.getUid(), backResultBean.getObj());
                         break;
                     case BaseRequestEvent.REQUEST_AUTO_LOGIN://自动登陆
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
@@ -120,9 +123,13 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                 }
             } else {
                 if (backResultBean.getMsg().equals(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_auth_id_expired)))) {
-                    BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
+                    if (viewFlag == 1)
+                        iBaseView.showError(backResultBean.getMsg());
+                    else
+                        BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
                 } else {
                     iBaseView.showError(backResultBean.getMsg());
+
                 }
             }
 
@@ -191,10 +198,12 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
     /**
      * 自动登陆
      *
-     * @param context 上下文
+     * @param context  上下文
+     * @param viewFlag 视图标识 ，用来标识当前页面
      */
     @Override
-    public void autoLogin(Context context) {
+    public void autoLogin(Context context, int viewFlag) {
+        this.viewFlag = viewFlag;
         iAccountModel.autoLogin(context, this);
     }
 

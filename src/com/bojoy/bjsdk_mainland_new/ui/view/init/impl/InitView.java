@@ -216,7 +216,7 @@ public class InitView extends BaseDialogPage implements IInitView {
             if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
                 dialog.cancel();
                 IAccountPresenter iAccountPresenter = new AccountPresenterImpl(context, this);
-                iAccountPresenter.autoLogin(context);
+                iAccountPresenter.autoLogin(context,0);
             } else {
                 setAccountLoginView();
             }

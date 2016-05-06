@@ -240,6 +240,10 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
                         BJMGFSDKTools.getInstance().setCurrUserData(userData);
 
                         break;
+                    case BaseRequestEvent.REQUEST_GET_ACCOUNT_INFO://获取账号信息事件
+                        SpUtil.setStringValue(context, BJMGFSDKTools.getInstance().currentPassPort.getUid(), backResultBean.getObj());
+                        ((IAccountCenterView) iBaseView).showAccountInfo();
+                        break;
                     case BaseRequestEvent.REQUEST_PF_UPLOAD_FACE_IMAGE://上传用户头像
                         String faceUrl = BJMGFSDKTools.getInstance().getPFFaceUrl(context, Long.valueOf(BJMGFSDKTools.getInstance().getCurrentPassPort().getUid()), JSON.parseObject(backResultBean.getObj()).getString("path"));
                         Log.d(TAG, faceUrl);
@@ -272,6 +276,7 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
                         ((IModifyBindPhoneView) iBaseView).unbindPhoneCheckVerifyCodeSuccess(backResultBean.getMsg());
                         break;
                     case BaseRequestEvent.REQUEST_BINDEMAIL://绑定邮箱
+                        SpUtil.setIntValue(context,SysConstant.EMAIL_BIND_STATUS,1);
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_LOGOUT://登出

@@ -14,8 +14,11 @@ import android.widget.TextView;
 import com.bojoy.bjsdk_mainland_new.app.BJMGFSdk;
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.app.tools.DockTypeTools;
+import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountCenterPresenter;
+import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountCenterPresenterImpl;
+import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSONObject;
 import com.bojoy.bjsdk_mainland_new.ui.activity.base.BJMGFActivity;
@@ -117,7 +120,7 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
         //设置实名认证选项状态
 
         if ((Integer.valueOf(DomainUtility.getInstance().getRealConfirm(context)) & 0x2) != 0) {
-            if (BJMGFSDKTools.getInstance().getCurrentPassPort().getAuthType().equals("0")) {
+            if (BJMGFSDKTools.getInstance().getCurrentPassPort().getAuthType().equals("")) {
                 setAuthenticationStatus(2);
             } else {
                 setAuthenticationStatus(1);
@@ -273,10 +276,10 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
             }
         });
 
-        iAccountCenterPresenter = new AccountCenterPresenterImpl(context, this);
         showProgressDialog();
+        iAccountCenterPresenter = new AccountCenterPresenterImpl(context, this);
+        iAccountCenterPresenter.getAccountInfo(context);
         showUserInfo();
-        showAccountInfo();
 
 
     }
@@ -299,6 +302,7 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
 
     @Override
     public void showAccountInfo() {
+        dismissProgressDialog();
         JSONObject jsonObject = JSON.parseObject(SpUtil.getStringValue(context, BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), ""));
         if (!jsonObject.get("bindMobile").equals("")) {
             phoneNum = jsonObject.get("bindMobile").toString();
@@ -307,9 +311,14 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
             isBindPhone = true;
         }
         if (!jsonObject.get("bindEmail").equals("")) {
-            bindEmailText.setText(jsonObject.get("bindEmail").toString());
-            bindEmailText.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_account_gray));
-            isBindEmail = true;
+            if (SpUtil.getIntValue(context, SysConstant.EMAIL_BIND_STATUS, 0) == 1)
+                bindEmailText.setText(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_floatWindow_accountManager_enAuthentStr)));
+            else {
+                SpUtil.setIntValue(context, SysConstant.EMAIL_BIND_STATUS, 0);
+                bindEmailText.setText(jsonObject.get("bindEmail").toString());
+                bindEmailText.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_account_gray));
+                isBindEmail = true;
+            }
         }
         mNickName.setText(BJMGFSDKTools.getInstance().getCurrentPassPort().getPp());
         mUserId.setText(getString(Resource.string.bjmgf_sdk_hwynumber) + jsonObject.get("uid"));

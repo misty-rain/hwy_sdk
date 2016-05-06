@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bojoy.bjsdk_mainland_new.app.BJMGFSdk;
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.utils.DialogUtil;
@@ -97,7 +98,7 @@ public abstract class BasePage extends ViewPage {
 
     public String getString(String resourceIdName) {
         return context.getResources().getString(
-                ReflectResourceId.getStringId(context, resourceIdName));
+                  ReflectResourceId.getStringId(context, resourceIdName));
     }
 
     /**
@@ -113,26 +114,26 @@ public abstract class BasePage extends ViewPage {
 //					mProgressDialog = null;
                 } else {
                     mProgressDialog = DialogUtil
-                            .createTransparentProgressDialog(
-                                    context,
-                                    context.getResources()
-                                            .getString(
-                                                    ReflectResourceId
-                                                            .getStringId(
-                                                                    context,
-                                                                    Resource.string.bjmgf_sdk_dataSubmitingStr)));
+                              .createTransparentProgressDialog(
+                                        context,
+                                        context.getResources()
+                                                  .getString(
+                                                            ReflectResourceId
+                                                                      .getStringId(
+                                                                                context,
+                                                                                Resource.string.bjmgf_sdk_dataSubmitingStr)));
                     mProgressDialog.show();
                 }
             } else {
                 mProgressDialog = DialogUtil
-                        .createTransparentProgressDialog(
-                                context,
-                                context.getResources()
-                                        .getString(
-                                                ReflectResourceId
-                                                        .getStringId(
-                                                                context,
-                                                                Resource.string.bjmgf_sdk_dataSubmitingStr)));
+                          .createTransparentProgressDialog(
+                                    context,
+                                    context.getResources()
+                                              .getString(
+                                                        ReflectResourceId
+                                                                  .getStringId(
+                                                                            context,
+                                                                            Resource.string.bjmgf_sdk_dataSubmitingStr)));
                 mProgressDialog.show();
             }
         }
@@ -149,15 +150,19 @@ public abstract class BasePage extends ViewPage {
         }
 
         if (BJMGFSDKTools.getInstance().bjmgfDialog != null) {
-            BJMGFSDKTools.getInstance().bjmgfDialog .dismiss();
+            if (BJMGFSDKTools.getInstance().globalViewFlag != 1)
+                BJMGFSDKTools.getInstance().bjmgfDialog.dismiss();
+
         }
     }
+
     public void showToastCenter(String content) {
-		Toast toast = Toast.makeText(context, content, Toast.LENGTH_SHORT);
-		showToastCenter(toast);
-	}
-	private void showToastCenter(Toast toast) {
-		toast.setGravity(Gravity.CENTER, 0, 0);
-		toast.show();
-	}
+        Toast toast = Toast.makeText(context, content, Toast.LENGTH_SHORT);
+        showToastCenter(toast);
+    }
+
+    private void showToastCenter(Toast toast) {
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
 }

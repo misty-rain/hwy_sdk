@@ -53,7 +53,6 @@ public class CustomerServiceView extends BaseActivityPage implements ICustomerVi
                 manager, activity);
         mActivity = activity;
         mRootPageManager = manager;
-        EventBus.getDefault().register(this);
     }
 
     /**

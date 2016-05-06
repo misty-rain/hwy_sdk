@@ -101,7 +101,7 @@ public class AccountRegisterView extends OneKeyLoginView implements IBaseView, I
             @Override
             public void onClick(View v) {
                 showProgressDialog();
-
+                iAccountPresenter.tryPlay(context);
 
             }
         });

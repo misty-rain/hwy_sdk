@@ -42,8 +42,9 @@ public interface IAccountPresenter {
     /**
      * 自动登陆
      * @param context  上下文
+     * @param viewFlag 视图标识 ，用来标识当前页面
      */
-    void autoLogin(Context context);
+    void autoLogin(Context context,int viewFlag);
 
     /**
      * 加载本地账户列表

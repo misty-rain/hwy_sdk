@@ -72,6 +72,8 @@ public class BJMGFSDKTools {
     private String offlineTime = "";
     //全局 dialog
     public BJMGFDialog bjmgfDialog = null;
+    //全局view flag
+    public int globalViewFlag = 0;
 
     public boolean getOfflineMsgFlag() {
         if (offlineMsgFlag.equals("1")) {
