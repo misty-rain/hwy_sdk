@@ -120,7 +120,7 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
         //设置实名认证选项状态
 
         if ((Integer.valueOf(DomainUtility.getInstance().getRealConfirm(context)) & 0x2) != 0) {
-            if (BJMGFSDKTools.getInstance().getCurrentPassPort().getAuthType().equals("")) {
+            if (BJMGFSDKTools.getInstance().getCurrentPassPort().getAuthType().equals("0")) {
                 setAuthenticationStatus(2);
             } else {
                 setAuthenticationStatus(1);

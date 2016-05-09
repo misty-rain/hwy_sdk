@@ -1,5 +1,6 @@
 package com.bojoy.bjsdk_mainland_new.app.tools;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -74,6 +75,9 @@ public class BJMGFSDKTools {
     public BJMGFDialog bjmgfDialog = null;
     //全局view flag
     public int globalViewFlag = 0;
+
+    //当前短信支付是否打开
+    public boolean isOpenSmsPay;
 
     public boolean getOfflineMsgFlag() {
         if (offlineMsgFlag.equals("1")) {
@@ -470,11 +474,11 @@ public class BJMGFSDKTools {
      */
     public void switchLoginOrLoginListView(Context context) {
         if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
-            bjmgfDialog = new BJMGFDialog(context, Utility.scanForActivity(context), BJMGFDialog.Page_AccountLogin);
+            bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
             bjmgfDialog.show();
 
         } else {
-            bjmgfDialog = new BJMGFDialog(context, Utility.scanForActivity(context), BJMGFDialog.Page_Login);
+            bjmgfDialog = new BJMGFDialog(context,(Activity) context, BJMGFDialog.Page_Login);
             bjmgfDialog.show();
         }
     }

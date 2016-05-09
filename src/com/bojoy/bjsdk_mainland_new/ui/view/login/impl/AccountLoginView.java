@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bojoy.bjsdk_mainland_new.app.BJMGFSdk;
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
@@ -17,6 +18,7 @@ import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
+import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseDialogPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.register.ISmsView;
 import com.bojoy.bjsdk_mainland_new.ui.view.register.impl.AccountRegisterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.findpwd.impl.FindPwdSplashPage;
@@ -176,8 +178,10 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
                     backView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            BJMGFSDKTools.getInstance().bjmgfDialog = new BJMGFDialog(context, Utility.scanForActivity(context), BJMGFDialog.Page_AccountLogin);
-                            BJMGFSDKTools.getInstance().bjmgfDialog.show();
+                           // BJMGFSDKTools.getInstance().bjmgfDialog = new BJMGFDialog(BJMGFSdk.getDefault().rootActivity, BJMGFSdk.getDefault().rootActivity, BJMGFDialog.Page_AccountLogin);
+                           // BJMGFSDKTools.getInstance().bjmgfDialog.show();
+                            BaseDialogPage loginPage = new AccountLoginListView(context,manager,dialog);
+                            manager.clearTopPage(loginPage);
                         }
                     });
                 }

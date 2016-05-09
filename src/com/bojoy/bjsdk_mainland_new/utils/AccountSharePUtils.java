@@ -27,17 +27,17 @@ public class AccountSharePUtils {
 	/**
 	 * 保存在手机里面的文件名 (用户)
 	 */
-	public static final String FILE_NAME = "BJMGF_SDK_USER";
+	public static final String FILE_NAME = "BJMGF_NEW_SDK_USER";
 
 	/**
 	 * 保存在手机里面的文件名 (邮件)
 	 */
-	public static final String EMAIL_NAME = "BJMGF_SDK_USER_EMAIL";
+	public static final String EMAIL_NAME = "BJMGF_NEW_SDK_USER_EMAIL";
 	
 	/**
 	 * 保存在手机里面的文件名(记录提醒时间)
 	 */
-	public static final String WARN_NAME = "BJMGF_SDK_WARN";
+	public static final String WARN_NAME = "BJMGF_NEW_SDK_WARN";
 
 	/**
 	 * 保存数据的方法，我们需要拿到保存数据的具体类型，然后根据类型调用不同的保存方法

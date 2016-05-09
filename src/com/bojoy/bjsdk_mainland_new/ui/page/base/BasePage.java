@@ -149,8 +149,8 @@ public abstract class BasePage extends ViewPage {
             // }
         }
 
-        if (BJMGFSDKTools.getInstance().bjmgfDialog != null) {
-            if (BJMGFSDKTools.getInstance().globalViewFlag != 1)
+       if (BJMGFSDKTools.getInstance().bjmgfDialog != null) {
+            //if (BJMGFSDKTools.getInstance().globalViewFlag != 1)
                 BJMGFSDKTools.getInstance().bjmgfDialog.dismiss();
 
         }

@@ -7,6 +7,8 @@ import android.content.ContextWrapper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+
+import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
@@ -20,150 +22,135 @@ import com.bojoy.bjsdk_mainland_new.widget.dialog.WelComeDialog;
  */
 public abstract class BaseDialogPage<T> extends BasePage {
 
-	@SuppressWarnings("unused")
-	private final String TAG = BaseDialogPage.class.getSimpleName();
-	protected BJMGFDialog dialog;
-	protected LinearLayout backView;
+    @SuppressWarnings("unused")
+    private final String TAG = BaseDialogPage.class.getSimpleName();
+    protected BJMGFDialog dialog;
+    protected LinearLayout backView;
 
-	public BaseDialogPage(int layoutId, Context context, PageManager manager,
-			BJMGFDialog dialog) {
-		super(layoutId, context, manager);
-		this.dialog = dialog;
-	}
-	
-	@Override
-	public void onCreateView(View view) {
-		setTitle();
-		super.onCreateView(view);
-	}
+    public BaseDialogPage(int layoutId, Context context, PageManager manager,
+                          BJMGFDialog dialog) {
+        super(layoutId, context, manager);
+        this.dialog = dialog;
+    }
 
-	/**
-	 * 用来扫描当前context
-	 * @param cont
-	 * @return
+    @Override
+    public void onCreateView(View view) {
+        setTitle();
+        super.onCreateView(view);
+    }
+
+    /**
+     * 启动页面时设置页面内容
      */
-	public Activity scanForActivity(Context cont) {
-		if (cont == null)
-			return null;
-		else if (cont instanceof Activity)
-			return (Activity) cont;
-		else if (cont instanceof ContextWrapper)
-			return scanForActivity(((ContextWrapper) cont).getBaseContext());
-
-		return null;
-	}
-	/**
-	 * 启动页面时设置页面内容
-	 */
-	public abstract void setView();
+    public abstract void setView();
 
 
-	@Override
-	public void onResume() {
-		dialog.setCancelable(false);
-		dialog.setCanceledOnTouchOutside(false);
-	}
+    @Override
+    public void onResume() {
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+    }
 
-	/**
-	 * 返回按钮的操作
-	 */
-	public void goBack() {
+    /**
+     * 返回按钮的操作
+     */
+    public void goBack() {
 
 
-	}
+    }
 
-	@Override
-	public void hideInput() {
-		dialog.hideInputWindow();
-	}
+    @Override
+    public void hideInput() {
+        dialog.hideInputWindow();
+    }
 
-	public void openWelcomePage() {
-		LogProxy.d(TAG, "openWelcomePage----------------------");
-		dialog.dismiss();
-		WelComeDialog welcomeDialog = new WelComeDialog(context,
-				BJMGFDialog.Page_Welcome);
-		welcomeDialog.show();
-	}
+    public void openWelcomePage() {
+        LogProxy.d(TAG, "openWelcomePage----------------------");
+        dialog.dismiss();
+        WelComeDialog welcomeDialog = new WelComeDialog(context,
+                  BJMGFDialog.Page_Welcome);
+        welcomeDialog.show();
+    }
 
-	@Override
-	public void quit() {
-		dialog.dismiss();
-	}
+    @Override
+    public void quit() {
+        dialog.dismiss();
+    }
 
-	public void closeApp() {
-		quit();
-	}
+    public void closeApp() {
+        quit();
+    }
 
-	/**
-	 * 泛型简化findviewById方法
-	 * 
-	 * @param id
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public final <E extends View> E getView(String id) {
-		try {
-			return (E) pageView.findViewById(ReflectResourceId.getViewId(
-					context, id));
-		} catch (ClassCastException ex) {
-			LogProxy.e("BJMEngine", "Could not cast View to concrete class."
-					+ ex);
-			throw ex;
-		}
-	}
+    /**
+     * 泛型简化findviewById方法
+     *
+     * @param id
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public final <E extends View> E getView(String id) {
+        try {
+            return (E) pageView.findViewById(ReflectResourceId.getViewId(
+                      context, id));
+        } catch (ClassCastException ex) {
+            LogProxy.e("BJMEngine", "Could not cast View to concrete class."
+                      + ex);
+            throw ex;
+        }
+    }
 
-	/**
-	 * 泛型简化findviewById方法
-	 * 
-	 * @param id
-	 * @param view
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public final <E extends View> E getView(String id, View view) {
-		try {
-			return (E) view.findViewById(ReflectResourceId.getViewId(context,
-					id));
-		} catch (ClassCastException ex) {
-			LogProxy.e("BJMEngine", "Could not cast View to concrete class."
-					+ ex);
-			throw ex;
-		}
-	}
+    /**
+     * 泛型简化findviewById方法
+     *
+     * @param id
+     * @param view
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public final <E extends View> E getView(String id, View view) {
+        try {
+            return (E) view.findViewById(ReflectResourceId.getViewId(context,
+                      id));
+        } catch (ClassCastException ex) {
+            LogProxy.e("BJMEngine", "Could not cast View to concrete class."
+                      + ex);
+            throw ex;
+        }
+    }
 
-	/**
-	 * 给页面增加头部标题
-	 */
-	protected void setTitle() {
-		backView = getView(Resource.id.bjmgf_sdk_back);
-		if (backView != null) {
-			backView.setOnClickListener(new OnClickListener() {
+    /**
+     * 给页面增加头部标题
+     */
+    protected void setTitle() {
+        backView = getView(Resource.id.bjmgf_sdk_back);
+        if (backView != null) {
+            backView.setOnClickListener(new OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					manager.previousPage();
-				}
-			});
-		}
-	}
+                @Override
+                public void onClick(View v) {
+                    manager.previousPage();
+                }
+            });
+        }
+    }
 
-	/**
-	 * 隐藏返回键
-	 * 在setView方法中调用
-	 */
-	protected void hideBack() {
-		if (backView != null) {
-			backView.setVisibility(View.GONE);
-		}
-	}
-	
-	/**
-	 * 显示返回键
-	 * 在setView方法中调用
-	 */
-	protected void showBack() {
-		if (backView != null) {
-			backView.setVisibility(View.VISIBLE);
-		}
-	}
+    /**
+     * 隐藏返回键
+     * 在setView方法中调用
+     */
+    protected void hideBack() {
+        if (backView != null) {
+            backView.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * 显示返回键
+     * 在setView方法中调用
+     */
+    protected void showBack() {
+        if (backView != null) {
+            backView.setVisibility(View.VISIBLE);
+        }
+    }
 }

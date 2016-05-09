@@ -39,6 +39,7 @@ import com.bojoy.bjsdk_mainland_new.utils.MessagePollingTool;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.StringUtility;
+import com.bojoy.bjsdk_mainland_new.utils.ToastUtil;
 import com.bojoy.bjsdk_mainland_new.utils.Utility;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.ExitDialog;
@@ -127,7 +128,7 @@ public class BJMGFSdk {
                 messageReceiver.stop();
                 break;
             case BJMGFSdkEvent.App_Switch_Account://切换账号or 登出
-                dockManager.removeDock();
+                dockManager.closeDock();
                 break;
             case BJMGFSdkEvent.RECHARGE_SUCCESS:
                 break;
@@ -306,8 +307,17 @@ public class BJMGFSdk {
 
     public void login(Context context) {
         if (!BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
-            BJMGFDialog bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
-            bjmgfDialog.show();
+            //BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
+            if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
+                bjmgfDialog = new BJMGFDialog((Context) rootActivity, rootActivity, BJMGFDialog.Page_AccountLogin);
+                bjmgfDialog.show();
+            } else {
+                bjmgfDialog = new BJMGFDialog((Context) rootActivity, rootActivity, BJMGFDialog.Page_Login);
+                bjmgfDialog.show();
+            }
+
+        } else {
+            ToastUtil.showMessage(context, context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_login_successful)));
         }
     }
 
@@ -318,7 +328,7 @@ public class BJMGFSdk {
      */
     public void logout(Context context) {
         if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
-            dockManager.removeDock();
+            dockManager.closeDock();
             IAccountCenterPresenter iAccountCenterPresenter = new AccountCenterPresenterImpl(context, null);
             iAccountCenterPresenter.logout(context);
             BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
@@ -335,8 +345,10 @@ public class BJMGFSdk {
         if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
             BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
             BJMGFSDKTools.getInstance().setCurrUserData(null);
-            dockManager.removeDock();
-            BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
+            BJMGFSDKTools.getInstance().setCurrentPassPort(null);
+            dockManager.closeDock();
+            ToastUtil.showMessage(context, context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_switch_account_success)));
+            //  BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
         }
     }
 
@@ -501,6 +513,15 @@ public class BJMGFSdk {
         intent.putExtra(BJMGFActivity.Page_Class_Name_Key,
                   CustomerServiceView.class.getCanonicalName());
         activity.startActivity(intent);
+    }
+
+    /**
+     * 设置 短信支付选项 是否打开
+     *
+     * @param flag
+     */
+    public void setOpenSmsPay(boolean flag) {
+        BJMGFSDKTools.getInstance().isOpenSmsPay = flag;
     }
 
     public void onPause(Activity activity) {

@@ -346,7 +346,7 @@
                         android:textColor="@color/bjmgf_sdk_black"
                         android:textSize="@dimen/bjmgf_sdk_font_size16" />
 
-                    <include layout="@layout/bjmgf_sdk_gray_gap_line_1dp" />
+                    <include layout="@layout/bjmgf_sdk_gray_gap_line_1dp"  android:id="@+id/bjmgf_sdk_smspaygaplineLayoutId" />
 
                     <TextView
                         android:id="@+id/bjmgf_sdk_dock_pay_center_pay_type_rechargeCardPayId"

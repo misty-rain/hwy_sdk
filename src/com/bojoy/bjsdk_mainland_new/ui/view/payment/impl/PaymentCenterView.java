@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.bojoy.bjsdk_mainland_new.app.BJMGFSdk;
+import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.app.tools.PayTools;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.model.entity.PayOrderData;
@@ -56,6 +58,7 @@ public class PaymentCenterView extends BaseActivityPage implements IPaymentView 
     private PayTools payTools = PayTools.getInstance();
     private RelativeLayout rechargeBtnLayout = null;
     private TextView mTitle = null;
+    private View smsPayGapLineLayout;//短信支付分割线
     // 充值方式选择
     private LinearLayout payTypeLayout = null;
     //支付宝充值
@@ -150,6 +153,7 @@ public class PaymentCenterView extends BaseActivityPage implements IPaymentView 
                         Resource.id.bjmgf_sdk_dock_pay_center_balanceId));
         mPayBalance = getView(Resource.id.bjmgf_sdk_dock_pay_center_pay_balance);
         mTitle = getView(Resource.id.bjmgf_sdk_dock_pay_center_id);
+        smsPayGapLineLayout = getView(Resource.id.bjmgf_sdk_smspaygaplineLayoutId);
 
         myBalanceTextView.setText("0");
 
@@ -327,6 +331,12 @@ public class PaymentCenterView extends BaseActivityPage implements IPaymentView 
 
     @Override
     public void setView() {
+        if (!BJMGFSDKTools.getInstance().isOpenSmsPay) {
+            smsPayTextView.setVisibility(View.GONE);
+            smsPayGapLineLayout.setVisibility(View.GONE);
+        }
+
+
         rechargeBtnLayout.setVisibility(View.GONE);
     }
 

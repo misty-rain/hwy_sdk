@@ -85,7 +85,6 @@ public class AccountLoginListView extends BaseDialogPage implements IAccountLogi
             @Override
             public void onClick(View arg0) {
                 showProgressDialog();
-                BJMGFSDKTools.getInstance().globalViewFlag = 1;
                 iAccountPresenter.autoLogin(context,1);
 
             }

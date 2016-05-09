@@ -609,6 +609,7 @@ public final class Resource {
    }
     public static final class id {
 
+        public static final String bjmgf_sdk_smspaygaplineLayoutId = "bjmgf_sdk_smspaygaplineLayoutId";
         public static final String bjmgf_sdk_sendQuestionBtnId = "bjmgf_sdk_sendQuestionBtnId";
         public static final String bjmgf_sdk_aboutAllRightShowId = "bjmgf_sdk_aboutAllRightShowId";
         public static final String bjmgf_sdk_gap_line_authentication = "bjmgf_sdk_gap_line_authentication";
