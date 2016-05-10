@@ -241,7 +241,7 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
 
                         break;
                     case BaseRequestEvent.REQUEST_GET_ACCOUNT_INFO://获取账号信息事件
-                        SpUtil.setStringValue(context, BJMGFSDKTools.getInstance().currentPassPort.getUid(), backResultBean.getObj());
+                        SpUtil.setStringValue(context, SysConstant.CURRENT_USER_EMAILANDPHONE_INFO_HEADER + BJMGFSDKTools.getInstance().currentPassPort.getUid(), backResultBean.getObj());
                         ((IAccountCenterView) iBaseView).showAccountInfo();
                         break;
                     case BaseRequestEvent.REQUEST_PF_UPLOAD_FACE_IMAGE://上传用户头像
@@ -267,35 +267,39 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_BINDPHONE://绑定手机
-                        JSONObject jsonObject = JSON.parseObject(SpUtil.getStringValue(context, BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), ""));
-                        jsonObject.put("bindMobile",bindPhoneNum);
-                        SpUtil.setStringValue(context,BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), jsonObject.toJSONString());
+                        JSONObject jsonObject = JSON.parseObject(SpUtil.getStringValue(context, SysConstant.CURRENT_USER_EMAILANDPHONE_INFO_HEADER + BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), ""));
+                        jsonObject.put("bindMobile", bindPhoneNum);
+                        SpUtil.setStringValue(context, BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), jsonObject.toJSONString());
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.GETREQUEST_UNBINDPHONE_VERIFY_CODE_CHECK://解除绑定手机时获得验证码 的验证
                         ((IModifyBindPhoneView) iBaseView).unbindPhoneCheckVerifyCodeSuccess(backResultBean.getMsg());
                         break;
                     case BaseRequestEvent.REQUEST_BINDEMAIL://绑定邮箱
-                        SpUtil.setIntValue(context,SysConstant.EMAIL_BIND_STATUS,1);
+                        SpUtil.setIntValue(context,SysConstant.CURRENT_USER_EMAIL_BIND_HEADER + BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(),1);
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_LOGOUT://登出
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
                         BJMGFSDKTools.getInstance().setCurrUserData(null);
+                        BJMGFSDKTools.getInstance().setCurrentPassPort(null);
                         eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Logout));
 
                         break;
                 }
             } else {
                 if (backResultBean.getMsg().equals(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_auth_id_expired)))) {
-                    BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
+                    // BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
+                    BJMGFSDKTools.getInstance().isShowUserName = true;
+                    iBaseView.showError(backResultBean.getMsg());
                 } else {
                     iBaseView.showError(backResultBean.getMsg());
                 }
             }
 
         } catch (Exception e) {
-            LogProxy.e(TAG, e.getMessage());
+            if (e != null)
+                LogProxy.e(TAG, e.getMessage());
         }
 
     }

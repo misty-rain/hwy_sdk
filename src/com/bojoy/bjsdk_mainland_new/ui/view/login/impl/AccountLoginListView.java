@@ -152,7 +152,6 @@ public class AccountLoginListView extends BaseDialogPage implements IAccountLogi
 
     @Override
     public void showSuccess() {
-        BJMGFSDKTools.getInstance().globalViewFlag = 0;
         dismissProgressDialog();
         openWelcomePage();
     }

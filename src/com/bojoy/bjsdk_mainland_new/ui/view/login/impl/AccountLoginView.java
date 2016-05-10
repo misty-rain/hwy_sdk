@@ -144,9 +144,14 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
         });
 
         mAccountEditText.getEdit().setFilters(new InputFilter[]{new BJMInputFilter()});
+        if (BJMGFSDKTools.getInstance().isShowUserName) {
+            mAccountEditText.setEditText(BJMGFSDKTools.getInstance().getCurrentPassPort().getPp());
+            BJMGFSDKTools.getInstance().isShowUserName = false;
+
+        }
 
 
-        Iterator iterator = AccountSharePUtils.getAll(context).keySet().iterator();
+  /*      Iterator iterator = AccountSharePUtils.getAll(context).keySet().iterator();
         String json = "";
         while (iterator.hasNext()) {
             json = (String) iterator.next();
@@ -160,7 +165,7 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
             e.printStackTrace();
         }
 
-        LogProxy.i(TAG, "Current  passport() = " + json);
+        LogProxy.i(TAG, "Current  passport() = " + json);*/
      /*   if(!BJMGFCommon.getPassport().contains("@")) {
             mAccountEditText.getEdit().setText(BJMGFCommon.getPassport());
         }*/
@@ -172,28 +177,28 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
      * 是否显示back 按钮
      */
     private void isDisplayBackIcon() {
-        if (AccountSharePUtils.getAll(context).size() > 0 ) {
-                backView = (LinearLayout) getView(Resource.id.bjmgf_sdk_back);
-                if (backView != null) {
-                    backView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                           // BJMGFSDKTools.getInstance().bjmgfDialog = new BJMGFDialog(BJMGFSdk.getDefault().rootActivity, BJMGFSdk.getDefault().rootActivity, BJMGFDialog.Page_AccountLogin);
-                           // BJMGFSDKTools.getInstance().bjmgfDialog.show();
-                            BaseDialogPage loginPage = new AccountLoginListView(context,manager,dialog);
-                            manager.clearTopPage(loginPage);
-                        }
-                    });
-                }
-                showBack();
+        if (AccountSharePUtils.getAll(context).size() > 0) {
+            backView = (LinearLayout) getView(Resource.id.bjmgf_sdk_back);
+            if (backView != null) {
+                backView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // BJMGFSDKTools.getInstance().bjmgfDialog = new BJMGFDialog(BJMGFSdk.getDefault().rootActivity, BJMGFSdk.getDefault().rootActivity, BJMGFDialog.Page_AccountLogin);
+                        // BJMGFSDKTools.getInstance().bjmgfDialog.show();
+                        BaseDialogPage loginPage = new AccountLoginListView(context, manager, dialog);
+                        manager.clearTopPage(loginPage);
+                    }
+                });
+            }
+            showBack();
 
         } else {
             hideBack();
         }
 
-        if (SpUtil.getIntValue(context, SysConstant.ISMODIFYPWDFLAGFORDIALOG,0) == 1) {
+        if (SpUtil.getIntValue(context, SysConstant.ISMODIFYPWDFLAGFORDIALOG, 0) == 1) {
             hideBack();
-            SpUtil.setIntValue(context, SysConstant.ISMODIFYPWDFLAGFORDIALOG,0);
+            SpUtil.setIntValue(context, SysConstant.ISMODIFYPWDFLAGFORDIALOG, 0);
         }
 
     }

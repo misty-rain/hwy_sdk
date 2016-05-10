@@ -29,6 +29,7 @@ import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.ui.activity.base.BJMGFActivity;
 import com.bojoy.bjsdk_mainland_new.ui.activity.base.WebViewActivity;
 import com.bojoy.bjsdk_mainland_new.ui.dock.DockManagerBeta;
+import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.findpwd.impl.FindPwdSplashPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.cs.impl.CustomerServiceView;
 import com.bojoy.bjsdk_mainland_new.ui.view.payment.impl.PaymentCenterView;
@@ -307,15 +308,7 @@ public class BJMGFSdk {
 
     public void login(Context context) {
         if (!BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
-            //BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
-            if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
-                bjmgfDialog = new BJMGFDialog((Context) rootActivity, rootActivity, BJMGFDialog.Page_AccountLogin);
-                bjmgfDialog.show();
-            } else {
-                bjmgfDialog = new BJMGFDialog((Context) rootActivity, rootActivity, BJMGFDialog.Page_Login);
-                bjmgfDialog.show();
-            }
-
+            BJMGFSDKTools.getInstance().switchLoginOrLoginListView(rootActivity);
         } else {
             ToastUtil.showMessage(context, context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_login_successful)));
         }
@@ -328,10 +321,10 @@ public class BJMGFSdk {
      */
     public void logout(Context context) {
         if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
-            dockManager.closeDock();
+            //dockManager.closeDock();
             IAccountCenterPresenter iAccountCenterPresenter = new AccountCenterPresenterImpl(context, null);
             iAccountCenterPresenter.logout(context);
-            BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
+            BJMGFSDKTools.getInstance().switchLoginOrLoginListView(rootActivity);
         }
     }
 
@@ -352,10 +345,6 @@ public class BJMGFSdk {
         }
     }
 
-
-    public void startSMSPay() {
-
-    }
 
     /**
      * 充值账号
@@ -504,7 +493,7 @@ public class BJMGFSdk {
                                           ReflectResourceId
                                                     .getStringId(
                                                               activity,
-                                                              Resource.string.bjmgf_sdk_switch_account_success)),
+                                                              Resource.string.bjmgf_sdk_please_login_first)),
                       Toast.LENGTH_SHORT).show();
             return;
         }

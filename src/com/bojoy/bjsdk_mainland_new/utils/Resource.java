@@ -52,7 +52,7 @@ public final class Resource {
         public static final String bjmgf_sdk_transcutestyle_yhxf = "bjmgf_sdk_transcutestyle_yhxf";
    }
     public static final class string {
-        public static final String bjmgf_sdk_floatWindow_accountManager_enAuthentStr = "bjmgf_sdk_floatWindow_accountManager_enAuthentStr";
+        public static final String bjmgf_sdk_floatWindow_accountManager_unAuthentStr = "bjmgf_sdk_floatWindow_accountManager_unAuthentStr";
         public static final String bjmgf_sdk_auth_id_expired = "bjmgf_sdk_auth_id_expired";
         public static final String bjmgf_sdk_version = "bjmgf_sdk_version";
         public static final String bjmgf_sdk_pay_success = "bjmgf_sdk_pay_success";

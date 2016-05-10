@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Build;
 
 import com.bojoy.bjsdk_mainland_new.api.BaseApi;
+import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.app.tools.ParamsTools;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseRequestEvent;
@@ -139,9 +140,9 @@ public class AccountModelImpl implements IAccountModel {
     @Override
     public void tryChange(Context context, String userName, String passWord, BaseResultCallbackListener listener) {
         Map<String, String> params = ParamsTools.getInstance().getBaseParamsMap(context, true);
-        params.put("newPp",userName);
-        params.put("newPwd",passWord);
-        try{
+        params.put("newPp", userName);
+        params.put("newPwd", passWord);
+        try {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_TRY_CHANGE, params, new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
@@ -153,7 +154,7 @@ public class AccountModelImpl implements IAccountModel {
                     listener.onSuccess(response, BaseRequestEvent.REQUEST_TRY_CHANGE);
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
@@ -223,7 +224,10 @@ public class AccountModelImpl implements IAccountModel {
         Map<String, String> params = ParamsTools.getInstance().getBaseParamsMap(context, true);
         params.put("mobile", mobile);
         params.put("verifyCode", verifyCode);
-        if(status == 2){params.put("pwd", pwd);};
+        if (status == 2) {
+            params.put("pwd", pwd);
+        }
+        ;
         try {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_MOBILE_REG_CHECK, params, new StringCallback() {
                 @Override
@@ -243,8 +247,6 @@ public class AccountModelImpl implements IAccountModel {
     }
 
 
-
-
     /**
      * 自动登陆
      *
@@ -254,7 +256,10 @@ public class AccountModelImpl implements IAccountModel {
     @Override
     public void autoLogin(Context context, final BaseResultCallbackListener listener) {
         Map<String, String> params = ParamsTools.getInstance().getBaseParamsMap(context, false);
-        params.put("token", AccountSharePUtils.getLocalAccountList(context).get(0).getToken());
+        if (BJMGFSDKTools.getInstance().getCurrentPassPort() != null)
+            params.put("token", BJMGFSDKTools.getInstance().getCurrentPassPort().getToken());
+        else
+            params.put("token", AccountSharePUtils.getLocalAccountList(context).get(0).getToken());
         try {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getServiceSDKDomain(context) + BaseApi.APP_AUTO_LOGIN, params, new StringCallback() {
                 @Override
@@ -343,7 +348,7 @@ public class AccountModelImpl implements IAccountModel {
      * @param email
      */
     @Override
-    public void     emailFindPsw(Context context, String account, String email,
+    public void emailFindPsw(Context context, String account, String email,
                              final BaseResultCallbackListener listener) {
         Map<String, String> params = ParamsTools.getInstance().getBaseParamsMap(context, false);
         params.put("pp", account);
@@ -515,8 +520,8 @@ public class AccountModelImpl implements IAccountModel {
     @TargetApi(Build.VERSION_CODES.ECLAIR)
     @Override
     public void uploadUserFace(Context context, File file, final BaseResultCallbackListener listener) {
-       Map<String, String> params = ParamsTools.getInstance().getUserCenterParamsMap(context);
-        params.put("stepMd5F","1");
+        Map<String, String> params = ParamsTools.getInstance().getUserCenterParamsMap(context);
+        params.put("stepMd5F", "1");
         List<FileInput> list = new ArrayList<FileInput>();
         if (file.isFile()) {
             FileInput fileInput = new FileInput("file", file.getPath(), file);
@@ -636,10 +641,10 @@ public class AccountModelImpl implements IAccountModel {
     /**
      * 绑定手机号
      *
-     * @param context 上下文
-     * @param phoneNum 需要绑定的手机号
+     * @param context    上下文
+     * @param phoneNum   需要绑定的手机号
      * @param verifyCode 验证码
-     * @param listener 回调事件 将结果通知presenter
+     * @param listener   回调事件 将结果通知presenter
      */
     @Override
     public void bindPhone(Context context, String phoneNum, String verifyCode, final BaseResultCallbackListener listener) {
@@ -666,9 +671,10 @@ public class AccountModelImpl implements IAccountModel {
 
     /**
      * 验证解除绑定手机号 时获得验证码
-     * @param context 上下文
+     *
+     * @param context    上下文
      * @param verifyCode 验证码
-     * @param listener 回调事件 将结果通知presenter
+     * @param listener   回调事件 将结果通知presenter
      */
     @Override
     public void validateCodeForUnBindPhone(Context context, String verifyCode, BaseResultCallbackListener listener) {

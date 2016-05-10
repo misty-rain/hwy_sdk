@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,6 +29,7 @@ import com.bojoy.bjsdk_mainland_new.ui.view.about.impl.AboutPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.IAccountCenterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.bindmail.BindEmailView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.bindmail.DisplayEmailView;
+import com.bojoy.bjsdk_mainland_new.ui.view.account.bindmail.VerifiedEmailView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.bindphone.impl.GetBindPhoneSmsCodeView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.bindphone.impl.ModifyBindPhoneView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.findpwd.impl.FindPwdSplashPage;
@@ -69,9 +71,12 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
               bindPhoneText, bindEmailText, authentText, enAuthText;
     private View authentLine;
     private String vipUrl;
-    private boolean isBindPhone, isBindEmail;
+    private boolean isBindPhone;
+
     private String phoneNum = "";
     private int roundRectSize;
+    //绑定邮箱状态 0：未绑定 1：已绑定 2：未验证
+    private int BindEmailStatus = 0;
 
     /**
      * 初始化视图
@@ -161,16 +166,29 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
 
             @Override
             public void onClick(View v) {
-                if (isBindEmail) {
-                    baseActivityPage = new DisplayEmailView(context, manager, activity);
-                    Map<String, Object> params = new HashMap<String, Object>();
-                    params.put("email", bindEmailText.getText().toString());
-                    baseActivityPage.putParams(params);
-                    manager.addPage(baseActivityPage);
-                } else {
-                    baseActivityPage = new BindEmailView(context,
-                              manager, activity);
-                    manager.addPage(baseActivityPage);
+                Map<String, Object> params = null;
+                switch (BindEmailStatus) {
+                    case 0: //未绑定
+                        baseActivityPage = new BindEmailView(context,
+                                  manager, activity);
+                        manager.addPage(baseActivityPage);
+                        break;
+                    case 1://已绑定
+                        baseActivityPage = new DisplayEmailView(context, manager, activity);
+                        params = new HashMap<String, Object>();
+                        params.put("email", bindEmailText.getText().toString());
+                        baseActivityPage.putParams(params);
+                        manager.addPage(baseActivityPage);
+                        break;
+                    case 2://未验证
+                        baseActivityPage = new VerifiedEmailView(context, manager, activity);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("email", SpUtil.getStringValue(context, SysConstant.EMAIL_BIND_STATUS + BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), ""));
+                        baseActivityPage.setBundle(bundle);
+                        manager.addPage(baseActivityPage);
+                        break;
+
+
                 }
             }
         });
@@ -303,23 +321,28 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
     @Override
     public void showAccountInfo() {
         dismissProgressDialog();
-        JSONObject jsonObject = JSON.parseObject(SpUtil.getStringValue(context, BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), ""));
-        if (!jsonObject.get("bindMobile").equals("")) {
-            phoneNum = jsonObject.get("bindMobile").toString();
-            bindPhoneText.setText(jsonObject.get("bindMobile").toString());
-            bindPhoneText.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_account_gray));
-            isBindPhone = true;
-        }
-        if (!jsonObject.get("bindEmail").equals("")) {
-            if (SpUtil.getIntValue(context, SysConstant.EMAIL_BIND_STATUS, 0) == 1)
-                bindEmailText.setText(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_floatWindow_accountManager_enAuthentStr)));
-            else {
-                SpUtil.setIntValue(context, SysConstant.EMAIL_BIND_STATUS, 0);
+        JSONObject jsonObject = JSON.parseObject(SpUtil.getStringValue(context, SysConstant.CURRENT_USER_EMAILANDPHONE_INFO_HEADER + BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), ""));
+        if (jsonObject != null) {
+            if (!jsonObject.get("bindMobile").equals("")) {
+                phoneNum = jsonObject.get("bindMobile").toString();
+                bindPhoneText.setText(jsonObject.get("bindMobile").toString());
+                bindPhoneText.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_account_gray));
+                isBindPhone = true;
+            }
+            if (!jsonObject.get("bindEmail").equals("")) {
                 bindEmailText.setText(jsonObject.get("bindEmail").toString());
                 bindEmailText.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_account_gray));
-                isBindEmail = true;
+                BindEmailStatus = 1;
+
+            } else {
+                if (SpUtil.getIntValue(context, SysConstant.CURRENT_USER_EMAIL_BIND_HEADER + BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), 0) == 1) {
+                    bindEmailText.setText(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_floatWindow_accountManager_unAuthentStr)));
+                    BindEmailStatus = 2;
+                }
             }
+
         }
+
         mNickName.setText(BJMGFSDKTools.getInstance().getCurrentPassPort().getPp());
         mUserId.setText(getString(Resource.string.bjmgf_sdk_hwynumber) + jsonObject.get("uid"));
 

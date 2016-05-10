@@ -196,6 +196,7 @@ public class ModifyBindPhoneView extends BaseActivityPage implements IModifyBind
     @Override
     public void showSuccess() {
         dismissProgressDialog();
+        ToastUtil.showMessage(context,context.getString(ReflectResourceId.getStringId(context,Resource.string.bjmgf_sdk_sendMessageSuccessedStr)));
     }
 
     private void initPollingButton(boolean start) {

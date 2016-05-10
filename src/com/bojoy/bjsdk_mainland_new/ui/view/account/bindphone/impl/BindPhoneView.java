@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountCenterPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountCenterPresenterImpl;
@@ -30,7 +31,9 @@ public class BindPhoneView extends BaseActivityPage implements IBaseView {
 
     private final String TAG = BindPhoneView.class.getSimpleName();
 
-    private int period = 1000, delay = 0, maxTime = 1000 * 60 * 1, resendTime;
+
+    private final int Timeout_Max = 60 * 1;
+    private int period = 1000, delay = 0, maxTime = 1000 * 60 * 1, resendTime = Timeout_Max;
     private RelativeLayout mBackLayout = null;
     private ClearEditText mCodeEditText = null;
     private TextView mCountryNumberTextView, mInputBindNumberTextView, mcompleteTextView;
@@ -47,7 +50,7 @@ public class BindPhoneView extends BaseActivityPage implements IBaseView {
      */
     protected Handler smsHandler = new Handler() {
         public void handleMessage(Message message) {
-            switch (message.what){
+            switch (message.what) {
                 case 1:
                     LogProxy.d(TAG, (String) message.obj);
                     mCodeEditText.setEditText((String) message.obj);
@@ -60,7 +63,7 @@ public class BindPhoneView extends BaseActivityPage implements IBaseView {
     public BindPhoneView(Context context,
                          PageManager manager, BJMGFActivity activity) {
         super(ReflectResourceId.getLayoutId(context,
-                Resource.layout.bjmgf_sdk_dock_account_checkphone), context, manager, activity);
+                  Resource.layout.bjmgf_sdk_dock_account_checkphone), context, manager, activity);
     }
 
     @Override
@@ -73,24 +76,24 @@ public class BindPhoneView extends BaseActivityPage implements IBaseView {
 
     @Override
     public void setView() {
-        iAccountCenterPresenter = new AccountCenterPresenterImpl(context,this);
+        iAccountCenterPresenter = new AccountCenterPresenterImpl(context, this);
     }
 
     public void onCreateView(View view) {
         mBackLayout = (RelativeLayout) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_float_account_manager_checkphone_backLlId));
+                  Resource.id.bjmgf_sdk_float_account_manager_checkphone_backLlId));
         mCountryNumberTextView = (TextView) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_float_account_manager_checkphone_coumtryNumber_TvId));
+                  Resource.id.bjmgf_sdk_float_account_manager_checkphone_coumtryNumber_TvId));
         mInputBindNumberTextView = (TextView) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_float_account_manager_checkphone_inputToBindNumber_TvId));
+                  Resource.id.bjmgf_sdk_float_account_manager_checkphone_inputToBindNumber_TvId));
         mcompleteTextView = (TextView) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_account_manager_checkphone_completeId));
+                  Resource.id.bjmgf_sdk_account_manager_checkphone_completeId));
         mGetVerifyCodeButton = (Button) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_check_phone_getVerifyCodeBtnId));
+                  Resource.id.bjmgf_sdk_check_phone_getVerifyCodeBtnId));
         mCodeEditText = (ClearEditText) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_float_account_manager_checkphone_editTextId));
+                  Resource.id.bjmgf_sdk_float_account_manager_checkphone_editTextId));
         keyboardView = (View) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_float_account_manager_checkphone_keyboard));
+                  Resource.id.bjmgf_sdk_float_account_manager_checkphone_keyboard));
 
         phoneNum = (String) getParams().get("phoneNum");
         mInputBindNumberTextView.setText(phoneNum);
@@ -111,9 +114,10 @@ public class BindPhoneView extends BaseActivityPage implements IBaseView {
 
             @Override
             public void onClick(View arg0) {
-                PollingTaskUtil.getDefault().startPollingTask(SysConstant.SMS_POLLING_PERIOD_TIME,SysConstant.SMS_POLLING_DELAY_TIME, SysConstant.SMS_POLLING_MAX_TIME,TAG);
+                resendTime = Timeout_Max;
+                PollingTaskUtil.getDefault().startPollingTask(SysConstant.SMS_POLLING_PERIOD_TIME, SysConstant.SMS_POLLING_DELAY_TIME, SysConstant.SMS_POLLING_MAX_TIME, TAG);
                 showProgressDialog();
-                iAccountCenterPresenter.getSmsCodeByBindPhone(context,phoneNum);
+                iAccountCenterPresenter.getSmsCodeByBindPhone(context, phoneNum);
 
             }
         });
@@ -123,16 +127,16 @@ public class BindPhoneView extends BaseActivityPage implements IBaseView {
             // 验证码验证
             @Override
             public void onClick(View arg0) {
-                if(StringUtility.isEmpty(mCodeEditText.getEditText())){
-                    ToastUtil.showMessage(context,getString(Resource.string.bjmgf_sdk_register_dialog_checkVerifyCodeErrorStr));
+                if (StringUtility.isEmpty(mCodeEditText.getEditText())) {
+                    ToastUtil.showMessage(context, getString(Resource.string.bjmgf_sdk_register_dialog_checkVerifyCodeErrorStr));
                     return;
                 }
-                if(mCodeEditText.getEditText().trim().length() != 6){
-                    ToastUtil.showMessage(context,getString(Resource.string.bjmgf_sdk_register_dialog_checkVerifyCodeErrorStr));
+                if (mCodeEditText.getEditText().trim().length() != 6) {
+                    ToastUtil.showMessage(context, getString(Resource.string.bjmgf_sdk_register_dialog_checkVerifyCodeErrorStr));
                     return;
                 }
                 showProgressDialog();
-                iAccountCenterPresenter.bindPhone(context,phoneNum,mCodeEditText.getEditText().trim());
+                iAccountCenterPresenter.bindPhone(context, phoneNum, mCodeEditText.getEditText().trim());
             }
         });
 
@@ -141,7 +145,7 @@ public class BindPhoneView extends BaseActivityPage implements IBaseView {
         activity.getContentResolver().registerContentObserver(Uri.parse("content://sms/"), true, content);
 
         //开始轮询时间
-        PollingTaskUtil.getDefault().startPollingTask(SysConstant.SMS_POLLING_PERIOD_TIME,SysConstant.SMS_POLLING_DELAY_TIME, SysConstant.SMS_POLLING_MAX_TIME,TAG);
+        PollingTaskUtil.getDefault().startPollingTask(SysConstant.SMS_POLLING_PERIOD_TIME, SysConstant.SMS_POLLING_DELAY_TIME, SysConstant.SMS_POLLING_MAX_TIME, TAG);
         super.onCreateView(view);
     }
 
@@ -165,36 +169,39 @@ public class BindPhoneView extends BaseActivityPage implements IBaseView {
 
     /**
      * 重置时间框
+     *
      * @return
      */
     private String resetTimeText() {
         return String.format(context.getResources().getString(ReflectResourceId.getStringId(context,
-                Resource.string.bjmgf_sdk_floatWindow_accountManager_checkPhone_receiveCodeToastRightStr)),
-                resendTime);
+                  Resource.string.bjmgf_sdk_floatWindow_accountManager_checkPhone_receiveCodeToastRightStr)),
+                  resendTime);
     }
 
 
     /**
      * 设置倒计时
+     *
      * @param start 是否开始
      */
     private void initPollingRsendTv(boolean start) {
         mGetVerifyCodeButton.setEnabled(!start);
         mGetVerifyCodeButton.setBackgroundResource(start ? ReflectResourceId.getDrawableId(
-                context, Resource.drawable.bjmgf_sdk_btn_red_not_enable_small) :
-                ReflectResourceId.getDrawableId(
-                        context, Resource.drawable.bjmgf_sdk_blue_button_small_selector));
+                  context, Resource.drawable.bjmgf_sdk_btn_red_not_enable_small) :
+                  ReflectResourceId.getDrawableId(
+                            context, Resource.drawable.bjmgf_sdk_blue_button_small_selector));
     }
 
     @Override
     public void showError(String message) {
         dismissProgressDialog();
-        ToastUtil.showMessage(context,message);
+        ToastUtil.showMessage(context, message);
     }
 
     @Override
     public void showSuccess() {
         dismissProgressDialog();
+        PollingTaskUtil.getDefault().suspendGlobalPolling();
         AccountCenterView page = new AccountCenterView(context, manager, activity);
         manager.clearTopPage(page);
     }

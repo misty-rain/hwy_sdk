@@ -3,6 +3,9 @@ package com.bojoy.bjsdk_mainland_new.ui.view.account.bindmail;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+
+import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
+import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountCenterPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountCenterPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.ui.activity.base.BJMGFActivity;
@@ -11,6 +14,7 @@ import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseActivityPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
+import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
 import com.bojoy.bjsdk_mainland_new.utils.StringUtility;
 import com.bojoy.bjsdk_mainland_new.utils.ToastUtil;
 import com.bojoy.bjsdk_mainland_new.widget.ClearEditText;
@@ -73,6 +77,7 @@ public class BindEmailView extends BaseActivityPage implements IBaseView{
     @Override
     public void showSuccess() {
         dismissProgressDialog();
+        SpUtil.setStringValue(context, SysConstant.EMAIL_BIND_STATUS + BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), mTvEmail.getEditText().toString());
         BaseActivityPage baseActivityPage = new VerifiedEmailView(context,manager,activity);
         Bundle bundle = new Bundle();
         bundle.putString("email",email);

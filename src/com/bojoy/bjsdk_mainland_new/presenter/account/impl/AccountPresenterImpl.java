@@ -64,12 +64,12 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         AccountUtil.remove(context, passPort.getUid());
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
                         iAccountModel.getUserInfoForSelf(context, SysConstant.GET_USERINFO_TYPE_BASE, this);//查询用户信息
-                         iAccountModel.getAccountInfo(context, this); //查询账户信息
+                        iAccountModel.getAccountInfo(context, this); //查询账户信息
                         eventBus.post(BJMGFSdkEvent.App_Login_Success);
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_GET_ACCOUNT_INFO://获取账号信息事件
-                        SpUtil.setStringValue(context, BJMGFSDKTools.getInstance().currentPassPort.getUid(), backResultBean.getObj());
+                        SpUtil.setStringValue(context, SysConstant.CURRENT_USER_EMAILANDPHONE_INFO_HEADER + BJMGFSDKTools.getInstance().currentPassPort.getUid(), backResultBean.getObj());
                         break;
                     case BaseRequestEvent.REQUEST_TRY_LOGIN: //试玩事件
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
@@ -123,10 +123,9 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                 }
             } else {
                 if (backResultBean.getMsg().equals(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_auth_id_expired)))) {
-                    if (viewFlag == 1)
-                        iBaseView.showError(backResultBean.getMsg());
-                    else
-                        BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
+                    BJMGFSDKTools.getInstance().isShowUserName = true;
+                    iBaseView.showError(backResultBean.getMsg());
+
                 } else {
                     iBaseView.showError(backResultBean.getMsg());
 

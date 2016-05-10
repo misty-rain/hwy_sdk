@@ -12,6 +12,7 @@ import com.bojoy.bjsdk_mainland_new.ui.activity.base.BJMGFActivity;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseActivityPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
+import com.bojoy.bjsdk_mainland_new.ui.view.account.impl.AccountCenterView;
 import com.bojoy.bjsdk_mainland_new.utils.*;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMSdkDialog;
 
@@ -54,7 +55,8 @@ public class VerifiedEmailView extends BaseActivityPage implements IBaseView {
         setRightButtonStr(getString(Resource.string.bjmgf_sdk_floatWindow_accountManager_editStr));
 
 
-        email = getBundle().getString("email");
+        if (getBundle() != null)
+            email = getBundle().getString("email");
         mTvShowEmail.setText(email);
         setRightButtonClick(new View.OnClickListener() {
 
@@ -70,7 +72,8 @@ public class VerifiedEmailView extends BaseActivityPage implements IBaseView {
 
             @Override
             public void onClick(View v) {
-                manager.backToTopPage();
+                AccountCenterView page = new AccountCenterView(context, manager, activity);
+                manager.clearTopPage(page);
             }
         });
 
@@ -85,10 +88,13 @@ public class VerifiedEmailView extends BaseActivityPage implements IBaseView {
             }
         });
 
-        if (getBundle().getString("isShowSendEmailDialog").equals("true")) {
-            showDialog();
+        if (getBundle() != null) {
+            if (getBundle().getString("isShowSendEmailDialog") != null) {
+                if (getBundle().getString("isShowSendEmailDialog").equals("true")) {
+                    showDialog();
+                }
+            }
         }
-        SpUtil.setStringValue(context, String.valueOf(BJMGFSDKTools.getInstance().getCurrUserData().getUid()), email);
 
     }
 

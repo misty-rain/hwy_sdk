@@ -73,8 +73,8 @@ public class BJMGFSDKTools {
     private String offlineTime = "";
     //全局 dialog
     public BJMGFDialog bjmgfDialog = null;
-    //全局view flag
-    public int globalViewFlag = 0;
+    //是否显示用户名 ，主要用在token 失效，重新登录，自动填充username
+    public boolean isShowUserName;
 
     //当前短信支付是否打开
     public boolean isOpenSmsPay;
@@ -470,16 +470,19 @@ public class BJMGFSDKTools {
     /**
      * 用来判断跳转  登陆list or 登陆视图
      *
-     * @param context
      */
-    public void switchLoginOrLoginListView(Context context) {
-        if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
-            bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_AccountLogin);
+    public void switchLoginOrLoginListView(Activity activity) {
+        if (isShowUserName) {
+            bjmgfDialog = new BJMGFDialog((Context) activity, activity, BJMGFDialog.Page_Login);
             bjmgfDialog.show();
-
         } else {
-            bjmgfDialog = new BJMGFDialog(context,(Activity) context, BJMGFDialog.Page_Login);
-            bjmgfDialog.show();
+            if (AccountSharePUtils.getLocalAccountList((Context) activity).size() > 1) {
+                bjmgfDialog = new BJMGFDialog((Context) activity, activity, BJMGFDialog.Page_AccountLogin);
+                bjmgfDialog.show();
+            } else {
+                bjmgfDialog = new BJMGFDialog((Context) activity, activity, BJMGFDialog.Page_Login);
+                bjmgfDialog.show();
+            }
         }
     }
 

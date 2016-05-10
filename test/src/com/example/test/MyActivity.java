@@ -40,7 +40,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
     private BJMGFSdk bjmgfSdk = BJMGFSdk.getDefault();
 
-    private Button btnExit, btnlogin, btnLogout, btnPay;
+    private Button btnExit, btnlogin, btnLogout, btnPay, btnCustomService;
 
 
     private BJMGFSdkListener listener = new BJMGFSdkListener() {
@@ -102,8 +102,8 @@ public class MyActivity extends Activity implements View.OnClickListener {
         initView();
         bjmgfSdk.setDebugMode(true);
         bjmgfSdk.initSdk(MyActivity.this, App_Id, App_Key, "", true,
-                orientation, listener, userInner, 0, SysConstant.SDK_DOCK_SNS_WISH_POLLMSG_TYPE,
-                wapRecharge, "haowanyou", Product_Id, Game_Version, Operator, Game_Domain);
+                  orientation, listener, userInner, 0, SysConstant.SDK_DOCK_SNS_WISH_POLLMSG_TYPE,
+                  wapRecharge, "haowanyou", Product_Id, Game_Version, Operator, Game_Domain);
 /*        EventBus eventBus=EventBus.getDefault();
         eventBus.register(this);
 
@@ -142,12 +142,14 @@ public class MyActivity extends Activity implements View.OnClickListener {
         btnLogout.setOnClickListener(this);
         btnPay = (Button) findViewById(R.id.btnPay);
         btnPay.setOnClickListener(this);
+        btnCustomService = (Button) findViewById(R.id.btnCustomService);
+        btnCustomService.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnexit:
                 bjmgfSdk.sdkExit(MyActivity.this);
                 break;
@@ -158,7 +160,10 @@ public class MyActivity extends Activity implements View.OnClickListener {
                 bjmgfSdk.logout(MyActivity.this);
                 break;
             case R.id.btnPay:
-                bjmgfSdk.rechargeProduct(MyActivity.this,String.valueOf(System.currentTimeMillis()),"1008", "20元宝", 1, 7, "088", "0001");
+                bjmgfSdk.rechargeProduct(MyActivity.this, String.valueOf(System.currentTimeMillis()), "1008", "20元宝", 1, 7, "088", "0001");
+                break;
+            case R.id.btnCustomService:
+                bjmgfSdk.openCustomService(MyActivity.this);
                 break;
         }
     }

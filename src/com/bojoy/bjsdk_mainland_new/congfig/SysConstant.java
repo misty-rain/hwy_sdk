@@ -133,6 +133,12 @@ public class SysConstant {
     public static final String ISMODIFYPWDFLAGFORDIALOG = "ISMODIFYPWDFLAGFORDIALOG";
     //用来判断当起邮箱绑定状态 1= 已认证
     public static final String EMAIL_BIND_STATUS = "EMAIL_BIND_STATUS";
+   //当前用户邮箱and 手机状态 本地缓存文件存储前缀
+    public static final String CURRENT_USER_EMAILANDPHONE_INFO_HEADER = "CURRENT_USER_EMAILANDPHONE_INFO_HEADER";
+   //用来标识当前用户已绑定邮箱但未验证
+    public static final String CURRENT_USER_EMAIL_BIND_HEADER = "CURRENT_USER_EMAIL_BIND_HEADER";
+
+
 
 
 
