@@ -50,9 +50,9 @@ public class WarnUtil {
         String currentTime = getCurrentTime();
         if (BJMGFSDKTools.getInstance().isCurrUserTryPlay(context)) {
             String preTime = SpUtil.getStringValue(context,
-                    KEY_TRY_TIME, "");
+                      KEY_TRY_TIME, "");
             LogProxy.i(TAG, "preTime = " + preTime + " & currentTime = "
-                    + currentTime);
+                      + currentTime);
             if (preTime.equals("")) {
                 setCurrentTime(context);
                 return false;
@@ -73,8 +73,8 @@ public class WarnUtil {
     public static boolean isShowBindWarn(Context context) {
         String currentTime = getCurrentTime();
         String preTime = SpUtil
-                .getStringValue(context, KEY_BIND_TIME, "")
-                .split("`")[0];
+                  .getStringValue(context, KEY_BIND_TIME, "")
+                  .split("`")[0];
         LogProxy.i(TAG, "bind preTime = " + preTime);
         if (BJMGFSDKTools.getInstance().isCurrUserTryPlay(context)) {
             return false;
@@ -83,24 +83,28 @@ public class WarnUtil {
             setCurrentTimeAdd(context, day, KEY_BIND_TIME, day + "");
             return false;
         }
-        JSONObject jsonObject = JSON.parseObject(SpUtil.getStringValue(context,BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(),""));
-        LogProxy.i(TAG,"UserPort : " + jsonObject);
+        JSONObject jsonObject = JSON.parseObject(SpUtil.getStringValue(context, BJMGFSDKTools.getInstance().getCurrentPassPort().getUid(), ""));
+        LogProxy.i(TAG, "UserPort : " + jsonObject);
 
-        if (jsonObject.getString("bindEmail").equals("")
-                && jsonObject.getString("bindMobile").equals("")) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",
-                    Locale.CHINA);
-            Date preDate = new Date();
-            Date currentDate = new Date();
-            try {
-                preDate = sdf.parse(preTime);
-                currentDate = sdf.parse(currentTime);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            boolean flag = preDate.before(currentDate);
-            if (preTime.equals(currentTime) || flag) {
-                return true;
+        if (jsonObject != null) {
+            if (jsonObject.getString("bindEmail") != null) {
+                if (jsonObject.getString("bindEmail").equals("")
+                          && jsonObject.getString("bindMobile").equals("")) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",
+                              Locale.CHINA);
+                    Date preDate = new Date();
+                    Date currentDate = new Date();
+                    try {
+                        preDate = sdf.parse(preTime);
+                        currentDate = sdf.parse(currentTime);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    boolean flag = preDate.before(currentDate);
+                    if (preTime.equals(currentTime) || flag) {
+                        return true;
+                    }
+                }
             }
         }
         return false;
@@ -115,25 +119,25 @@ public class WarnUtil {
     public static boolean isShowAuthentWarn(Context context) {
         String currentTime = getCurrentTime();
         String preTime = SpUtil
-                .getStringValue(context, KEY_AUTHENT_TIME, "")
-                .toString().split("`")[0];
+                  .getStringValue(context, KEY_AUTHENT_TIME, "")
+                  .toString().split("`")[0];
         LogProxy.i(TAG, "authen preTime = " + preTime);
         if (BJMGFSDKTools.getInstance().isCurrUserTryPlay(context)) {
             return false;
         }
         if (preTime.equals("")) {
             setCurrentTimeAdd(context, authentDay, KEY_AUTHENT_TIME, authentDay
-                    + "");
+                      + "");
             return false;
         }
         String realConfirm = DomainUtility.getInstance().getRealConfirm(context);
-        String authType =  BJMGFSDKTools.getInstance().getCurrentPassPort().getAuthType();
+        String authType = BJMGFSDKTools.getInstance().getCurrentPassPort().getAuthType();
         LogProxy.i(TAG, "realConfirm:" + realConfirm);
         LogProxy.i(TAG, "authType:" + authType);
         if (((Integer.valueOf(realConfirm) & 0x1) != 0)
-                && authType.equals("0")) {
+                  && authType.equals("0")) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",
-                    Locale.CHINA);
+                      Locale.CHINA);
             Date preDate = new Date();
             Date currentDate = new Date();
             try {
@@ -160,38 +164,38 @@ public class WarnUtil {
             isShowTry = true;
             final BJMSdkDialog dialog = new BJMSdkDialog(context);
             dialog.setTitle(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_title));
+                      Resource.string.bjmgf_sdk_warn_title));
             dialog.setMessage(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_content_try));
+                      Resource.string.bjmgf_sdk_warn_content_try));
             dialog.setPositiveButton(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_ok_try),
-                    new OnClickListener() {
+                      Resource.string.bjmgf_sdk_warn_ok_try),
+                      new OnClickListener() {
 
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                            setCurrentTime(context);
-                            BJMGFDialog bjmgfDialog = new BJMGFDialog(context,
-                                    BJMGFSdk.getDefault().getDockManager()
-                                            .getActivity(),
-                                    BJMGFDialog.Page_TryChange);
+                          @Override
+                          public void onClick(View v) {
+                              dialog.dismiss();
+                              setCurrentTime(context);
+                              BJMGFDialog bjmgfDialog = new BJMGFDialog(context,
+                                        BJMGFSdk.getDefault().getDockManager()
+                                                  .getActivity(),
+                                        BJMGFDialog.Page_TryChange);
 //                            BJMGFSdk.getDefault().getDockManagerBeta()
 //                                    .closeDock();
-                            bjmgfDialog.show();
-                        }
-                    });
+                              bjmgfDialog.show();
+                          }
+                      });
 
             dialog.setNegativeButton(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_cancel),
-                    new OnClickListener() {
+                      Resource.string.bjmgf_sdk_warn_cancel),
+                      new OnClickListener() {
 
-                        @Override
-                        public void onClick(View v) {
-                            setCurrentTime(context);
-                            dialog.dismiss();
-                        }
+                          @Override
+                          public void onClick(View v) {
+                              setCurrentTime(context);
+                              dialog.dismiss();
+                          }
 
-                    });
+                      });
             dialog.show();
             isShowTry = false;
         }
@@ -207,39 +211,39 @@ public class WarnUtil {
             isShowBind = true;
             final BJMSdkDialog dialog = new BJMSdkDialog(context);
             dialog.setTitle(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_title));
+                      Resource.string.bjmgf_sdk_warn_title));
             dialog.setMessage(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_content_bind));
+                      Resource.string.bjmgf_sdk_warn_content_bind));
             dialog.setPositiveButton(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_ok_bind),
-                    new OnClickListener() {
+                      Resource.string.bjmgf_sdk_warn_ok_bind),
+                      new OnClickListener() {
 
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                            BJMGFActivity.canLandscape = true;
-                            Intent intent = new Intent(BJMGFSdk.getDefault()
-                                    .getDockManager().getActivity(),
-                                    BJMGFActivity.class);
-                            intent.putExtra(BJMGFActivity.Page_Class_Name_Key,
-                                    BindPhoneView.class.getCanonicalName());
-                            BJMGFSdk.getDefault().getDockManager()
-                                    .getActivity().startActivity(intent);
-                            setBindTimeWarn(context);
-                        }
-                    });
+                          @Override
+                          public void onClick(View v) {
+                              dialog.dismiss();
+                              BJMGFActivity.canLandscape = true;
+                              Intent intent = new Intent(BJMGFSdk.getDefault()
+                                        .getDockManager().getActivity(),
+                                        BJMGFActivity.class);
+                              intent.putExtra(BJMGFActivity.Page_Class_Name_Key,
+                                        BindPhoneView.class.getCanonicalName());
+                              BJMGFSdk.getDefault().getDockManager()
+                                        .getActivity().startActivity(intent);
+                              setBindTimeWarn(context);
+                          }
+                      });
 
             dialog.setNegativeButton(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_cancel),
-                    new OnClickListener() {
+                      Resource.string.bjmgf_sdk_warn_cancel),
+                      new OnClickListener() {
 
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                            setBindTimeWarn(context);
-                        }
+                          @Override
+                          public void onClick(View v) {
+                              dialog.dismiss();
+                              setBindTimeWarn(context);
+                          }
 
-                    });
+                      });
             dialog.show();
             isShowBind = false;
         }
@@ -255,37 +259,37 @@ public class WarnUtil {
             isShowAuthent = true;
             final BJMSdkDialog dialog = new BJMSdkDialog(context);
             dialog.setTitle(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_title));
+                      Resource.string.bjmgf_sdk_warn_title));
             dialog.setMessage(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_content_authent));
+                      Resource.string.bjmgf_sdk_warn_content_authent));
             dialog.setPositiveButton(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_ok_authent),
-                    new OnClickListener() {
+                      Resource.string.bjmgf_sdk_warn_ok_authent),
+                      new OnClickListener() {
 
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                            String authentUrl = BJMGFSDKTools.getInstance().getIdentityUrl(context,2);//2为拼接链接时 authentUrl的redirect
-                            Uri mUri = Uri.parse(authentUrl);
-                            Intent intent = new Intent(Intent.ACTION_VIEW,
-                                    mUri);
-                            BJMGFSdk.getDefault().getDockManager()
-                                    .getActivity().startActivity(intent);
-                            setAuthentTimeWarn(context);
-                        }
-                    });
+                          @Override
+                          public void onClick(View v) {
+                              dialog.dismiss();
+                              String authentUrl = BJMGFSDKTools.getInstance().getIdentityUrl(context, 2);//2为拼接链接时 authentUrl的redirect
+                              Uri mUri = Uri.parse(authentUrl);
+                              Intent intent = new Intent(Intent.ACTION_VIEW,
+                                        mUri);
+                              BJMGFSdk.getDefault().getDockManager()
+                                        .getActivity().startActivity(intent);
+                              setAuthentTimeWarn(context);
+                          }
+                      });
 
             dialog.setNegativeButton(StringUtility.getString(context,
-                    Resource.string.bjmgf_sdk_warn_cancel),
-                    new OnClickListener() {
+                      Resource.string.bjmgf_sdk_warn_cancel),
+                      new OnClickListener() {
 
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                            setAuthentTimeWarn(context);
-                        }
+                          @Override
+                          public void onClick(View v) {
+                              dialog.dismiss();
+                              setAuthentTimeWarn(context);
+                          }
 
-                    });
+                      });
             dialog.show();
             isShowAuthent = false;
         }
@@ -341,7 +345,7 @@ public class WarnUtil {
      */
     public static void setBindTimeWarn(Context context) {
         String pre = SpUtil.getStringValue(context, KEY_BIND_TIME, "")
-                .toString();
+                  .toString();
         String preSign = pre.split("`")[1];
         LogProxy.i(TAG, "bind preSign = " + preSign);
         if (preSign.equals("1")) {
@@ -361,11 +365,11 @@ public class WarnUtil {
      */
     public static void setAuthentTimeWarn(Context context) {
         String pre = SpUtil.getStringValue(context, KEY_AUTHENT_TIME,
-                "").toString();
+                  "").toString();
         String preSign = pre.split("`")[1];
         LogProxy.i(TAG, "bind preSign = " + preSign);
         setCurrentTimeAdd(context, authentDay, KEY_AUTHENT_TIME, authentDay
-                + "");
+                  + "");
     }
 
     /**

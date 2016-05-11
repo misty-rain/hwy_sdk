@@ -1,8 +1,11 @@
 package com.bojoy.bjsdk_mainland_new.app.tools;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.telephony.SmsManager;
 
 import com.bojoy.bjsdk_mainland_new.api.BaseApi;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
@@ -15,11 +18,13 @@ import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseDialogPage;
 import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.DomainUtility;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
+import com.bojoy.bjsdk_mainland_new.utils.PollingTimeoutTask;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
 import com.bojoy.bjsdk_mainland_new.utils.StringUtility;
 import com.bojoy.bjsdk_mainland_new.utils.Utility;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -76,8 +81,8 @@ public class BJMGFSDKTools {
     //是否显示用户名 ，主要用在token 失效，重新登录，自动填充username
     public boolean isShowUserName;
 
-    //当前短信支付是否打开
-    public boolean isOpenSmsPay;
+    //当前短信支付是否打开 .默认打开
+    public boolean isOpenSmsPay = true;
 
     public boolean getOfflineMsgFlag() {
         if (offlineMsgFlag.equals("1")) {
@@ -469,7 +474,6 @@ public class BJMGFSDKTools {
 
     /**
      * 用来判断跳转  登陆list or 登陆视图
-     *
      */
     public void switchLoginOrLoginListView(Activity activity) {
         if (isShowUserName) {
@@ -486,5 +490,34 @@ public class BJMGFSDKTools {
         }
     }
 
+
+    /**
+     * 使用SMSManager 发送短信
+     *
+     * @param context
+     * @param mobile
+     */
+    public void sendSms(Context context, String mobile, PollingTimeoutTask timeoutTask) {
+        LogProxy.d(TAG, "to=" + mobile);
+        SmsManager smsManager = SmsManager.getDefault();
+        Intent sentIntent = new Intent(SysConstant.SENT_SMS_ACTION);
+        PendingIntent sentPI = PendingIntent.getBroadcast(context, 0,
+                  sentIntent, 0);
+        Intent deliverIntent = new Intent(SysConstant.DELIVERED_SMS_ACTION);
+        PendingIntent deliverPI = PendingIntent.getBroadcast(context, 0,
+                  deliverIntent, 0);
+        timeoutTask.startPolling();
+        String smsText = StringUtility.getSmsText(context);
+        LogProxy.d(TAG, "msg=" + smsText);
+        if (smsText.length() > 70) {
+            ArrayList<String> msgs = smsManager.divideMessage(smsText);
+            for (String msg : msgs) {
+                smsManager.sendTextMessage(mobile, null, msg, sentPI, deliverPI);
+            }
+        } else {
+            smsManager.sendTextMessage(mobile, null, smsText, sentPI, deliverPI);
+        }
+
+    }
 
 }

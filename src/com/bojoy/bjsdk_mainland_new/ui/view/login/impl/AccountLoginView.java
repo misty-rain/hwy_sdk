@@ -1,7 +1,9 @@
 package com.bojoy.bjsdk_mainland_new.ui.view.login.impl;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.InputFilter;
 import android.view.View;
@@ -35,7 +37,7 @@ import java.util.Iterator;
  * Created by wutao on 2015/12/23.
  * 账户登录视图
  */
-public class AccountLoginView extends OneKeyLoginView implements ISmsView {
+public class AccountLoginView extends BaseDialogPage implements ISmsView {
 
     private EventBus eventBus = EventBus.getDefault();
     private final String TAG = AccountLoginView.class.getSimpleName();
@@ -44,10 +46,82 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
     private Button mAccountLoginButton;
     private ClearEditText mAccountEditText, mPwdEditText;
     IAccountPresenter iAccountPresenter;
+
     /**
      * 试玩按钮
      */
     private RelativeLayout mLoginTryTextView = null;
+
+
+    protected final int Max_Timeout = 30000;
+    protected final int One_Key_Check_Perid_Time = 6000;
+    protected PollingTimeoutTask oneKeyCheckPolling = new PollingTimeoutTask(
+              One_Key_Check_Perid_Time, One_Key_Check_Perid_Time / 2,
+              Max_Timeout, new PollingTimeoutTask.PollingListener() {
+
+        @Override
+        public void onTimeout() {
+            dismissProgressDialog();
+        }
+
+        @Override
+        public void onExecute() {
+            LogProxy.i(TAG, "one key check polling onexcute");
+            iAccountPresenter.oneKeyRegister(context, SpUtil.getStringValue(context, "uuid", ""));
+        }
+    });
+
+    protected BroadcastReceiver sendMessage = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            LogProxy.i(TAG, "result=" + getResultCode());
+            smsTimeoutTask.suspendPolling();
+            switch (getResultCode()) {
+                case Activity.RESULT_OK:
+                    oneKeyCheckPolling.startPolling();
+                    ToastUtil.showMessage(context, getString(Resource.string.bjmgf_sdk_sendMessageSuccessedStr));
+                    break;
+                default:
+                    dismissProgressDialog();
+                    ToastUtil.showMessage(context, getString(Resource.string.bjmgf_sdk_sendMessageFailStr));
+                    if (getResultCode() == Activity.RESULT_CANCELED) {
+                        // send sms cancel
+
+                    } else {
+                        // send sms fail
+                    }
+                    break;
+            }
+        }
+    };
+
+    private BroadcastReceiver receiverMessage = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ToastUtil.showMessage(context, getString(Resource.string.bjmgf_sdk_receiveMessageSuccessedStr));
+        }
+    };
+
+    protected final int Max_Sms_Timeout = 60000;
+    protected final int Sms_Timeout_Perid = 1000;
+    protected PollingTimeoutTask smsTimeoutTask = new PollingTimeoutTask(
+              Sms_Timeout_Perid, 0, Max_Sms_Timeout,
+              new PollingTimeoutTask.PollingListener() {
+
+                  @Override
+                  public void onTimeout() {
+                      LogProxy.d(TAG, "smsTimeoutTask timeout");
+                      dismissProgressDialog();
+                      ToastUtil.showMessage(context, getString(Resource.string.bjmgf_sdk_sendMessageFailStr));
+                  }
+
+                  @Override
+                  public void onExecute() {
+                      LogProxy.d(TAG, "smsTimeoutTask timeout");
+                  }
+              });
 
 
     public AccountLoginView(Context context, PageManager manager, BJMGFDialog dialog) {
@@ -145,7 +219,10 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
 
         mAccountEditText.getEdit().setFilters(new InputFilter[]{new BJMInputFilter()});
         if (BJMGFSDKTools.getInstance().isShowUserName) {
-            mAccountEditText.setEditText(BJMGFSDKTools.getInstance().getCurrentPassPort().getPp());
+            if (BJMGFSDKTools.getInstance().getCurrentPassPort() != null)
+                mAccountEditText.setEditText(BJMGFSDKTools.getInstance().getCurrentPassPort().getPp());
+            else
+                mAccountEditText.setEditText(AccountSharePUtils.getLocalAccountList(context).get(0).getPp());
             BJMGFSDKTools.getInstance().isShowUserName = false;
 
         }
@@ -213,9 +290,9 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
     public void onResume() {
         super.onResume();
         dialog.setCancelable(true);
-        context.registerReceiver(sendMessage, new IntentFilter(SENT_SMS_ACTION));
+        context.registerReceiver(sendMessage, new IntentFilter(SysConstant.SENT_SMS_ACTION));
         context.registerReceiver(receiverMessage, new IntentFilter(
-                  DELIVERED_SMS_ACTION));
+                  SysConstant.DELIVERED_SMS_ACTION));
     }
 
     @Override
@@ -233,12 +310,20 @@ public class AccountLoginView extends OneKeyLoginView implements ISmsView {
 
     @Override
     public void showSuccess() {
+        if (oneKeyCheckPolling != null) {
+            LogProxy.i(TAG, "oneKeyCheckPolling suspend");
+            oneKeyCheckPolling.suspendPolling();
+            smsTimeoutTask.suspendPolling();
+        }
         dismissProgressDialog();
         openWelcomePage();
     }
 
     @Override
     public void showGetInfoSuccess(String mobile) {
-        sendSms(mobile);
+        if (!mobile.equals(""))
+            BJMGFSDKTools.getInstance().sendSms(context, mobile, smsTimeoutTask);
     }
+
+
 }

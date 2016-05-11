@@ -75,6 +75,9 @@ public class SysConstant {
     public static final int SMS_POLLING_MAX_TIME = 1000 * 60 * 1;
     // 短信生命周期
     public static final int SMS_LIFE_CYCLE = 60 * 1;
+    public static final String SENT_SMS_ACTION = "sent_sms_action";
+
+    public static final String DELIVERED_SMS_ACTION = "delivered_sms_action";
 
     /**
      * 支付类型

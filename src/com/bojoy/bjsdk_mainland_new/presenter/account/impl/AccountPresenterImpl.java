@@ -17,9 +17,11 @@ import com.bojoy.bjsdk_mainland_new.model.impl.AccountModelImpl;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
+import com.bojoy.bjsdk_mainland_new.support.fastjson.JSONObject;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.IAccountCenterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.IAccountLoginListView;
+import com.bojoy.bjsdk_mainland_new.ui.view.register.ISmsView;
 import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.AccountUtil;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
@@ -109,13 +111,18 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_ONE_KEY_INFO://发送短信
-                        //((ISmsView)iBaseView).showGetInfoSuccess();
-                        iBaseView.showSuccess();
+                        //backResultBean = JSON.parseObject(backResultBean.getObj())
+                        JSONObject jsonObject = JSONObject.parseObject(backResultBean.getObj());
+                        String mobile = jsonObject.getString("mobile");
+                        ((ISmsView) iBaseView).showGetInfoSuccess(mobile);
                         break;
                     case BaseRequestEvent.REQUEST_ONE_KEY_CHECK: //一键注册
+                        passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort); //保存当期用户passport
                         AccountUtil.remove(context, passPort.getUid());
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
+                        BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(true);
+
                         iAccountModel.getUserInfoForSelf(context, SysConstant.GET_USERINFO_TYPE_BASE, this);//查询用户信息
                         iAccountModel.getAccountInfo(context, this); //查询账户信息
                         iBaseView.showSuccess();

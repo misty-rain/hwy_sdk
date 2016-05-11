@@ -332,7 +332,8 @@ public class SendQuestionView extends BaseActivityPage implements View.OnClickLi
 
     @Override
     public void showError(String message) {
-        dismissProgressDialog();
+        DialogUtil.dismissProgressDialog();
+        ToastUtil.showMessage(context,message);
     }
 
     @Override

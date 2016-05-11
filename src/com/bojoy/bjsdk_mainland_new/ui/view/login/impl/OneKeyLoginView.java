@@ -145,6 +145,7 @@ public abstract class OneKeyLoginView extends BaseDialogPage implements IBaseVie
         } else {
             smsManager.sendTextMessage(mobile, null, smsText, sentPI, deliverPI);
         }
+
     }
 
     @Override

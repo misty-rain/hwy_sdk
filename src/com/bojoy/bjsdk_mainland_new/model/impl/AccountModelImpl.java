@@ -589,7 +589,8 @@ public class AccountModelImpl implements IAccountModel {
     @Override
     public void hwyPlatformRegister(Context context, String nickName, String sex, String birth, final BaseResultCallbackListener listener) {
         Map<String, String> params = ParamsTools.getInstance().getUserCenterParamsMap(context);
-        params.put("c", TransferDesEncrypt.encryptDef(SysConstant.USERCENTER_HEADER_REQUEST_CODE_HWYPLATFORM_REGISTER + "|" + nickName + "|" + sex + "|" + birth));
+        //params.put("c", TransferDesEncrypt.encryptDef(SysConstant.USERCENTER_HEADER_REQUEST_CODE_HWYPLATFORM_REGISTER + "|" + nickName + "|" + sex + "|" + birth));
+        params.put("c", SysConstant.USERCENTER_HEADER_REQUEST_CODE_HWYPLATFORM_REGISTER + "|" + nickName + "|" + sex + "|" + birth);
         try {
             HttpUtility.getInstance().execute(HttpMethod.POST, DomainUtility.getInstance().getUserCenterDomain(context) + BaseApi.APP_USERCERTER_REQUEST, params, new StringCallback() {
                 @Override

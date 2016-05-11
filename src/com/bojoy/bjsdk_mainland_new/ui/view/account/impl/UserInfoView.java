@@ -246,8 +246,21 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
     public void showSuccess() {
         dismissProgressDialog();
         mBundle.putString("facePath", backFilePath);
+        updateLocalUserData();
         showError(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_dock_dialog_modify_userinfo_success)));
         goBack();
+    }
+
+    /**
+     * 更新本地账户信息
+     */
+    private void updateLocalUserData() {
+        afterUserData.setBirth(birthdayText.getText().toString().trim());
+        if (backFilePath != null)
+            afterUserData.setFaceUrl(backFilePath);
+        afterUserData.setNick(nickText.getText().toString());
+        afterUserData.setSex(sexText.getText().toString());
+        BJMGFSDKTools.getInstance().setCurrUserData(afterUserData);
     }
 
     /**
@@ -276,8 +289,8 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
     public void showUserInfo() {
         baseUserData = BJMGFSDKTools.getInstance().getCurrUserData();
         if (baseUserData != null) {
-            isRegisterPlatform = 1;
             if (baseUserData.getNick() != null) {
+                isRegisterPlatform = 1;
                 nickText.setText(baseUserData.getNick());
                 nickText.setTextColor(context.getResources().getColor(
                           ReflectResourceId.getColorId(context,
@@ -290,6 +303,7 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
             }
 
             if (baseUserData.getSex() != null) {
+                isRegisterPlatform = 1;
                 sexText.setText(baseUserData.equals(SysConstant.SEX_MALE) ? getString(Resource.string.bjmgf_sdk_sex_male) : getString(Resource.string.bjmgf_sdk_sex_female));
                 sexText.setTextColor(context.getResources().getColor(
                           ReflectResourceId.getColorId(context,
@@ -301,12 +315,13 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
                           ReflectResourceId.getColorId(context,
                                     Resource.color.bjmgf_sdk_text_gray)));
             }
-            if (baseUserData.getBirth() != null)
+            if (baseUserData.getBirth() != null) {
+                isRegisterPlatform = 1;
                 if (baseUserData.getBirth().length() > 11)
                     birthdayText.setText(baseUserData.getBirth().substring(0, 11));
                 else
                     birthdayText.setText(baseUserData.getBirth());
-            else {
+            } else {
 
                 birthdayText
                           .setText(getString(Resource.string.bjmgf_sdk_floatWindow_accountManager_chooseBirthDay));
@@ -315,10 +330,12 @@ public class UserInfoView extends BaseActivityPage implements IUserInfoView {
                                     Resource.color.bjmgf_sdk_text_gray)));
             }
 
-            if (baseUserData.getFaceUrl() != null)
+            if (baseUserData.getFaceUrl() != null) {
+                isRegisterPlatform = 1;
                 imageLoaderUtil.loadImageUrl(context, faceImage, baseUserData.faceUrl, null, (int) context.getResources().getDimension(
                           ReflectResourceId.getDimenId(context,
                                     Resource.dimen.bjmgf_sdk_user_head_icon_size)));
+            }
         }
     }
 
