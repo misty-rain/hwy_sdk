@@ -9,6 +9,7 @@ import android.widget.*;
 
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.AuthExpiredEvent;
+import com.bojoy.bjsdk_mainland_new.eventhandler.event.BJMGFSdkEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseReceiveEvent;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
@@ -268,6 +269,7 @@ public class InitView extends BaseDialogPage implements IInitView {
 
     @Override
     public void showSuccess() {
+
 
         LogProxy.d(TAG, "openWelcomePage----------------------");
         dialog.dismiss();

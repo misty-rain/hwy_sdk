@@ -21,6 +21,7 @@ import com.bojoy.bjsdk_mainland_new.support.fastjson.JSONObject;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.IAccountCenterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.IAccountLoginListView;
+import com.bojoy.bjsdk_mainland_new.ui.view.register.IRegisterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.register.ISmsView;
 import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.AccountUtil;
@@ -67,7 +68,7 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
                         iAccountModel.getUserInfoForSelf(context, SysConstant.GET_USERINFO_TYPE_BASE, this);//查询用户信息
                         iAccountModel.getAccountInfo(context, this); //查询账户信息
-                        eventBus.post(BJMGFSdkEvent.App_Login_Success);
+                        eventBus.post(BJMGFSdkEvent.APP_LOGIN_SUCCESS);
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_GET_ACCOUNT_INFO://获取账号信息事件
@@ -77,14 +78,14 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort);//保存当前用户passport
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(true);
-                        iBaseView.showSuccess();
+                        ((IRegisterView) iBaseView).showRegisterSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_TRY_CHANGE:   //修改试玩账号
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         AccountUtil.remove(context, passPort.getUid());
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
-                        EventBus.getDefault().post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Logout));
+                        EventBus.getDefault().post(BJMGFSdkEvent.APP_LOGOUT);
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_PF_USER_INFO: //获得自己的个人信息

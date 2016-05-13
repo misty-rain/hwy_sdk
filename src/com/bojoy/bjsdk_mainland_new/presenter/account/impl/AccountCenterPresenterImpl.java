@@ -283,7 +283,7 @@ public class AccountCenterPresenterImpl implements IAccountCenterPresenter, Base
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
                         BJMGFSDKTools.getInstance().setCurrUserData(null);
                         BJMGFSDKTools.getInstance().setCurrentPassPort(null);
-                        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Logout));
+                        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_LOGOUT));
 
                         break;
                 }

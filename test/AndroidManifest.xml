@@ -93,7 +93,7 @@
             android:configChanges="keyboardHidden|orientation"
             android:theme="@style/transcutestyle_vsofo"></activity>
 
-        <!-- 指易 sdk配置内容 -->
+       <!-- &lt;!&ndash; 指易 sdk配置内容 &ndash;&gt;
 
         <activity
             android:name="com.skymobi.pay.sdk.normal.zimon.EpsActivity"
@@ -122,7 +122,7 @@
 
                 <data android:scheme="package" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
         <receiver android:name="com.bojoy.bjsdk_mainland_new.utils.payment.WxApkReceiver" >
             <intent-filter>

@@ -103,39 +103,42 @@ public class BJMGFSdk {
     public void onEventMainThread(BJMGFSdkEvent event) {
         LogProxy.i(TAG, "BJMGFSdkEvent " + event.getEventId());
         switch (event.getEventId()) {
-            case BJMGFSdkEvent.App_Need_Wifi:
+            case BJMGFSdkEvent.APP_NEED_WIFI:
                 if (activity != null) {
                     activity.startActivityForResult(new Intent(
                               Settings.ACTION_WIFI_SETTINGS), NETWORK_REQUESTCODE);
                 }
                 break;
-            case BJMGFSdkEvent.App_Init_Offline:
+            case BJMGFSdkEvent.APP_INIT_OFFLINE:
                 break;
-            case BJMGFSdkEvent.App_Login_Success:
+            case BJMGFSdkEvent.APP_LOGIN_SUCCESS:
                 messageReceiver.start();
                 break;
-            case BJMGFSdkEvent.App_Closed:
+            case BJMGFSdkEvent.APP_REGISTER_SUCCESS:
+                BJMGFSDKTools.getInstance().isRegister = true;
+            case BJMGFSdkEvent.APP_CLOSED:
                 dockManager.removeDock();
                 break;
             case BJMGFSdkEvent.APP_WELCOME_SHOW:
                 dockManager.openDock();
                 break;
-            case BJMGFSdkEvent.App_Logout:
+            case BJMGFSdkEvent.APP_LOGOUT:
                 LogProxy.i(TAG, "close dock");
                 dockManager.closeDock();
                 break;
-            case BJMGFSdkEvent.App_Exit: // SDK 退出
+            case BJMGFSdkEvent.APP_EXIT: // SDK 退出
                 dockManager.removeDock();
                 messageReceiver.stop();
                 break;
-            case BJMGFSdkEvent.App_Switch_Account://切换账号or 登出
+            case BJMGFSdkEvent.APP_SWITCH_ACCOUNT://切换账号or 登出
                 dockManager.closeDock();
                 break;
             case BJMGFSdkEvent.RECHARGE_SUCCESS:
+                BJMGFSDKTools.getInstance().isRegister = true;
                 break;
             case BJMGFSdkEvent.RECHARGE_FAIL:
                 break;
-            case BJMGFSdkEvent.Get_Offline_Message:
+            case BJMGFSdkEvent.GET_OFFLINE_MESSAGE:
                 if (BJMGFSDKTools.getInstance().getOfflineMsgFlag()) {
                     dockManager.notifyMessage();
                 }
@@ -285,7 +288,7 @@ public class BJMGFSdk {
                   new View.OnClickListener() {
                       @Override
                       public void onClick(View v) {
-                          eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Exit));
+                          eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_EXIT));
                           dialog.dismiss();
                           android.os.Process.killProcess(android.os.Process
                                     .myPid());
@@ -321,7 +324,7 @@ public class BJMGFSdk {
      */
     public void logout(Context context) {
         if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
-            //dockManager.closeDock();
+            dockManager.closeDock();
             IAccountCenterPresenter iAccountCenterPresenter = new AccountCenterPresenterImpl(context, null);
             iAccountCenterPresenter.logout(context);
             BJMGFSDKTools.getInstance().switchLoginOrLoginListView(rootActivity);

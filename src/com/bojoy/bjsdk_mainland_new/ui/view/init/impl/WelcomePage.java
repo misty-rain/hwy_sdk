@@ -99,7 +99,7 @@ public class WelcomePage extends BaseDialogPage {
     public void hideWelcomeShowDock() {
         quit();
         eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_WELCOME_SHOW));
-        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Login_Success));
+        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_LOGIN_SUCCESS));
     }
 
 

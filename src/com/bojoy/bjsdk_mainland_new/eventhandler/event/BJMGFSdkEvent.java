@@ -7,27 +7,27 @@ package com.bojoy.bjsdk_mainland_new.eventhandler.event;
 public class BJMGFSdkEvent {
 	
 	/** offline应用初始化完成 */
-	public static final int App_Init_Offline = 1;
+	public static final int APP_INIT_OFFLINE = 1;
 	/** 应用强制关闭 */
-	public static final int App_Closed = 2;
+	public static final int APP_CLOSED = 2;
 	/** 登录成功 */
-	public static final int App_Login_Success = 3;
+	public static final int APP_LOGIN_SUCCESS = 3;
 	/** 退出登录 */
-	public static final int App_Logout = 4;
+	public static final int APP_LOGOUT = 4;
 	/** 仅退出应用 */
-	public static final int App_Exit = 5;
+	public static final int APP_EXIT = 5;
 	/** 需要打开wifi设置 */
-	public static final int App_Need_Wifi = 6;
+	public static final int APP_NEED_WIFI = 6;
 	/** 登录失败 */
-	public static final int App_Login_Fail = 7;
+	public static final int APP_LOGIN_FAIL = 7;
 	/** 切换账号 */
-	public static final int App_Switch_Account = 8;
+	public static final int APP_SWITCH_ACCOUNT = 8;
 	/** 进入提交问题 */
-	public static final int App_Before_Send_Question = 9;
+	public static final int APP_BEFORE_SEND_QUESTION = 9;
 	/** 注册成功 */
-	public static final int App_Register_Success = 10;
+	public static final int APP_REGISTER_SUCCESS = 10;
 	/** 获取离线消息 */
-	public static final int Get_Offline_Message = 13;
+	public static final int GET_OFFLINE_MESSAGE = 13;
 	/** 欢迎页显示消失之后再显示悬浮窗 */
 	public static final int APP_WELCOME_SHOW = 14; 
 	/** 初始化成功事件*/

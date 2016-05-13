@@ -49,36 +49,36 @@ public class MyActivity extends Activity implements View.OnClickListener {
         public void onBJMGFEvent(int eventId) {
             LogProxy.i(TAG, "listener event " + eventId);
             switch (eventId) {
-                /** 閹垫挸绱慦ifi闁板秶鐤嗛悾宀勬桨 */
-                case BJMGFSdkEvent.App_Need_Wifi:
+                /** 打开Wifi配置界面 */
+                case BJMGFSdkEvent.APP_NEED_WIFI:
                     break;
-                /** 闂堢偠浠堢純鎴濈安閻€劍鍨ㄥ〒鍛婂灆閻ㄥ嫬鍨垫慨瀣鐎瑰本鍨氶柅姘辩叀 */
-                case BJMGFSdkEvent.App_Init_Offline:
+                /** 非联网应用或游戏的初始化完成通知 */
+                case BJMGFSdkEvent.APP_INIT_OFFLINE:
                     break;
-                /** 閺囧瓨鏌夾pp閻ㄥ嫬鍙ч梻顓拷姘辩叀 */
-                case BJMGFSdkEvent.App_Closed:
+                /** 更新App的关闭通知 */
+                case BJMGFSdkEvent.APP_CLOSED:
                     break;
-                /** 閻ц缍嶉幋鎰 */
-                case BJMGFSdkEvent.App_Login_Success:
+                /** 登录成功 */
+                case BJMGFSdkEvent.APP_LOGIN_SUCCESS:
                     break;
-                /** 閻ц缍嶆径杈Е */
-                case BJMGFSdkEvent.App_Login_Fail:
+                /** 登录失败 */
+                case BJMGFSdkEvent.APP_LOGIN_FAIL:
                     break;
-                /** 濞夈劑鏀㈤幋鎰 */
-                case BJMGFSdkEvent.App_Logout:
+                /** 注销成功 */
+                case BJMGFSdkEvent.APP_LOGOUT:
                     break;
-                /** 闁拷閸戠尨绱欏锟介崣鎴ｏ拷鍛存付鐟曚礁婀潻娆撳櫡鐎圭偟骞囬柅锟介崙鍝勭安閻€劍鍨ㄩ懓鍛埗閹村繒娈戦柅锟介崙鐚寸礆 */
-                case BJMGFSdkEvent.App_Exit:
+                /** 退出（开发者需要在这里实现退出应用或者游戏的退出） */
+                case BJMGFSdkEvent.APP_EXIT:
                     android.os.Process.killProcess(android.os.Process.myPid());
                     System.exit(0);
                     break;
-                /** 閸掑洦宕茬拹锕?褰? */
-                case BJMGFSdkEvent.App_Switch_Account:
+                /** 切换账号 */
+                case BJMGFSdkEvent.APP_SWITCH_ACCOUNT:
                     break;
-                case BJMGFSdkEvent.App_Before_Send_Question:
+                case BJMGFSdkEvent.APP_BEFORE_SEND_QUESTION:
                     break;
-                /** 濞夈劌鍞介幋鎰 */
-                case BJMGFSdkEvent.App_Register_Success:
+                /** 注册成功 */
+                case BJMGFSdkEvent.APP_REGISTER_SUCCESS:
                     break;
                 case BJMGFSdkEvent.RECHARGE_SUCCESS:
                     Log.i("BJMEngine", "sdk recharge success");

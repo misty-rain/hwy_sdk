@@ -135,7 +135,7 @@ public class InitSDKPresenterImpl implements IInitPresenter, BaseResultCallbackL
                         if (!Utility.stringIsEmpty(strT)) {
                             BJMGFSDKTools.getInstance().setOfflineTime(strT);
                         }
-                        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.Get_Offline_Message));
+                        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.GET_OFFLINE_MESSAGE));
                     }
                     break;
             }

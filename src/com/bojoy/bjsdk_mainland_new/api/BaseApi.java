@@ -98,8 +98,8 @@ public class BaseApi {
     public static final String APP_WAP_RECHARGE = BASE_PAY_ROOT + "init.do";
 
     //请求doman cdn 配置 信息
-  public static final String APP_COLLOCATION_INFO = "http://123.59.67.156/version/HWY_cn_cn/client/sdk_android/1/clientConf.json?";
-   // public static final String APP_COLLOCATION_INFO = "http://192.168.0.46:8888/version/HWY_cn_cn/client/sdk_android/1/clientConf.json?";
+  //public static final String APP_COLLOCATION_INFO = "http://123.59.67.156/version/HWY_cn_cn/client/sdk_android/1/clientConf.json?";
+    public static final String APP_COLLOCATION_INFO = "http://192.168.0.46:8888/version/HWY_cn_cn/client/sdk_android/1/clientConf.json?";
     public static final String APP_CS_DOMAIN = "http://m-service.haowanyou.com";
     //问题详情追加回复
     public static final String APP_MY_QUESTION_APPEND = BASE_CS_ROOT + "append.do?";

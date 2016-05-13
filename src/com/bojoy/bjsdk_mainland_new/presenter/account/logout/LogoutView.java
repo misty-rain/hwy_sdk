@@ -54,7 +54,7 @@ public class LogoutView extends BaseDialogPage {
                 if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine()) {
                     BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
                     BJMGFSDKTools.getInstance().setCurrUserData(null);
-                    eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Logout));
+                    eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_LOGOUT));
                     quit();
                 } else {
                     quit();
@@ -65,7 +65,7 @@ public class LogoutView extends BaseDialogPage {
 
             @Override
             public void onClick(View arg0) {
-                eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.App_Exit));
+                eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_EXIT));
                 quit();
             }
         });
