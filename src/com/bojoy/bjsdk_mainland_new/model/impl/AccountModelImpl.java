@@ -699,6 +699,11 @@ public class AccountModelImpl implements IAccountModel {
         }
     }
 
+    /**
+     * 获取我方短信平台手机号
+     * @param context
+     * @param listener
+     */
     @Override
     public void sendInfo(Context context, final BaseResultCallbackListener listener) {
         try {

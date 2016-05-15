@@ -3,7 +3,6 @@ package com.bojoy.bjsdk_mainland_new.presenter.account.impl;
 
 import android.content.Context;
 
-import com.bojoy.bjsdk_mainland_new.app.GlobalContext;
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.congfig.ErrorCodeConstants;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
@@ -19,16 +18,13 @@ import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSONObject;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
-import com.bojoy.bjsdk_mainland_new.ui.view.account.IAccountCenterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.login.IAccountLoginListView;
-import com.bojoy.bjsdk_mainland_new.ui.view.register.IRegisterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.register.ISmsView;
 import com.bojoy.bjsdk_mainland_new.utils.AccountSharePUtils;
 import com.bojoy.bjsdk_mainland_new.utils.AccountUtil;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
-import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
 import java.util.List;
 
@@ -78,7 +74,9 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort);//保存当前用户passport
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(true);
-                        ((IRegisterView) iBaseView).showRegisterSuccess();
+                        AccountUtil.remove(context, passPort.getUid());
+                        AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
+                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_TRY_CHANGE:   //修改试玩账号
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);

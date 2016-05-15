@@ -17,11 +17,15 @@ import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseDialogPage;
-import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
-import com.bojoy.bjsdk_mainland_new.ui.view.login.impl.OneKeyLoginView;
-import com.bojoy.bjsdk_mainland_new.ui.view.register.IRegisterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.register.ISmsView;
-import com.bojoy.bjsdk_mainland_new.utils.*;
+import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
+import com.bojoy.bjsdk_mainland_new.utils.PollingTimeoutTask;
+import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
+import com.bojoy.bjsdk_mainland_new.utils.Resource;
+import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
+import com.bojoy.bjsdk_mainland_new.utils.StringUtility;
+import com.bojoy.bjsdk_mainland_new.utils.ToastUtil;
+import com.bojoy.bjsdk_mainland_new.utils.Utility;
 import com.bojoy.bjsdk_mainland_new.widget.ClearEditText;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.ProtocolDialog;
@@ -31,7 +35,7 @@ import com.bojoy.bjsdk_mainland_new.widget.dialog.ProtocolDialog;
  * 账户注册视图
  */
 
-public class AccountRegisterView extends BaseDialogPage implements IRegisterView, ISmsView {
+public class AccountRegisterView extends BaseDialogPage implements ISmsView {
 
 
     private TextView mProtocolTextView;
@@ -236,6 +240,7 @@ public class AccountRegisterView extends BaseDialogPage implements IRegisterView
      */
     @Override
     public void showSuccess() {
+        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_REGISTER_SUCCESS));
         if (oneKeyCheckPolling != null) {
             LogProxy.i(TAG, "oneKeyCheckPolling suspend");
             oneKeyCheckPolling.suspendPolling();
@@ -252,15 +257,4 @@ public class AccountRegisterView extends BaseDialogPage implements IRegisterView
     }
 
 
-    @Override
-    public void showRegisterSuccess() {
-        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_REGISTER_SUCCESS));
-        if (oneKeyCheckPolling != null) {
-            LogProxy.i(TAG, "oneKeyCheckPolling suspend");
-            oneKeyCheckPolling.suspendPolling();
-            smsTimeoutTask.suspendPolling();
-        }
-        dismissProgressDialog();
-        openWelcomePage();
-    }
 }

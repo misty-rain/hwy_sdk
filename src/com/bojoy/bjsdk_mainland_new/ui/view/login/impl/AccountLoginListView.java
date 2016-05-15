@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
+import com.bojoy.bjsdk_mainland_new.eventhandler.event.BJMGFSdkEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseAdapterCalllback;
 import com.bojoy.bjsdk_mainland_new.model.entity.PassPort;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
@@ -152,6 +153,7 @@ public class AccountLoginListView extends BaseDialogPage implements IAccountLogi
 
     @Override
     public void showSuccess() {
+        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_REGISTER_SUCCESS));
         dismissProgressDialog();
         openWelcomePage();
     }

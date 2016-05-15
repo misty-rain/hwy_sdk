@@ -12,17 +12,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bojoy.bjsdk_mainland_new.app.BJMGFSdk;
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BJMGFSdkEvent;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
-import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseDialogPage;
-import com.bojoy.bjsdk_mainland_new.ui.view.register.IRegisterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.register.ISmsView;
 import com.bojoy.bjsdk_mainland_new.ui.view.register.impl.AccountRegisterView;
 import com.bojoy.bjsdk_mainland_new.ui.view.account.findpwd.impl.FindPwdSplashPage;
@@ -30,16 +27,11 @@ import com.bojoy.bjsdk_mainland_new.utils.*;
 import com.bojoy.bjsdk_mainland_new.widget.ClearEditText;
 import com.bojoy.bjsdk_mainland_new.widget.dialog.BJMGFDialog;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Iterator;
-
 /**
  * Created by wutao on 2015/12/23.
  * 账户登录视图
  */
-public class AccountLoginView extends BaseDialogPage implements ISmsView, IRegisterView {
+public class AccountLoginView extends BaseDialogPage implements ISmsView {
 
     private EventBus eventBus = EventBus.getDefault();
     private final String TAG = AccountLoginView.class.getSimpleName();
@@ -313,6 +305,7 @@ public class AccountLoginView extends BaseDialogPage implements ISmsView, IRegis
 
     @Override
     public void showSuccess() {
+        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_REGISTER_SUCCESS));
         if (oneKeyCheckPolling != null) {
             LogProxy.i(TAG, "oneKeyCheckPolling suspend");
             oneKeyCheckPolling.suspendPolling();
@@ -328,16 +321,4 @@ public class AccountLoginView extends BaseDialogPage implements ISmsView, IRegis
             BJMGFSDKTools.getInstance().sendSms(context, mobile, smsTimeoutTask);
     }
 
-
-    @Override
-    public void showRegisterSuccess() {
-        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_REGISTER_SUCCESS));
-        if (oneKeyCheckPolling != null) {
-            LogProxy.i(TAG, "oneKeyCheckPolling suspend");
-            oneKeyCheckPolling.suspendPolling();
-            smsTimeoutTask.suspendPolling();
-        }
-        dismissProgressDialog();
-        openWelcomePage();
-    }
 }
