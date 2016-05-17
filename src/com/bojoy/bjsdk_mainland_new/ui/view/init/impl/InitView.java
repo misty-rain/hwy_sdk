@@ -213,7 +213,7 @@ public class InitView extends BaseDialogPage implements IInitView {
      */
     public void onEventMainThread(BaseReceiveEvent revEvent) {
         if (revEvent.getFlag() == BaseReceiveEvent.Flag_Success) {
-            //iInitPresenter.appCheck(context);
+            iInitPresenter.appCheck(context);
             if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
                 dialog.cancel();
                 IAccountPresenter iAccountPresenter = new AccountPresenterImpl(context, this);

@@ -83,7 +83,6 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         AccountUtil.remove(context, passPort.getUid());
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
-                        EventBus.getDefault().post(BJMGFSdkEvent.APP_LOGOUT);
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_PF_USER_INFO: //获得自己的个人信息

@@ -204,7 +204,7 @@ public class AccountLoginView extends BaseDialogPage implements ISmsView {
 
             @Override
             public void onClick(View v) {
-                //showProgressDialog(); //
+                showProgressDialog();
                 iAccountPresenter.tryPlay(context);
 
 
@@ -212,15 +212,8 @@ public class AccountLoginView extends BaseDialogPage implements ISmsView {
         });
 
         mAccountEditText.getEdit().setFilters(new InputFilter[]{new BJMInputFilter()});
-        if (BJMGFSDKTools.getInstance().isShowUserName) {
-            if (BJMGFSDKTools.getInstance().getCurrentPassPort() != null)
-                mAccountEditText.setEditText(BJMGFSDKTools.getInstance().getCurrentPassPort().getPp());
-            else
-                mAccountEditText.setEditText(AccountSharePUtils.getLocalAccountList(context).get(0).getPp());
-            BJMGFSDKTools.getInstance().isShowUserName = false;
-
-        }
-        int icon = ReflectResourceId.getDrawableId(context,Resource.drawable.bjmgf_sdk_about_icon);
+       // if (BJMGFSDKTools.getInstance().isShowUserName)
+        isDisplayBackIcon();
 
 
   /*      Iterator iterator = AccountSharePUtils.getAll(context).keySet().iterator();
@@ -277,7 +270,6 @@ public class AccountLoginView extends BaseDialogPage implements ISmsView {
 
     @Override
     public void setView() {
-        isDisplayBackIcon();
         iAccountPresenter = new AccountPresenterImpl(context, this);
     }
 
