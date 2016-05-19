@@ -90,7 +90,7 @@ public class HttpUtility {
      * @param urlAddress
      * @param tag
      * @param callback
-     * @throws Exception
+     * @throws Exception]]
      */
     public void executeDisplayImage(String urlAddress, Object tag, BitmapCallback callback) throws Exception {
         OkHttpUtils.getInstance().get().url(urlAddress).tag(tag).build().connTimeOut(20000).readTimeOut(20000).writeTimeOut(20000).execute(callback);

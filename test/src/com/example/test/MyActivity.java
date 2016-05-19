@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.bojoy.bjsdk_mainland_new.R;
 import com.bojoy.bjsdk_mainland_new.app.BJMGFSdk;
+import com.bojoy.bjsdk_mainland_new.congfig.DockTypeConstants;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BJMGFSdkEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BJMGFSdkListener;
@@ -102,7 +103,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
         initView();
         bjmgfSdk.setDebugMode(true);
         bjmgfSdk.initSdk(MyActivity.this, App_Id, App_Key, "", true,
-                  orientation, listener, userInner, 0, SysConstant.SDK_DOCK_SNS_WISH_POLLMSG_TYPE,
+                  orientation, listener, userInner, 0, DockTypeConstants.SDK_DOCK_SNS_WISH_POLLMSG_TYPE,
                   wapRecharge, "haowanyou", Product_Id, Game_Version, Operator, Game_Domain);
 /*        EventBus eventBus=EventBus.getDefault();
         eventBus.register(this);

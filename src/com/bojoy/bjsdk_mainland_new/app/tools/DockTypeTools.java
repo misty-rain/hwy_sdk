@@ -1,6 +1,7 @@
 package com.bojoy.bjsdk_mainland_new.app.tools;
 
 import com.bojoy.bjsdk_mainland_new.app.BJMGFSdk;
+import com.bojoy.bjsdk_mainland_new.congfig.DockTypeConstants;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.model.entity.DockSdkType;
 
@@ -55,7 +56,7 @@ public class DockTypeTools {
      * @return
      */
     public boolean isNormalType() {
-        return this.sdkType.getType() == SysConstant.SDK_NORMAL_TYPE;
+        return this.sdkType.getType() == DockTypeConstants.SDK_NORMAL_TYPE;
     }
 
     /**
@@ -63,7 +64,7 @@ public class DockTypeTools {
      * @return
      */
     public boolean isNormalDockType() {
-        return  this.sdkType.getType() == SysConstant.SDK_DOCK_TYPE;
+        return  this.sdkType.getType() == DockTypeConstants.SDK_DOCK_TYPE;
     }
 
     /**
@@ -71,7 +72,7 @@ public class DockTypeTools {
      * @return
      */
     public boolean isDockSnsType() {
-        return  this.sdkType.getType() == SysConstant.SDK_DOCK_SNS_TYPE;
+        return  this.sdkType.getType() == DockTypeConstants.SDK_DOCK_SNS_TYPE;
     }
 
     /**

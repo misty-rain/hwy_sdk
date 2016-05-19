@@ -55,6 +55,8 @@ import android.widget.Toast;
 
 import com.bojoy.bjsdk_mainland_new.app.GlobalContext;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
+import com.bojoy.bjsdk_mainland_new.model.entity.UpdateBean;
+import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
 import com.bojoy.bjsdk_mainland_new.widget.ClearEditText;
 
 import java.io.BufferedReader;
@@ -97,7 +99,7 @@ public class Utility {
 
     private final static String TAG = Utility.class.getSimpleName();
     private final static Pattern onlyDitital = Pattern
-            .compile("^[0-9]+(.[0-9]{0,1})?$");
+              .compile("^[0-9]+(.[0-9]{0,1})?$");
     private static Boolean isExit = false;
     private static long exitTime = 0;
 
@@ -152,7 +154,6 @@ public class Utility {
     }
 
 
-
     public static Bundle decodeUrl(String s) {
         Bundle params = new Bundle();
 
@@ -164,7 +165,7 @@ public class Utility {
 
                     if (v.length == 2)
                         params.putString(URLDecoder.decode(v[0], "UTF-8"),
-                                URLDecoder.decode(v[1], "UTF-8"));
+                                  URLDecoder.decode(v[1], "UTF-8"));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
 
@@ -193,7 +194,7 @@ public class Utility {
     public static Bitmap toRoundCorner(Bitmap bitmap, int pixels) {
 
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
-                bitmap.getHeight(), Config.ARGB_8888);
+                  bitmap.getHeight(), Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
 
         final int color = 0xff424242;
@@ -234,23 +235,23 @@ public class Utility {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BASE) {
             listView.setSelection(0);
             listView.dispatchTouchEvent(MotionEvent.obtain(
-                    SystemClock.uptimeMillis(), SystemClock.uptimeMillis(),
-                    MotionEvent.ACTION_CANCEL, 0, 0, 0));
+                      SystemClock.uptimeMillis(), SystemClock.uptimeMillis(),
+                      MotionEvent.ACTION_CANCEL, 0, 0, 0));
 
         } else {
             listView.dispatchTouchEvent(MotionEvent.obtain(
-                    SystemClock.uptimeMillis(), SystemClock.uptimeMillis(),
-                    MotionEvent.ACTION_DOWN, 0, 0, 0));
+                      SystemClock.uptimeMillis(), SystemClock.uptimeMillis(),
+                      MotionEvent.ACTION_DOWN, 0, 0, 0));
             listView.dispatchTouchEvent(MotionEvent.obtain(
-                    SystemClock.uptimeMillis(), SystemClock.uptimeMillis(),
-                    MotionEvent.ACTION_UP, 0, 0, 0));
+                      SystemClock.uptimeMillis(), SystemClock.uptimeMillis(),
+                      MotionEvent.ACTION_UP, 0, 0, 0));
             listView.setSelection(0);
         }
     }
 
     public static int dip2px(Context context, int dipValue) {
         float reSize = context.getResources()
-                .getDisplayMetrics().density;
+                  .getDisplayMetrics().density;
         return (int) ((dipValue * reSize) + 0.5);
     }
 
@@ -263,19 +264,19 @@ public class Utility {
      */
     public static float dpToPixel(Context context, float dp) {
         return dp
-                * (context.getResources()
-                .getDisplayMetrics().densityDpi / 160F);
+                  * (context.getResources()
+                  .getDisplayMetrics().densityDpi / 160F);
     }
 
     public static int px2dip(Context context, int pxValue) {
         float reSize = context.getResources()
-                .getDisplayMetrics().density;
+                  .getDisplayMetrics().density;
         return (int) ((pxValue / reSize) + 0.5);
     }
 
     public static float sp2px(Context context, int spValue) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, spValue,
-                context.getResources().getDisplayMetrics());
+                  context.getResources().getDisplayMetrics());
     }
 
     public static int length(String paramString) {
@@ -298,7 +299,7 @@ public class Utility {
 
     public static boolean isConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
+                  .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
 
         return networkInfo != null && networkInfo.isConnected();
@@ -306,7 +307,7 @@ public class Utility {
 
     public static boolean isWifi(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
+                  .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
             if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
@@ -318,7 +319,7 @@ public class Utility {
 
     public static int getNetType(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
+                  .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
             return networkInfo.getType();
@@ -328,7 +329,7 @@ public class Utility {
 
     public static boolean isGprs(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
+                  .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
             if (networkInfo.getType() != ConnectivityManager.TYPE_WIFI) {
@@ -340,7 +341,7 @@ public class Utility {
 
     public static boolean isSystemRinger(Context context) {
         AudioManager manager = (AudioManager) context
-                .getSystemService(Context.AUDIO_SERVICE);
+                  .getSystemService(Context.AUDIO_SERVICE);
         return manager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL;
     }
 
@@ -351,7 +352,7 @@ public class Utility {
             String[] proj = {MediaStore.Images.Media.DATA};
             Cursor cursor = activity.managedQuery(uri, proj, null, null, null);
             int column_index = cursor
-                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                      .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
             return cursor.getString(column_index);
         } else {
@@ -372,26 +373,26 @@ public class Utility {
         Intent mapCall = new Intent(Intent.ACTION_VIEW, uri);
         PackageManager packageManager = activity.getPackageManager();
         List<ResolveInfo> activities = packageManager.queryIntentActivities(
-                mapCall, 0);
+                  mapCall, 0);
         return activities.size() > 0;
     }
 
     public static boolean isIntentSafe(Activity activity, Intent intent) {
         PackageManager packageManager = activity.getPackageManager();
         List<ResolveInfo> activities = packageManager.queryIntentActivities(
-                intent, 0);
+                  intent, 0);
         return activities.size() > 0;
     }
 
     public static boolean isGooglePlaySafe(Activity activity) {
         Uri uri = Uri
-                .parse("http://play.google.com/store/apps/details?id=com.google.android.gms");
+                  .parse("http://play.google.com/store/apps/details?id=com.google.android.gms");
         Intent mapCall = new Intent(Intent.ACTION_VIEW, uri);
         mapCall.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
         mapCall.setPackage("com.android.vending");
         PackageManager packageManager = activity.getPackageManager();
         List<ResolveInfo> activities = packageManager.queryIntentActivities(
-                mapCall, 0);
+                  mapCall, 0);
         return activities.size() > 0;
     }
 
@@ -502,7 +503,7 @@ public class Utility {
     public static Properties getContextProperties() {
         Properties pro = new Properties();
         InputStream in = Utility.class
-                .getResourceAsStream("/assets/context.properties");
+                  .getResourceAsStream("/assets/context.properties");
         try {
             pro.load(in);
         } catch (IOException e) {
@@ -525,7 +526,7 @@ public class Utility {
     public static String getVersionName(Context context) {
         try {
             PackageInfo manager = context.getPackageManager().getPackageInfo(
-                    context.getPackageName(), 0);
+                      context.getPackageName(), 0);
             return manager.versionName;
         } catch (NameNotFoundException e) {
             return "Unknown";
@@ -540,7 +541,7 @@ public class Utility {
      */
     public static String getDeviceIMEI(Context context) {
         TelephonyManager tm = ((TelephonyManager) context
-                .getSystemService(Context.TELEPHONY_SERVICE));
+                  .getSystemService(Context.TELEPHONY_SERVICE));
         return tm.getDeviceId();
 
     }
@@ -554,7 +555,7 @@ public class Utility {
     public static String getMac(Context context) {
         String macStr = "";
         WifiManager wifiManager = (WifiManager) context
-                .getSystemService(Context.WIFI_SERVICE);
+                  .getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         if (wifiInfo.getMacAddress() != null) {
             macStr = wifiInfo.getMacAddress();// MAC地址
@@ -619,15 +620,15 @@ public class Utility {
         LogProxy.d(TAG, "Configuration.SCREENLAYOUT_SIZE_MASK=" + Configuration.SCREENLAYOUT_SIZE_MASK);
 
         return (context.getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+                  & Configuration.SCREENLAYOUT_SIZE_MASK)
+                  >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     public static DisplayMetrics getDisplayMetrics() {
         DisplayMetrics displaymetrics = new DisplayMetrics();
         ((WindowManager) GlobalContext.getInstance().getSystemService(
-                Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(
-                displaymetrics);
+                  Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(
+                  displaymetrics);
         return displaymetrics;
     }
 
@@ -679,9 +680,9 @@ public class Utility {
     public static String intToIp(int i) {
 
         return (i & 0xFF) + "." +
-                ((i >> 8) & 0xFF) + "." +
-                ((i >> 16) & 0xFF) + "." +
-                (i >> 24 & 0xFF);
+                  ((i >> 8) & 0xFF) + "." +
+                  ((i >> 16) & 0xFF) + "." +
+                  (i >> 24 & 0xFF);
     }
 
 
@@ -999,10 +1000,10 @@ public class Utility {
      */
     public static boolean checkPhoneNumberFormat(Context context, String phoneNumber) {
         if (TextUtils.isEmpty(phoneNumber)) {
-            ToastUtil.showMessage(context, getString(Resource.string.bjmgf_sdk_InputPhoneNumberNullStr,context));
+            ToastUtil.showMessage(context, getString(Resource.string.bjmgf_sdk_InputPhoneNumberNullStr, context));
             return false;
         } else if (!phoneNumber.matches(PHONE_REGEX_SIMPLE)) {
-            ToastUtil.showMessage(context,getString(Resource.string.bjmgf_sdk_InputPhoneNumberErrorStr,context));
+            ToastUtil.showMessage(context, getString(Resource.string.bjmgf_sdk_InputPhoneNumberErrorStr, context));
             return false;
         }
         return true;
@@ -1010,10 +1011,11 @@ public class Utility {
 
     /**
      * 判断应用是否安装
-     * @param context - Context
+     *
+     * @param context     - Context
      * @param packageName - string
      * @return true/false
-     * */
+     */
     public static boolean isInstall(Context context, String packageName) {
         if (StringUtility.isEmpty(packageName)) {
             return false;
@@ -1037,6 +1039,7 @@ public class Utility {
 
     /**
      * 调用浏览器打开网页
+     *
      * @param activity
      * @param url
      */
@@ -1076,30 +1079,31 @@ public class Utility {
          *    其他设备都会如此处理 */
         LogProxy.i(TAG, "pick picture from gallery");
         Cursor cursor = activity.getContentResolver().query(
-                Media.EXTERNAL_CONTENT_URI,
-                new String[] {Media._ID},
-                null,
-                null,
-                null);
+                  Media.EXTERNAL_CONTENT_URI,
+                  new String[]{Media._ID},
+                  null,
+                  null,
+                  null);
         if (cursor != null) {
             if (cursor.getCount() == 1) {
                 LogProxy.i(TAG, "have only one picture");
                 Toast.makeText(activity,
-                        activity.getResources().getString(ReflectResourceId.getStringId(activity,
-                                Resource.string.bjmgf_sdk_photo_exception_hint)),
-                        Toast.LENGTH_SHORT).show();
+                          activity.getResources().getString(ReflectResourceId.getStringId(activity,
+                                    Resource.string.bjmgf_sdk_photo_exception_hint)),
+                          Toast.LENGTH_SHORT).show();
                 cursor.close();
                 return;
             }
             cursor.close();
         }
         Intent i = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                  android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         activity.startActivityForResult(i, Pick_Picture_From_Gallery);
     }
 
     /**
      * 保存图片到指定路径 大图片要进行压缩
+     *
      * @param activity
      * @param srcPath
      * @return 返回图片路径
@@ -1110,6 +1114,7 @@ public class Utility {
 
     /**
      * 保存图片到指定路径 扩展存储卡 大图片要进行压缩
+     *
      * @param activity
      * @param srcPath
      * @return 返回图片路径
@@ -1130,11 +1135,11 @@ public class Utility {
             if (options.outWidth > options.outHeight) {
                 width = Size_Max;
                 temp = width * options.outHeight / options.outWidth;
-                height = (int)temp;
+                height = (int) temp;
             } else {
                 height = Size_Max;
                 temp = height * options.outWidth / options.outHeight;
-                width = (int)temp;
+                width = (int) temp;
             }
             bitmap = getScaleBitmapFromFile(srcPath, width, height);
         }
@@ -1160,6 +1165,7 @@ public class Utility {
 
     /**
      * 获取缩小的图片
+     *
      * @param imagePath
      * @param outWidth
      * @param outHeight
@@ -1174,11 +1180,11 @@ public class Utility {
         BitmapFactory.decodeFile(imagePath, options);
 //		LogProxy.i(TAG, "size = " + outWidth + ", " + outHeight
 //				+ ", out = " + options.outWidth + ", " + options.outHeight);
-        float scaleX = (float)options.outWidth / (float)outWidth;
-        float scaleY = (float)options.outHeight / (float)outHeight;
+        float scaleX = (float) options.outWidth / (float) outWidth;
+        float scaleY = (float) options.outHeight / (float) outHeight;
         float scale = scaleX < scaleY ? scaleX : scaleY;
 //		LogProxy.i(TAG, "scaleX = " + scaleX + ", scaleY = " + scaleY);
-        options.inSampleSize = getNear2Power((int)scale);
+        options.inSampleSize = getNear2Power((int) scale);
         options.inInputShareable = true;
         options.inPurgeable = true;
         options.inJustDecodeBounds = false;
@@ -1190,8 +1196,8 @@ public class Utility {
 
     public final static int getNear2Power(int num) {
         int index = 0;
-        while(true) {
-            int value = (int)Math.pow(2, index);
+        while (true) {
+            int value = (int) Math.pow(2, index);
             if (value > num) {
                 return value;
             }
@@ -1217,7 +1223,7 @@ public class Utility {
     }
 
     public final static boolean bitmapRecycle(Bitmap bitmap) {
-        if(bitmap != null && !bitmap.isRecycled()){
+        if (bitmap != null && !bitmap.isRecycled()) {
             // 回收并且置为null
             bitmap.recycle();
             bitmap = null;
@@ -1233,6 +1239,7 @@ public class Utility {
 
     /**
      * 判断悬浮窗权限是否打开
+     *
      * @param context
      * @return
      */
@@ -1266,8 +1273,9 @@ public class Utility {
 
     /**
      * 判断某一权限是否打开
+     *
      * @param context
-     * @param op       权限ID
+     * @param op      权限ID
      * @return
      */
     public static boolean checkOp(Context context, int op) {
@@ -1299,11 +1307,11 @@ public class Utility {
     /**
      * 跳转到应用详情页面
      */
-    public static void goToMiuiSettingPage(Context context){
+    public static void goToMiuiSettingPage(Context context) {
         try {
             Log.i(TAG, "com.miui.securitycenter");
             Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
-            localIntent.setClassName("com.miui.securitycenter","com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+            localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
             localIntent.putExtra("extra_pkgname", context.getPackageName());
             context.startActivity(localIntent);
         } catch (ActivityNotFoundException localActivityNotFoundException) {
@@ -1317,6 +1325,7 @@ public class Utility {
 
     /**
      * 扫描当前context
+     *
      * @param cont
      * @return
      */
@@ -1331,6 +1340,28 @@ public class Utility {
         return null;
     }
 
+
+    /**
+     * 检测是否有版本更新
+     * @param context
+     * @param versionStr
+     * @return
+     */
+    public static UpdateBean isUpdateVersion(Context context, String versionStr) {
+        UpdateBean updateBean = null;
+        if (versionStr != null) {
+            if (versionStr.equals("")) {
+                updateBean = JSON.parseObject(versionStr, UpdateBean.class);
+                if (Float.parseFloat(updateBean.getVersion()) > Float.parseFloat(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_version)))) {
+                    return updateBean;
+
+                }
+
+            }
+        }
+        return null;
+
+    }
 
 
 }

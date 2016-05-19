@@ -11,10 +11,12 @@ import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseRequestEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseResultCallbackListener;
 import com.bojoy.bjsdk_mainland_new.model.IInitSDKModel;
 import com.bojoy.bjsdk_mainland_new.model.entity.BackResultBean;
+import com.bojoy.bjsdk_mainland_new.model.entity.UpdateBean;
 import com.bojoy.bjsdk_mainland_new.model.impl.InitSDKModelImpl;
 import com.bojoy.bjsdk_mainland_new.presenter.init.IInitPresenter;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.support.fastjson.JSON;
+import com.bojoy.bjsdk_mainland_new.support.fastjson.JSONObject;
 import com.bojoy.bjsdk_mainland_new.ui.view.init.IInitView;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
@@ -107,10 +109,15 @@ public class InitSDKPresenterImpl implements IInitPresenter, BaseResultCallbackL
 
                     break;
                 case BaseRequestEvent.REQUEST_APP_CHECK_UPDATE: //检查更新SDK 事件
-                    if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS)
-                        iInitView.openUpdateView();
-                    else
+                    if (backResultBean.getCode() == ErrorCodeConstants.ERROR_CODE_SUCCESS) {
+                        UpdateBean updateBean = Utility.isUpdateVersion(context, backResultBean.getObj());
+                        if (updateBean != null)
+                            iInitView.openUpdateView(updateBean);
+                        else
+                            iInitView.setAccountLoginView();
+                    } else {
                         iInitView.showError(backResultBean.getMsg());
+                    }
 
                     break;
                 case BaseRequestEvent.REQUEST_FIRST_DEPLOY: //第一次读取cdn配置事件,读取成功后 ，将文件保存，执行 初始化 操作

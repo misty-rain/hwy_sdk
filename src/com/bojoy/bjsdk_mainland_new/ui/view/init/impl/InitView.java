@@ -3,6 +3,8 @@ package com.bojoy.bjsdk_mainland_new.ui.view.init.impl;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.view.View;
 import android.widget.*;
@@ -11,6 +13,7 @@ import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.AuthExpiredEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BJMGFSdkEvent;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseReceiveEvent;
+import com.bojoy.bjsdk_mainland_new.model.entity.UpdateBean;
 import com.bojoy.bjsdk_mainland_new.presenter.account.IAccountPresenter;
 import com.bojoy.bjsdk_mainland_new.presenter.account.impl.AccountPresenterImpl;
 import com.bojoy.bjsdk_mainland_new.presenter.init.IInitPresenter;
@@ -38,6 +41,7 @@ public class InitView extends BaseDialogPage implements IInitView {
     private TextView mTextView;
     private ProgressBar mProgressBar;
     private Button mButtonByOne, mUpdateButton, mUpdate2Button, mNotUpdateButton, mNotUpdate2Button;
+    private UpdateBean updateBean;
 
 
     private Handler handler = new Handler();
@@ -214,13 +218,13 @@ public class InitView extends BaseDialogPage implements IInitView {
     public void onEventMainThread(BaseReceiveEvent revEvent) {
         if (revEvent.getFlag() == BaseReceiveEvent.Flag_Success) {
             iInitPresenter.appCheck(context);
-            if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
+         /*   if (AccountSharePUtils.getLocalAccountList(context).size() > 0) {
                 dialog.cancel();
                 IAccountPresenter iAccountPresenter = new AccountPresenterImpl(context, this);
                 iAccountPresenter.autoLogin(context,0);
             } else {
                 setAccountLoginView();
-            }
+            }*/
         } else {
             dialog.cancel();
             showError((String) revEvent.getRespMsg());
@@ -248,16 +252,24 @@ public class InitView extends BaseDialogPage implements IInitView {
 
     @Override
     public void downloadApk() {
-
+        Uri uri = Uri.parse(updateBean.getForceUpdateUrl());
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(uri, "text/*");
+        context.startActivity(Intent.createChooser(intent, getString(Resource.string.bjmgf_sdk_open_browser)));
+//		context.startActivity(intent);
+        closeApp();
     }
 
     @Override
-    public void openUpdateView() {
-        mTextView.setText(ReflectResourceId.getStringId(context,
-                  Resource.string.bjmgf_sdk_init_dialog_autologin));
-        mProgressBar.setVisibility(View.VISIBLE);
+    public void openUpdateView(UpdateBean updateBean) {
+        this.updateBean = updateBean;
+        mProgressBar.setVisibility(View.GONE);
         mButtonByOne.setVisibility(View.GONE);
-        mUpdateLinearLayout.setVisibility(View.GONE);
+        mUpdateLinearLayout.setVisibility(View.VISIBLE);
+        mUpdateButton.setVisibility(updateBean.getIsForcedUpdate() == 1 ? View.GONE : View.VISIBLE);
+        mUpdate2Button.setVisibility(updateBean.getIsForcedUpdate() == 1 ? View.VISIBLE : View.GONE);
+        mNotUpdateButton.setVisibility(View.VISIBLE);
+        mNotUpdate2Button.setVisibility(View.GONE);
     }
 
 

@@ -87,8 +87,7 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         break;
                     case BaseRequestEvent.REQUEST_PF_USER_INFO: //获得自己的个人信息
                         BJMGFSDKTools.getInstance().saveCurrentUserInfo(context, backResultBean, (String) response);
-                        break;
-                    case BaseRequestEvent.REQUEST_AUTO_LOGIN://自动登陆
+                        break;                    case BaseRequestEvent.REQUEST_AUTO_LOGIN://自动登陆
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort);
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(true);

@@ -1,5 +1,6 @@
 package com.bojoy.bjsdk_mainland_new.ui.view.init;
 
+import com.bojoy.bjsdk_mainland_new.model.entity.UpdateBean;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
 
 /**
@@ -18,8 +19,11 @@ public interface IInitView extends IBaseView {
     //downloadAPK
     void downloadApk();
 
-    //显示更新 视图
-    void openUpdateView();
+    /**
+     * 打开更新视图
+     * @param updateBean 更新实体
+     */
+    void openUpdateView(UpdateBean updateBean);
 
 
 

@@ -2,6 +2,7 @@ package com.bojoy.bjsdk_mainland_new.model.entity;
 
 
 import com.bojoy.bjsdk_mainland_new.app.BJMGFSdk;
+import com.bojoy.bjsdk_mainland_new.congfig.DockTypeConstants;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 
@@ -26,11 +27,11 @@ public class DockSdkType {
 	public void setSdkValue(int value) {
 		this.value = value;
 		int type = value & 0xf;
-		if (type >= SysConstant.SDK_NORMAL_TYPE &&
-				type <= SysConstant.SDK_DOCK_SNS_TYPE) {
+		if (type >= DockTypeConstants.SDK_NORMAL_TYPE &&
+				type <= DockTypeConstants.SDK_DOCK_SNS_TYPE) {
 			this.type = type;
 		} else {
-			this.type = SysConstant.SDK_DOCK_TYPE;
+			this.type = DockTypeConstants.SDK_DOCK_TYPE;
 		}
 		openWish = (value & 0x10) == 0x10;
 		openPollMsg = (value & 0x20) == 0x20;

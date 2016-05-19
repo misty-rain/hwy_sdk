@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.app.tools.DockTypeTools;
+import com.bojoy.bjsdk_mainland_new.congfig.DockTypeConstants;
 import com.bojoy.bjsdk_mainland_new.congfig.SysConstant;
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BJMGFSdkEvent;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
@@ -388,7 +389,7 @@ public class BJMGFDockDrawer extends FrameLayout implements OnClickListener {
     private void openWaitDo() {
         if (isState(DrawerState.Open)) {
             timeCounter += BJMGFDockBeta.Time_Duration;
-            if (timeCounter >= SysConstant.DOCK_TIME_OPEN_WAIT_MAX) {
+            if (timeCounter >= DockTypeConstants.DOCK_TIME_OPEN_WAIT_MAX) {
                 timeCounter = 0;
                 setState(DrawerState.Pickup);
             }
