@@ -63,7 +63,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/bjmgf_sdk_customerCenterFAQStr"
-                android:textColor="@color/bjmgf_sdk_question_font_line"
+                android:textColor="@color/bjmgf_sdk_textgray"
                 android:textSize="@dimen/bjmgf_sdk_font_size16" />
 
             <ImageView
@@ -87,7 +87,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/bjmgf_sdk_customerCenterSendQuestionStr"
-                android:textColor="@color/bjmgf_sdk_question_font_line"
+                android:textColor="@color/bjmgf_sdk_textgray"
                 android:textSize="@dimen/bjmgf_sdk_font_size16" />
 
             <ImageView
@@ -111,7 +111,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/bjmgf_sdk_customerCenterMyQuestionStr"
-                android:textColor="@color/bjmgf_sdk_question_font_line"
+                android:textColor="@color/bjmgf_sdk_textgray"
                 android:textSize="@dimen/bjmgf_sdk_font_size16" />
 
             <ImageView
