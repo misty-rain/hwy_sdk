@@ -14,7 +14,6 @@ import com.bojoy.bjsdk_mainland_new.model.entity.CommonQuestionListViewBean;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  * 常见问题页面adapter
@@ -83,8 +82,12 @@ public class CommonQuestionListViewAdapter extends BaseAdapter {
 
 		if (attr[position] == 1) {
 			viewHolder.answerTextView.setVisibility(View.VISIBLE);
+			viewHolder.imageButton.setBackgroundResource(ReflectResourceId.getDrawableId(
+					mContext, "bjmgf_sdk_btn_down"));
 			viewHolder.answerTextView.setText(mDatas.get(position).getAnswer());
 		} else {
+			viewHolder.imageButton.setBackgroundResource(ReflectResourceId.getDrawableId(
+					mContext, "bjmgf_sdk_forward"));
 			viewHolder.answerTextView.setVisibility(View.GONE);
 		}
 
@@ -121,12 +124,12 @@ public class CommonQuestionListViewAdapter extends BaseAdapter {
 
 			if (attr[mPosition] == 1) {
 				attr[mPosition] = 0;
-				mViewHolder.imageButton.setBackgroundResource(ReflectResourceId.getDrawableId(
-						mContext, "bjmgf_sdk_forward"));
+//				mViewHolder.imageButton.setBackgroundResource(ReflectResourceId.getDrawableId(
+//						mContext, "bjmgf_sdk_forward"));
 			} else {
 				attr[mPosition] = 1;
-				mViewHolder.imageButton.setBackgroundResource(ReflectResourceId.getDrawableId(
-						mContext, "bjmgf_sdk_btn_down"));
+//				mViewHolder.imageButton.setBackgroundResource(ReflectResourceId.getDrawableId(
+//						mContext, "bjmgf_sdk_btn_down"));
 			}
 
 			// 为了使notifyDataSetChanged生效
