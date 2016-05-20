@@ -2,6 +2,7 @@ package com.bojoy.bjsdk_mainland_new.presenter.account.impl;
 
 
 import android.content.Context;
+import android.location.LocationManager;
 
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.congfig.ErrorCodeConstants;
@@ -64,7 +65,6 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
                         iAccountModel.getUserInfoForSelf(context, SysConstant.GET_USERINFO_TYPE_BASE, this);//查询用户信息
                         iAccountModel.getAccountInfo(context, this); //查询账户信息
-                        eventBus.post(BJMGFSdkEvent.APP_LOGIN_SUCCESS);
                         iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_GET_ACCOUNT_INFO://获取账号信息事件
@@ -120,6 +120,7 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(true);
 
+
                         iAccountModel.getUserInfoForSelf(context, SysConstant.GET_USERINFO_TYPE_BASE, this);//查询用户信息
                         iAccountModel.getAccountInfo(context, this); //查询账户信息
                         iBaseView.showSuccess();
@@ -132,6 +133,7 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
 
                 } else {
                     iBaseView.showError(backResultBean.getMsg());
+
 
                 }
             }

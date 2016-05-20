@@ -72,5 +72,12 @@
             android:exported="false"
             android:screenOrientation="behind"></activity>
 
+        <receiver android:name="com.bojoy.bjsdk_mainland_new.support.broadcast.NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 </manifest>

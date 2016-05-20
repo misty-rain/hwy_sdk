@@ -116,6 +116,7 @@ public class BJMGFSdk {
                 break;
             case BJMGFSdkEvent.APP_REGISTER_SUCCESS:
                 BJMGFSDKTools.getInstance().isRegister = true;
+                break;
             case BJMGFSdkEvent.APP_CLOSED:
                 dockManager.removeDock();
                 break;

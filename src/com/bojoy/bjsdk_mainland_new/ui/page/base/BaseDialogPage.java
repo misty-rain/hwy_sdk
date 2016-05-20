@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.bojoy.bjsdk_mainland_new.app.tools.BJMGFSDKTools;
 import com.bojoy.bjsdk_mainland_new.support.eventbus.EventBus;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
+import com.bojoy.bjsdk_mainland_new.ui.view.login.impl.AccountLoginView;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
@@ -124,13 +125,15 @@ public abstract class BaseDialogPage<T> extends BasePage {
     protected void setTitle() {
         backView = getView(Resource.id.bjmgf_sdk_back);
         if (backView != null) {
-            backView.setOnClickListener(new OnClickListener() {
+            if (manager.getStack().size() != 0) {
+                backView.setOnClickListener(new OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    manager.previousPage();
-                }
-            });
+                    @Override
+                    public void onClick(View v) {
+                        manager.previousPage();
+                    }
+                });
+            }
         }
     }
 

@@ -61,7 +61,7 @@ public class AccountLoginView extends BaseDialogPage implements ISmsView {
         @Override
         public void onExecute() {
             LogProxy.i(TAG, "one key check polling onexcute");
-            iAccountPresenter.oneKeyRegister(context, SpUtil.getStringValue(context, "uuid", ""));
+           iAccountPresenter.oneKeyRegister(context, SpUtil.getStringValue(context, "uuid", ""));
         }
     });
 
@@ -242,8 +242,8 @@ public class AccountLoginView extends BaseDialogPage implements ISmsView {
      * 是否显示back 按钮
      */
     private void isDisplayBackIcon() {
+        backView = (LinearLayout) getView(Resource.id.bjmgf_sdk_back);
         if (AccountSharePUtils.getAll(context).size() > 0) {
-            backView = (LinearLayout) getView(Resource.id.bjmgf_sdk_back);
             if (backView != null) {
                 backView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -297,7 +297,7 @@ public class AccountLoginView extends BaseDialogPage implements ISmsView {
 
     @Override
     public void showSuccess() {
-        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_REGISTER_SUCCESS));
+        //eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_REGISTER_SUCCESS));
         if (oneKeyCheckPolling != null) {
             LogProxy.i(TAG, "oneKeyCheckPolling suspend");
             oneKeyCheckPolling.suspendPolling();

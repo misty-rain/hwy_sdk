@@ -80,7 +80,7 @@ public class InitView extends BaseDialogPage implements IInitView {
                           context.getResources().getString(ReflectResourceId.getStringId(context,
                                     Resource.string.bjmgf_sdk_init_dialog_checknet_btnStr)))) {
                     /** ?暂时先关闭初始化对话框 */
-
+                    eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_NEED_WIFI));
                     quit();
                 } else {
                     closeApp();
@@ -128,7 +128,7 @@ public class InitView extends BaseDialogPage implements IInitView {
                                     Resource.string.bjmgf_sdk_init_dialog_closeAppStr)))) {
                     closeApp();
                 } else {
-                    //eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_INIT_SUCCESS));//通知游戏登录
+                    eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_INIT_SUCCESS));//通知游戏登录
                     quit();
                 }
             }
@@ -138,7 +138,7 @@ public class InitView extends BaseDialogPage implements IInitView {
 
             @Override
             public void onClick(View arg0) {
-                //eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_INIT_SUCCESS));//通知游戏登录
+                eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_INIT_SUCCESS));//通知游戏登录
                 quit();
             }
         });

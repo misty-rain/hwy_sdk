@@ -1,6 +1,7 @@
 package com.bojoy.bjsdk_mainland_new.ui.view.cs.impl;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseActivityPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.cs.ICustomerView;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
+import com.bojoy.bjsdk_mainland_new.utils.Resource;
 
 /**
  * Created by wutao on 2016/1/22.
@@ -49,8 +51,8 @@ public class CustomerServiceView extends BaseActivityPage implements ICustomerVi
      *******************/
     public CustomerServiceView(Context context, PageManager manager, BJMGFActivity activity) {
         super(ReflectResourceId
-                        .getLayoutId(activity, "bjmgf_sdk_dock_customer_service_center_page"), context,
-                manager, activity);
+                            .getLayoutId(activity, Resource.layout.bjmgf_sdk_dock_customer_service_center_page), context,
+                  manager, activity);
         mActivity = activity;
         mRootPageManager = manager;
     }
@@ -93,28 +95,28 @@ public class CustomerServiceView extends BaseActivityPage implements ICustomerVi
         showPageWithLinearLayout();
         // 使用ViewPager展示
         mViewPager = (ViewPager) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_about_question_content_view_pager"));
+                  "bjmgf_sdk_id_about_question_content_view_pager"));
 
         mBackImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_close_customer_center_image_view"));
+                  "bjmgf_sdk_id_close_customer_center_image_view"));
 
         mCommonQuestionTextView = (TextView) mView.findViewById(ReflectResourceId.getViewId(
-                mActivity, "bjmgf_sdk_id_common_question_text_view"));
+                  mActivity, "bjmgf_sdk_id_common_question_text_view"));
         mSendQuestionTextView = (TextView) mView.findViewById(ReflectResourceId.getViewId(
-                mActivity, "bjmgf_sdk_id_send_question_text_view"));
+                  mActivity, "bjmgf_sdk_id_send_question_text_view"));
         mMyQuestionTextView = (TextView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_my_question_text_view"));
+                  "bjmgf_sdk_id_my_question_text_view"));
 
         // 初始化标题栏下面的分割线
         mCommonQuestionLineImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(
-                mActivity, "bjmgf_sdk_id_common_question_line"));
+                  mActivity, "bjmgf_sdk_id_common_question_line"));
         mSendQuestionLineImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(
-                mActivity, "bjmgf_sdk_id_send_question_line"));
+                  mActivity, "bjmgf_sdk_id_send_question_line"));
         mMyQuestionLineImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(
-                mActivity, "bjmgf_sdk_id_my_question_line"));
+                  mActivity, "bjmgf_sdk_id_my_question_line"));
 
         mBackImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_close_customer_center_image_view"));
+                  "bjmgf_sdk_id_close_customer_center_image_view"));
 
         // 为标题栏文字设置监听器
         mCommonQuestionTextView.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +153,7 @@ public class CustomerServiceView extends BaseActivityPage implements ICustomerVi
      */
     private final void showPageWithLinearLayout() {
         mLinearLayout = (LinearLayout) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_about_question_content_linear_layout"));
+                  "bjmgf_sdk_id_about_question_content_linear_layout"));
         mLinearLayout.setVisibility(View.VISIBLE);
         // 把此页面中的LinearLayout设置为子页面的根布局
         mQuestionPageManager = new PageManager(mLinearLayout);
@@ -169,10 +171,17 @@ public class CustomerServiceView extends BaseActivityPage implements ICustomerVi
         mCommonQuestionLineImageView.setVisibility(View.INVISIBLE);
         mSendQuestionLineImageView.setVisibility(View.INVISIBLE);
         mMyQuestionLineImageView.setVisibility(View.INVISIBLE);
+        mSendQuestionTextView.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_blue));
+        mCommonQuestionTextView.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_blue));
+        mMyQuestionTextView.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_blue));
         switch (index) {
             case TAB_COMMON_QUESTION:
                 mCurrentTab = TAB_COMMON_QUESTION;
                 mCommonQuestionLineImageView.setVisibility(View.VISIBLE);
+                mCommonQuestionTextView.setTextColor(Color.RED);
+                mSendQuestionTextView.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_black));
+                mMyQuestionTextView.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_black));
+
                 // 每次点击进去后都会更新界面，在onResume()中写update
                 if (mCommonQuestionPage == null) {
                     mCommonQuestionPage = new CommonQuestionView(context, mQuestionPageManager, activity);
@@ -183,6 +192,9 @@ public class CustomerServiceView extends BaseActivityPage implements ICustomerVi
             case TAB_SEND_QUESTION:
                 mCurrentTab = TAB_SEND_QUESTION;
                 mSendQuestionLineImageView.setVisibility(View.VISIBLE);
+                mSendQuestionTextView.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_black));
+                mCommonQuestionTextView.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_black));
+                mMyQuestionTextView.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_black));
                 if (mSendQuestionPage == null) {
                     mSendQuestionPage = new SendQuestionView(context, manager, activity);
                 }
@@ -192,6 +204,8 @@ public class CustomerServiceView extends BaseActivityPage implements ICustomerVi
             case TAB_MY_QUESTION:
                 mCurrentTab = TAB_MY_QUESTION;
                 mMyQuestionLineImageView.setVisibility(View.VISIBLE);
+                mCommonQuestionTextView.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_black));
+                mSendQuestionTextView.setTextColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_black));
                 if (mMyQuestionPage == null) {
                     mMyQuestionPage = new MyQuestionView(context, mRootPageManager, mQuestionPageManager, activity);
                 }

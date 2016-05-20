@@ -37,14 +37,14 @@ public class WelcomePage extends BaseDialogPage {
 
     public WelcomePage(Context context, PageManager manager, WelComeDialog dialog) {
         super(ReflectResourceId.getLayoutId(context, Resource.layout.bjmgf_sdk_welcome_page),
-                context, manager, dialog);
+                  context, manager, dialog);
     }
 
     @Override
     public void onCreateView(View view) {
         LogProxy.d("", "invalidateSystem()=" + Utility.invalidateSystem());
         mTextView = (TextView) view.findViewById(ReflectResourceId.getViewId(context,
-                Resource.id.bjmgf_sdk_comeBack_login_dialog_textViewId));
+                  Resource.id.bjmgf_sdk_comeBack_login_dialog_textViewId));
 
         super.onCreateView(view);
         runnable = new Runnable() {
@@ -60,13 +60,12 @@ public class WelcomePage extends BaseDialogPage {
 
     public void showNextPage() {
         hideWelcomeShowDock();
-        if(Utility.invalidateSystem().equals("V5")){
+        if (Utility.invalidateSystem().equals("V5")) {
             //V5判断之前是否点击过应用详情页面
-            if(!SpUtil.getBooleanValue(context, SysConstant.MIUI_WARN_FLAG, false)){
+            if (!SpUtil.getBooleanValue(context, SysConstant.MIUI_WARN_FLAG, false)) {
                 showGuidePage();
             }
-        }else
-        if (Utility.invalidateSystem().equals("V6")) {
+        } else if (Utility.invalidateSystem().equals("V6")) {
             showGuidePage();
         }
         getWarn();
@@ -75,21 +74,23 @@ public class WelcomePage extends BaseDialogPage {
     public void hide(BJMGFDialog bjmgfDialog) {
         handler.removeCallbacks(runnable);
         hideWelcomeShowDock();
-		if(Utility.invalidateSystem().equals("V5")){
-			//V5判断之前是否点击过应用详情页面
-			if(!SpUtil.getBooleanValue(context, SysConstant.MIUI_WARN_FLAG, false)){
-				showGuidePage();
-			}
-		}else
-        if (Utility.invalidateSystem().equals("V6")) {
-            showGuidePage();
+        if (Utility.invalidateSystem().equals("V5")) {
+            //V5判断之前是否点击过应用详情页面
+            if (!SpUtil.getBooleanValue(context, SysConstant.MIUI_WARN_FLAG, false))
+                showGuidePage();
+        } else if (Utility.invalidateSystem().equals("V6")) {
+            if (!SpUtil.getBooleanValue(context, SysConstant.MIUI_WARN_FLAG, false))
+                showGuidePage();
+        } else if (Utility.invalidateSystem().equals("V7")) {
+            if (!SpUtil.getBooleanValue(context, SysConstant.MIUI_WARN_FLAG, false))
+                showGuidePage();
         }
         getWarn();
     }
 
     @Override
     public boolean canBack() {
-        //eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_WELCOME_SHOW));
+        eventBus.post(new BJMGFSdkEvent(BJMGFSdkEvent.APP_WELCOME_SHOW));
         return true;
     }
 
@@ -106,15 +107,14 @@ public class WelcomePage extends BaseDialogPage {
     @Override
     public void setView() {
         String userName = BJMGFSDKTools.getInstance().getCurrentPassPort().getPp();
-
         if (BJMGFSDKTools.getInstance().isRegister) {
             BJMGFSDKTools.getInstance().isRegister = false;
             mTextView.setText(String.format(getString(Resource.string.bjmgf_sdk_login_dialog_welcomeRegisterTextViewStr),
-                    userName
+                      userName
             ));
         } else {
             mTextView.setText(String.format(getString(Resource.string.bjmgf_sdk_login_dialog_welcomeAgainTextViewStr),
-                    userName
+                      userName
             ));
         }
 
@@ -130,7 +130,7 @@ public class WelcomePage extends BaseDialogPage {
      */
     private void showGuidePage() {
         //判断当前是否打开悬浮窗
-        if(!Utility.isSystemAlertWindowOpAllowed(getContext())){
+        if (!Utility.isSystemAlertWindowOpAllowed(getContext())) {
             dialog.dismiss();
             MiuiGuideDialog guideDialog = new MiuiGuideDialog(context, BJMGFDialog.Page_MiuiGuide);
             guideDialog.show();
