@@ -12,6 +12,7 @@ import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseActivityPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.cs.ICustomerView;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
+import com.bojoy.bjsdk_mainland_new.utils.Resource;
 
 import java.io.File;
 
@@ -38,7 +39,8 @@ public class ImageViewerView extends BaseActivityPage implements ICustomerView {
      * @param file    要显示的Image图片
      *******************/
     public ImageViewerView(Context context, PageManager manager, BJMGFActivity activity, File file) {
-        super(ReflectResourceId.getLayoutId(context, "bjmgf_sdk_image_viewer_page"), context, manager, activity);
+        super(ReflectResourceId.getLayoutId(context, Resource.layout.bjmgf_sdk_image_viewer_page),
+                context, manager, activity);
         this.context = context;
         this.manager = manager;
         this.activity = activity;
@@ -49,8 +51,10 @@ public class ImageViewerView extends BaseActivityPage implements ICustomerView {
     public void onCreateView(View view) {
         super.onCreateView(view);
         this.view = view;
-        imageView = (ImageView) view.findViewById(ReflectResourceId.getViewId(context, "bjmgf_sdk_image_viewer_id"));
-        textView = (TextView) view.findViewById(ReflectResourceId.getViewId(context, "bjmgf_sdk_image_viewer_failed_hint_id"));
+        imageView = (ImageView) view.findViewById(ReflectResourceId.getViewId(context,
+                Resource.id.bjmgf_sdk_image_viewer_id));
+        textView = (TextView) view.findViewById(ReflectResourceId.getViewId(context,
+                Resource.id.bjmgf_sdk_image_viewer_failed_hint_id));
     }
 
     @Override

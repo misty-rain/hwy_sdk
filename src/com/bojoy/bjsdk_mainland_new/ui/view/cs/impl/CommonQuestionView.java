@@ -16,6 +16,7 @@ import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseActivityPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.cs.ICommonQuestionView;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
+import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -47,13 +48,14 @@ public class CommonQuestionView extends BaseActivityPage implements ICommonQuest
 
     /**
      * 构造器
-     * @param context 上下文
-     * @param manager 此PageManager为CustomerServiceView类中新建的PageManager，非RootPageManager
+     *
+     * @param context  上下文
+     * @param manager  此PageManager为CustomerServiceView类中新建的PageManager，非RootPageManager
      * @param activity BJMGFActivity
      */
     public CommonQuestionView(Context context, PageManager manager, BJMGFActivity activity) {
-        super(ReflectResourceId.getLayoutId(activity, "bjmgf_sdk_common_question_page"), context,
-                manager, activity);
+        super(ReflectResourceId.getLayoutId(activity, Resource.layout.bjmgf_sdk_common_question_page),
+                context, manager, activity);
         this.mActivity = activity;
         this.mRootPageManager = manager;
         iCustomerServicePresenter = new CustomerServicePresenterImpl(mActivity, this);
@@ -81,13 +83,13 @@ public class CommonQuestionView extends BaseActivityPage implements ICommonQuest
 
     public void initView() {
         mListView = (ListView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_common_question_list_view"));
+                Resource.id.bjmgf_sdk_common_question_list_view));
         mQuestionNullView = mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_common_question_is_null_id"));
+                Resource.id.bjmgf_sdk_common_question_is_null_id));
         mQuestionNullTextView = (TextView) mQuestionNullView.findViewById(ReflectResourceId
-                .getViewId(mActivity, "bjmgf_sdk_submit_questionNullId"));
+                .getViewId(mActivity, Resource.id.bjmgf_sdk_submit_questionNullId));
         mListViewContenView = mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_common_question_list_view_linear_layout"));
+                Resource.id.bjmgf_sdk_id_common_question_list_view_linear_layout));
     }
 
     public void updateView() {
@@ -138,6 +140,6 @@ public class CommonQuestionView extends BaseActivityPage implements ICommonQuest
         mListViewContenView.setVisibility(View.GONE);
         mQuestionNullView.setVisibility(View.VISIBLE);
         mQuestionNullTextView.setText(mActivity.getString(ReflectResourceId.getStringId(mActivity,
-                "bjmgf_sdk_common_question_error")));
+                Resource.string.bjmgf_sdk_common_question_error)));
     }
 }

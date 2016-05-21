@@ -15,6 +15,7 @@ import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseActivityPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.cs.IMyQuestionView;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
+import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class MyQuestionView extends BaseActivityPage implements IMyQuestionView 
      * @param activity            BJMGFActivity
      */
     public MyQuestionView(Context context, PageManager rootPageManager, PageManager questionPageManager, BJMGFActivity activity) {
-        super(ReflectResourceId.getLayoutId(activity, "bjmgf_sdk_dock_customer_my_questions_page"),
+        super(ReflectResourceId.getLayoutId(activity, Resource.layout.bjmgf_sdk_dock_customer_my_questions_page),
                 context, questionPageManager, activity);
         this.mActivity = activity;
         this.mRootPageManager = rootPageManager;
@@ -77,13 +78,13 @@ public class MyQuestionView extends BaseActivityPage implements IMyQuestionView 
 
     public void initView() {
         mMyQuestionListView = (ListView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_my_question_list_view"));
+                Resource.id.bjmgf_sdk_id_my_question_list_view));
         mShowErrorView = mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_my_question_is_null_id"));
+                Resource.id.bjmgf_sdk_my_question_is_null_id));
         mErrorTextView = (TextView) mShowErrorView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_submit_questionNullId"));
+                Resource.id.bjmgf_sdk_submit_questionNullId));
         mListViewContentView = mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_listView_LlId"));
+                Resource.id.bjmgf_sdk_listView_LlId));
     }
 
     public void updateView() {
@@ -99,7 +100,7 @@ public class MyQuestionView extends BaseActivityPage implements IMyQuestionView 
         dismissProgressDialog();
         //显示错误界面
         showQuestionNullView(mActivity.getString(ReflectResourceId.getStringId(mActivity,
-                "bjmgf_sdk_common_question_error")));
+                Resource.string.bjmgf_sdk_common_question_error)));
         ToastUtil.showMessage(mActivity, message);
     }
 
@@ -130,7 +131,7 @@ public class MyQuestionView extends BaseActivityPage implements IMyQuestionView 
             }
             //未提交任何问题
             showQuestionNullView(mActivity.getString(ReflectResourceId.getStringId(mActivity,
-                    "bjmgf_sdk_submit_questionIsNullStr")));
+                    Resource.string.bjmgf_sdk_submit_questionIsNullStr)));
         } else {
             showQuestionListView();
             mAdapter = new MyQuestionListViewAdapter(mActivity, datas, mRootPageManager, mActivity);

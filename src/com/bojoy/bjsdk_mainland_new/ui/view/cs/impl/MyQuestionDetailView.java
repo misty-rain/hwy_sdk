@@ -92,7 +92,7 @@ public class MyQuestionDetailView extends BaseActivityPage implements IMyQuestio
 
     public MyQuestionDetailView(Context context, PageManager rootPageManager, BJMGFActivity activity,
                                 MyQuestionBean myQuestionBean) {
-        super(ReflectResourceId.getLayoutId(activity, "bjmgf_sdk_question_detail_content"),
+        super(ReflectResourceId.getLayoutId(activity, Resource.layout.bjmgf_sdk_question_detail_content),
                 context, rootPageManager, activity);
         this.mActivity = activity;
         this.mRootPageManager = rootPageManager;
@@ -124,50 +124,50 @@ public class MyQuestionDetailView extends BaseActivityPage implements IMyQuestio
 
     protected void initView() {
         mBackImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_closeCustomerCenterBtnId"));
+                Resource.id.bjmgf_sdk_closeCustomerCenterBtnId));
         // 问题发送栏
         mQuestionSendButton = (Button) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_dialog_send"));
+                Resource.id.bjmgf_sdk_dialog_send));
         mInputEditText = (EditText) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_dialog_edit"));
+                Resource.id.bjmgf_sdk_dialog_edit));
         mAddFileImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_dialog_addfile"));
+                Resource.id.bjmgf_sdk_dialog_addfile));
 
         // 提示布局
         mHintLayout = mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_attachment_hint_layout"));
+                Resource.id.bjmgf_sdk_attachment_hint_layout));
         mHintImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_attachment_image"));
+                Resource.id.bjmgf_sdk_attachment_image));
         mHintTextView = (TextView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_attachment_hint_text"));
+                Resource.id.bjmgf_sdk_attachment_hint_text));
         mClearHintImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_attachment_clear"));
+                Resource.id.bjmgf_sdk_attachment_clear));
 
         //ListView
         mListViewContainerLayout = mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_question_dialog_linner"));
+                Resource.id.bjmgf_sdk_question_dialog_linner));
         mListView = (ListView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_question_dialog_list"));
+                Resource.id.bjmgf_sdk_question_dialog_list));
 
         // 问题详情
-        mHeaderView = LayoutInflater.from(mActivity).inflate(
-                ReflectResourceId.getLayoutId(mActivity, "bjmgf_sdk_question_detail_header"), null);
+        mHeaderView = LayoutInflater.from(mActivity).inflate(ReflectResourceId.getLayoutId(
+                mActivity, Resource.layout.bjmgf_sdk_question_detail_header), null);
         mQuestionCreateTimeTextView = (TextView) mHeaderView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_question_create_time"));
+                Resource.id.bjmgf_sdk_question_create_time));
         mQuestionNumberTextView = (TextView) mHeaderView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_question_number_total"));
+                Resource.id.bjmgf_sdk_question_number_total));
         mQuestionTypeTotalTextView = (TextView) mHeaderView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_question_type_total"));
+                Resource.id.bjmgf_sdk_question_type_total));
         mServerTotalTextView = (TextView) mHeaderView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_question_service_total"));
+                Resource.id.bjmgf_sdk_question_service_total));
         mRoleNameTotalTextView = (TextView) mHeaderView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_question_role_name_total"));
+                Resource.id.bjmgf_sdk_question_role_name_total));
         mQuestionTitleTextView = (TextView) mHeaderView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_question_title"));
+                Resource.id.bjmgf_sdk_question_title));
         mQuestionContentTextView = (TextView) mHeaderView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_question_content"));
+                Resource.id.bjmgf_sdk_question_content));
         mExtraFileTextView = (TextView) mHeaderView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_getfile"));
+                Resource.id.bjmgf_sdk_getfile));
 
         mAddFileImageView.setOnClickListener(new OnClickListener() {
             @Override
