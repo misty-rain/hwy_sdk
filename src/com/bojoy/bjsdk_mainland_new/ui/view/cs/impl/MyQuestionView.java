@@ -20,7 +20,7 @@ import com.bojoy.bjsdk_mainland_new.utils.ToastUtil;
 import java.util.ArrayList;
 
 /**
- * <p>
+ * <p/>
  * 我的问题页
  * </P>
  * Created by shenliuyong on 2016/1/13.
@@ -42,17 +42,18 @@ public class MyQuestionView extends BaseActivityPage implements IMyQuestionView 
 
     /**
      * rootPageManager用来展示问题详细时添加View，questionPageManager目前主要用来显示ProcessDialog
-     * @param context 上下文
-     * @param rootPageManager 用来展示问题详细时添加View
+     *
+     * @param context             上下文
+     * @param rootPageManager     用来展示问题详细时添加View
      * @param questionPageManager 主要用来显示ProcessDialog
-     * @param activity BJMGFActivity
+     * @param activity            BJMGFActivity
      */
-    public MyQuestionView(Context context, PageManager rootPageManager,PageManager questionPageManager, BJMGFActivity activity) {
+    public MyQuestionView(Context context, PageManager rootPageManager, PageManager questionPageManager, BJMGFActivity activity) {
         super(ReflectResourceId.getLayoutId(activity, "bjmgf_sdk_dock_customer_my_questions_page"),
                 context, questionPageManager, activity);
         this.mActivity = activity;
         this.mRootPageManager = rootPageManager;
-        this.mQuestionPageManager=questionPageManager;
+        this.mQuestionPageManager = questionPageManager;
         mICustomerServicePresenter = new CustomerServicePresenterImpl(context, this);
     }
 
@@ -131,6 +132,7 @@ public class MyQuestionView extends BaseActivityPage implements IMyQuestionView 
             showQuestionNullView(mActivity.getString(ReflectResourceId.getStringId(mActivity,
                     "bjmgf_sdk_submit_questionIsNullStr")));
         } else {
+            showQuestionListView();
             mAdapter = new MyQuestionListViewAdapter(mActivity, datas, mRootPageManager, mActivity);
             mMyQuestionListView.setAdapter(mAdapter);
         }
@@ -146,5 +148,14 @@ public class MyQuestionView extends BaseActivityPage implements IMyQuestionView 
         mShowErrorView.setVisibility(View.VISIBLE);
         mErrorTextView.setVisibility(View.VISIBLE);
         mErrorTextView.setText(text);
+    }
+
+    /**
+     * 隐藏茶杯，显示listView
+     */
+    private void showQuestionListView() {
+        mShowErrorView.setVisibility(View.GONE);
+        mListViewContentView.setVisibility(View.VISIBLE);
+        mMyQuestionListView.setVisibility(View.VISIBLE);
     }
 }
