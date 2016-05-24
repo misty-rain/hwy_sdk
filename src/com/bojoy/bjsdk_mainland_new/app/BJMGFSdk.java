@@ -338,13 +338,13 @@ public class BJMGFSdk {
      *
      * @param context
      */
-    public void switchAccount(Context context) {
+    public void switchAccount(Context context,String msgStr) {
         if (BJMGFSDKTools.getInstance().isCurrUserStatusOnLine) {
             BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(false);
             BJMGFSDKTools.getInstance().setCurrUserData(null);
             BJMGFSDKTools.getInstance().setCurrentPassPort(null);
             dockManager.closeDock();
-            ToastUtil.showMessage(context, context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_switch_account_success)));
+            ToastUtil.showMessage(context, context.getString(ReflectResourceId.getStringId(context, msgStr)));
             //  BJMGFSDKTools.getInstance().switchLoginOrLoginListView(context);
         }
     }

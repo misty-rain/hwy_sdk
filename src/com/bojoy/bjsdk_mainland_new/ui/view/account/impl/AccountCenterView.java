@@ -201,7 +201,7 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
                 activity.setNeedOpenDock(false);
                 // activity.setNeedOpenDock(true);
                 quit();
-                BJMGFSdk.getDefault().switchAccount(context);
+                BJMGFSdk.getDefault().switchAccount(context,Resource.string.bjmgf_sdk_switch_account_success);
             }
         });
 

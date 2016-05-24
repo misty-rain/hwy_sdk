@@ -51,8 +51,8 @@ public class FindPwdSplashPage extends BaseDialogPage {
 		SpannableStringBuilder builder = new SpannableStringBuilder(mTvFindPersonal.getText().toString());  
 		ForegroundColorSpan redSpan = new ForegroundColorSpan(context.getResources().getColor(ReflectResourceId.getColorId(context, Resource.color.bjmgf_sdk_find_pwd_personal_blue)));
 		builder.setSpan(redSpan, 13, mTvFindPersonal.getText().toString().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		mTvFindPersonal.setText(builder); 
-		
+		mTvFindPersonal.setText(builder);
+		//手机号找回
 		mBtnPhone.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -61,7 +61,7 @@ public class FindPwdSplashPage extends BaseDialogPage {
 				manager.addPage(page);
 			}
 		});
-		
+		//邮箱找回
 		mBtnEmail.setOnClickListener(new OnClickListener() {
 			
 			@Override

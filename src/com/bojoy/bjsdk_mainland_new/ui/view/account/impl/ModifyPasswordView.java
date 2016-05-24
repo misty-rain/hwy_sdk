@@ -14,6 +14,7 @@ import com.bojoy.bjsdk_mainland_new.ui.activity.base.BJMGFActivity;
 import com.bojoy.bjsdk_mainland_new.ui.page.PageManager;
 import com.bojoy.bjsdk_mainland_new.ui.page.base.BaseActivityPage;
 import com.bojoy.bjsdk_mainland_new.ui.view.IBaseView;
+import com.bojoy.bjsdk_mainland_new.ui.view.account.findpwdfullscreen.FindPwdSplashView;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
@@ -56,6 +57,15 @@ public class ModifyPasswordView extends BaseActivityPage implements IBaseView {
         mForget = getView(Resource.id.bjmgf_sdk_forget_pwd_button, view);
         mBtnOk = getView(Resource.id.bjmgf_sdk_float_account_manager_modifypwd_buttonId, view);
 
+        //忘记密码
+        mForget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BaseActivityPage activityPage = new FindPwdSplashView(context, manager, activity);
+                manager.addPage(activityPage);
+            }
+        });
+
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,7 +103,7 @@ public class ModifyPasswordView extends BaseActivityPage implements IBaseView {
             return;
         }
 
-        if (mOldPwdEditText.getEditText().trim().equals(mNewPwdEditText.getEditText().trim())){
+        if (mOldPwdEditText.getEditText().trim().equals(mNewPwdEditText.getEditText().trim())) {
             showError(getString(Resource.string.bjmgf_sdk_login_dialog_new_password_unequal));
             return;
         }
@@ -113,10 +123,10 @@ public class ModifyPasswordView extends BaseActivityPage implements IBaseView {
     @Override
     public void showSuccess() {
         dismissProgressDialog();
-        ToastUtil.showMessage(context,getString(Resource.string.bjmgf_sdk_PswModifySuccessedStr));
+        ToastUtil.showMessage(context, getString(Resource.string.bjmgf_sdk_PswModifySuccessedStr));
         IAccountCenterPresenter iAccountCenterPresenter = new AccountCenterPresenterImpl(context, null);
         iAccountCenterPresenter.logout(context);
-        SpUtil.setIntValue(context, SysConstant.ISMODIFYPWDFLAGFORDIALOG,1);
+        SpUtil.setIntValue(context, SysConstant.ISMODIFYPWDFLAGFORDIALOG, 1);
         manager.clear();
         BJMGFSDKTools.getInstance().bjmgfDialog = new BJMGFDialog(context, (Activity) context, BJMGFDialog.Page_Login);
         BJMGFSDKTools.getInstance().bjmgfDialog.show();

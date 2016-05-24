@@ -119,6 +119,7 @@ public class AccountRegisterView extends BaseDialogPage implements ISmsView {
     public AccountRegisterView(Context context, PageManager manager, BJMGFDialog dialog) {
         super(ReflectResourceId.getLayoutId(context, Resource.layout.bjmgf_sdk_account_register_page),
                   context, manager, dialog);
+
     }
 
     @Override

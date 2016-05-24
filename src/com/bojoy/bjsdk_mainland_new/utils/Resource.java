@@ -52,6 +52,8 @@ public final class Resource {
         public static final String bjmgf_sdk_transcutestyle_yhxf = "bjmgf_sdk_transcutestyle_yhxf";
    }
     public static final class string {
+        public static final String bjmgf_sdk_floatWindow_accountManager_mofifypwdsuccess_relogin = "bjmgf_sdk_floatWindow_accountManager_mofifypwdsuccess_relogin";
+        public static final String bjmgf_sdk_floatWindow_findpwd_title = "bjmgf_sdk_floatWindow_findpwd_title";
         public static final String bjmgf_sdk_floatWindow_accountManager_unAuthentStr = "bjmgf_sdk_floatWindow_accountManager_unAuthentStr";
         public static final String bjmgf_sdk_auth_id_expired = "bjmgf_sdk_auth_id_expired";
         public static final String bjmgf_sdk_version = "bjmgf_sdk_version";
@@ -514,6 +516,11 @@ public final class Resource {
         public static final String bjmgf_sdk_warn_title = "bjmgf_sdk_warn_title";
    }
     public static final class layout {
+        public static final String bjmgf_sdk_find_password_reset_page_fullscreen = "bjmgf_sdk_find_password_reset_page_fullscreen";
+        public static final String bjmgf_sdk_find_password_check_page_fullscreen = "bjmgf_sdk_find_password_check_page_fullscreen";
+        public static final String bjmgf_sdk_check_phone_view_fullscreen = "bjmgf_sdk_check_phone_view_fullscreen.xml";
+        public static final String bjmgf_sdk_find_password_by_input_phonenum_fullscreen = "bjmgf_sdk_find_password_by_input_phonenum_fullscreen";
+        public static final String bjmgf_sdk_account_forget_pwd_splash_fullscreen = "bjmgf_sdk_account_forget_pwd_splash_fullscreen";
         public static final String bjmgf_sdk_account_forget_pwd_splash = "bjmgf_sdk_account_forget_pwd_splash";
         public static final String bjmgf_sdk_account_login_list_item = "bjmgf_sdk_account_login_list_item";
         public static final String bjmgf_sdk_account_login_list_page = "bjmgf_sdk_account_login_list_page";

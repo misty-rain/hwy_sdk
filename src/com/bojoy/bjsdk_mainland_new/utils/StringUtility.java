@@ -557,7 +557,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt));
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
             return false;
         } else if (account.matches(ACCOUNT_ONLY_NUMBER)) {// 手机号的判断
             if (!account.matches(PHONE_REGEX_SIMPLE)) {
@@ -568,7 +568,7 @@ public class StringUtility {
                                     mContext,
                                     getString(
                                               mContext,
-                                              Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt));
+                                              Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
                 return false;
             } else {
                 return true;
@@ -580,7 +580,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt));
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
             return false;
         } else if (!account.matches(ACCOUNT_REGEX)) {
             LogProxy.d(TAG, "checkFindPasswordPageAccountValid  ---------  4");
@@ -589,7 +589,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt));
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
             return false;
         } else if (stringIsSameLetter(account)) {
             LogProxy.d(TAG, "checkFindPasswordPageAccountValid  ---------  5");
@@ -598,7 +598,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt));
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
             return false;
         } else if (stringIsASC(account)) {
             LogProxy.d(TAG, "checkFindPasswordPageAccountValid  ---------  6");
@@ -607,7 +607,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt));
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
             return false;
         } else if (stringIsDESC(account)) {
             LogProxy.d(TAG, "checkFindPasswordPageAccountValid  ---------  7");
@@ -616,7 +616,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt));
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
             return false;
         } else if (!account.matches(ACCOUNT_REGEX_SIMPLE)) {
             LogProxy.d(TAG, "checkFindPasswordPageAccountValid  ---------  8");
@@ -625,7 +625,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt));
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
             return false;
         }
 
@@ -641,21 +641,21 @@ public class StringUtility {
             ToastUtil
                       .showMessage(
                                 mContext, prefix
-                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_length));
+                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_length),true);
             return false;
         }
         if (!password.matches(PASSWROD_REGEX)) {
             ToastUtil
                       .showMessage(
                                 mContext, prefix
-                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_special_symbol));
+                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_special_symbol),true);
             return false;
         }
         if (!password.matches(PASSWORD_REGEX_OTHER)) {
             ToastUtil
                       .showMessage(
                                 mContext, prefix
-                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_special_symbol));
+                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_special_symbol),true);
             return false;
         }
         if (StringUtility.stringIsSameLetter(password) || StringUtility.stringIsASC(password)
@@ -663,7 +663,7 @@ public class StringUtility {
             ToastUtil
                       .showMessage(
                                 mContext, prefix
-                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_simple));
+                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_simple),true);
             return false;
         }
         return true;

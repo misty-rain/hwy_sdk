@@ -59,9 +59,7 @@ public class FindPwdCheckPage extends CheckPhonePage implements
 	@Override
 	public void setView() {
 
-		mBindPhoneNumTextView = (TextView) pageView
-				.findViewById(ReflectResourceId.getViewId(context,
-						Resource.id.bjmgf_sdk_checkCode_sendPhoneTextViewId));
+		mBindPhoneNumTextView = (TextView) getView(Resource.id.bjmgf_sdk_checkCode_sendPhoneTextViewId);
 		mNextStepButton = (Button) pageView.findViewById(ReflectResourceId
 				.getViewId(context,
 						Resource.id.bjmgf_sdk_checkCode_nextStepBtnId));

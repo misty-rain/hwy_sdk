@@ -240,6 +240,7 @@
 
 
     <!-- 帐号管理 -->
+    <string name="bjmgf_sdk_floatWindow_findpwd_title">找回密码</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_enAuthentStr">已认证</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_unAuthentStr">未认证</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_authenticationStr">实名认证</string>
@@ -312,6 +313,7 @@
     <string name="bjmgf_sdk_floatWindow_accountManager_pwdhintc">再次输入新密码</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_pwdhintb">请输入新密码</string>
     <string name="bjmgf_sdk_floatWindow_accountManager_modifyPwd_sureBtnStra">确  认</string>
+    <string name="bjmgf_sdk_floatWindow_accountManager_mofifypwdsuccess_relogin">修改密码成功,请重新登录</string>
 
     <!-- 许愿池 -->
     <string name="bjmgf_sdk_dock_wishlistStr">许愿</string>

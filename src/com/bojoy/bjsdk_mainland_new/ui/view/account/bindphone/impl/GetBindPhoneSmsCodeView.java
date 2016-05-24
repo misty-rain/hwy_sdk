@@ -161,7 +161,7 @@ public class GetBindPhoneSmsCodeView extends BaseActivityPage implements IBaseVi
 
     @Override
     public void showError(String message) {
-        ToastUtil.showMessage(context, message);
+        ToastUtil.showMessage(context, message,true);
     }
 
     @Override
