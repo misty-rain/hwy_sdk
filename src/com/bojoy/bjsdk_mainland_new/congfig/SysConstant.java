@@ -17,7 +17,7 @@ public class SysConstant {
      * 系统配置
      */
     // 试玩账号标识符
-    public static final String TRY_LOGIN_PASSPORT_POSTFIX = "@t";
+    public static final String TRY_LOGIN_PASSPORT_POSTFIX = "游客";
     // 屏幕方向
     public static final int BJMGF_Screen_Orientation_Landscape = 0;
     // 屏幕方向

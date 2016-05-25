@@ -376,8 +376,10 @@ public class AccountCenterView extends BaseActivityPage implements IAccountCente
     @Override
     public void showUserInfo() {
         iAccountCenterPresenter.getAccountVipInfo(context);
-        if (BJMGFSDKTools.getInstance().getCurrUserData().getFaceUrl() != null) {
-            imageLoaderUtil.loadImageUrl(context, faceImage, BJMGFSDKTools.getInstance().getCurrUserData().faceUrl, null, roundRectSize);
+        if (BJMGFSDKTools.getInstance().getCurrUserData() != null) {
+            if (BJMGFSDKTools.getInstance().getCurrUserData().getFaceUrl() != null) {
+                imageLoaderUtil.loadImageUrl(context, faceImage, BJMGFSDKTools.getInstance().getCurrUserData().faceUrl, null, roundRectSize);
+            }
         }
     }
 

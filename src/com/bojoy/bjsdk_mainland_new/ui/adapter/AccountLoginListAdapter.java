@@ -8,8 +8,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.bojoy.bjsdk_mainland_new.eventhandler.event.BaseAdapterCalllback;
 import com.bojoy.bjsdk_mainland_new.model.entity.PassPort;
+import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
 import com.bojoy.bjsdk_mainland_new.utils.Resource;
 
 import java.util.List;
@@ -36,8 +38,8 @@ public class AccountLoginListAdapter extends BasicAdapter<PassPort> {
         LinearLayout llContent = getView(Resource.id.bjmgf_sdk_login_list_item_ll);
         RelativeLayout rlClose = getView(Resource.id.bjmgf_sdk_close_rl);
         ImageButton ibClose = getView(Resource.id.bjmgf_sdk_login_list_item_close);
-        if (mData.get(position).getPp().indexOf("@") < -1)
         tvTitle.setText(mData.get(position).getPp());
+
 
         //item 行 点击事件
         llContent.setOnClickListener(new OnClickListener() {

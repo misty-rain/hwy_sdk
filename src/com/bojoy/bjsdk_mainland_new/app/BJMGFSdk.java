@@ -74,6 +74,7 @@ public class BJMGFSdk {
         eventHandler = new EventHandler();
         payTools = PayTools.getInstance();
         LogProxy.i(TAG, "BJMGFSdk created");
+
     }
 
     public static BJMGFSdk getDefault() {
@@ -81,6 +82,7 @@ public class BJMGFSdk {
             synchronized (block) {
                 if (instance == null) {
                     instance = new BJMGFSdk();
+
                 }
             }
         }

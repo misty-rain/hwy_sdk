@@ -48,6 +48,8 @@ public class FindPwdSplashView extends BaseActivityPage implements IBaseView {
         mBtnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                activityPage = new FindPwdEmailView(context, manager, activity);
+                manager.addPage(activityPage);
 
             }
         });

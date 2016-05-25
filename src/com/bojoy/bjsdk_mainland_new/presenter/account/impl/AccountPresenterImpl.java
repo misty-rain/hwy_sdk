@@ -72,11 +72,13 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         break;
                     case BaseRequestEvent.REQUEST_TRY_LOGIN: //试玩事件
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
+                        if (passPort.getPp().indexOf("@") > -1)
+                            passPort.setPp(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_account_role_try_name)) + " " + passPort.getPp().substring(0, passPort.getPp().indexOf("@")));
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort);//保存当前用户passport
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(true);
                         AccountUtil.remove(context, passPort.getUid());
-                        AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
-                         iBaseView.showSuccess();
+                        AccountUtil.saveAccount(context, passPort.getUid(), JSON.toJSONString(passPort));
+                        iBaseView.showSuccess();
                         break;
                     case BaseRequestEvent.REQUEST_TRY_CHANGE:   //修改试玩账号
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
@@ -87,12 +89,15 @@ public class AccountPresenterImpl implements IAccountPresenter, BaseResultCallba
                         break;
                     case BaseRequestEvent.REQUEST_PF_USER_INFO: //获得自己的个人信息
                         BJMGFSDKTools.getInstance().saveCurrentUserInfo(context, backResultBean, (String) response);
-                        break;                    case BaseRequestEvent.REQUEST_AUTO_LOGIN://自动登陆
+                        break;
+                    case BaseRequestEvent.REQUEST_AUTO_LOGIN://自动登陆
                         passPort = JSON.parseObject(backResultBean.getObj(), PassPort.class);
+                        if (passPort.getPp().indexOf("@") > -1)
+                            passPort.setPp(context.getString(ReflectResourceId.getStringId(context, Resource.string.bjmgf_sdk_account_role_try_name)) + " " + passPort.getPp().substring(0, passPort.getPp().indexOf("@")));
                         BJMGFSDKTools.getInstance().setCurrentPassPort(passPort);
                         BJMGFSDKTools.getInstance().setCurrUserStatusOnLine(true);
                         AccountUtil.remove(context, passPort.getUid());
-                        AccountUtil.saveAccount(context, passPort.getUid(), backResultBean.getObj().toString());
+                        AccountUtil.saveAccount(context, passPort.getUid(), JSON.toJSONString(passPort));
                         iAccountModel.getUserInfoForSelf(context, SysConstant.GET_USERINFO_TYPE_BASE, this);
                         iAccountModel.getAccountInfo(context, this); //查询账户信息
                         // ((IAccountLoginListView) iBaseView).autoLoginSuccess();

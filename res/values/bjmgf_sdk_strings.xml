@@ -521,6 +521,7 @@
     <string name="bjmgf_sdk_warn_content_authent">建议尽快进行实名认证，提高帐号安全性，以防游戏记录丢失</string>
     <string name="bjmgf_sdk_warn_ok_authent">立即认证</string>
     <string name="bjmgf_sdk_warn_ok_authenta">立即认证</string>
+    <string name="bjmgf_sdk_account_role_try_name">游客</string>
 
     <!-- 标题 -->
     <string name="bjmgf_sdk_floatWindow_accountManager_info">个人信息</string>

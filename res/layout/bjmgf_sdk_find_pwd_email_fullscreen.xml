@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:clearedit="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <!-- 标题栏 -->
+    <include
+        android:id="@+id/bjmgf_sdk_float_account_manager_modifypwd_navigationLlId"
+        layout="@layout/bjmgf_sdk_dock_header"/>
+
+    <View
+        android:id="@+id/bjmgf_sdk_float_account_manager_modifypwd_keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bjmgf_sdk_bg"
+        android:orientation="vertical">
+
+        <com.bojoy.bjsdk_mainland_new.widget.ClearEditText
+            android:id="@+id/bjmgf_sdk_find_pwd_email_passport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+            android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin10"
+            android:hint="@string/bjmgf_sdk_find_password_email_input_passport"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="text"
+            android:paddingLeft="@dimen/bjmgf_sdk_margin10"
+            android:paddingRight="@dimen/bjmgf_sdk_margin10"
+            android:singleLine="true"
+            android:textColor="@color/bjmgf_sdk_gray"
+            android:textColorHint="@color/bjmgf_sdk_editTextFontGray"
+            android:textSize="@dimen/bjmgf_sdk_font_size14"
+            clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close"/>
+
+        <com.bojoy.bjsdk_mainland_new.widget.ClearEditText
+            android:id="@+id/bjmgf_sdk_find_pwd_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin5"
+            android:layout_marginRight="@dimen/bjmgf_sdk_margin5"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+            android:hint="@string/bjmgf_sdk_find_password_email_input_email"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="text"
+            android:paddingLeft="@dimen/bjmgf_sdk_margin10"
+            android:paddingRight="@dimen/bjmgf_sdk_margin10"
+            android:singleLine="true"
+            android:textColor="@color/bjmgf_sdk_gray"
+            android:textColorHint="@color/bjmgf_sdk_editTextFontGray"
+            android:textSize="@dimen/bjmgf_sdk_font_size14"
+            clearedit:clear_src="@drawable/bjmgf_sdk_button_gray_close"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bjmgf_sdk_margin15"
+            android:layout_marginRight="@dimen/bjmgf_sdk_margin15"
+            android:layout_marginTop="@dimen/bjmgf_sdk_margin5"
+            android:text="@string/bjmgf_sdk_find_password_email_input_content"
+            android:textColor="@color/bjmgf_sdk_light_gray"
+            android:textSize="@dimen/bjmgf_sdk_font_size14"/>
+    </LinearLayout>
+</LinearLayout>

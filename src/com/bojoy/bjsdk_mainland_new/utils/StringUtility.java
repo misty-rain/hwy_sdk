@@ -103,9 +103,9 @@ public class StringUtility {
         return defValue;
     }
 
-    public static String getSmsText(Context context){
+    public static String getSmsText(Context context) {
         return "onekey_" + SpUtil.getStringValue(context, "uuid", "") + "#" + BaseAppPassport.getAppId()
-                + "#" + BaseAppPassport.getChannel() + "#" + Utility.getLocalIPAddress(context);
+                  + "#" + BaseAppPassport.getChannel() + "#" + Utility.getLocalIPAddress(context);
     }
 
 
@@ -504,7 +504,7 @@ public class StringUtility {
                       .showMessage(
                                 mContext,
                                 getString(
-                                          mContext, getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_account_length)));
+                                          mContext, getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_account_length)), true);
             return false;
         }
         if (!account.matches(ACCOUNT_REGEX)) {
@@ -513,13 +513,13 @@ public class StringUtility {
                           .showMessage(
                                     mContext,
                                     getString(
-                                              mContext, getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_account_special_symbol)));
+                                              mContext, getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_account_special_symbol)), true);
             } else {
                 ToastUtil
                           .showMessage(
                                     mContext,
                                     getString(
-                                              mContext, getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_account_no_letter)));
+                                              mContext, getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_account_no_letter)), true);
             }
             return false;
         }
@@ -528,7 +528,7 @@ public class StringUtility {
                       .showMessage(
                                 mContext,
                                 getString(
-                                          mContext, getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_account_same_letter)));
+                                          mContext, getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_account_same_letter)), true);
             return false;
         }
         if (StringUtility.stringIsASC(account) || StringUtility.stringIsDESC(account)) {
@@ -536,7 +536,7 @@ public class StringUtility {
                       .showMessage(
                                 mContext,
                                 getString(
-                                          mContext, getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_account_simple)));
+                                          mContext, getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_account_simple)), true);
             return false;
         }
         return true;
@@ -557,7 +557,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt), true);
             return false;
         } else if (account.matches(ACCOUNT_ONLY_NUMBER)) {// 手机号的判断
             if (!account.matches(PHONE_REGEX_SIMPLE)) {
@@ -568,7 +568,7 @@ public class StringUtility {
                                     mContext,
                                     getString(
                                               mContext,
-                                              Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
+                                              Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt), true);
                 return false;
             } else {
                 return true;
@@ -580,7 +580,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt), true);
             return false;
         } else if (!account.matches(ACCOUNT_REGEX)) {
             LogProxy.d(TAG, "checkFindPasswordPageAccountValid  ---------  4");
@@ -589,7 +589,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt), true);
             return false;
         } else if (stringIsSameLetter(account)) {
             LogProxy.d(TAG, "checkFindPasswordPageAccountValid  ---------  5");
@@ -598,7 +598,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt), true);
             return false;
         } else if (stringIsASC(account)) {
             LogProxy.d(TAG, "checkFindPasswordPageAccountValid  ---------  6");
@@ -607,7 +607,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt), true);
             return false;
         } else if (stringIsDESC(account)) {
             LogProxy.d(TAG, "checkFindPasswordPageAccountValid  ---------  7");
@@ -616,7 +616,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt), true);
             return false;
         } else if (!account.matches(ACCOUNT_REGEX_SIMPLE)) {
             LogProxy.d(TAG, "checkFindPasswordPageAccountValid  ---------  8");
@@ -625,7 +625,7 @@ public class StringUtility {
                                 mContext,
                                 getString(
                                           mContext,
-                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt),true);
+                                          Resource.string.bjmgf_sdk_login_dialog_invalid_findPassword_account_prompt), true);
             return false;
         }
 
@@ -641,21 +641,21 @@ public class StringUtility {
             ToastUtil
                       .showMessage(
                                 mContext, prefix
-                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_length),true);
+                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_length), true);
             return false;
         }
         if (!password.matches(PASSWROD_REGEX)) {
             ToastUtil
                       .showMessage(
                                 mContext, prefix
-                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_special_symbol),true);
+                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_special_symbol), true);
             return false;
         }
         if (!password.matches(PASSWORD_REGEX_OTHER)) {
             ToastUtil
                       .showMessage(
                                 mContext, prefix
-                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_special_symbol),true);
+                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_special_symbol), true);
             return false;
         }
         if (StringUtility.stringIsSameLetter(password) || StringUtility.stringIsASC(password)
@@ -663,7 +663,7 @@ public class StringUtility {
             ToastUtil
                       .showMessage(
                                 mContext, prefix
-                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_simple),true);
+                                          + getString(mContext, Resource.string.bjmgf_sdk_login_dialog_invalid_password_simple), true);
             return false;
         }
         return true;
@@ -679,13 +679,13 @@ public class StringUtility {
 
     /**
      * 新增检查手机格式
-     * */
-    public static boolean checkPhoneNumberFormat(Context context,String phoneNumber) {
+     */
+    public static boolean checkPhoneNumberFormat(Context context, String phoneNumber) {
         if (TextUtils.isEmpty(phoneNumber)) {
-            ToastUtil.showMessage(context,getString(context, Resource.string.bjmgf_sdk_InputPhoneNumberNullStr));
+            ToastUtil.showMessage(context, getString(context, Resource.string.bjmgf_sdk_InputPhoneNumberNullStr));
             return false;
         } else if (!phoneNumber.matches(PHONE_REGEX_SIMPLE)) {
-            ToastUtil.showMessage(context,getString(context, Resource.string.bjmgf_sdk_InputPhoneNumberErrorStr));
+            ToastUtil.showMessage(context, getString(context, Resource.string.bjmgf_sdk_InputPhoneNumberErrorStr));
             return false;
         }
         return true;
@@ -714,8 +714,7 @@ public class StringUtility {
 
     /**
      * 新增将手机号中间四位转换为“*”
-     *
-     * */
+     */
     public static String transformPhoneNumberType(String phoneNumbre) {
         StringBuffer stringBuffer = new StringBuffer(phoneNumbre);
         if (stringBuffer.length() < 8) {

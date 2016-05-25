@@ -201,7 +201,7 @@ public class BJMGFSDKTools {
     public boolean isCurrUserTryPlay(Context context) {
         String accountName = BJMGFSDKTools.getInstance().getCurrentPassPort().getPp();
         if (!StringUtility.isEmpty(accountName)) {
-            if (accountName.substring(accountName.length() - 2, accountName.length()).equals(SysConstant.TRY_LOGIN_PASSPORT_POSTFIX))
+            if (accountName.substring(0, 2).equals(SysConstant.TRY_LOGIN_PASSPORT_POSTFIX))
                 return true;
         }
         return false;

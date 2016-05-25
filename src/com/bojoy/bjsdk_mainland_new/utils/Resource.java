@@ -52,6 +52,7 @@ public final class Resource {
         public static final String bjmgf_sdk_transcutestyle_yhxf = "bjmgf_sdk_transcutestyle_yhxf";
    }
     public static final class string {
+        public static final String bjmgf_sdk_account_role_try_name = "bjmgf_sdk_account_role_try_name";
         public static final String bjmgf_sdk_floatWindow_accountManager_mofifypwdsuccess_relogin = "bjmgf_sdk_floatWindow_accountManager_mofifypwdsuccess_relogin";
         public static final String bjmgf_sdk_floatWindow_findpwd_title = "bjmgf_sdk_floatWindow_findpwd_title";
         public static final String bjmgf_sdk_floatWindow_accountManager_unAuthentStr = "bjmgf_sdk_floatWindow_accountManager_unAuthentStr";
@@ -516,6 +517,8 @@ public final class Resource {
         public static final String bjmgf_sdk_warn_title = "bjmgf_sdk_warn_title";
    }
     public static final class layout {
+        public static final String bjmgf_sdk_find_pwd_email_fullscreen = "bjmgf_sdk_find_pwd_email_fullscreen";
+        public static final String bjmgf_sdk_find_pwd_email_confirm_fullscreen = "bjmgf_sdk_find_pwd_email_confirm_fullscreen";
         public static final String bjmgf_sdk_find_password_reset_page_fullscreen = "bjmgf_sdk_find_password_reset_page_fullscreen";
         public static final String bjmgf_sdk_find_password_check_page_fullscreen = "bjmgf_sdk_find_password_check_page_fullscreen";
         public static final String bjmgf_sdk_check_phone_view_fullscreen = "bjmgf_sdk_check_phone_view_fullscreen.xml";
