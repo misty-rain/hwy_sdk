@@ -93,28 +93,28 @@ public class CustomerServiceView extends BaseActivityPage implements ICustomerVi
         showPageWithLinearLayout();
         // 使用ViewPager展示
         mViewPager = (ViewPager) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_about_question_content_view_pager"));
+                Resource.id.bjmgf_sdk_id_about_question_content_view_pager));
 
         mBackImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_close_customer_center_image_view"));
+                Resource.id.bjmgf_sdk_id_close_customer_center_image_view));
 
         mCommonQuestionTextView = (TextView) mView.findViewById(ReflectResourceId.getViewId(
-                mActivity, "bjmgf_sdk_id_common_question_text_view"));
+                mActivity, Resource.id.bjmgf_sdk_id_common_question_text_view));
         mSendQuestionTextView = (TextView) mView.findViewById(ReflectResourceId.getViewId(
-                mActivity, "bjmgf_sdk_id_send_question_text_view"));
+                mActivity, Resource.id.bjmgf_sdk_id_send_question_text_view));
         mMyQuestionTextView = (TextView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_my_question_text_view"));
+                Resource.id.bjmgf_sdk_id_my_question_text_view));
 
         // 初始化标题栏下面的分割线
         mCommonQuestionLineImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(
-                mActivity, "bjmgf_sdk_id_common_question_line"));
+                mActivity, Resource.id.bjmgf_sdk_id_common_question_line));
         mSendQuestionLineImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(
-                mActivity, "bjmgf_sdk_id_send_question_line"));
+                mActivity, Resource.id.bjmgf_sdk_id_send_question_line));
         mMyQuestionLineImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(
-                mActivity, "bjmgf_sdk_id_my_question_line"));
+                mActivity, Resource.id.bjmgf_sdk_id_my_question_line));
 
         mBackImageView = (ImageView) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_close_customer_center_image_view"));
+                Resource.id.bjmgf_sdk_id_close_customer_center_image_view));
 
         // 为标题栏文字设置监听器
         mCommonQuestionTextView.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +151,7 @@ public class CustomerServiceView extends BaseActivityPage implements ICustomerVi
      */
     private final void showPageWithLinearLayout() {
         mLinearLayout = (LinearLayout) mView.findViewById(ReflectResourceId.getViewId(mActivity,
-                "bjmgf_sdk_id_about_question_content_linear_layout"));
+                Resource.id.bjmgf_sdk_id_about_question_content_linear_layout));
         mLinearLayout.setVisibility(View.VISIBLE);
         // 把此页面中的LinearLayout设置为子页面的根布局
         mQuestionPageManager = new PageManager(mLinearLayout);

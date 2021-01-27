@@ -106,7 +106,7 @@ public class MessageListAdapter extends BaseAdapter {
         /** 设置信息内容显示 */
         setContentText(holder, messageData);
         /** 设置发送时间 */
-        holder.bjmgf_sdk_message_timeTv.setText(DateUtil.formatTime(context,messageData.time));
+        holder.bjmgf_sdk_message_timeTv.setText(DateUtil.formatTime(context, messageData.time));
         convertView.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -138,12 +138,12 @@ public class MessageListAdapter extends BaseAdapter {
                     holder.bjmgf_sdk_message_headImg
                             .setImageResource(ReflectResourceId
                                     .getDrawableId(context,
-                                            "bjmgf_sdk_user_default_icon_male"));// 男默认头像
+                                            Resource.drawable.bjmgf_sdk_user_default_icon_male));// 男默认头像
                 } else {
                     holder.bjmgf_sdk_message_headImg
                             .setImageResource(ReflectResourceId.getDrawableId(
                                     context,
-                                    "bjmgf_sdk_user_default_icon_female"));// 女默认头像
+                                    Resource.drawable.bjmgf_sdk_user_default_icon_female));// 女默认头像
                 }
             } else {
                 String faceUrl = MessageNoticeTools.getInstance().getUserData(messageData.uid).faceUrl;
@@ -163,11 +163,11 @@ public class MessageListAdapter extends BaseAdapter {
         if (messageData.msgType.equals(MessageNotifyData.Msg_Type_Hi_Message)) {
             String nick = MessageNoticeTools.getInstance().getUserData(messageData.uid).nick;
             holder.bjmgf_sdk_message_titleTv.setText(Utility.getString(
-                      Resource.string.bjmgf_sdk_dock_message_to_hi, context));
+                    Resource.string.bjmgf_sdk_dock_message_to_hi, context));
             if (messageData.type == 0) {
                 holder.bjmgf_sdk_message_contentTv
-                          .setText(HI_Strings[MessageNotifyData.Hi_Type_Flower_Message]
-                                    + messageData.content);
+                        .setText(HI_Strings[MessageNotifyData.Hi_Type_Flower_Message]
+                                + messageData.content);
             } else if (messageData.type == 1) {
                 // holder.bjmgf_sdk_message_contentTv
                 // .setText(HI_Strings[MessageNotifyData.Hi_Type_Normal_Message]
@@ -175,43 +175,39 @@ public class MessageListAdapter extends BaseAdapter {
                 holder.bjmgf_sdk_message_contentTv.setText(messageData.content);
             } else if (messageData.type == 2) {
                 holder.bjmgf_sdk_message_contentTv
-                          .setText(HI_Strings[MessageNotifyData.Hi_Type_Wish_Message]
-                                    + messageData.content);
+                        .setText(HI_Strings[MessageNotifyData.Hi_Type_Wish_Message]
+                                + messageData.content);
             } else if (messageData.type == 3) {
                 holder.bjmgf_sdk_message_contentTv
-                          .setText(MessageNoticeTools.getInstance().getUserData(messageData.uid).nick
-                                    + Utility.getString(
-                                    Resource.string.bjmgf_sdk_dock_message_game_notify_type_three,
-                                    context));
+                        .setText(MessageNoticeTools.getInstance().getUserData(messageData.uid).nick
+                                + Utility.getString(
+                                Resource.string.bjmgf_sdk_dock_message_game_notify_type_three,
+                                context));
             } else if (messageData.type == 4) {
                 holder.bjmgf_sdk_message_contentTv
-                          .setText(MessageNoticeTools.getInstance().getUserData(messageData.uid).nick
-                                    + Utility.getString(
-                                    Resource.string.bjmgf_sdk_dock_message_game_notify_type_four,
-                                    context));
+                        .setText(MessageNoticeTools.getInstance().getUserData(messageData.uid).nick
+                                + Utility.getString(
+                                Resource.string.bjmgf_sdk_dock_message_game_notify_type_four,
+                                context));
             } else if (messageData.type == 5) {
                 holder.bjmgf_sdk_message_contentTv
-                          .setText(HI_Strings[MessageNotifyData.Hi_Type_Keep_Mistress_Message]
-                                    + messageData.content);
+                        .setText(HI_Strings[MessageNotifyData.Hi_Type_Keep_Mistress_Message]
+                                + messageData.content);
             } else {
                 holder.bjmgf_sdk_message_contentTv
-                          .setText(ReflectResourceId
-                                    .getStringId(
-                                              context,
-                                              Resource.string.bjmgf_sdk_dock_no_message_is_hi));
+                        .setText(ReflectResourceId
+                                .getStringId(
+                                        context,
+                                        Resource.string.bjmgf_sdk_dock_no_message_is_hi));
             }
-        } else
-
-        if (messageData.msgType
-                  .equals(MessageNotifyData.Msg_Type_System_Message)) {
+        } else if (messageData.msgType
+                .equals(MessageNotifyData.Msg_Type_System_Message)) {
             holder.bjmgf_sdk_message_titleTv.setText(Utility.getString(
-                      Resource.string.bjmgf_sdk_dock_message_game_system_user,
-                      context));
+                    Resource.string.bjmgf_sdk_dock_message_game_system_user,
+                    context));
             holder.bjmgf_sdk_message_contentTv.setText(messageData.title);
-        } else
-
-        if (messageData.msgType
-                  .equals(MessageNotifyData.Msg_Type_Normal_Message)) {
+        } else if (messageData.msgType
+                .equals(MessageNotifyData.Msg_Type_Normal_Message)) {
             toSet(holder, messageData, messageData.type);
         }
 
@@ -221,34 +217,34 @@ public class MessageListAdapter extends BaseAdapter {
                        int type) {
         if (StringUtility.isEmpty(MessageNoticeTools.getInstance().getUserData(messageData.uid).nick)) {
             holder.bjmgf_sdk_message_titleTv.setText(ReflectResourceId
-                      .getStringId(context,
-                                Resource.string.bjmgf_sdk_dock_message_null));
+                    .getStringId(context,
+                            Resource.string.bjmgf_sdk_dock_message_null));
         }
 
         if (StringUtility.isEmpty(messageData.mes)) {
             holder.bjmgf_sdk_message_contentTv.setText(ReflectResourceId
-                      .getStringId(context,
-                                Resource.string.bjmgf_sdk_dock_message_null));
+                    .getStringId(context,
+                            Resource.string.bjmgf_sdk_dock_message_null));
         }
 
         if (type == MessageNotifyData.Normal_Type_Text_Message) {
             holder.bjmgf_sdk_message_titleTv.setText(MessageNoticeTools.getInstance().getUserData(messageData.uid).nick);
             holder.bjmgf_sdk_message_contentTv.setText(messageData.mes);
         } else if (type == MessageNotifyData.Normal_Type_Img_Message
-                  || type == MessageNotifyData.Normal_Type_Voice_Message
-                  || type == MessageNotifyData.Normal_Type_Flower_Message) {
+                || type == MessageNotifyData.Normal_Type_Voice_Message
+                || type == MessageNotifyData.Normal_Type_Flower_Message) {
             holder.bjmgf_sdk_message_titleTv.setText(MessageNoticeTools.getInstance().getUserData(messageData.uid).nick);
             holder.bjmgf_sdk_message_contentTv.setText(Normal_Strings[type]);
         } else if (type == MessageNotifyData.Normal_Type_Game_Message) {
             String gameName = messageData.mes
-                      .split(Resource.string.bjmgf_sdk_dock_split_sign)[1];
+                    .split(Resource.string.bjmgf_sdk_dock_split_sign)[1];
             holder.bjmgf_sdk_message_titleTv.setText(MessageNoticeTools.getInstance().getUserData(messageData.uid).nick);
             holder.bjmgf_sdk_message_contentTv.setText(ReflectResourceId
-                      .getStringId(context,
-                                Resource.string.bjmgf_sdk_dock_message_game_part1)
-                      + gameName
-                      + ReflectResourceId.getStringId(context,
-                      Resource.string.bjmgf_sdk_dock_message_game_part2));
+                    .getStringId(context,
+                            Resource.string.bjmgf_sdk_dock_message_game_part1)
+                    + gameName
+                    + ReflectResourceId.getStringId(context,
+                    Resource.string.bjmgf_sdk_dock_message_game_part2));
         } else {
             holder.bjmgf_sdk_message_titleTv.setText(MessageNoticeTools.getInstance().getUserData(messageData.uid).nick);
             holder.bjmgf_sdk_message_contentTv.setText(Normal_Strings[type]);

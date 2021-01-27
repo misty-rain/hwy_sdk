@@ -30,6 +30,7 @@ import com.bojoy.bjsdk_mainland_new.ui.view.cs.IShowPictureView;
 import com.bojoy.bjsdk_mainland_new.utils.DomainUtility;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
+import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.SpUtil;
 import com.bojoy.bjsdk_mainland_new.utils.Utility;
 
@@ -182,7 +183,7 @@ public class CustomerServicePresenterImpl implements ICustomerServicePresenter,
         String[] subQuestionType = QuestionData.Question_SubType_Names;
         //获取父问题类型所有类型
         String[] qType = context.getResources().getStringArray(ReflectResourceId.getArrayId(context,
-                "bjmgf_sdk_question_type"));
+                Resource.array.bjmgf_sdk_question_type));
         //获取父问题类型编号
         int qTypeInt = Integer.parseInt(questionRootType) / 100 - 1;
         int qSubTypeInt = 0;

@@ -21,6 +21,7 @@ import com.bojoy.bjsdk_mainland_new.ui.view.cs.IMyQuestionListView;
 import com.bojoy.bjsdk_mainland_new.ui.view.cs.impl.MyQuestionDetailView;
 import com.bojoy.bjsdk_mainland_new.utils.LogProxy;
 import com.bojoy.bjsdk_mainland_new.utils.ReflectResourceId;
+import com.bojoy.bjsdk_mainland_new.utils.Resource;
 import com.bojoy.bjsdk_mainland_new.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -72,23 +73,23 @@ public class MyQuestionListViewAdapter extends BaseAdapter implements IMyQuestio
         if (convertView == null) {
             viewHolder = new ViewHolder();
             convertView = inflater.inflate(ReflectResourceId.getLayoutId(mContext,
-                    "bjmgf_sdk_dock_customer_my_questions_item"), null);
+                    Resource.layout.bjmgf_sdk_dock_customer_my_questions_item), null);
             // 初始化一些控件
             viewHolder.myQuestionTitleTextView = (TextView) convertView
                     .findViewById(ReflectResourceId.getViewId(mContext,
-                            "bjmgf_sdk_id_my_question_title_text_view"));
+                            Resource.id.bjmgf_sdk_id_my_question_title_text_view));
             viewHolder.myQuestionTimeTextView = (TextView) convertView
                     .findViewById(ReflectResourceId.getViewId(mContext,
-                            "bjmgf_sdk_id_my_question_created_time_text_view"));
+                            Resource.id.bjmgf_sdk_id_my_question_created_time_text_view));
             viewHolder.myQuestionEvaluateButton = (Button) convertView
                     .findViewById(ReflectResourceId.getViewId(mContext,
-                            "bjmgf_sdk_myquestion_evaluateBtnId"));
+                            Resource.id.bjmgf_sdk_myquestion_evaluateBtnId));
             viewHolder.flagImageView = (ImageView) convertView.findViewById(ReflectResourceId.getViewId(
-                    mContext, "bjmgf_sdk_id_my_question_server_flag"));
+                    mContext, Resource.id.bjmgf_sdk_id_my_question_server_flag));
             viewHolder.myQuestionStateTextView = (TextView) convertView.findViewById(ReflectResourceId.getViewId(
-                    mContext, "bjmgf_sdk_myquestion_stateTvId"));
+                    mContext, Resource.id.bjmgf_sdk_myquestion_stateTvId));
             viewHolder.myQuestionEvaluateTextView = (TextView) convertView.findViewById(ReflectResourceId.getViewId(
-                    mContext, "bjmgf_sdk_myquestion_evaluatedTvId"));
+                    mContext, Resource.id.bjmgf_sdk_myquestion_evaluatedTvId));
 
             convertView.setTag(viewHolder);
 
@@ -138,14 +139,14 @@ public class MyQuestionListViewAdapter extends BaseAdapter implements IMyQuestio
         if ("0".equals(mDatas.get(position).getState())) {
             //处理中，不可评价
             viewHolder.myQuestionStateTextView.setText(mActivity.getString(ReflectResourceId.getStringId(mActivity,
-                    "bjmgf_sdk_myQuestionDealingStr")));
+                    Resource.string.bjmgf_sdk_myQuestionDealingStr)));
             //不可以评价
             viewHolder.myQuestionEvaluateButton.setVisibility(View.GONE);
             viewHolder.myQuestionEvaluateTextView.setVisibility(View.GONE);
         } else if ("1".equals(mDatas.get(position).getState())) {
             //已结单
             viewHolder.myQuestionStateTextView.setText(mActivity.getString(ReflectResourceId.getStringId(mActivity,
-                    "bjmgf_sdk_myQuestionDealedStr")));
+                    Resource.string.bjmgf_sdk_myQuestionDealedStr)));
         }
 
         return convertView;
@@ -176,7 +177,7 @@ public class MyQuestionListViewAdapter extends BaseAdapter implements IMyQuestio
     private void handleEvaluateButtonClick(final int position) {
         //获取数组资源
         final String[] evaluate = mContext.getResources().getStringArray(ReflectResourceId.getArrayId(mActivity,
-                "bjmgf_sdk_evaluate_type"));
+                Resource.array.bjmgf_sdk_evaluate_type));
         LogProxy.d(TAG, "evaluate length=" + evaluate.length);
         AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
         dialog.setItems(evaluate, new DialogInterface.OnClickListener() {
